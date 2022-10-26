@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,8 +26,10 @@ public class RegisterController {
 		return "tco-client/user/register.html";
 	}
 	
-	@PostMapping("/register")
-	public String doRegister(Model model,@ModelAttribute("user") User user) {
+	@SuppressWarnings("null")
+    @PostMapping("/register")
+	public String doRegister(Model model,@ModelAttribute("user") User user,
+	        @RequestParam("confirmPassword") String confirmPassword) {
 	    String username = user.getUsername();
 	    String email = user.getEmail();
 	    String password = user.getPassword();
@@ -69,16 +72,30 @@ public class RegisterController {
 	        model.addAttribute("emailError", "Không đúng định dạng Email");
 	    }
 	    
+	    if(confirmPassword.trim().length() == 0) {
+	        userError = true;
+	        model.addAttribute("confirmPasswordError", "Hãy xác nhận lại mật khẩu");
+	    } else if(!confirmPassword.equals(password)) {
+	        userError = true;
+	        model.addAttribute("confirmPasswordError", "Xác nhận mật khẩu không chính xác");
+	    }
+	    
 	    if(userError) {
 	        model.addAttribute("message", "Đăng ký thất bại!");
 	        return "tco-client/user/register.html";
 	    }
-	    
-		String postUrl = "http://localhost:8080/api/register";
-		HttpEntity<User> userEntity = new HttpEntity<>(user);
-		ResponseEntity<User> responseEntity = restTemplate.postForEntity(postUrl, userEntity, User.class);
-		user = responseEntity.getBody();
-		
+	    try {
+    		String postUrl = "http://localhost:8080/api/register";
+    		HttpEntity<User> userEntity = new HttpEntity<>(user);
+    		ResponseEntity<User> responseEntity = restTemplate.postForEntity(postUrl, userEntity, User.class);
+    		user = responseEntity.getBody();
+	    } catch (HttpClientErrorException e) {
+	        String responseErrorMessage = e.getMessage();
+	        if(responseErrorMessage.contains(username) && responseErrorMessage.contains("400")) {
+	            model.addAttribute("message", "Tài khoản đã được sử dụng");
+	            return "tco-client/user/register.html";
+	        }
+	    }
 		return "tco-client/user/register.html";
 	}
 }

@@ -59,7 +59,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <label>Mật khẩu</label>
                                 <input th:field="*{password}" type="password" name="password" placeholder="Mật khẩu..." />
                             	<label>[[${passwordError}]]</label>
-                            </span>                               
+                            </span> 
+                            <span class="ec-register-wrap">
+                                <label>Xác nhận lại mật khẩu</label>
+                                <input type="password" name="confirmPassword" placeholder="Nhập lại mật khẩu..." />
+                            	<label>[[${confirmPasswordError}]]</label>
+                            </span>                              
                             <!-- 
                             <span class="ec-register-wrap ec-recaptcha">
                                 <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
