@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+	<main>
+		<!-- Ec breadcrumb start -->
+		<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="row ec_breadcrumb_inner">
+							<div class="col-md-6 col-sm-12">
+								<h2 class="ec-breadcrumb-title">Hóa đơn người dùng</h2>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<!-- ec-breadcrumb-list start -->
+								<ul class="ec-breadcrumb-list">
+									<li class="ec-breadcrumb-item"><a href="index.html">Trang
+											chủ</a></li>
+									<li class="ec-breadcrumb-item active">Hóa đơn</li>
+								</ul>
+								<!-- ec-breadcrumb-list end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Ec breadcrumb end -->
+
+		<!-- User invoice section -->
+		<section
+			class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+			<div class="container">
+				<div class="row">
+					<!-- Sidebar Area Start -->
+					<div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+						<div class="ec-sidebar-wrap">
+							<!-- Sidebar Category Block -->
+							<div class="ec-sidebar-block">
+								<div class="ec-vendor-block">
+									<div class="ec-vendor-block-items">
+										<ul>
+											<li><a href="user-profile.html">Hồ sơ người dùng</a></li>
+											<li><a href="user-history.html">Lịch sử</a></li>
+											<li><a href="wishlist.html">Danh sách yêu thích</a></li>
+											<li><a href="cart.html">Giỏ hàng</a></li>
+											<li><a href="checkout.html">Thanh toán</a></li>
+											<li><a href="track-order.html">Theo dõi Đơn hàng</a></li>
+											<li><a href="user-invoice.html">Hoá đơn</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ec-shop-rightside col-lg-9 col-md-12">
+						<div class="ec-vendor-dashboard-card">
+							<div class="ec-vendor-card-header">
+								<h5>Hoá đơn</h5>
+								<div class="ec-header-btn">
+									<a class="btn btn-lg btn-secondary" href="#">In</a> <a
+										class="btn btn-lg btn-primary" href="#">Xuất</a>
+								</div>
+							</div>
+							<div class="ec-vendor-card-body padding-b-0">
+								<div class="page-content">
+									<div class="page-header text-blue-d2">
+										<img src="assets/images/logo/logo.png" alt="Site Logo">
+									</div>
+
+									<div class="container px-0">
+										<div class="row mt-4">
+											<div class="col-lg-12">
+												<hr class="row brc-default-l1 mx-n1 mb-4" />
+
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="my-2">
+															<span class="text-sm text-grey-m2 align-middle">Đến
+																: </span> <span
+																class="text-600 text-110 text-blue align-middle">Alex
+																Doe</span>
+														</div>
+														<div class="text-grey-m2">
+															<div class="my-2">123, Mountain View,</div>
+															<div class="my-2">California, US State.</div>
+															<div class="my-2">
+																<b class="text-600">SĐT : </b>1234567890
+															</div>
+														</div>
+													</div>
+													<!-- /.col -->
+
+													<div
+														class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+														<hr class="d-sm-none" />
+														<div class="text-grey-m2">
+
+															<div class="my-2">
+																<span class="text-600 text-90">ID : </span> #111-222
+															</div>
+
+															<div class="my-2">
+																<span class="text-600 text-90">Mã HSN: </span> #123456
+															</div>
+															<div class="my-2">
+																<span class="text-600 text-90">Ngày phát hành : </span>
+																Oct 12, 2021-2022
+															</div>
+
+															<div class="my-2">
+																<span class="text-600 text-90">Số hóa đơn : </span>6548
+															</div>
+														</div>
+													</div>
+													<!-- /.col -->
+												</div>
+
+												<div class="mt-4">
+
+													<div class="text-95 text-secondary-d3">
+														<div class="ec-vendor-card-table">
+															<table class="table ec-table">
+																<thead>
+																	<tr>
+																		<th scope="col">ID</th>
+																		<th scope="col">Tên</th>
+																		<th scope="col">Số lượng</th>
+																		<th scope="col">Giá</th>
+																		<th scope="col">Tổng giá</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<th><span>225</span></th>
+																		<td><span>Women sliveless top</span></td>
+																		<td><span>2</span></td>
+																		<td><span>$65</span></td>
+																		<td><span>$130</span></td>
+																	</tr>
+																	<tr>
+																		<th><span>548</span></th>
+																		<td><span>Mens cotton fabric shirt</span></td>
+																		<td><span>3</span></td>
+																		<td><span>$10</span></td>
+																		<td><span>$30</span></td>
+																	</tr>
+																	<tr>
+																		<th><span>684</span></th>
+																		<td><span>Baby clothes pair</span></td>
+																		<td><span>1</span></td>
+																		<td><span>$360</span></td>
+																		<td><span>$360</span></td>
+																	</tr>
+																	<tr>
+																		<th><span>987</span></th>
+																		<td><span>Hand bags for women</span></td>
+																		<td><span>5</span></td>
+																		<td><span>$50</span></td>
+																		<td><span>$250</span></td>
+																	</tr>
+																</tbody>
+																<tfoot>
+																	<tr>
+																		<td class="border-none" colspan="3"><span></span></td>
+																		<td class="border-color" colspan="1"><span><strong>Tổng
+																					giá hàng</strong></span></td>
+																		<td class="border-color"><span>$3520</span></td>
+																	</tr>
+																	<tr>
+																		<td class="border-none" colspan="3"><span></span></td>
+																		<td class="border-color" colspan="1"><span><strong>Thuế
+																					(10%)</strong></span></td>
+																		<td class="border-color"><span>$352</span></td>
+																	</tr>
+																	<tr>
+																		<td class="border-none m-m15" colspan="3"><span
+																			class="note-text-color">Lưu ý thêm như thông
+																				tin công ty hoặc thanh toán...</span></td>
+																		<td class="border-color m-m15" colspan="1"><span><strong>Tổng
+																					hoá đơn</strong></span></td>
+																		<td class="border-color m-m15"><span>$3872</span></td>
+																	</tr>
+																</tfoot>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End User invoice section -->
+
+
+
+	</main>
+</body>
+</html>

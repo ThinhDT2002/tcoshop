@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+<main>
+
+<!-- Ec breadcrumb start -->
+<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ec_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ec-breadcrumb-title">Cửa hàng</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ec-breadcrumb-list start -->
+                        <ul class="ec-breadcrumb-list">
+                            <li class="ec-breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="ec-breadcrumb-item active">Cửa hàng</li>
+                        </ul>
+                        <!-- ec-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ec breadcrumb end -->
+
+<!-- Page detail section -->
+<section class="ec-bnr-detail margin-bottom-30 section-space-pt">
+    <div class="ec-page-detail">
+        <div class="container">
+            <div class="ec-main-heading d-none">
+                <h2>Shop <span>Detail</span></h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="ec-cat-bnr">
+                        <a href="product-left-sidebar.html"><span></span></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="ec-page-description">
+                        <h6>Ưu đãi tốt nhất cho các thương hiệu hàng đầu</h6>
+                        <p class="m-0">Mô tả
+                        <p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End detail section -->
+
+<!-- Sart Shop -->
+<section class="ec-page-content-bnr section-space-pb">
+    <div class="container">
+        <div class="row">
+            <div class="ec-shop-rightside col-lg-12 col-md-12">
+                <!-- Shop Top Start -->
+                <div class="ec-pro-list-top d-flex">
+                    <div class="col-md-6 ec-grid-list">
+                        <div class="ec-gl-btn">
+                            <button class="btn sidebar-toggle-icon">
+                            	<img th:src="@{|/assets/images/icons/filter.svg|}" class="svg_img gl_svg" alt="filter" /></button>
+                            <button class="btn btn-grid-50 active">
+                            	<img th:src="@{|/assets/images/icons/grid.svg|}" class="svg_img gl_svg" alt="grid" /></button>
+                            <button class="btn btn-list-50">
+                            	<img th:src="@{|/assets/images/icons/list.svg|}" class="svg_img gl_svg" alt="list" /></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ec-sort-select">
+                        <span class="sort-by">Sắp xếp theo</span>
+                        <div class="ec-select-inner">
+                            <select name="ec-select" id="ec-select">
+                                <option selected disabled>Position</option>
+                                <option value="1">Relevance</option>
+                                <option value="name">Tên, A to Z</option>
+                                <option value="name-descending">Tên, Z to A</option>
+                                <option value="price">Giá, thấp đến cao</option>
+                                <option value="price-descending">Giá, cao đến thấp</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Shop Top End -->
+
+                <!-- Shop content Start -->
+                <div class="shop-pro-content">
+                    <div class="shop-pro-inner">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" th:each=" p: ${items}">
+                                <div class="ec-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image"
+                                                    th:src="@{|/images/product-image/products/${p.image1}|}" alt="Product" />
+                                                <img class="hover-image"
+                                                    th:src="@{|/images/product-image/products/${p.image2}|}" alt="Product" />
+                                            </a>
+                                            <span class="percentage">20%</span>
+                                            <a href="#" class="quickview" data-link-action="quickview"
+                                                title="Quick view" data-bs-toggle="modal"
+                                                data-bs-target="#ec_quickview_modal"><img
+                                                    th:src="@{|/assets/images/icons/quickview.svg|}" class="svg_img pro_svg"
+                                                    alt="" /></a>
+                                            <div class="ec-pro-actions">
+                                                <a href="compare.html" class="ec-btn-group compare"
+                                                    title="Compare"><img th:src="@{|/assets/images/icons/compare.svg|}"
+                                                        class="svg_img pro_svg" alt="" /></a>
+                                                <a title="Add To Cart" class=" add-to-cart" th:attr="ng-click=@{|cart.add(${p.id})|}"><img
+                                                        th:src="@{|/assets/images/icons/cart.svg|}" class="svg_img pro_svg"
+                                                        alt="" /> Add To Cart</a>
+                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                        th:src="@{|/assets/images/icons/wishlist.svg|}"
+                                                        class="svg_img pro_svg" alt="" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
+                                        <div class="ec-pro-rating">
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star fill"></i>
+                                            <i class="ecicon eci-star"></i>
+                                        </div>
+                                        <div class="ec-pro-list-desc">[[*{p.description}]]</div>
+                                        <span class="ec-price">
+                                            <!-- <span class="old-price">$27.00</span> -->
+                                            <!--                                            -->
+                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Ec Pagination Start -->
+                     <div class="ec-pro-pagination">
+                        <ul class="ec-pro-pagination-inner">
+                        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+					        	<li><a th:if="${cid} != null and ${scid} == null" class="next" th:href="@{|/product/list/page/${i}?cid=${cid}|}">[[${i}]]</a></li>
+					        	<li><a th:if="${scid} != null and ${cid} == null" class="next"  th:href="@{|/product/list/page/${i}?scid=${scid}|}">[[${i}]]</a></li>
+					        	<li><a th:unless="${cid} != null or ${scid} != null" class="next"  th:href="@{|/product/list/page/${i}|}">[[${i}]]</a></li>  	
+					    </span>
+                        </ul>
+                    </div> 
+                    <!-- Ec Pagination End -->
+                </div>
+                <!--Shop content End -->
+            </div>
+            <!-- Sidebar Area Start -->
+            <div class="filter-sidebar-overlay"></div>
+            <div class="ec-shop-leftside filter-sidebar">
+                <div class="ec-sidebar-heading">
+                    <h1>Lọc sản phẩm theo</h1>
+                    <a class="filter-cls-btn" href="javascript:void(0)">×</a>
+                </div>
+                <div class="ec-sidebar-wrap">
+                    <!-- Sidebar Category Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-sb-title">
+                            <h3 class="ec-sidebar-title">Danh mục</h3>
+                        </div>
+                        <div class="ec-sb-block-content">
+                            <ul>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" checked /> <a href="#">Quần áo</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" /> <a href="#">Cặp</a><span class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" /> <a href="#">Giày</a><span class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" /> <a href="#">Mỹ phẩm</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" /> <a href="#">Điện tử</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" /> <a href="#">Điện thoại</a><span class="checked"></span>
+                                    </div>
+                                </li>
+                                <li id="ec-more-toggle-content" style="padding: 0; display: none;">
+                                    <ul>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input type="checkbox" /> <a href="#">Đồng hồ</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="ec-sidebar-block-item">
+                                                <input type="checkbox" /> <a href="#">Nón</a><span
+                                                    class="checked"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item ec-more-toggle">
+                                        <span class="checked"></span><span id="ec-more-toggle">Thêm danh mục</span>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar Size Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-sb-title">
+                            <h3 class="ec-sidebar-title">Size</h3>
+                        </div>
+                        <div class="ec-sb-block-content">
+                            <ul>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" value="" checked /><a href="#">S</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" value="" /><a href="#">M</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" value="" /> <a href="#">L</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" value="" /><a href="#">XL</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item">
+                                        <input type="checkbox" value="" /><a href="#">XXL</a><span
+                                            class="checked"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar Color item -->
+                    <div class="ec-sidebar-block ec-sidebar-block-clr">
+                        <div class="ec-sb-title">
+                            <h3 class="ec-sidebar-title">Màu</h3>
+                        </div>
+                        <div class="ec-sb-block-content">
+                            <ul>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#c4d6f9;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#ff748b;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#000000;"></span></div>
+                                </li>
+                                <li class="active">
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#2bff4a;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#ff7c5e;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#f155ff;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#ffef00;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#c89fff;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#7bfffa;"></span></div>
+                                </li>
+                                <li>
+                                    <div class="ec-sidebar-block-item"><span
+                                            style="background-color:#56ffc1;"></span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Sidebar Price Block -->
+                    <div class="ec-sidebar-block">
+                        <div class="ec-sb-title">
+                            <h3 class="ec-sidebar-title">Giá</h3>
+                        </div>
+                        <div class="ec-sb-block-content es-price-slider">
+                            <div class="ec-price-filter">
+                                <div id="ec-sliderPrice" class="filter__slider-price" data-min="0" data-max="250"
+                                    data-step="10"></div>
+                                <div class="ec-price-input">
+                                    <label class="filter__label"><input type="text" class="filter__input"></label>
+                                    <span class="ec-price-divider"></span>
+                                    <label class="filter__label"><input type="text" class="filter__input"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Shop -->
+
+
+</main>   
+</body>
+</html>

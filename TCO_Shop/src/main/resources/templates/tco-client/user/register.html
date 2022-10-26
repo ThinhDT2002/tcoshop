@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+<main>
+
+ <!-- Ec breadcrumb start -->
+ <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row ec_breadcrumb_inner">
+                    <div class="col-md-6 col-sm-12">
+                        <h2 class="ec-breadcrumb-title">Đăng Ký</h2>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <!-- ec-breadcrumb-list start -->
+                        <ul class="ec-breadcrumb-list">
+                            <li class="ec-breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                            <li class="ec-breadcrumb-item active">Đăng Ký</li>
+                        </ul>
+                        <!-- ec-breadcrumb-list end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Ec breadcrumb end -->
+
+<!-- Start Register -->
+<section class="ec-page-content section-space-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="section-title">
+                    <h2 class="ec-bg-title">Đăng Ký</h2>
+                    <h2 class="ec-title">Đăng Ký</h2>
+                    <p class="sub-title mb-3">Nơi tốt nhất để mua các sản phảm thiết bị gia dụng</p>
+                    <p class="sub-title mb-3">[[${message}]]</p>
+                </div>
+            </div>
+            <div class="ec-register-wrapper">
+                <div class="ec-register-container">
+                    <div class="ec-register-form">
+                        <form th:action="@{/register}" method="post" th:object="${user}">                                                                                   
+                            <span class="ec-register-wrap">
+                                <label>Địa chỉ email</label>
+                                <input th:field="*{email}" type="email" name="email" placeholder="Nhập địa chỉ email..." />
+                            </span>
+                            <span class="ec-register-wrap">
+                                <label>Tài khoản</label>
+                                <input th:field="*{username}" type="text" name="username" placeholder="Tài khoản..." />
+                            </span>
+                            <span class="ec-register-wrap">
+                                <label>Mật khẩu</label>
+                                <input th:field="*{password}" type="password" name="password" placeholder="Mật khẩu..." />
+                            </span>                               
+                            <!-- 
+                            <span class="ec-register-wrap ec-recaptcha">
+                                <span class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S"
+                                    data-callback="verifyRecaptchaCallback"
+                                    data-expired-callback="expiredRecaptchaCallback"></span>
+                                <input class="form-control d-none" data-recaptcha="true" required
+                                    data-error="Please complete the Captcha">
+                                <span class="help-block with-errors"></span>
+                            </span>
+                             -->
+                            <span class="ec-register-wrap ec-register-btn">
+                                <button class="btn btn-primary" type="submit">Đăng Ký</button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Register -->
+
+
+</main>   
+</body>
+</html>

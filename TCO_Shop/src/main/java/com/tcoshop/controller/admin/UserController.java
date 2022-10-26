@@ -1,0 +1,39 @@
+package com.tcoshop.controller.admin;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
+
+import com.tcoshop.entity.User;
+@Controller
+public class UserController {
+    RestTemplate restTemplate = new RestTemplate();
+    private String apiUrl = "http://localhost:8080/api/user";
+    @RequestMapping("/tco-admin/user/list/grid")
+    public String getUsergrid(Model model){
+        User[] users = restTemplate.getForObject(apiUrl, User[].class);
+        model.addAttribute("users", users);
+        return "tco-admin/user/user-card.html";
+    }
+
+    @RequestMapping("/tco-admin/user/list")
+    public String getUserList(){
+        return "tco-admin/user/user-list.html";
+    }
+
+    @RequestMapping("/tco-admin/user/add")
+    public String getUserAdd(){
+        return "tco-admin/user/add-user.html";
+    }
+
+    @RequestMapping("/tco-admin/user/{username}")
+    public String getUserProfile(@PathVariable("username") String username, @ModelAttribute("user") User user, Model model){
+        String url = "http://localhost:8080/api/user/" + username;
+        user = restTemplate.getForObject(url, User.class);
+        model.addAttribute("user", user);
+        return "tco-admin/user/user-profile.html";
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="dynamic(main)">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="x-ua-compatible" content="ie=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+     
+     <title>TCO - SHOP</title>
+     <meta name="keywords" content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops" />
+     <meta name="description" content="Best  for single and multi vendor store.">
+     <meta name="author" content="ashishmaraviya">
+     
+    <!-- site Favicon -->
+    <link rel="icon" th:href="@{/assets/images/favicon/favicon.png}" sizes="32x32" />
+    <link rel="apple-touch-icon" th:href="@{/assets/images/favicon/favicon.png}" />
+    <meta name="msapplication-TileImage" content="assets/images/favicon/favicon.png" />
+
+    <!-- css Icon Font -->
+    <link rel="stylesheet" th:href="@{/assets/css/vendor/ecicons.min.css}" />
+
+    <!-- css All Plugins Files -->
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/animate.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/swiper-bundle.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/jquery-ui.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/countdownTimer.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/slick.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/nouislider.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/bootstrap.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/plugins/magnific-popup.css}" />
+
+    <!-- Main Style -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/assets/css/responsive.css}" />
+
+    <!-- Background css -->
+    <link rel="stylesheet" id="bg-switcher-css" th:href="@{/assets/css/backgrounds/bg-4.css}">
+    
+</head>
+<body class="aboutus_page" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
+
+    <!-- Header start  -->
+    <header class="ec-header">
+		<div th:replace="tco-client/layout-client/_header.html"></div>
+    	<div th:replace="tco-client/layout-client/_menu.html"></div>
+    </header>    
+	<!-- Header End  -->
+	<div th:replace="${main}"></div>
+	<div th:replace="tco-client/layout-client/_footer.html"></div>
+
+    <!-- Vendor JS -->
+    <!-- <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
+    <script th:src="@{/assets/js/vendor/jquery-3.5.1.min.js}"></script>
+	<script th:src="@{/assets/js/vendor/jquery.notify.min.js}"></script>
+	<script th:src="@{/assets/js/vendor/jquery.bundle.notify.min.js}"></script>
+    <script th:src="@{/assets/js/vendor/popper.min.js}"></script>
+    <script th:src="@{/assets/js/vendor/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/js/vendor/jquery-migrate-3.3.0.min.js}"></script>
+    <script th:src="@{/assets/js/vendor/modernizr-3.11.2.min.js}"></script>
+
+    <!--Plugins JS-->
+    <script th:src="@{/assets/js/plugins/swiper-bundle.min.js}"></script>
+    <script th:src="@{/assets/js/plugins/countdownTimer.min.js}"></script>
+    <script th:src="@{/assets/js/plugins/scrollup.js}"></script>
+    <script th:src="@{/assets/js/plugins/jquery.zoom.min.js}"></script>
+    <script th:src="@{/assets/js/plugins/slick.min.js}"></script>
+    <script th:src="@{/assets/js/plugins/infiniteslidev2.js}"></script>
+    <script th:src="@{/assets/js/vendor/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/assets/js/plugins/jquery.sticky-sidebar.js}"></script>
+    <!-- Google translate Js -->
+    <script th:src="@{/assets/js/vendor/google-translate.js}"></script>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <!-- Main Js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+    <script th:src="@{/assets/js/vendor/index.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <script th:src="@{/assets/js/shopping-cart-app.js}"></script>
+
+</body>
+
+</html>

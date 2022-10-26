@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+
+<body>
+	<main ng-app="product-app" ng-controller="product-ctrl">
+		<!-- CONTENT WRAPPER  -->
+		
+		<div class="ec-content-wrapper">
+			<div class="content">
+				<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+					<div>
+						<h1>Add Product</h1>
+						<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+							<span><i class="mdi mdi-chevron-right"></i></span>Product
+						</p>
+					</div>
+					<div>
+						<a th:href="@{/tco-admin/product/list}" class="btn btn-primary"> View All
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12" th:object="${item}">
+						<div class="card card-default">
+							<div class="card-header card-header-border-bottom">
+								<h2>Add Product</h2>
+							</div>
+							<div class="card-body">
+							<form th:action="@{|/category/subcategory/*{id}|}" enctype="multipart/form-data" method="post" class="row g-3">
+								<div class="row ec-vendor-uploads">
+									<div class="col-lg-4">
+										<div class="ec-vendor-img-upload">
+											<div class="ec-vendor-main-img">
+												<div class="avatar-upload">
+													<div class="avatar-edit">
+														<input type='file' name="img1" id="imageUpload" class="ec-image-upload"
+															accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+														<label for="imageUpload"><img th:src="@{/assets-admin/img/icons/edit.svg}"
+																class="svg_img header_svg" alt="edit" /></label>
+													</div>
+													<div class="avatar-preview ec-preview">
+														<div class="imagePreview ec-div-preview">
+															<img class="ec-image-preview"
+																th:src="@{|/images/product-image/products/*{image1}|}"
+																alt="edit" />
+														</div>
+													</div>
+												</div>
+												<div class="thumb-upload-set colo-md-12">
+													<div class="thumb-upload">
+														<div class="thumb-edit">
+															<input type='file' id="thumbUpload03"
+																class="ec-image-upload" accept=".png, .jpg, .jpeg" />
+															<label for="imageUpload"><img
+																	th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														
+													</div>
+													<div class="thumb-upload">
+														<div class="thumb-edit">
+															<input type='file' name="img2" id="thumbUpload04"
+																class="ec-image-upload" accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+															<label for="imageUpload"><img
+																	th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="thumb-preview ec-preview">
+															<div class="image-thumb-preview">
+																<img class="image-thumb-preview ec-image-preview"
+																	th:src="@{|/images/product-image/products/*{image2}|}"
+																	alt="edit" />
+															</div>
+														</div>
+													</div>
+													<div class="thumb-upload">
+														<div class="thumb-edit">
+															<input type='file' name="img3" id="thumbUpload05"
+																class="ec-image-upload" accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+															<label for="imageUpload"><img
+																	th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="thumb-preview ec-preview">
+															<div class="image-thumb-preview">
+																<img class="image-thumb-preview ec-image-preview"
+																	th:src="@{|/images/product-image/products/*{image3}|}"
+																	alt="edit" />
+															</div>
+														</div>
+													</div>
+													<div class="thumb-upload">
+														<div class="thumb-edit">
+															<input type='file' name="img4" id="thumbUpload06"
+																class="ec-image-upload" accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+															<label for="imageUpload"><img
+																	th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="thumb-preview ec-preview">
+															<div class="image-thumb-preview">
+																<img class="image-thumb-preview ec-image-preview"
+																	th:src="@{|/images/product-image/products/*{image4}|}"
+																	alt="edit" />
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+									<div th:text="${errorMessage}"></div>
+										<div class="ec-vendor-upload-detail">
+												<div class="col-md-6">
+													<label class="form-label">Tên sản phẩm</label>
+													<input th:field="*{name}" type="text" class="form-control slug-title">
+													<h6 th:errors="*{name}"></h6>
+												</div>
+												<div class="col-md-6">
+													<label class="form-label">Chọn danh mục</label>
+													<select th:onChange="this.form.submit()" th:field = "*{category.id}" name="categories" id="Categories" class="form-select">
+															<option th:each = "category: ${categories}" th:value = "${category.id}">[[${category.name}]]</option>
+													</select>
+													<h6 th:errors = "*{category}"></h6>
+												</div>
+												<div class="col-md-6">
+													<label class="form-label">Chọn thương hiệu</label>
+													<select th:field = "*{subcategory.id}" name="subcategories" id="Subcategories" class="form-select">
+															<option th:each = "s: ${sub}" th:value = "${s.id}">[[${s.name}]]</option>			
+													</select>
+													<h6 th:errors = "*{subcategory}"></h6>
+												</div>
+												<div class="col-md-6">
+													<label class="form-label">Giá <span>( VNĐ
+															)</span></label>
+													<input th:field = "*{price}" type="number" class="form-control" id="price1">
+													<h6 th:errors="*{price}"></h6>
+												</div>
+												<div class="col-md-6">
+													<label class="form-label">Số lượng</label>
+													<input th:field = "*{stock}" type="number" class="form-control" id="quantity1">
+													<h6 th:errors="*{stock}"></h6>
+												</div>
+												<div class="col-md-6">
+													<label class="form-label">Giảm giá</label>
+													<input th:field = "*{discount}" type="number" class="form-control" id="quantity1">
+													<h6 th:errors="*{discount}"></h6>
+												</div>
+												<div class="col-md-12">
+													<label class="form-label">Mô tả</label>		
+													<textarea th:field = "*{description}" class="form-control" rows="4"></textarea>
+													<h6 th:errors="*{description}"></h6>
+												</div>		
+												<div class="col-md-12">
+													<button th:if="*{id} == -999" th:formaction="@{/tco-admin/product/submit}" class="btn btn-primary">Thêm sản phẩm</button>
+													<button th:if="*{id} != -999" th:formaction="@{|/tco-admin/product/update/*{id}|}" class="btn btn-primary">Sửa sản phẩm</button>
+													<button th:if="*{id} != -999" th:formaction="@{|/tco-admin/product/delete/*{id}|}" class="btn btn-primary">Delete</button>
+													<button th:formaction="@{/tco-admin/product/add}" class="btn btn-primary">Reset</button>
+												</div>
+												</div>																			
+												<div>
+													<h5>[[${message}]]</h5>
+												</div>
+											
+											
+											
+										</div>
+									</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> <!-- End Content -->
+		</div> <!-- End Content Wrapper -->
+
+
+	</main>
+</body>
+
+</html>

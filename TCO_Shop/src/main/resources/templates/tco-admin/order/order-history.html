@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<body>
+<main>
+
+<!-- CONTENT WRAPPER -->
+<div class="ec-content-wrapper">
+	<div class="content">
+		<div class="breadcrumb-wrapper breadcrumb-wrapper-2">
+			<h1>Orders History</h1>
+			<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+				<span><i class="mdi mdi-chevron-right"></i></span>History
+			</p>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card card-default">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="responsive-data-table" class="table" style="width:100%">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Customer</th>
+										<th>Email</th>
+										<th>Items</th>
+										<th>Price</th>
+										<th>Payment</th>
+										<th>Status</th>
+										<th>Date</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="412b2e292f38012439202c312d246f222e2c">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc6d9c3edc8d5ccc0ddc1c883cec2c0">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="177a727f627b57726f767a677b723974787a">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74361c150211071c34110c15190418115a171b19">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="670d080f091e27021f060a170b024904080a">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="563d223816332e373b263a337835393b">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7518101d001935100d14180519105b161a18">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cd8fa5acbba8bea58da8b5aca0bda1a8e3aea2a0">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="482227202631082d30292538242d662b2725">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2d4659436d48554c405d4148034e4240">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ddb0b8b5a8b19db8a5bcb0adb1b8f3beb2b0">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33715b524556405b73564b525e435f561d505c5e">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6aca9aea8bf86a3bea7abb6aaa3e8a5a9ab">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365d425876534e575b465a531855595b">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f79a929f829bb7928f969a879b92d994989a">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="54163c352231273c14312c35392438317a373b39">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96fcf9fef8efd6f3eef7fbe6faf3b8f5f9fb">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bdd6c9d3fdd8c5dcd0cdd1d893ded2d0">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2cfc7cad7cee2c7dac3cfd2cec78cc1cdcf">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="793b11180f1c0a11391c01181409151c571a1614">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93f9fcfbfdead3f6ebf2fee3fff6bdf0fcfe">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bfd4cbd1ffdac7ded2cfd3da91dcd0d2">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3558505d405975504d54584559501b565a58">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3f1dbd2c5d6c0dbf3d6cbd2dec3dfd69dd0dcde">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f45404741566f4a574e425f434a014c4042">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cfa4bba18faab7aea2bfa3aae1aca0a2">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e489818c9188a4819c8589948881ca878b89">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a28020b1c0f19022a0f120b071a060f44090507">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e08a8f888e99a08598818d908c85ce838f8d">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f299869cb2978a939f829e97dc919d9f">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3cec6cbd6cfe3c6dbc2ced3cfc68dc0ccce">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2163494057445249614459404c514d440f424e4c">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1050</td>
+										<td>Johny Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ff5f0f7f1e6dffae7fef2eff3fab1fcf0f2">[email&#160;protected]</a></td>
+										<td>3</td>
+										<td>$80</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-secondary">Cancel</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1049</td>
+										<td>Ktn Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bad1ced4fadfc2dbd7cad6df94d9d5d7">[email&#160;protected]</a></td>
+										<td>10</td>
+										<td>$280</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-warning">Return</span></td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1048</td>
+										<td>mehul Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95f8f0fde0f9d5f0edf4f8e5f9f0bbf6faf8">[email&#160;protected]</a></td>
+										<td>5</td>
+										<td>$100</td>
+										<td>COD</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>1047</td>
+										<td>Bhavesh Markue</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="06446e677063756e46637e676b766a632865696b">[email&#160;protected]</a></td>
+										<td>8</td>
+										<td>$140</td>
+										<td>PAID</td>
+										<td><span class="mb-2 mr-2 badge badge-success">Delivered</span>
+										</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group mb-1">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Detail</a>
+													<a class="dropdown-item" href="#">Track</a>
+													<a class="dropdown-item" href="#">Cancel</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!-- End Content -->
+</div> <!-- End Content Wrapper -->
+
+
+</main>   
+</body>
+</html>

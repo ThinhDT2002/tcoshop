@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<body>
+<main>
+
+<!-- CONTENT WRAPPER -->
+<div class="ec-content-wrapper">
+	<div class="content">
+		<div class="breadcrumb-wrapper breadcrumb-contacts">
+			<div>
+				<h1>Add User</h1>
+				<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+					<span><i class="mdi mdi-chevron-right"></i></span>Add User
+				</p>
+			</div>
+			<div>
+				<a href="user-list.html" class="btn btn-primary">Edit</a>
+			</div>
+		</div>
+		<div class="card bg-white profile-content">
+			<div class="row">
+				
+
+				<div class="col-lg-11 col-xl-12   ">
+					<div class="profile-content-right profile-right-spacing py-5">
+						<ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myProfileTab" role="tablist">
+							
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="settings-tab" data-bs-toggle="tab"
+									data-bs-target="#settings" type="button" role="tab"
+									aria-controls="settings" aria-selected="false">Add User</button>
+							</li>
+						</ul>
+						<div class="tab-content px-3 px-xl-5" id="myTabContent">
+
+							
+
+							<div class="tab-pane fade show active" id="settings" role="tabpanel"
+								aria-labelledby="settings-tab">
+								<div class="tab-pane-content mt-5">
+									<form>
+										<div class="form-group row mb-6">
+											<div class="row ec-vendor-uploads">
+												<div class="ec-vendor-img-upload">
+													<div class="ec-vendor-main-img">
+													
+														<div class="avatar-upload">
+														<div class="avatar-edit">
+															<input type='file' name="imageIcon" id="imageUpload" class="ec-image-upload"
+																accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+															<label for="imageUpload"><img th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="avatar-preview ec-preview">
+															<div class="imagePreview ec-div-preview">
+																<img class="ec-image-preview"
+																	th:src="@{|/images/category/*{icon}|}"
+																	alt="chọn ảnh đi bro" />
+															</div>
+														</div>
+													</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row mb-2">
+											<div class="col-lg-6">
+												<div class="form-group">
+													<label for="fullName">Họ và Tên</label>
+													<input type="text" class="form-control" id="fullName"
+														placeholder="Họ và Tên">
+												</div>
+											</div>
+
+										</div>
+
+										<div class="form-group mb-4">
+											<label for="userName">Tên tài khoản</label>
+											<input type="text" class="form-control" id="userName"
+												placeholder="Tên tài khoản">
+										</div>
+
+										<div class="form-group mb-4">
+											<label for="email">Email</label>
+											<input type="email" class="form-control" id="email"
+												placeholder="tco.vipbro@gmail.com">
+										</div>
+
+									
+
+										<div class="form-group mb-4">
+											<label for="newPassword">Mật khẩu</label>
+											<input type="password" class="form-control" id="newPassword">
+										</div>
+
+										<div class="form-group mb-4">
+											<label for="conPassword"> Xác nhận mật khẩu </label>
+											<input type="password" class="form-control" id="conPassword">
+										</div>
+
+										<div class="d-flex justify-content-end mt-5">
+											<button type="submit"
+												class="btn btn-primary mb-2 btn-pill">Tạo người dùng</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div> <!-- End Content -->
+</div> <!-- End Content Wrapper -->
+
+
+</main>   
+</body>
+</html>

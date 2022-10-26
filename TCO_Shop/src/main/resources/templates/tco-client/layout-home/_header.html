@@ -1,0 +1,251 @@
+<div xmlns:th="http://www.thymeleaf.org">
+	<!--Ec Header Top Start -->
+<div class="header-top">
+	<div class="container">
+		<div class="row align-items-center">
+			<!-- Header Top phone Start -->
+			<div class="col header-top-left">
+				<!-- Social Start -->
+				<div class="header-top-social">
+					<ul class="mb-0">
+						<li class="list-inline-item"><a href="#"><i
+								class="ecicon eci-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i
+								class="ecicon eci-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i
+								class="ecicon eci-linkedin"></i></a></li>
+						<li class="list-inline-item"><a href="#"><i
+								class="ecicon eci-twitter"></i></a></li>
+					</ul>
+				</div>
+				<!-- Social End -->
+			</div>
+			<!-- Header Top phone End -->
+			<!-- Header Top call Start -->
+			<div class="col header-top-center">
+				<!-- Language Start -->
+				<div class="header-top-lan-curr header-top-lan dropdown">
+					<button class="dropdown-toggle" data-bs-toggle="dropdown">
+						English <i class="ecicon eci-angle-down" aria-hidden="true"></i>
+					</button>
+					<ul class="dropdown-menu">
+						<li class="active"><a class="dropdown-item" href="#">English</a></li>
+						<li><a class="dropdown-item" href="#">Italiano</a></li>
+					</ul>
+				</div>
+				<!-- Language End -->
+				<!-- Currency Start -->
+				<div class="header-top-lan-curr header-top-curr dropdown">
+					<button class="dropdown-toggle" data-bs-toggle="dropdown">
+						USD <i class="ecicon eci-angle-down" aria-hidden="true"></i>
+					</button>
+					<ul class="dropdown-menu">
+						<li class="active"><a class="dropdown-item" href="#">USD
+								$</a></li>
+						<li><a class="dropdown-item" href="#">EUR â‚¬</a></li>
+					</ul>
+				</div>
+				<!-- Currency End -->
+
+			</div>
+			<!-- Header Top call End -->
+			<!-- Header Top Language Currency -->
+			<div class="col header-top-right d-none d-lg-block">
+				<div class="header-top-right-inner d-flex justify-content-end">
+
+					<!-- Header User Start -->
+					<div class="ec-header-user dropdown">
+						<th:block th:if="${#request.remoteUser}">
+							<button class="dropdown-toggle" data-bs-toggle="dropdown">
+								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
+									alt="" /><span class="ec-btn-title">Xin chào, [[${#request.remoteUser}]]</span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a class="dropdown-item" th:href="@{/user/account}">Thông tin tài khoản</a></li>
+								<!-- 
+								<li><a class="dropdown-item" href="checkout.html">Thanh
+										toán</a></li>
+								 -->
+								<li><a class="dropdown-item" th:href="@{/order/history}">Lịch sử giao dịch</a></li>
+								<li><a class="dropdown-item" th:href="@{/user/change-password}">Đổi mật khẩu</a></li>
+								<li><a class="dropdown-item" th:href="@{/logout}">Đăng xuất</a></li>
+							</ul>
+						</th:block>		
+						<th:block th:unless="${#request.remoteUser}">
+							<button class="dropdown-toggle" data-bs-toggle="dropdown">
+								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
+									alt="" /><span class="ec-btn-title">Tài khoản</span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a class="dropdown-item" th:href="@{/register}">Đăng ký</a></li>
+								<!-- 
+								<li><a class="dropdown-item" href="checkout.html">Thanh
+										toán</a></li>
+								 -->
+								<li><a class="dropdown-item" th:href="@{/login}">Đăng nhập</a></li>
+							</ul>
+						</th:block>	
+					</div>
+					<!-- Header User End -->
+					<!-- Header wishlist Start -->
+					<div class="ec-header-wishlist">
+						<a href="#">
+							<div class="top-icon">
+								<img src="assets/images/icons/pro_wishlist.svg"
+									class="svg_img top_svg" alt="" />
+							</div> <span class="ec-btn-title">Danh sách yêu thích</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- Header Top Language Currency -->
+			<!-- Header Top responsive Action -->
+			<div class="col header-top-res d-lg-none">
+				<div class="ec-header-bottons">
+					<!-- Header User Start -->
+					<div class="ec-header-user dropdown">
+						<button class="dropdown-toggle" data-bs-toggle="dropdown">
+							<img src="assets/images/icons/user_5.svg"
+								class="svg_img header_svg" alt="" />
+						</button>
+						<ul class="dropdown-menu dropdown-menu-right">
+							<li><a class="dropdown-item" th:href="@{/register}">Đăng ký</a></li>
+							<!-- 
+							<li><a class="dropdown-item" href="checkout.html">Thanh
+									toán</a></li>
+							 -->
+							<li><a class="dropdown-item" th:href="@{/login}">Đăng nhập</a></li>
+						</ul>
+					</div>
+					<!-- Header User End -->
+					<!-- Header Cart Start -->
+					<a href="#" class="ec-header-btn ec-header-wishlist">
+						<div class="header-icon">
+							<img src="assets/images/icons/wishlist.svg"
+								class="svg_img header_svg" alt="" />
+						</div> <span class="ec-header-count ec-wishlist-count">0</span>
+					</a>
+					<!-- Header Cart End -->
+					<!-- Header Cart Start -->
+					<a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+						<div class="header-icon">
+							<img src="assets/images/icons/cart_5.svg"
+								class="svg_img header_svg" alt="" />
+						</div> <span class="ec-header-count ec-cart-count"></span>
+					</a>
+					<!-- Header Cart End -->
+					<!-- Header menu Start -->
+					<a href="#ec-mobile-menu"
+						class="ec-header-btn ec-side-toggle d-lg-none"> <i
+						class="ecicon eci-bars"></i>
+					</a>
+					<!-- Header menu End -->
+				</div>
+			</div>
+			<!-- Header Top responsive Action -->
+		</div>
+	</div>
+</div>
+<!-- Ec Header Top  End -->
+<!-- Ec Header Bottom  Start -->
+<div class="ec-header-bottom d-none d-lg-block">
+	<div class="container position-relative">
+		<div class="row">
+			<div class="ec-flex">
+				<!-- Ec Header Logo Start -->
+				<div class="align-self-center ec-header-logo ">
+					<div class="header-logo">
+						<a th:href="@{|/home|}"><img src="assets/images/logo/logo-5.png"
+							alt="Site Logo" /><img class="dark-logo"
+							src="assets/images/logo/dark-logo-5.png" alt="Site Logo"
+							style="display: none;" /></a>
+					</div>
+				</div>
+				<!-- Ec Header Logo End -->
+
+				<!-- Ec Header Search Start -->
+				<div class="align-self-center ec-header-search">
+					<div class="header-search">
+						<form class="ec-search-group-form" action="#">
+							<div class="ec-search-select-inner">
+								<div class="ec-search-cat-title">Tất cả</div>
+								<ul class="ec-search-cat-block">
+									<li th:each="category:${categories}">
+										<a th:href="@{|/product/list?cid=${category.id}|}">[[${category.name}]]</a>
+									</li>
+								</ul>
+							</div>
+							<input class="form-control" placeholder="Tìm kiếm sản phẩm"
+								type="text">
+							<button class="search_submit" type="submit">
+								<i class="ecicon eci-search"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+				<!-- Ec Header Search End -->
+
+				<!-- Ec Header Button Start -->
+				<div class="align-self-center ec-header-bottons">
+					<div class="ec-header-bottons">
+
+						<!-- Header wishlist End -->
+						<!-- Header Cart Start -->
+						<a href="#ec-side-cart" class="ec-header-btn ec-side-toggle">
+							<div class="header-icon">
+								<img src="assets/images/icons/cart_5.svg"
+									class="svg_img header_svg" alt="" />
+							</div> <span class="ec-btn-title"><span class="ec-cart-count">{{cart.count}}</span>
+								sản phẩm - {{cart.formatNumber(cart.amount)}} VNĐ</span>
+
+						</a>
+						<!-- Header Cart End -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Ec Header Button End -->
+<!-- Header responsive Bottom  Start -->
+<div class="ec-header-bottom d-lg-none">
+	<div class="container position-relative">
+		<div class="row ">
+
+			<!-- Ec Header Logo Start -->
+			<div class="col">
+				<div class="header-logo">
+					<a href="index.html"><img src="assets/images/logo/logo-5.png"
+						alt="Site Logo" /><img class="dark-logo"
+						src="assets/images/logo/dark-logo-5.png" alt="Site Logo"
+						style="display: none;" /></a>
+				</div>
+			</div>
+			<!-- Ec Header Logo End -->
+			<!-- Ec Header Search Start -->
+			<div class="col align-self-center ec-header-search">
+				<div class="header-search">
+					<form class="ec-search-group-form" action="#">
+						<div class="ec-search-select-inner">
+							<div class="ec-search-cat-title">Tìm kiếm</div>
+							<ul class="ec-search-cat-block">
+								<li th:each="category:${categories}">
+									<a th:href="@{|/product/${category.id}|}">[[${category.name}]]</a>
+								</li>
+							</ul>
+						</div>
+						<input class="form-control" placeholder="Tìm kiếm mặt hàng"
+							type="text">
+						<button class="search_submit" type="submit">
+							<i class="ecicon eci-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+			<!-- Ec Header Search End -->
+		</div>
+	</div>
+</div>
+<!-- Header responsive Bottom  End -->
+	
+</div>

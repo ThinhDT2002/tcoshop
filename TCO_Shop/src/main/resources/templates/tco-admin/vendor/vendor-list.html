@@ -1,0 +1,2419 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<body>
+<main>
+
+<!-- CONTENT WRAPPER -->
+<div class="ec-content-wrapper">
+	<div class="content">
+		<div class="breadcrumb-wrapper breadcrumb-contacts">
+			<div>
+				<h1>Vendor List</h1>
+				<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+					<span><i class="mdi mdi-chevron-right"></i></span>Vendor</p>
+			</div>
+			<div>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVendor"> Add Vendor
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="ec-vendor-list card card-default">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="responsive-data-table" class="table">
+								<thead>
+									<tr>
+										<th>Profile</th>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Product</th>
+										<th>Total Sell</th>
+										<th>Status</th>
+										<th>Join On</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1479756678717166717a75547379757d783a777b79">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5bfbabdbbb0b0b7bab9b7bc95b2b8b4bcb9fbb6bab8">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6e040106000b0b0c01020c072e09030f0702400d0103">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa979592939493979b889695ba9d979b9396d4999597">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc5c2dfc2c7c4c0cadfc3c2c7c4ebccc6cac2c785c8c4c6">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0860697a6c617b69666c607d486f65696164266b6765">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fa98929b8c9695979b968c939bba9d979b9396d4999597">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e545b50575a4b4d4b545f7e59535f5752105d5153">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0568647769606077606b64456268646c692b666a68">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f8929790969d9d9a97949a91b89f95999194d69b9795">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="68020700060d0d0a07040a01280f05090104460b0705">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f994969190979094988b9596b99e94989095d79a9694">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="741a1d001d181b1f15001c1d181b341319151d185a171b19">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b333a293f32283a353f332e1b3c363a323775383436">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="27454f46514b484a464b514e4667404a464e4b0944484a">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a8c2cdc6c1ccdddbddc2c9e8cfc5c9c1c486cbc7c5">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95f8f4e7f9f0f0e7f0fbf4d5f2f8f4fcf9bbf6faf8">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33595c5b5d5656515c5f515a73545e525a5f1d505c5e">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9df7f2f5f3f8f8fff2f1fff4ddfaf0fcf4f1b3fef2f0">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f626067666166626e7d63604f68626e6663216c6062">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5cbccd1ccc9cacec4d1cdccc9cae5c2c8c4ccc98bc6cac8">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0b8b1a2b4b9a3b1beb4b8a590b7bdb1b9bcfeb3bfbd">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e1838980978d8e8c808d978880a1868c80888dcf828e8c">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfb5bab1b6bbaaacaab5be9fb8b2beb6b3f1bcb0b2">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="036e62716f666671666d6243646e626a6f2d606c6e">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aac0c5c2c4cfcfc8c5c6c8c3eacdc7cbc3c684c9c5c7">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472d282f29222225282b252e07202a262e2b6924282a">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4825272021262125293a2427082f25292124662b2725">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b05021f020704000a1f030207042b0c060a020745080406">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2941485b4d405a48474d415c694e44484045074a4644">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="35575d5443595a585459435c54755258545c591b565a58">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f151a11161b0a0c0a151e3f18121e1613511c1012">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe939f8c929b9b8c9b909fbe99939f9792d09d9193">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3c9cccbcdc6c6c1cccfc1cae3c4cec2cacf8dc0ccce">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="79131611171c1c1b16151b10391e14181015571a1614">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c4c6c1c0c7c0c4c8dbc5c6e9cec4c8c0c587cac6c4">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc5c2dfc2c7c4c0cadfc3c2c7c4ebccc6cac2c785c8c4c6">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="731b1201171a00121d171b0633141e121a1f5d101c1e">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e7858f86918b888a868b918e86a7808a868e8bc984888a">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1dbd4dfd8d5c4c2c4dbd0f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6b060a19070e0e190e050a2b0c060a020745080406">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="503a3f383e3535323f3c323910373d31393c7e333f3d">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aac0c5c2c4cfcfc8c5c6c8c3eacdc7cbc3c684c9c5c7">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfb2b0b7b6b1b6b2beadb3b09fb8b2beb6b3f1bcb0b2">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="abc5c2dfc2c7c4c0cadfc3c2c7c4ebccc6cac2c785c8c4c6">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td>hardis<a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b3bcb6baa792b5bfb3bbbefcb1bdbf">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87e5efe6f1ebe8eae6ebf1eee6c7e0eae6eeeba9e4e8ea">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402a252e29243533352a2100272d21292c6e232f2d">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0568647769606077606b64456268646c692b666a68">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="244e4b4c4a4141464b48464d644349454d480a474b49">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4f252027212a2a2d20232d260f28222e2623612c2022">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aac7c5c2c3c4c3c7cbd8c6c5eacdc7cbc3c684c9c5c7">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f59b9c819c999a9e94819d9c999ab59298949c99db969a98">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="30585142545943515e54584570575d51595c1e535f5d">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89ebe1e8ffe5e6e4e8e5ffe0e8c9eee4e8e0e5a7eae6e4">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f8929d96919c8d8b8d9299b89f95999194d69b9795">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dab7bba8b6bfbfa8bfb4bb9abdb7bbb3b6f4b9b5b7">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d0babfb8beb5b5b2bfbcb2b990b7bdb1b9bcfeb3bfbd">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402a2f282e2525222f2c222900272d21292c6e232f2d">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="462b292e2f282f2b27342a2906212b272f2a6825292b">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f997908d90959692988d91909596b99e94989095d79a9694">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751d1407111c06141b111d00351218141c195b161a18">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c5a7ada4b3a9aaa8a4a9b3aca485a2a8a4aca9eba6aaa8">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f8929d96919c8d8b8d9299b89f95999194d69b9795">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1974786b757c7c6b7c7778597e74787075377a7674">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f555057515a5a5d50535d567f58525e5653115c5052">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1cbcec9cfc4c4c3cecdc3c8e1c6ccc0c8cd8fc2cecc">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4a9abacadaaada9a5b6a8ab84a3a9a5ada8eaa7aba9">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2dcdbc6dbdeddd9d3c6dadbdeddf2d5dfd3dbde9cd1dddf">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="89e1e8fbede0fae8e7ede1fcc9eee4e8e0e5a7eae6e4">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="75171d1403191a181419031c14351218141c195b161a18">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e747b70777a6b6d6b747f5e79737f7772307d7173">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b4b8abb5bcbcabbcb7b899beb4b8b0b5f7bab6b4">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="204a4f484e4545424f4c424960474d41494c0e434f4d">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd9792959398989f92919f94bd9a909c9491d39e9290">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84e9ebecedeaede9e5f6e8ebc4e3e9e5ede8aae7ebe9">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f29c9b869b9e9d9993869a9b9e9db2959f939b9edc919d9f">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85ede4f7e1ecf6e4ebe1edf0c5e2e8e4ece9abe6eae8">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4a6aca5b2a8aba9a5a8b2ada584a3a9a5ada8eaa7aba9">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f79d92999e938284829d96b7909a969e9bd994989a">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u1.jpg" alt="vendor image" /></td>
+										<td>Marlee Rena</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c4c8dbc5ccccdbccc7c8e9cec4c8c0c587cac6c4">[email&#160;protected]</a></td>
+										<td>28</td>
+										<td>2161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-30</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u2.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13797c7b7d7676717c7f717a53747e727a7f3d707c7e">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u3.jpg" alt="vendor image" /></td>
+										<td>Johnee Bolbi</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2c8cdcaccc7c7c0cdcec0cbe2c5cfc3cbce8cc1cdcf">[email&#160;protected]</a></td>
+										<td>68</td>
+										<td>5161</td>
+										<td>ACTIVE</td>
+										<td>2021-10-25</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u4.jpg" alt="vendor image" /></td>
+										<td>Mohini Marlo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ef3f1f6f7f0f7f3ffecf2f1def9f3fff7f2b0fdf1f3">[email&#160;protected]</a></td>
+										<td>38</td>
+										<td>1561</td>
+										<td>ACTIVE</td>
+										<td>2021-10-21</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u5.jpg" alt="vendor image" /></td>
+										<td>Nitilo Kathilo</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="432d2a372a2f2c2822372b2a2f2c03242e222a2f6d202c2e">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>1061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-18</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u6.jpg" alt="vendor image" /></td>
+										<td>Hardi Sandhu</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2b434a594f42584a454f435e6b4c464a424705484446">[email&#160;protected]</a></td>
+										<td>82</td>
+										<td>10061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-14</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u7.jpg" alt="vendor image" /></td>
+										<td>Bhavlo Malvia</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96f4fef7e0faf9fbf7fae0fff7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</a></td>
+										<td>18</td>
+										<td>3061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-05</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><img class="vendor-thumb" src="assets/img/vendor/u8.jpg" alt="vendor image" /></td>
+										<td>Jeni Dusuja</td>
+										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d7778737479686e68777c5d7a707c7471337e7270">[email&#160;protected]</a></td>
+										<td>60</td>
+										<td>6061</td>
+										<td>ACTIVE</td>
+										<td>2021-10-01</td>
+										<td>
+											<div class="btn-group">
+												<button type="button"
+													class="btn btn-outline-success">Info</button>
+												<button type="button"
+													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+													data-bs-toggle="dropdown" aria-haspopup="true"
+													aria-expanded="false" data-display="static">
+													<span class="sr-only">Info</span>
+												</button>
+
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">Edit</a>
+													<a class="dropdown-item" href="#">Delete</a>
+												</div>
+											</div>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Add Vendor Modal  -->
+		<div class="modal fade modal-add-contact" id="addVendor" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+				<div class="modal-content">
+					<form >
+						<div class="modal-header px-4">
+							<h5 class="modal-title" id="exampleModalCenterTitle">Add New Vendor</h5>
+						</div>
+						
+						<div class="modal-body px-4">
+							<div class="form-group row mb-6">
+								<label for="coverImage" class="col-sm-4 col-lg-2 col-form-label">Vendor Image</label>
+								
+								<div class="col-sm-8 col-lg-10">
+									<div class="custom-file mb-1">
+										<input type="file" class="custom-file-input" id="coverImage" required>
+										<label class="custom-file-label" for="coverImage">Choose file...</label>
+										<div class="invalid-feedback">Example invalid custom file feedback</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row mb-2">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="firstName">First name</label>
+										<input type="text" class="form-control" id="firstName" value="John">
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="lastName">Last name</label>
+										<input type="text" class="form-control" id="lastName" value="Deo">
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="userName">User name</label>
+										<input type="text" class="form-control" id="userName" value="johndoe">
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="email">Email</label>
+										<input type="email" class="form-control" id="email" value="johnexample@gmail.com">
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="Birthday">Birthday</label>
+										<input type="text" class="form-control" id="Birthday" value="10-12-1991">
+									</div>
+								</div>
+								
+								<div class="col-lg-6">
+									<div class="form-group mb-4">
+										<label for="event">Address</label>
+										<input type="text" class="form-control" id="event" value="Address here">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="modal-footer px-4">
+							<button type="button" class="btn btn-secondary btn-pill" data-bs-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-primary btn-pill">Save Contact</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div> <!-- End Content -->
+</div> <!-- End Content Wrapper -->
+
+
+</main>   
+</body>
+</html>
