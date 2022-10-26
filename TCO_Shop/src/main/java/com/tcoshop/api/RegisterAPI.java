@@ -41,7 +41,7 @@ public class RegisterAPI {
 		authority.setUser(user);
 		List<Authority> authorities = new ArrayList<>();
 		authorities.add(authority);
-		user.setAuthorities(authorities);
+		user.setAuthorities(authorities);		
 		return ResponseEntity.ok(user);
 	}
 }

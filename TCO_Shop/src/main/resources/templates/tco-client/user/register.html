@@ -48,14 +48,17 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <span class="ec-register-wrap">
                                 <label>Địa chỉ email</label>
                                 <input th:field="*{email}" type="email" name="email" placeholder="Nhập địa chỉ email..." />
+                                <label>[[${emailError}]]</label>
                             </span>
                             <span class="ec-register-wrap">
                                 <label>Tài khoản</label>
                                 <input th:field="*{username}" type="text" name="username" placeholder="Tài khoản..." />
+                                <label>[[${usernameError}]]</label>
                             </span>
                             <span class="ec-register-wrap">
                                 <label>Mật khẩu</label>
                                 <input th:field="*{password}" type="password" name="password" placeholder="Mật khẩu..." />
+                            	<label>[[${passwordError}]]</label>
                             </span>                               
                             <!-- 
                             <span class="ec-register-wrap ec-recaptcha">
