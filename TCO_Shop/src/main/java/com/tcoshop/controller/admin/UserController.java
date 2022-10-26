@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import com.tcoshop.entity.User;
@@ -25,7 +27,14 @@ public class UserController {
     }
 
     @RequestMapping("/tco-admin/user/add")
-    public String getUserAdd(){
+    public String getUserAdd(@ModelAttribute("user") User user){
+        user = new User();
+        return "tco-admin/user/add-user.html";
+    }
+
+    @PostMapping("/tco-admin/user/add")
+    public String addUser(@ModelAttribute("user") User user, @RequestParam("role") String role) {
+        System.out.println(role);
         return "tco-admin/user/add-user.html";
     }
 
