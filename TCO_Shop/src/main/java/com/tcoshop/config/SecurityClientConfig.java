@@ -30,11 +30,9 @@ public class SecurityClientConfig extends WebSecurityConfigurerAdapter{
 				User user = userService.findByUsername(username);
 				String password = passwordUtil.getBCryptPasswordEncoder().encode(user.getPassword());
 				boolean activated = user.getStatus();
-				String[] roles = user.getAuthorities().stream()
-									.map(authorities -> authorities.getRole().getId())
-									.collect(Collectors.toList()).toArray(new String[0]);
+				String role = user.getRole().getId();
 				return org.springframework.security.core.userdetails.User.withUsername(username)
-						.password(password).disabled(!activated).roles(roles).build();
+						.password(password).disabled(!activated).roles(role).build();
 			} catch (NoSuchElementException e) {
 				e.printStackTrace();
 				throw new UsernameNotFoundException(username + " not found!");

@@ -3,10 +3,10 @@ package com.tcoshop.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,28 +29,31 @@ public class User implements Serializable{
 	private String activateCode;
 	private String forgotPasswordCode;
 	private String avatar;
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Authority> authorities;
+	@ManyToOne
+	@JoinColumn(name = "Role_Id")
+	private Role role;
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
 	public User() {
 		super();
 	}
+	
 	public User(String username, String password, String email, String fullname, Boolean status, String activateCode,
-			String forgotPasswordCode, String avatar, List<Authority> authorities, List<Order> orders) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.fullname = fullname;
-		this.status = status;
-		this.activateCode = activateCode;
-		this.forgotPasswordCode = forgotPasswordCode;
-		this.avatar = avatar;
-		this.authorities = authorities;
-		this.orders = orders;
-	}
-	public String getUsername() {
+            String forgotPasswordCode, String avatar, Role role, List<Order> orders) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.fullname = fullname;
+        this.status = status;
+        this.activateCode = activateCode;
+        this.forgotPasswordCode = forgotPasswordCode;
+        this.avatar = avatar;
+        this.role = role;
+        this.orders = orders;
+    }
+
+    public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
@@ -99,18 +102,18 @@ public class User implements Serializable{
 		this.avatar = avatar;
 	}
 	@JsonIgnore
-	public List<Authority> getAuthorities() {
-		return authorities;
-	}
-	public void setAuthorities(List<Authority> authorities) {
-		this.authorities = authorities;
-	}
-	@JsonIgnore
 	public List<Order> getOrders() {
 		return orders;
 	}
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+
+    public Role getRole() {
+        return role;
+    }
+    public void setRole(Role role) {
+        this.role = role;
+    }
 	
 }

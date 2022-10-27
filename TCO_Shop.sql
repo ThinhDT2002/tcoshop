@@ -28,21 +28,13 @@ create table Users(
 	Activate_Code varchar(40),
 	Forgot_Password_Code varchar(40),
 	Avatar varchar(40),
-	primary key (Username)
+	primary key (Username),
+	Role_Id varchar(10) not null,
+	constraint FK_Users_Roles
+	foreign key (Role_Id) references Roles(Id)
 )
 
 go
-
-create table Authorities(
-	Id int identity(1,1),
-	Role_Id varchar(10) not null,
-	constraint FK_Authorities_Roles
-	foreign key (Role_Id) references Roles (Id),
-	Username varchar(30) not null,
-	constraint FK_Authorities_Users
-	foreign key (Username) references Users (Username),
-	primary key (Id)
-)
 
 create table Variations(
 	Id varchar(20) not null,
@@ -127,19 +119,12 @@ insert into Roles(id, name)
 values('ADMIN','Administrators'),
 	  ('USER','Users')
 	
-insert into Users(username, password, email, fullname, status, Activate_Code, Forgot_Password_Code, Avatar)
-values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',1,'0123456789','0123456789','avatar1.png'),
-	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',1,'0123456789','0123456789','avatar2.png'),
-	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',1,'0123456789','0123456789','avatar3.png'),
-	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',1,'0123456789','0123456789','avatar4.png'),
-	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',1,'0123456789','0123456789','avatar5.png')
-
-insert into Authorities(username, Role_Id)
-values('thinhdt15048','ADMIN'),
-	  ('vannd15047','ADMIN'),
-	  ('anndd14885','ADMIN'),
-	  ('khangtg15054','ADMIN'),
-	  ('antht15011','ADMIN')
+insert into Users(username, password, email, fullname, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
+values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',1,'0123456789','0123456789','avatar1.png', 'ADMIN'),
+	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',1,'0123456789','0123456789','avatar2.png', 'ADMIN'),
+	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',1,'0123456789','0123456789','avatar3.png', 'ADMIN'),
+	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',1,'0123456789','0123456789','avatar4.png', 'ADMIN'),
+	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',1,'0123456789','0123456789','avatar5.png', 'ADMIN')
 
 
 insert into Categories(id, name, icon)

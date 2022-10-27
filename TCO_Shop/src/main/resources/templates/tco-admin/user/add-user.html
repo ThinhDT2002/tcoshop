@@ -103,12 +103,12 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 
 											
 										<div class="form-group mb-4">
-											<label> Vai trò <label>				
+											<label> Vai trò </label>	
+											<select class="form-control" th:field="*{role.id}">
+												<option th:each="role : ${roles}" th:value="${role.id}">[[${role.name}]]</option>
+											</select>			
 										</div>
 
-										<div th:each="role : ${roles}" class="form-group mb-4">
-											<input name="role" type="checkbox" th:value="${role.id}"> [[${role.name}]]								
-										</div>
 
 										<div class="d-flex justify-content-end mt-5">
 											<button type="submit"

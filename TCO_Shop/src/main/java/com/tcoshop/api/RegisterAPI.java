@@ -1,20 +1,16 @@
 package com.tcoshop.api;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailMessage;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tcoshop.entity.Authority;
 import com.tcoshop.entity.Role;
 import com.tcoshop.entity.User;
 import com.tcoshop.service.MailService;
@@ -43,12 +39,7 @@ public class RegisterAPI {
 		user.setAvatar("default-user.png");
 		user.setFullname("");
 		Role userRole = roleService.getRole("USER");
-		Authority authority = new Authority();
-		authority.setRole(userRole);
-		authority.setUser(user);
-		List<Authority> authorities = new ArrayList<>();
-		authorities.add(authority);
-		user.setAuthorities(authorities);
+		user.setRole(userRole);
 		try {
     		User userInDatabase = userService.findByUsername(user.getUsername());
     		if(userInDatabase != null) {
