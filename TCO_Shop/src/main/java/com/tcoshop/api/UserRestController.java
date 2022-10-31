@@ -26,4 +26,5 @@ public class UserRestController {
     public ResponseEntity<User> getUser(@PathVariable("username") String username) {
         return ResponseEntity.ok(userService.findByUsername(username));
     }
+    
 }

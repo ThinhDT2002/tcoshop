@@ -1,8 +1,6 @@
 package com.tcoshop.controller.client;
 
 
-import java.util.regex.Pattern;
-
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -89,6 +88,7 @@ public class RegisterController {
     		HttpEntity<User> userEntity = new HttpEntity<>(user);
     		ResponseEntity<User> responseEntity = restTemplate.postForEntity(postUrl, userEntity, User.class);
     		user = responseEntity.getBody();
+    		model.addAttribute("message", "Chúng tôi đã gửi một mã xác nhận vào địa chỉ Email của bạn. Vui lòng kiểm tra Email!");
 	    } catch (HttpClientErrorException e) {
 	        String responseErrorMessage = e.getMessage();
 	        if(responseErrorMessage.contains(username) && responseErrorMessage.contains("400")) {
@@ -97,5 +97,21 @@ public class RegisterController {
 	        }
 	    }
 		return "tco-client/user/register.html";
+	}
+	
+	@RequestMapping("/register/verify")
+	public String verifyUser(Model model, @RequestParam("activateCode") String activateCode) {
+	    String url = "http://localhost:8080/api/register/verify/" + activateCode;
+	    try {
+	        restTemplate.getForEntity(url, User.class);
+	        model.addAttribute("message", "Đăng ký thành công!");
+	        return "tco-client/user/login.html";
+	    } catch (HttpClientErrorException httpCEE) {
+	        httpCEE.getMessage();
+	        System.out.println(httpCEE);
+	        model.addAttribute("message", "Có lỗi xảy ra, vui lòng thử lại!");
+	        return "tco-client/user/login.html";
+	    }
+	    
 	}
 }

@@ -7,6 +7,8 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,25 +42,58 @@ public class RegisterAPI {
 		user.setFullname("");
 		Role userRole = roleService.getRole("USER");
 		user.setRole(userRole);
+		
 		try {
     		User userInDatabase = userService.findByUsername(user.getUsername());
     		if(userInDatabase != null) {
-    		    return ResponseEntity.badRequest().body(userInDatabase);
+    		    //Kiểm tra tài khoản đã kích hoạt hay chưa
+    		    if(userInDatabase.getStatus() == true) {
+    		        return ResponseEntity.badRequest().body(userInDatabase);
+    		    } else {
+    		        try {
+    		            String mailSubject = "Kích hoạt tài khoản đã đăng ký";
+    	                String verifyURL = "http://localhost:8080/register/verify?activateCode=" + user.getActivateCode();
+    	                String mailBody = "Bấm vào liên kết để xác minh tài khoản của bạn: \r\n" + verifyURL;
+    	                String to = user.getEmail();
+    	                userInDatabase.setEmail(user.getEmail());
+    	                userInDatabase.setPassword(user.getPassword());  
+    	                userInDatabase.setActivateCode(user.getActivateCode());
+    	                userInDatabase.setForgotPasswordCode(user.getForgotPasswordCode());
+    	                mailService.send(to, mailSubject, mailBody);  
+    	                User createUser = userService.update(userInDatabase);
+    	                return ResponseEntity.ok(createUser);  
+    	            } catch (MessagingException mE) {
+    	                mE.printStackTrace();
+    	                return ResponseEntity.internalServerError().build();
+    	            }
+    		    }
     		}
-		} catch (NoSuchElementException e) {
-		    String mailSubject = "Kích hoạt tài khoản đã đăng ký";
-		    String verifyURL = "http://localhost:8080/user/verify?activateCode=" + activateCode;
-		    String mailBody = "Bấm vào liên kết để xác minh tài khoản của bạn: \r\n" + verifyURL;
-		    String to = user.getEmail();
+		} catch (NoSuchElementException e) {		    
 		    try {
-		        mailService.send(to, mailSubject, mailBody);
-		        System.out.println(activateCode);
+		        String mailSubject = "Kích hoạt tài khoản đã đăng ký";
+		        String verifyURL = "http://localhost:8080/register/verify?activateCode=" + activateCode;
+		        String mailBody = "Bấm vào liên kết để xác minh tài khoản của bạn: \r\n" + verifyURL;
+		        String to = user.getEmail();
+		        mailService.send(to, mailSubject, mailBody);	
+		        User createUser = userService.create(user);
+	            return ResponseEntity.ok(createUser);  
 		    } catch (MessagingException mE) {
 		        mE.printStackTrace();
 		        return ResponseEntity.internalServerError().build();
-		    }
-		    return ResponseEntity.notFound().build();
+		    }	    
 		}
 		return ResponseEntity.ok(user);
 	}
+	
+    @GetMapping("/api/register/verify/{activateCode}")
+    public ResponseEntity<User> getUserByActivateCode(@PathVariable("activateCode") String activateCode) {
+        try {
+            User user = userService.findByActivateCode(activateCode);
+            user.setStatus(true);
+            userService.update(user);
+            return ResponseEntity.ok(user);
+        } catch (NoSuchElementException nSEE) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
