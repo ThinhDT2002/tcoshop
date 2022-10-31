@@ -1,11 +1,8 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
 <main>
-
-
 <!-- Ec breadcrumb start -->
 <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
     <div class="container">
@@ -18,7 +15,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                     <div class="col-md-6 col-sm-12">
                         <!-- ec-breadcrumb-list start -->
                         <ul class="ec-breadcrumb-list">
-                            <li class="ec-breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                            <li class="ec-breadcrumb-item"><a th:href="@{|/home|}">Trang chủ</a></li>
                             <li class="ec-breadcrumb-item active">Giỏ hàng</li>
                         </ul>
                         <!-- ec-breadcrumb-list end -->
@@ -52,79 +49,22 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td data-label="Product" class="ec-cart-pro-name"><a
-                                                        href="product-left-sidebar.html"><img class="ec-cart-pro-img mr-4"
-                                                            src="assets/images/product-image/1.jpg"
-                                                            alt="" />Stylish Baby Shoes</a></td>
+                                            <tr ng-repeat="item in cart.items">
+                                                <td data-label="Product" class="ec-cart-pro-name"><a 
+                                                th:href="@{|/product/detail/{{item.id}}|}"><img class="ec-cart-pro-img mr-4"
+                                                            th:src="@{|/images/product-image/products/{{item.image1}}|}"
+                                                            alt="" />{{item.name}}</a></td>
                                                 <td data-label="Price" class="ec-cart-pro-price"><span
-                                                        class="amount">$56.00</span></td>
+                                                        class="amount">{{cart.formatNumber(item.price)}} VNĐ</span></td>
                                                 <td data-label="Quantity" class="ec-cart-pro-qty"
                                                     style="text-align: center;">
                                                     <div class="cart-qty-plus-minus">
-                                                        <input class="cart-plus-minus" type="text"
-                                                            name="cartqtybutton" value="1" />
+                                                        <input class="cart-plus-minus"
+                                                            name="cartqtybutton" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"/>
                                                     </div>
                                                 </td>
-                                                <td data-label="Total" class="ec-cart-pro-subtotal">$56.00</td>
-                                                <td data-label="Remove" class="ec-cart-pro-remove">
-                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td data-label="Product" class="ec-cart-pro-name"><a
-                                                        href="product-left-sidebar.html"><img class="ec-cart-pro-img mr-4"
-                                                            src="assets/images/product-image/2.jpg"
-                                                            alt="" />Unisex Fully Solid Hoodie</a></td>
-                                                <td data-label="Price" class="ec-cart-pro-price"><span
-                                                        class="amount">$75.00</span></td>
-                                                <td data-label="Quantity" class="ec-cart-pro-qty"
-                                                    style="text-align: center;">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <input class="cart-plus-minus" type="text"
-                                                            name="cartqtybutton" value="1" />
-                                                    </div>
-                                                </td>
-                                                <td data-label="Total" class="ec-cart-pro-subtotal">$75.00</td>
-                                                <td data-label="Remove" class="ec-cart-pro-remove">
-                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td data-label="Product" class="ec-cart-pro-name"><a
-                                                        href="product-left-sidebar.html"><img class="ec-cart-pro-img mr-4"
-                                                            src="assets/images/product-image/3.jpg"
-                                                            alt="" />Beautiful T-shirt For Women</a></td>
-                                                <td data-label="Price" class="ec-cart-pro-price"><span
-                                                        class="amount">$48.00</span></td>
-                                                <td data-label="Quantity" class="ec-cart-pro-qty"
-                                                    style="text-align: center;">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <input class="cart-plus-minus" type="text"
-                                                            name="cartqtybutton" value="1" />
-                                                    </div>
-                                                </td>
-                                                <td data-label="Total" class="ec-cart-pro-subtotal">$48.00</td>
-                                                <td data-label="Remove" class="ec-cart-pro-remove">
-                                                    <a href="#"><i class="ecicon eci-trash-o"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td data-label="Product" class="ec-cart-pro-name"><a
-                                                        href="product-left-sidebar.html"><img class="ec-cart-pro-img mr-4"
-                                                            src="assets/images/product-image/4.jpg"
-                                                            alt="" />Wool Hat For Men</a></td>
-                                                <td data-label="Price" class="ec-cart-pro-price"><span
-                                                        class="amount">$95.00</span></td>
-                                                <td data-label="Quantity" class="ec-cart-pro-qty"
-                                                    style="text-align: center;">
-                                                    <div class="cart-qty-plus-minus">
-                                                        <input class="cart-plus-minus" type="text"
-                                                            name="cartqtybutton" value="1" />
-                                                    </div>
-                                                </td>
-                                                <td data-label="Total" class="ec-cart-pro-subtotal">$95.00</td>
-                                                <td data-label="Remove" class="ec-cart-pro-remove">
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">{{cart.formatNumber(item.price*item.qty)}} VNĐ</td>
+                                                <td data-label="Remove" class="ec-cart-pro-remove" th:attr="ng-click=@{|cart.remove(item.id)|}">
                                                     <a href="#"><i class="ecicon eci-trash-o"></i></a>
                                                 </td>
                                             </tr>
@@ -134,8 +74,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="ec-cart-update-bottom">
-                                            <a href="#">Tiếp tục mua hàng</a>
-                                            <button class="btn btn-primary">Thanh toán</button>
+                                            <a th:href="@{|/product/list|}">Tiếp tục mua hàng</a>
+                                            <a class="btn btn-primary" th:href="@{|/checkout|}">Thanh toán</a>
                                         </div>
                                     </div>
                                 </div>
@@ -200,11 +140,11 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <div class="ec-cart-summary">
                                     <div>
                                         <span class="text-left">Tổng số</span>
-                                        <span class="text-right">$80.00</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Phí vận chuyển</span>
-                                        <span class="text-right">$80.00</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.vat())}} VNĐ</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Giảm giá</span>
@@ -221,7 +161,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div class="ec-cart-summary-total">
                                         <span class="text-left">Tổng cộng</span>
-                                        <span class="text-right">$80.00</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.amount+cart.vat())}} VNĐ</span>
                                     </div>
                                 </div>
 
