@@ -167,7 +167,7 @@ function ecCheckCookie()
     });
 
     /*--------------------- Add To Cart -----------------------------------*/
-    $("body").on("click", ".add-to-cart", function(){
+/*    $("body").on("click", ".add-to-cart", function(){
        
         var count = $(".ec-cart-count").html();        
         count++;
@@ -195,7 +195,7 @@ function ecCheckCookie()
 
         $('.eccart-pro-items').append(p_html);    
         
-    });
+    });*/
 
     (function() {
         var $ecartToggle = $(".ec-side-toggle"),

@@ -142,7 +142,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                     </div>
                     <!-- Ec Pagination Start -->
                      <div class="ec-pro-pagination">
-                        <ul class="ec-pro-pagination-inner">
+                        <ul th:if="${items.totalPages > 1}" class="ec-pro-pagination-inner">
                         <span th:each="i: ${#numbers.sequence(1, totalPages)}">
 					        	<li><a th:if="${cid} != null and ${scid} == null" class="next" th:href="@{|/product/list/page/${i}?cid=${cid}|}">[[${i}]]</a></li>
 					        	<li><a th:if="${scid} != null and ${cid} == null" class="next"  th:href="@{|/product/list/page/${i}?scid=${scid}|}">[[${i}]]</a></li>
