@@ -30,6 +30,12 @@ public class UserAPI {
         return ResponseEntity.ok(userService.findByUsername(username));
     }
     
+    @PostMapping("/api/user")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        // userService.create(user);
+        System.out.println(user.getUsername());
+        return ResponseEntity.ok(user);
+    }
     @PostMapping("/api/user/change-password") 
     public ResponseEntity<User> changePasword(@RequestBody User user) {
         try {
