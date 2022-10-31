@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.tcoshop.entity.User;
 @Controller
-public class UserController {
+public class UserManagementController {
     RestTemplate restTemplate = new RestTemplate();
     private String apiUrl = "http://localhost:8080/api/user";
     @RequestMapping("/tco-admin/user/list/grid")

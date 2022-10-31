@@ -17,7 +17,7 @@ import com.tcoshop.service.ImageService;
 
 @RestController
 @CrossOrigin("*")
-public class ImageRestController {
+public class ImageAPI {
 	@Autowired
 	ImageService imageService;
 	

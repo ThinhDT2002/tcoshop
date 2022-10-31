@@ -20,7 +20,7 @@ import com.tcoshop.service.CategoryService;
 @RestController
 @CrossOrigin("*")
 
-public class CategoryRestController {
+public class CategoryAPI {
 	@Autowired
 	CategoryService categoryService;
 	

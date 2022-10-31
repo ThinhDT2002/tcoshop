@@ -17,4 +17,10 @@ public class LoginController {
 		model.addAttribute("message", "Tài khoản hoặc mật khẩu không chính xác!");
 		return "tco-client/user/login.html";
 	}
+	
+	@RequestMapping("/logout")
+	public String afterLogout(Model model) {
+	    model.addAttribute("message", "Bạn đã đăng xuất");
+	    return "tco-client/user/login.html";
+	}
 }

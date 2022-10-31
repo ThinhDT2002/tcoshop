@@ -20,7 +20,7 @@ import com.tcoshop.service.ProductService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/products")
-public class ProductRestController {
+public class ProductAPI {
 	@Autowired
 	ProductService productService;
 	

@@ -29,4 +29,15 @@ public class PasswordUtil {
 		}
 		return password;
 	}
+	
+	public boolean validatePassword(String password) {
+	    if(password.trim().length() == 0) {
+            return false;        
+        } else if(password.contains(" ")) {
+            return false;            
+        } else if(password.length() < 6 || password.length() > 30){
+            return false;           
+        }
+	    return true;
+	}
 }

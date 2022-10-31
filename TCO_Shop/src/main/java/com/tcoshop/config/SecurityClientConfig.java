@@ -1,7 +1,6 @@
 package com.tcoshop.config;
 
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -56,7 +55,7 @@ public class SecurityClientConfig extends WebSecurityConfigurerAdapter{
 		.failureUrl("/login/failed")
 		.usernameParameter("username")
 		.passwordParameter("password");
-		http.logout().logoutUrl("/logout").logoutSuccessUrl("/home");
+		http.logout().logoutUrl("/Logout").logoutSuccessUrl("/logout");
 		http.exceptionHandling().accessDeniedHandler(null);
 	}
 }

@@ -18,7 +18,7 @@ import com.tcoshop.service.SubcategoryService;
 
 @RestController
 @CrossOrigin("*")
-public class SubcategoryRestController {
+public class SubcategoryAPI {
 	@Autowired
 	SubcategoryService subcategoryService;
 	
