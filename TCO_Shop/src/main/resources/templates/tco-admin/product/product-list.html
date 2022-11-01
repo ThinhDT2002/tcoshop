@@ -74,7 +74,7 @@
 										<tbody>
 											<tr ng-repeat="item in pager.items | filter: {name: nameProduct} | orderBy: pager.sortProperty" >
 												<td><img
-													th:src="@{/images/product-image/products/{{item.image1}}}"
+													th:src="@{/images/products/{{item.image1}}}"
 													style="width: 100px;" /></td>
 												<td>{{item.name}}</td>
 												<td>{{item.price| number}}</td>
