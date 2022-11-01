@@ -12,14 +12,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcoshop.entity.Role;
 import com.tcoshop.entity.User;
+import com.tcoshop.service.RoleService;
 import com.tcoshop.service.UserService;
+import com.tcoshop.util.PasswordUtil;
 
 @RestController
 @CrossOrigin("*")
 public class UserAPI {
     @Autowired
     UserService userService;
+    @Autowired
+    RoleService roleService;
+    @Autowired
+    PasswordUtil passwordUtil;
     @GetMapping("/api/user")
     public ResponseEntity<List<User>> getUsers(){
         return ResponseEntity.ok(userService.getAll());
@@ -32,8 +39,23 @@ public class UserAPI {
     
     @PostMapping("/api/user")
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        // userService.create(user);
-        System.out.println(user.getUsername());
+        String activateCode = user.getUsername() + String.valueOf(passwordUtil.generatePassword(8));
+        user.setActivateCode(activateCode);
+        String forgotPassworCode = user.getUsername() + String.valueOf(passwordUtil.generatePassword(9));
+        user.setForgotPasswordCode(forgotPassworCode);
+        Role userRole = roleService.getRole(user.getRole().getId());
+        user.setRole(userRole);
+        
+        try {
+            User userInDatabase = userService.findByUsername(user.getUsername());
+            if(userInDatabase != null) {
+                return ResponseEntity.badRequest().build();                      
+            }
+        } catch (NoSuchElementException nSEE) {
+            User createdUser = userService.create(user);
+            return ResponseEntity.ok(createdUser);
+        }
+        
         return ResponseEntity.ok(user);
     }
     @PostMapping("/api/user/change-password") 

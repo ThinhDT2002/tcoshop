@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,14 +24,18 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@Size(min = 6, max = 30, message = "Vui lòng nhập tài khoản từ 6 - 30 kí tự")
 	private String username;
+	@Size(min = 6, max = 30, message = "Vui lòng nhập mật khẩu từ 6 - 30 kí tự")
 	private String password;
 	private String email;
 	private String fullname;
+	@NotNull(message = "Vui lòng chọn trạng thái")
 	private Boolean status;
 	private String activateCode;
 	private String forgotPasswordCode;
 	private String avatar;
+	@NotNull(message = "Vui lòng chọn vai trò")
 	@ManyToOne
 	@JoinColumn(name = "Role_Id")
 	private Role role;

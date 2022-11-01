@@ -2,15 +2,19 @@ package com.tcoshop.controller.admin;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,13 +44,58 @@ public class UserManagementController {
     }
 
     @PostMapping("/tco-admin/user/add")
-    public String addUser(@ModelAttribute("user") User user,
-            @RequestParam("userAvatar") Optional<MultipartFile> multipartFile, Model model) {
+    public String addUser(@Valid @ModelAttribute("user") User user, Errors errors,
+            @RequestParam("userAvatar") Optional<MultipartFile> multipartFile, Model model,
+            @RequestParam("confirmPassword") String confirmPassword) {
+        boolean addUserError = false;
+        if(errors.hasErrors()) {
+            model.addAttribute("errorAddUserMessage", "Thêm người dùng thất bại!");
+            return "tco-admin/user/add-user.html";
+        }
+        
+        if(user.getEmail().trim().length() == 0) {
+            addUserError = true;
+            model.addAttribute("emailError", "Email không được bỏ trống");           
+        } else if(user.getEmail().trim().contains(" ")) {
+            addUserError = true;
+            model.addAttribute("emailError", "Email không chứa kí tự khoảng trắng");
+        } else if(!user.getEmail().matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
+                + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
+            addUserError = true;
+            model.addAttribute("emailError", "Không đúng định dạng Email");
+        }
+        
+        if(user.getPassword().contains(" ")) {
+            addUserError = true;
+            model.addAttribute("passwordError", "Mật khẩu không được chứa khoảng trắng!");
+        }
+        
+        if(confirmPassword.trim().length() == 0) {
+            addUserError = true;
+            model.addAttribute("confirmPasswordError", "Hãy xác nhận lại mật khẩu");
+        } else if(!confirmPassword.equals(user.getPassword())) {
+            addUserError = true;
+            model.addAttribute("confirmPasswordError", "Xác nhận mật khẩu không chính xác");
+        }
+        
+        if(addUserError == true) {
+            model.addAttribute("addUserMessage", "Thêm người dùng thất bại!");
+            return "tco-admin/user/add-user.html";
+        }
+        
         setAvatar(user, multipartFile);
         String url = "http://localhost:8080/api/user";
         HttpEntity<User> userEntity = new HttpEntity<>(user);
-        ResponseEntity<User> responseEntity = restTemplate.postForEntity(url, userEntity, User.class);
-        model.addAttribute("addUserMessage", "Thêm người dùng thành công!");
+        try {
+            ResponseEntity<User> responseEntity = restTemplate.postForEntity(url, userEntity, User.class);
+            model.addAttribute("addUserMessage", "Thêm người dùng thành công!");
+        } catch (HttpClientErrorException httpClientErrorException) {
+            String exceptionMessage = httpClientErrorException.getMessage();
+            System.out.println(exceptionMessage);
+            if(exceptionMessage.equals("400 : [no body]")) {
+                model.addAttribute("addUserMessage", "Tên tài khoản đã được sử dụng");
+            }
+        }        
         return "tco-admin/user/add-user.html";
     }
 
