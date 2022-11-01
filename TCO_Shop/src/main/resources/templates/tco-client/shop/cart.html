@@ -52,7 +52,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <tr ng-repeat="item in cart.items">
                                                 <td data-label="Product" class="ec-cart-pro-name"><a 
                                                 th:href="@{|/product/detail/{{item.id}}|}"><img class="ec-cart-pro-img mr-4"
-                                                            th:src="@{|/images/product-image/products/{{item.image1}}|}"
+                                                            th:src="@{|/images/products/{{item.image1}}|}"
                                                             alt="" />{{item.name}}</a></td>
                                                 <td data-label="Price" class="ec-cart-pro-price"><span
                                                         class="amount">{{cart.formatNumber(item.price)}} VNĐ</span></td>

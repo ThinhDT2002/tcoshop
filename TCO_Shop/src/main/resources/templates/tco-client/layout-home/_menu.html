@@ -487,7 +487,7 @@
                 <ul class="eccart-pro-items" ng-repeat="item in cart.items">
                     <li>
                         <a href="product-left-sidebar.html" class="sidecart_pro_img"><img
-							th:src="@{|/images/product-image/products/{{item.image1}}|}" alt="product"></a>
+							th:src="@{|/images/products/{{item.image1}}|}" alt="product"></a>
                         <div class="ec-pro-content">
                             <a th:href="@{|/product/detail/{{item.id}}|}" class="cart_pro_title">{{item.name}}</a>
                             <span class="cart-price"><span>{{cart.formatNumber(item.price)}} VNĐ</span> x {{item.qty}}</span>
