@@ -81,4 +81,8 @@ public class UserController {
         return "tco-client/user/change-password.html";
     }
     
+    @RequestMapping("/user/profile")
+    public String getUserProfile() {
+        return "tco-client/user/user-profile.html";
+    }
 }
