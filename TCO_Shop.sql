@@ -24,6 +24,8 @@ create table Users(
 	Password varchar(30),
 	Email varchar(40) not null,
 	Fullname nvarchar(40),
+	Address nvarchar(100),
+	Phone int,
 	Status bit,
 	Activate_Code varchar(40),
 	Forgot_Password_Code varchar(40),
@@ -119,29 +121,28 @@ insert into Roles(id, name)
 values('ADMIN','Administrators'),
 	  ('USER','Users')
 	
-insert into Users(username, password, email, fullname, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
-values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',1,'0123456789','0123456789','avatar1.png', 'ADMIN'),
-	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',1,'0123456789','0123456789','avatar2.png', 'ADMIN'),
-	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',1,'0123456789','0123456789','avatar3.png', 'ADMIN'),
-	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',1,'0123456789','0123456789','avatar4.png', 'ADMIN'),
-	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',1,'0123456789','0123456789','avatar5.png', 'ADMIN')
+insert into Users(username, password, email, fullname, address, phone, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
+values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',N'Đường Đông Bắc, Quận 12',0337429180,1,'0123456789','0123456789','avatar1.png', 'ADMIN'),
+	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',N'Đường Đông Bắc, Quận 12',0337429182,1,'0123456789','0123456789','avatar2.png', 'ADMIN'),
+	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',N'Đường Đông Bắc, Quận 12',0337429183,1,'0123456789','0123456789','avatar3.png', 'ADMIN'),
+	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',N'Đường Đông Bắc, Quận 12',0337429181,1,'0123456789','0123456789','avatar4.png', 'ADMIN'),
+	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,1,'0123456789','0123456789','avatar5.png', 'ADMIN')
 
 
 insert into Categories(id, name, icon)
 values
-		('MEDIA',N'Tivi, Âm thanh, Loa kéo, Loa xách tay','mediaIcon.jpg'),
-		('FRIDGE',N'Tủ lạnh, Tủ đông, Tủ mát','fridgeIcon.jpg'),
-		('LAPTOP',N'Laptop, linh kiện Laptop','laptopIcon.jpg'),
-		('WASHER',N'Máy giặt, Máy sấy','washerIcon.jpg'),
-		('AIRFRESHER',N'Máy lạnh, Quạt, Lọc khí','airfresherIcon.jpg'),
-		('ELECTRONIC',N'Gia dụng điện','electronicIcon.jpg'),
-		('PHONE',N'Điện thoại, Table, Phụ kiện','phoneIcon.jpg'),
-		('PURIFIER',N'Lọc nước, Máy nước nóng','purifierIcon.jpg'),
-		('KITCHEN',N'Đồ dùng nhà bếp, Gia đình','kitchenIcon.jpg'),
-
-		('ROOM',N'Phòng khách, Phòng ăn','roomIcon.jpg'),
-		('BEDROOM',N'Phòng ngủ, Trang trí','bedroomIcon.jpg'),
-		('HEALTH',N'Sức khỏe và sắc đẹp','healthIcon.jpg')
+		('MEDIA',N'Tivi, Âm thanh, Loa kéo, Loa xách tay','tivi.png'),
+		('FRIDGE',N'Tủ lạnh, Tủ đông, Tủ mát','fridge.png'),
+		('LAPTOP',N'Laptop, linh kiện Laptop','laptop.png'),
+		('WASHER',N'Máy giặt, Máy sấy','washer.png'),
+		('AIRFRESHER',N'Máy lạnh, Quạt, Lọc khí','airFresher.png'),
+		('ELECTRONIC',N'Gia dụng điện','iconElectric.png'),
+		('PHONE',N'Điện thoại, Table, Phụ kiện','phone.png'),
+		('PURIFIER',N'Lọc nước, Máy nước nóng','purifier.png'),
+		('KITCHEN',N'Đồ dùng nhà bếp, Gia đình','iconBep.png'),
+		('ROOM',N'Phòng khách, Phòng ăn','room.png'),
+		('BEDROOM',N'Phòng ngủ, Trang trí','bedroom.png'),
+		('HEALTH',N'Sức khỏe và sắc đẹp','health.png')
 
 insert into Subcategories(id,name,Category_Id,icon)
 values
