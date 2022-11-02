@@ -1,5 +1,7 @@
 package com.tcoshop.controller.client;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +26,7 @@ import com.tcoshop.util.PasswordUtil;
 
 @Controller
 public class UserController {
+
     @Autowired
     PasswordUtil passwordUtil;
     private RestTemplate restTemplate = new RestTemplate();
@@ -82,7 +86,12 @@ public class UserController {
     }
     
     @RequestMapping("/user/profile")
-    public String getUserProfile() {
+    public String getUserProfile(Model model, Authentication authentication) { 	
+    	String username = authentication.getName();
+    	String url = "http://localhost:8080/api/user/" + username;
+    	ResponseEntity<User> respEntity = restTemplate.getForEntity(url, User.class);
+    	User userProfile = respEntity.getBody();
+    	model.addAttribute("userProfile", userProfile);
         return "tco-client/user/user-profile.html";
     }
 }

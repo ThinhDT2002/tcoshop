@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -30,6 +29,9 @@ public class User implements Serializable{
 	private String password;
 	private String email;
 	private String fullname;
+	private String address;
+	private Integer phone;
+	
 	@NotNull(message = "Vui lòng chọn trạng thái")
 	private Boolean status;
 	private String activateCode;
@@ -45,13 +47,15 @@ public class User implements Serializable{
 		super();
 	}
 	
-	public User(String username, String password, String email, String fullname, Boolean status, String activateCode,
+	public User(String username, String password, String email, String fullname, String address, Integer phone, Boolean status, String activateCode,
             String forgotPasswordCode, String avatar, Role role, List<Order> orders) {
         super();
         this.username = username;
         this.password = password;
         this.email = email;
         this.fullname = fullname;
+        this.address = address;
+        this.phone = phone;
         this.status = status;
         this.activateCode = activateCode;
         this.forgotPasswordCode = forgotPasswordCode;
@@ -122,5 +126,21 @@ public class User implements Serializable{
     public void setRole(Role role) {
         this.role = role;
     }
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
+	}
 	
 }

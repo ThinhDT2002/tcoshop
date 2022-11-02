@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
-<main>
+<main th:object="${userProfile}">
 <!-- Ec breadcrumb start -->
     <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
         <div class="container">
@@ -58,6 +58,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         </div>
                     </div>
                 </div>
+                <form>
                 <div class="ec-shop-rightside col-lg-9 col-md-12">
                     <div class="ec-vendor-dashboard-card ec-vendor-setting-card">
                         <div class="ec-vendor-card-body">
@@ -71,23 +72,23 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     data-bs-toggle="modal" data-bs-target="#edit_modal">Edit Detail</a>
                                             </div>
                                             <div class="ec-vendor-block-detail">
-                                                <img class="v-img" src="assets/images/user/1.jpg" alt="vendor image">
-                                                <h5 class="name">Mariana Johns</h5>
-                                                <p>( Business Man )</p>
+                                                <img class="v-img" th:src="@{|/images/user/*{avatar}|}" alt="vendor image">
+                                                <h5 class="name">[[*{fullname}]]</h5>
+                                                <p></p>
                                             </div>
-                                            <p>Hello <span>Mariana Johns!</span></p>
+                                            <p>Hello <span>[[*{fullname}]]</span></p>
                                             <p>From your account you can easily view and track orders. You can manage and change your account information like address, contact information and history of orders.</p>
                                         </div>
                                         <h5>Thông tin tài khoản</h5>
 
-                                        <div class="row">
+                                        <div class="row" >
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="ec-vendor-detail-block ec-vendor-block-email space-bottom-30">
                                                     <h6>Địa chỉ Email <a href="javasript:void(0)" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal"><img src="assets/images/icons/edit.svg"
                                                         class="svg_img pro_svg" alt="edit" /></a></h6>
                                                     <ul>
-                                                        <li><strong>Email 1 : </strong><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c0c6c3c3dcc1c782f3d6cbd2c3dedfd69dd0dcde">[email&#160;protected]</a></li>
-                                                        <li><strong>Email 2 : </strong><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="67141217170815135527021f06170a0b024904080a">[email&#160;protected]</a></li>
+                                                        <li><strong>Email 1 : </strong><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3c0c6c3c3dcc1c782f3d6cbd2c3dedfd69dd0dcde">[[*{email}]]</a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                             </div>
@@ -96,7 +97,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     <h6>Thông tin liên lạc<a href="javasript:void(0)" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal"><img src="assets/images/icons/edit.svg"
                                                         class="svg_img pro_svg" alt="edit" /></a></h6>
                                                     <ul>
-                                                        <li><strong>Số điện thoại di động : </strong>(123) 123 456 7890</li>
+                                                        <li><strong>Số điện thoại di động : </strong>+84 [[*{phone}]]</li>
                                                         <li><strong>Fax : </strong>(123) 123 456 7890</li>
                                                     </ul>
                                                 </div>
@@ -106,8 +107,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     <h6>Địa chỉ cư trú<a href="javasript:void(0)" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal"><img src="assets/images/icons/edit.svg"
                                                         class="svg_img pro_svg" alt="edit" /></a></h6>
                                                     <ul>
-                                                        <li><strong>Nhà : </strong>123, 2150 Sycamore Street, dummy text of
-                                                            the, San Jose, California - 95131.</li>
+                                                        <li><strong>Nhà : </strong>[[*{address}]]</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -128,6 +128,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </section>

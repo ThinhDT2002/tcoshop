@@ -119,14 +119,16 @@ create table Orders_Detail(
 
 insert into Roles(id, name)
 values('ADMIN','Administrators'),
-	  ('USER','Users')
+	  ('USER','Users'),
+	  ('SADMIN','Super Administrators'),
+	  ('SHIPPER','Shipper')
 	
 insert into Users(username, password, email, fullname, address, phone, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
-values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',N'Đường Đông Bắc, Quận 12',0337429180,1,'0123456789','0123456789','avatar1.png', 'ADMIN'),
-	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',N'Đường Đông Bắc, Quận 12',0337429182,1,'0123456789','0123456789','avatar2.png', 'ADMIN'),
-	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',N'Đường Đông Bắc, Quận 12',0337429183,1,'0123456789','0123456789','avatar3.png', 'ADMIN'),
-	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',N'Đường Đông Bắc, Quận 12',0337429181,1,'0123456789','0123456789','avatar4.png', 'ADMIN'),
-	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,1,'0123456789','0123456789','avatar5.png', 'ADMIN')
+values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',N'Đường Đông Bắc, Quận 12',0337429180,1,'0123456789','0123456789','avatar1.png', 'SADMIN'),
+	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',N'Đường Đông Bắc, Quận 12',0337429182,1,'0123456789','0123456789','avatar2.png', 'SADMIN'),
+	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',N'Đường Đông Bắc, Quận 12',0337429183,1,'0123456789','0123456789','avatar3.png', 'SADMIN'),
+	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',N'Đường Đông Bắc, Quận 12',0337429181,1,'0123456789','0123456789','avatar4.png', 'SADMIN'),
+	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,1,'0123456789','0123456789','avatar5.png', 'SADMIN')
 
 
 insert into Categories(id, name, icon)
