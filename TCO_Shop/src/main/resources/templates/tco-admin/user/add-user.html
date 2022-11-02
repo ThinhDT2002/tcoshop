@@ -11,12 +11,12 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 		<div class="breadcrumb-wrapper breadcrumb-contacts">
 			<div>
 				<h1>Add User</h1>
-				<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
-					<span><i class="mdi mdi-chevron-right"></i></span>Add User
+				<p class="breadcrumbs"><span><a href="index.html">Trang chủ</a></span>
+					<span><i class="mdi mdi-chevron-right"></i></span>Thêm người dùng
 				</p>
 			</div>
 			<div>
-				<a href="user-list.html" class="btn btn-primary">Edit</a>
+				<a th:href="@{/tco-admin/user/list}" class="btn btn-primary">Danh sách người dùng</a>
 			</div>
 		</div>
 		<div class="card bg-white profile-content">
@@ -58,7 +58,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 															<div class="imagePreview ec-div-preview">
 																<img class="ec-image-preview"
 																	th:src="@{|/images/user/*{avatar}|}"
-																	alt="Chọn ảnh đại diện" />
+																	alt="Chọn ảnh đại diện" style="width: 20%"/>
 															</div>
 														</div>
 													</div>
@@ -126,6 +126,10 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 											<label for="inactiveStatus">Không hoạt động</label> 
 										</div>
 
+										<div class="form-group md-4">
+											<label class="form-label">Mô tả</label>
+											<textarea rows="4" class="form-control" th:field="*{introduce}"></textarea>
+										</div>
 
 										<div class="d-flex justify-content-end mt-5">
 											<button type="submit"

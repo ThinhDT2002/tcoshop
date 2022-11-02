@@ -2,9 +2,10 @@
 const app = angular.module("user-list-app",[])
 app.controller("user-list-ctrl", function($scope, $http) {
     $scope.users = [];
+ 
     $http.get("/api/user").then(resp=> {
         $scope.users = resp.data;
-    })
+    }) 
 })
 
 // USER MANAGEMENT CTRL
@@ -22,7 +23,7 @@ userManagementApp.controller("user-management-ctrl", function($scope, $http) {
 })
 // PRODUCT CTRL
 const app2 = angular.module("product-app",[]);
-app2.controller("product-ctrl", function($scope, $http, $filter){
+app2.controller("product-ctrl", function($scope, $http){
 	
 	$scope.items = [];
 	

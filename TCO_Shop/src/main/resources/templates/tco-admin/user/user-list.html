@@ -56,7 +56,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 												<!-- <button type="button"
 													class="btn btn-outline-success">Info</button> -->
 												<a type="button"
-													class="btn btn-outline-success" th:href="@{|/tco-admin/user/{{user.username}}|}">Info</a>
+													class="btn btn-outline-success" th:href="@{|/tco-admin/user/{{user.username}}|}">Thông tin</a>
 												
 												<button type="button"
 													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
@@ -68,8 +68,8 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 												</button>
 
 												<div class="dropdown-menu">
-													<a class="dropdown-item" href="#">Edit</a>
-													<a class="dropdown-item" href="#">Delete</a>
+													<a class="dropdown-item" th:href="@{|/tco-admin/userEdit/{{user.username}}|}">Sửa</a>
+													<a class="dropdown-item">Xóa</a>
 												</div>
 											</div>
 										</td>

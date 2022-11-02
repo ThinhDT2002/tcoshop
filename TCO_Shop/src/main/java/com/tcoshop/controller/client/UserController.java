@@ -94,4 +94,14 @@ public class UserController {
     	model.addAttribute("userProfile", userProfile);
         return "tco-client/user/user-profile.html";
     }
+    
+    @RequestMapping("/user/add")
+    public String getAdd(Model model, Authentication authentication) {
+    	String username = authentication.getName();
+    	String url = "http://localhost:8080/api/user/" + username;
+    	ResponseEntity<User> respEntity = restTemplate.getForEntity(url, User.class);
+    	User userEdit = respEntity.getBody();
+    	model.addAttribute("userEdit", userEdit);
+    	return "tco-client/user/user-add.html";
+    }
 }

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<main th:object = "${userEdit}">
+<!-- Ec breadcrumb start -->
+    <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ec_breadcrumb_inner">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="ec-breadcrumb-title">Thông tin người dùng</h2>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <!-- ec-breadcrumb-list start -->
+                            <ul class="ec-breadcrumb-list">
+                                <li class="ec-breadcrumb-item"><a th:href="@{home}">Trang chủ</a></li>
+                                <li class="ec-breadcrumb-item active">Thông tin</li>
+                            </ul>
+                            <!-- ec-breadcrumb-list end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ec breadcrumb end -->
+    <section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+    	<div class="container">
+    		<div class="row">
+    			<!-- Sidebar Area Start -->
+                <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                    <div class="ec-sidebar-wrap">
+                        <!-- Sidebar Category Block -->
+                        <div class="ec-sidebar-block">
+                            <div class="ec-vendor-block">
+                                <!-- <div class="ec-vendor-block-bg"></div>
+                                <div class="ec-vendor-block-detail">
+                                    <img class="v-img" src="assets/images/user/1.jpg" alt="vendor image">
+                                    <h5>Mariana Johns</h5>
+                                </div> -->
+                                <div class="ec-vendor-block-items">
+                                    <ul>
+                                        <li><a href="user-profile.html">Thông tin người dùng</a></li>
+                                        <li><a href="user-history.html">Lịch sử</a></li>
+                                        <li><a href="wishlist.html">Danh sách</a></li>
+                                        <li><a href="cart.html">Giỏ hàng</a></li>
+                                        <li><a href="checkout.html">Thanh toán</a></li>
+                                        <li><a href="track-order.html">Theo dõi đơn hàng</a></li>
+                                        <li><a href="user-invoice.html">Hóa đơn</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ec-shop-rightside col-lg-9 col-md-12">
+                	<div class="ec-vendor-dashboard-card ec-vendor-setting-card">
+                		<div class="ec-content-wrapper">
+	<div class="content">
+		<div class="breadcrumb-wrapper breadcrumb-contacts">
+			<div>
+				<h1>Add User</h1>
+				<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+					<span><i class="mdi mdi-chevron-right"></i></span>Add User
+				</p>
+			</div>
+			<div>
+				<a th:href="@{/user/profile}" class="btn btn-primary">Thông tin người dùng</a>
+			</div>
+		</div>
+		<div class="card bg-white profile-content">
+			<div class="row">
+				<div class="col-lg-11 col-xl-12   ">
+					<div class="profile-content-right profile-right-spacing py-5">
+						<ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myProfileTab" role="tablist">
+							
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="settings-tab" data-bs-toggle="tab"
+									data-bs-target="#settings" type="button" role="tab"
+									aria-controls="settings" aria-selected="false">Add User</button>
+							</li>
+						</ul>
+						<div class="tab-content px-3 px-xl-5" id="myTabContent">
+							<div class="tab-pane fade show active" id="settings" role="tabpanel"
+								aria-labelledby="settings-tab">
+								<div class="tab-pane-content mt-5">
+									<label class="error-mess" ></label>
+									<form >
+										<div class="form-group row mb-6">
+											<div class="row ec-vendor-uploads">
+												<div class="ec-vendor-img-upload">
+													<div class="ec-vendor-main-img">
+													
+														<div class="avatar-upload">
+														<div class="avatar-edit">
+															<input type='file' name="userAvatar" id="imageUpload" class="ec-image-upload"
+																accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+															<label for="imageUpload"><img th:src="@{/image/user/user.png}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="avatar-preview ec-preview">
+															<div class="imagePreview ec-div-preview">
+																<img class="ec-image-preview"
+																	th:src="@{|/image/user/*{avatar}|}"
+																	alt="Chọn ảnh đại diện" />
+															</div>
+														</div>
+													</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row mb-2">
+											<div class="col-lg-6">
+												<div class="form-group">
+													<label for="fullName">Họ và Tên</label>
+													<input th:field = "*{fullname}" type="text" class="form-control" id="fullName"
+														placeholder="Họ và Tên">
+													
+												</div>
+											</div>
+
+										</div>
+
+										<div class="form-group mb-4">
+											<label for="userName">Tên tài khoản <span style="color: red;">*</span></label> <br>
+											<label class="error-mess" ></label>
+											<input th:field = "*{username}" type="text" class="form-control" id="userName"
+												placeholder="Tên tài khoản">
+										</div>
+
+										<div class="form-group mb-4">
+											<label for="email">Email <span style="color: red;">*</span></label> <br>
+											<label class="error-mess" ></label>
+											<input th:field="*{email}" type="email" class="form-control" id="email"
+												placeholder="tco-member@gmail.com">
+										</div>
+
+									
+
+										<div class="form-group mb-4">
+											<label for="newPassword">Mật khẩu <span style="color: red;">*</span></label> <br>
+											<label class="error-mess" ></label>
+											<label class="error-mess" ></label>
+											<input  type="password" class="form-control" id="newPassword">
+										</div>
+
+										<div class="form-group mb-4">
+											<label for="conPassword"> Xác nhận mật khẩu <span style="color: red;">*</span></label> <br>
+											<label class="error-mess" ></label>
+											<input name="confirmPassword" type="password" class="form-control" id="conPassword">
+										</div>
+
+
+										<div class="d-flex justify-content-end mt-5">
+											<button type="submit"
+												class="btn btn-primary mb-2 btn-pill">Cập nhật người dùng</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div> <!-- End Content -->
+</div> <!-- End Content Wrapper -->
+                	</div>
+                </div>
+    		</div>
+    	</div>
+    </section>
+
+</main>
+</body>
+</html>

@@ -40,6 +40,7 @@ public class UserManagementController {
     @RequestMapping("/tco-admin/user/add")
     public String getUserAdd(@ModelAttribute("user") User user) {
         user = new User();
+        user.setAvatar("user.png");
         return "tco-admin/user/add-user.html";
     }
 
@@ -107,6 +108,15 @@ public class UserManagementController {
         model.addAttribute("user", user);
         return "tco-admin/user/user-profile.html";
     }
+    
+  @RequestMapping("/tco-admin/userEdit/{username}")
+  public String getUserEdit(@PathVariable("username") String username, @ModelAttribute("user") User user,
+		  Model model) {
+	  String url = "http://localhost:8080/api/user/" + username;
+	  user = restTemplate.getForObject(url, User.class);
+	  model.addAttribute("user",user);
+	  return "tco-admin/user/add-user.html";
+  }
 
     private void setAvatar(User user, Optional<MultipartFile> multipartFile) {
         String fileName = "user.png";

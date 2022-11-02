@@ -58,7 +58,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         </div>
                     </div>
                 </div>
-                <form>
+                
                 <div class="ec-shop-rightside col-lg-9 col-md-12">
                     <div class="ec-vendor-dashboard-card ec-vendor-setting-card">
                         <div class="ec-vendor-card-body">
@@ -67,9 +67,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     <div class="ec-vendor-block-profile">
                                         <div class="ec-vendor-block-img space-bottom-30">
                                             <div class="ec-vendor-block-bg">
-                                                <a href="#" class="btn btn-lg btn-primary"
-                                                    data-link-action="editmodal" title="Edit Detail"
-                                                    data-bs-toggle="modal" data-bs-target="#edit_modal">Edit Detail</a>
+                                                <a th:href="@{/user/add}" class="btn btn-lg btn-primary"
+                                                    >Cập nhật thông tin người dùng</a>
                                             </div>
                                             <div class="ec-vendor-block-detail">
                                                 <img class="v-img" th:src="@{|/images/user/*{avatar}|}" alt="vendor image">
@@ -77,7 +76,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                 <p></p>
                                             </div>
                                             <p>Hello <span>[[*{fullname}]]</span></p>
-                                            <p>From your account you can easily view and track orders. You can manage and change your account information like address, contact information and history of orders.</p>
+                                            <p>[[*{introduce}]]</p>
                                         </div>
                                         <h5>Thông tin tài khoản</h5>
 
@@ -128,7 +127,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         </div>
                     </div>
                 </div>
-                </form>
+                
             </div>
         </div>
     </section>
