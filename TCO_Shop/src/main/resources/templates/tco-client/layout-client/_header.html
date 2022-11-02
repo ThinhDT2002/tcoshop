@@ -127,15 +127,40 @@
                             <div class="ec-header-bottons">
 
                                 <!-- Header User Start -->
-                                <div class="ec-header-user dropdown">
-                                    <button class="dropdown-toggle" data-bs-toggle="dropdown"><img
-                                        th:src="@{/assets/images/icons/user.svg}" class="svg_img header_svg" alt="" /></button>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a class="dropdown-item" href="register.html">Đăng ký</a></li>
-                                        <li><a class="dropdown-item" href="checkout.html">Thanh toán</a></li>
-                                        <li><a class="dropdown-item" href="login.html">Đăng nhập</a></li>
-                                    </ul>
-                                </div>
+<div class="ec-header-user dropdown">
+						<th:block th:if="${#request.remoteUser}">
+							<button class="dropdown-toggle" data-bs-toggle="dropdown">
+								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
+									alt="" /><span class="ec-btn-title">Xin chào, [[${#request.remoteUser}]]</span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a class="dropdown-item" th:href="@{/user/account}">Thông tin tài khoản</a></li>
+								<!-- 
+								<li><a class="dropdown-item" href="checkout.html">Thanh
+										toán</a></li>
+								 -->
+								<li><a class="dropdown-item" th:href="@{/order/history}">Lịch sử giao dịch</a></li>
+								<li><a class="dropdown-item" th:href="@{/user/change-password}">Đổi mật khẩu</a></li>
+								<li><a class="dropdown-item" th:href="@{/Logout}">Đăng xuất</a></li>
+							</ul>
+						</th:block>		
+						<th:block th:unless="${#request.remoteUser}">
+							<button class="dropdown-toggle" data-bs-toggle="dropdown">
+								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
+									alt="" /><span class="ec-btn-title">Tài khoản</span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a class="dropdown-item" th:href="@{/register}">Đăng ký</a></li>
+								<!-- 
+								<li><a class="dropdown-item" href="checkout.html">Thanh
+										toán</a></li>
+								 -->
+								<li><a class="dropdown-item" th:href="@{/login}">Đăng nhập</a></li>
+							</ul>
+						</th:block>	
+					</div>
+                                
+                                
                                 <!-- Header User End -->
                                 <!-- Header wishlist Start -->
                                 <a href="wishlist.html" class="ec-header-btn ec-header-wishlist">

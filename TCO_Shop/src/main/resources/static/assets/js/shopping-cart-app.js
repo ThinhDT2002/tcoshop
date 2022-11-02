@@ -61,7 +61,9 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		},
 		
 		get ship() {
-			if(this.count > 2){
+			if(this.count == 0){
+				return 0;
+			}else if(this.count > 2){
 				return 15000;
 			}else if(this.amount > 10000000){
 				return 0;

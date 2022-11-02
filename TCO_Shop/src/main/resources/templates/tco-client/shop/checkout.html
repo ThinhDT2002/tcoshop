@@ -37,54 +37,6 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                 <!-- checkout content Start -->
                 <div class="ec-checkout-content">
                     <div class="ec-checkout-inner">
-                        <div class="ec-checkout-wrap margin-bottom-30">
-                            <div class="ec-checkout-block ec-check-new">
-                                <h3 class="ec-checkout-title">Khách Hàng</h3>
-                                <div class="ec-check-block-content">
-                                    <div class="ec-check-subtitle">Tùy Chọn Thanh Toán</div>
-                                    <form action="#">
-                                        <span class="ec-new-option">
-                                            <span>
-                                                <input type="radio" id="account1" name="radio-group" checked>
-                                                <label for="account1">Đăng Ký Tài Khoản</label>
-                                            </span>
-                                            <span>
-                                                <input type="radio" id="account2" name="radio-group">
-                                                <label for="account2">Tài Khoản Khách</label>
-                                            </span>
-                                        </span>
-                                    </form>
-                                    <div class="ec-new-desc">Bằng cách tạo tài khoản, bạn sẽ có thể mua sắm nhanh hơn, 
-                                        cập nhật trạng thái đơn hàng và theo dõi các đơn hàng bạn đã thực hiện trước đó.
-                                    </div>
-                                    <div class="ec-new-btn"><a href="#" class="btn btn-primary">Tiếp Tục</a></div>
-
-                                </div>
-                            </div>
-                            <div class="ec-checkout-block ec-check-login">
-                                <h3 class="ec-checkout-title">Phản Hồi</h3>
-                                <div class="ec-check-login-form">
-                                    <form action="#" method="post">
-                                        <span class="ec-check-login-wrap">
-                                            <label>Email</label>
-                                            <input type="text" name="name" placeholder="Nhập địa chỉ Email"
-                                                required />
-                                        </span>
-                                        <span class="ec-check-login-wrap">
-                                            <label>Mật khẩu</label>
-                                            <input type="password" name="password" placeholder="Nhập mật khẩu"
-                                                required />
-                                        </span>
-
-                                        <span class="ec-check-login-wrap ec-check-login-btn">
-                                            <button class="btn btn-primary" type="submit">Đăng Nhập</button>
-                                            <a class="ec-check-login-fp" href="#">Quên Mật Khẩu ?</a>
-                                        </span>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </div>
                         <div class="ec-checkout-wrap margin-bottom-30 padding-bottom-3">
                             <div class="ec-checkout-block ec-check-bill">
                                 <h3 class="ec-checkout-title">Chi Tiết Hóa Đơn</h3>
@@ -188,11 +140,11 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <div class="ec-checkout-summary">
                                 <div>
                                     <span class="text-left">Giá Sản Phẩm</span>
-                                    <span class="text-right">$80.00</span>
+                                    <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
                                 </div>
                                 <div>
                                     <span class="text-left">Phí Vận Chuyển</span>
-                                    <span class="text-right">$80.00</span>
+                                    <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
                                 </div>
                                 <div>
                                     <span class="text-left">Mã Giảm Giá</span>
@@ -209,102 +161,26 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 </div>
                                 <div class="ec-checkout-summary-total">
                                     <span class="text-left">Thành Tiền</span>
-                                    <span class="text-right">$80.00</span>
+                                    <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</span>
                                 </div>
                             </div>
-                            <div class="ec-checkout-pro">
-                                <div class="col-sm-12 mb-6">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image"
-                                                        src="assets/images/product-image/1_1.jpg"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        src="assets/images/product-image/1_2.jpg"
-                                                        alt="Product" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Baby toy teddy bear</a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">$95.00</span>
-                                                <span class="new-price">$79.00</span>
-                                            </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/1_1.jpg"
-                                                                data-src-hover="assets/images/product-image/1_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#6d4c36;"></span></a>
-                                                        </li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/1_2.jpg"
-                                                                data-src-hover="assets/images/product-image/1_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color:#ffb0e1;"></span></a>
-                                                        </li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/1_3.jpg"
-                                                                data-src-hover="assets/images/product-image/1_3.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color:#8beeff;"></span></a>
-                                                        </li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/1_4.jpg"
-                                                                data-src-hover="assets/images/product-image/1_4.jpg"
-                                                                data-tooltip="Sky Blue"><span
-                                                                    style="background-color:#74f8d1;"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active"><a href="#" class="ec-opt-sz"
-                                                                data-old="$95.00" data-new="$79.00"
-                                                                data-tooltip="Small">S</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$90.00"
-                                                                data-new="$70.00" data-tooltip="Medium">M</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$80.00"
-                                                                data-new="$60.00" data-tooltip="Large">X</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$70.00"
-                                                                data-new="$50.00" data-tooltip="Extra Large">XL</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="ec-checkout-pro" ng-repeat="item in cart.items">
                                 <div class="col-sm-12 mb-0">
                                     <div class="ec-product-inner">
                                         <div class="ec-pro-image-outer">
                                             <div class="ec-pro-image">
                                                 <a href="product-left-sidebar.html" class="image">
                                                     <img class="main-image"
-                                                        src="assets/images/product-image/8_1.jpg"
+                                                        th:src="@{|/images/products/{{item.image1}}|}"
                                                         alt="Product" />
                                                     <img class="hover-image"
-                                                        src="assets/images/product-image/8_2.jpg"
+                                                        th:src="@{|/images/products/{{item.image2}}|}"
                                                         alt="Product" />
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Smart I watch 2GB</a></h5>
+                                            <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}} x {{item.qty}}</a></h5>
                                             <div class="ec-pro-rating">
                                                 <i class="ecicon eci-star fill"></i>
                                                 <i class="ecicon eci-star fill"></i>
@@ -313,49 +189,9 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                 <i class="ecicon eci-star"></i>
                                             </div>
                                             <span class="ec-price">
-                                                <span class="old-price">$58.00</span>
-                                                <span class="new-price">$45.00</span>
+                                                <span class="old-price">{{cart.formatNumber(item.price)}} VNĐ</span>
+                                                <span class="new-price">{{cart.formatNumber(item.price* (100 - item.discount) / 100)}} VNĐ</span>
                                             </span>
-                                            <div class="ec-pro-option">
-                                                <div class="ec-pro-color">
-                                                    <span class="ec-pro-opt-label">Color</span>
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/8_2.jpg"
-                                                                data-src-hover="assets/images/product-image/8_2.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#f3f3f3;"></span></a>
-                                                        </li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/8_3.jpg"
-                                                                data-src-hover="assets/images/product-image/8_3.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color:#fac7f3;"></span></a>
-                                                        </li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/product-image/8_4.jpg"
-                                                                data-src-hover="assets/images/product-image/8_4.jpg"
-                                                                data-tooltip="Green"><span
-                                                                    style="background-color:#c5f1ff;"></span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-size">
-                                                    <span class="ec-pro-opt-label">Size</span>
-                                                    <ul class="ec-opt-size">
-                                                        <li class="active"><a href="#" class="ec-opt-sz"
-                                                                data-old="$48.00" data-new="$45.00"
-                                                                data-tooltip="Small">S</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$90.00"
-                                                                data-new="$70.00" data-tooltip="Medium">M</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$80.00"
-                                                                data-new="$60.00" data-tooltip="Large">X</a></li>
-                                                        <li><a href="#" class="ec-opt-sz" data-old="$70.00"
-                                                                data-new="$50.00" data-tooltip="Extra Large">XL</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
