@@ -144,7 +144,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div>
                                         <span class="text-left">Phí vận chuyển</span>
-                                        <span class="text-right">{{cart.formatNumber(cart.vat())}} VNĐ</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Giảm giá</span>
@@ -161,7 +161,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div class="ec-cart-summary-total">
                                         <span class="text-left">Tổng cộng</span>
-                                        <span class="text-right">{{cart.formatNumber(cart.amount+cart.vat())}} VNĐ</span>
+                                        <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</span>
                                     </div>
                                 </div>
 

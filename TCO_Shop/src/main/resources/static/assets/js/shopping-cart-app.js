@@ -59,6 +59,15 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		vat(){
 			return 30000;
 		},
+		
+		get ship() {
+			if(this.count > 2){
+				return 15000;
+			}else if(this.amount > 10000000){
+				return 0;
+			}
+
+		},
 	
 	}
 

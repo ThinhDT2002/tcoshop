@@ -508,12 +508,12 @@
                                 <td class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</td>
                             </tr>
                             <tr>
-                                <td class="text-left">VAT (20%) :</td>
-                                <td class="text-right">{{cart.formatNumber(cart.vat())}} VNĐ</td>
+                                <td class="text-left">Phí ship :</td>
+                                <td class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</td>
                             </tr>
                             <tr>
                                 <td class="text-left">Tất cả:</td>
-                                <td class="text-right primary-color">{{cart.formatNumber(cart.amount+cart.vat())}} VNĐ</td>
+                                <td class="text-right primary-color">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</td>
                             </tr>
                         </tbody>
                     </table>
