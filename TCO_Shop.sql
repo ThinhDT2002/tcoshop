@@ -139,7 +139,7 @@ values
 		('ELECTRONIC',N'Gia dụng điện','iconElectric.png'),
 		('PHONE',N'Điện thoại, Table, Phụ kiện','phone.png'),
 		('PURIFIER',N'Lọc nước, Máy nước nóng','purifier.png'),
-		('KITCHEN',N'Đồ dùng nhà bếp, Gia đình','iconBep.png'),
+		('KITCHEN',N'Đồ dùng nhà bếp, Gia đình','iconBep.jpg'),
 		('ROOM',N'Phòng khách, Phòng ăn','room.png'),
 		('BEDROOM',N'Phòng ngủ, Trang trí','bedroom.png'),
 		('HEALTH',N'Sức khỏe và sắc đẹp','health.png')
@@ -147,29 +147,28 @@ values
 insert into Subcategories(id,name,Category_Id,icon)
 values
 		-- tivi
-		('SSMEDIA','Samsung','MEDIA','iconSS.jpg'),
-		('LGMEDIA','LG','MEDIA','iconLG.jpg'),
-		('SONYMEDIA','Sony','MEDIA','iconSony.jpg'),
-		('TCLMEDIA','TCL','MEDIA','iconTCL.jpg'),
-		('MiniMEDIA','Mini led','MEDIA','iconMini.jpg'),
+		('SSMEDIA','Samsung','MEDIA','samsung.png'),
+		('LGMEDIA','LG','MEDIA','LG.png'),
+		('SONYMEDIA','Sony','MEDIA','sony.png'),
+		('TCLMEDIA','TCL','MEDIA','tcl.png'),
+		('MiniMEDIA','Mini led','MEDIA','led.png'),
 
 		-- sound
-		('SOUNDH','Loa cao cấp','MEDIA','iconSS.jpg'),
-		('AMPLYH','Amply cao cấp','MEDIA','iconLG.jpg'),
-		('KARAOKE','Dàn karaoke','MEDIA','iconTCL.jpg'),
-		('BLUETOOTH','Loa bluetooth','MEDIA','iconSS.jpg'),
-		('SOUNDPC','Loa vi tính','MEDIA','iconTCL.jpg'),
-		('SOUNDKARAOKE','Loa karaoke','MEDIA','iconMini.jpg'),
-		('AMPLY','Amply','MEDIA','iconSony.jpg'),
-		('MIXER','Mixer','MEDIA','iconTCL.jpg'),
-		('MICRO','Micro','MEDIA','iconMini.jpg'),
+		('SOUNDH',N'Loa cao cấp','MEDIA','sounDh.png'),
+		('SOUND',N'Dàn âm thanh','MEDIA','sounds.png'),
+		('KARAOKE',N'Dàn karaoke','MEDIA','danKaraoke.png'),
+		('BLUETOOTH',N'Loa bluetooth','MEDIA','bluetooth.png'),
+		('SOUNDPC',N'Loa vi tính','MEDIA','sound.png'),
+		('SOUNDKARAOKE',N'Loa karaoke','MEDIA','soundKaraoke.png'),
+		('MIXER',N'Mixer','MEDIA','mixer.png'),
+		('MICRO',N'Micro','MEDIA','micro.png'),
 
 
 		-- laptop
-		('AC','Acer','LAPTOP','iconAcer.jpg'),
-		('AS','Asus','LAPTOP','iconAsus.jpg'),
-		('MS','MSI','LAPTOP','iconMSI.jpg'),
-		('LE','Lenovo','LAPTOP','iconLenovo.jpg')
+		('AC','Acer','LAPTOP','acer.png'),
+		('AS','Asus','LAPTOP','asus.png'),
+		('MS','MSI','LAPTOP','MSI.jpg'),
+		('LE','Lenovo','LAPTOP','lenovo.png')
 
 
 insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id,subcategory_id)
