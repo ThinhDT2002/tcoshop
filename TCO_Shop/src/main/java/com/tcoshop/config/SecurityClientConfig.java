@@ -47,6 +47,7 @@ public class SecurityClientConfig extends WebSecurityConfigurerAdapter{
 		http.cors().disable().csrf().disable();
 		http.authorizeHttpRequests()
 		.antMatchers("/user/update").authenticated()
+		.antMatchers("/checkout/**").authenticated()
 		.anyRequest().permitAll();
 		http.formLogin()
 		.loginPage("/login")
