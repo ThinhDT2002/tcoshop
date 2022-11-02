@@ -49,7 +49,7 @@ public class UserManagementController {
             @RequestParam("confirmPassword") String confirmPassword) {
         boolean addUserError = false;
         if(errors.hasErrors()) {
-            model.addAttribute("errorAddUserMessage", "Thêm người dùng thất bại!");
+            model.addAttribute("addUserMessage", "Thêm người dùng thất bại!");
             return "tco-admin/user/add-user.html";
         }
         
