@@ -29,7 +29,7 @@
 					<option value="15">15</option>
 					<option value="20">20</option>
 				</select>
-				<input type="text" ng-model="nameProduct" placeholder="Tìm kiếm">
+				<input type="text" ng-model="search" placeholder="Tìm kiếm">
 				<label for="sortProduct">Bộ lọc</label>
 				<select ng-change="pager.sortBy()" ng-model="pager.sortProperty">
 					<option value="name">A-Z</option>
@@ -72,9 +72,9 @@
 										</thead>
 
 										<tbody>
-											<tr ng-repeat="item in pager.items | filter: {name: nameProduct} | orderBy: pager.sortProperty" >
+											<tr ng-repeat="item in pager.items | filter: search | orderBy: pager.sortProperty" >
 												<td><img
-													th:src="@{/images/product-image/products/{{item.image1}}}"
+													th:src="@{/images/products/{{item.image1}}}"
 													style="width: 100px;" /></td>
 												<td>{{item.name}}</td>
 												<td>{{item.price| number}}</td>

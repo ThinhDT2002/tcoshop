@@ -22,7 +22,7 @@ userManagementApp.controller("user-management-ctrl", function($scope, $http) {
 })
 // PRODUCT CTRL
 const app2 = angular.module("product-app",[]);
-app2.controller("product-ctrl", function($scope, $http){
+app2.controller("product-ctrl", function($scope, $http, $filter){
 	
 	$scope.items = [];
 	
@@ -79,8 +79,10 @@ app2.controller("product-ctrl", function($scope, $http){
 			var start = this.page * Number(this.size);
 			return $scope.items.slice(start, start + Number(this.size));
 		},
+		
 		get count(){
 		return Math.ceil(1.0 * $scope.items.length / Number(this.size));
+		
 		},
 		get totalQuantity(){
 			return $scope.items.length;
@@ -90,6 +92,8 @@ app2.controller("product-ctrl", function($scope, $http){
 			this.page = 0;
 			this.count;	
 		},
+		
+		
 		first(){
 			this.page = 0;
 		},
@@ -113,7 +117,7 @@ app2.controller("product-ctrl", function($scope, $http){
 		// Không xóa cái hàm bên dưới
 		 get sortBy() {
 
-		}
+		},
 	}
 });
 // CATEGORY CTRL
@@ -142,6 +146,9 @@ app4.controller("subcategory-ctrl", function($scope, $http){
 	$scope.initialize = function(){
 		$http.get("/api/subcategory").then(resp => {
 			$scope.subs = resp.data;
+			$scope.form = {
+			icon: 'default-subcategory.png'
+			};
 		});
 		
 		$http.get("/api/categories").then(resp =>{
@@ -223,6 +230,7 @@ app4.controller("subcategory-ctrl", function($scope, $http){
 			let index = $scope.subs.findIndex(s => s.id == sub.id);
 			$scope.subs[index] = sub;
 			alert("Cập nhật thương hiệu thành công!");
+			$scope.reset();
 		}).catch(error =>{
 			alert("Lỗi cập nhật thương hiệu");
 			console.log("Error", error);
