@@ -74,7 +74,8 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	}
 
 	$scope.cart.loadFromSessionStorage();
-/*	$scope.order = {
+	
+	$scope.order = {
 		createDate : new Date(),
 		address : "",
 		account:{username: $("#username").text()},
@@ -101,5 +102,5 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		}
 		
 	};
-	*/
+	
 })

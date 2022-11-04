@@ -48,6 +48,7 @@ public class SecurityClientConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeHttpRequests()
 		.antMatchers("/user/update").authenticated()
 		.antMatchers("/checkout/**").authenticated()
+		.antMatchers("/orderdetail").authenticated()
 		.anyRequest().permitAll();
 		http.formLogin()
 		.loginPage("/login")
