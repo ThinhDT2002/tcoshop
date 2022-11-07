@@ -35,12 +35,7 @@ public class ProductManagementController {
 	CategoryService categoryService;
 	
 	RestTemplate restTemplate = new RestTemplate();
-	
-	@RequestMapping("/admin")
-	public String getAdmin() {
-		return "tco-admin/home/dasb.html";
-	}
-	
+		
 	@RequestMapping("/tco-admin/product/grid")
 	public String productGird() {
 		return "tco-admin/product/product-grid";

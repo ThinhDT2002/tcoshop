@@ -1,0 +1,53 @@
+package com.tcoshop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class LoginController {
+    //client
+	@GetMapping("/login")
+	public String getLogin() {
+		return "tco-client/user/login.html";
+	}
+	
+	@RequestMapping("/login/failed")
+	public String loginFailed(Model model) {
+		model.addAttribute("message", "Tài khoản hoặc mật khẩu không chính xác!");
+		return "tco-client/user/login.html";
+	}
+	
+	@RequestMapping("/logout")
+	public String afterLogout(Model model) {
+	    model.addAttribute("message", "Bạn đã đăng xuất");
+	    return "tco-client/user/login.html";
+	}
+	//admin
+	@RequestMapping("/tco-admin/dashboard")
+    public String getAdmin() {
+        return "tco-admin/home/dasb.html";
+    }
+	
+	@RequestMapping("/tco-admin")
+    public String getAdmin2() {
+        return "tco-admin/home/dasb.html";
+    }
+	
+	@GetMapping("/tco-admin/login")
+	public String getAdminLogin() {
+	    return "tco-admin/user/sign-in.html";
+	}
+	
+	@RequestMapping("/tco-admin/admin_login/failed")
+	public String adminLoginFailed(Model model) {
+	    model.addAttribute("adminLoginMessage", "Tài khoản hoặc mật khẩu không chính xác!");
+	    return "tco-admin/user/sign-in.html";
+	}
+	@RequestMapping("/tco-admin/admin_logout")
+	public String adminLogout(Model model) {
+	    model.addAttribute("adminLoginMessage", "Bạn đã đăng xuất!");
+	    return "tco-admin/user/sign-in.html";
+	}
+}

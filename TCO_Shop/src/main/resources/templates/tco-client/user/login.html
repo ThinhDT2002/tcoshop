@@ -41,7 +41,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                 <div class="ec-login-wrapper">
                     <div class="ec-login-container">
                         <div class="ec-login-form">
-                            <form th:action="@{/login/authenticated}" method="post">
+                            <form th:action="@{user_login}" method="post">
                                 <span class="ec-login-wrap">
                                     <label>Tài khoản *</label>
                                     <input type="text" name="username" placeholder="Vui lòng nhập tài khoản...." required />

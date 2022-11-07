@@ -1,12 +1,9 @@
-package com.tcoshop.config;
+package com.tcoshop.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import com.tcoshop.interceptor.CategoryInterceptor;
-import com.tcoshop.interceptor.RoleInterceptor;
 
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer{
