@@ -56,13 +56,11 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         <form action="#" method="post">
                                             <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Họ *</label>
-                                                <input type="text" name="firstname"
-                                                    placeholder="Nhập họ..." required />
+                                                <input type="text" name="firstname" placeholder="Nhập họ..." required />[[${#request.remoteUser}]]
                                             </span>
                                             <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Tên *</label>
-                                                <input type="text" name="lastname"
-                                                    placeholder="Nhập tên..." required />
+                                                <input type="text" name="lastname" placeholder="Nhập tên..." required />
                                             </span>
                                             <span class="ec-bill-wrap">
                                                 <label>Địa chỉ</label>

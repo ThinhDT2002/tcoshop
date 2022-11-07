@@ -26,13 +26,16 @@ public class Order implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
 	@ManyToOne
 	@JoinColumn(name = "Username")
 	private User user;
+	
 	private Date createDate;
 	private Integer status;
 	private String address;
 	private String phoneNumber;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
 	private List<OrderDetail> orderDetails;
