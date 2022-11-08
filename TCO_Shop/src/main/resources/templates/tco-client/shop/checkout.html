@@ -56,15 +56,19 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         <form action="#" method="post">
                                             <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Họ *</label>
-                                                <input type="text" name="firstname" placeholder="Nhập họ..." required />[[${#request.remoteUser}]]
+                                                <input type="text" name="firstname" placeholder="Nhập họ..." required th:text=" ${currentUser.fullname}"/>
                                             </span>
                                             <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Tên *</label>
                                                 <input type="text" name="lastname" placeholder="Nhập tên..." required />
                                             </span>
-                                            <span class="ec-bill-wrap">
+                                            <span class="ec-bill-wrap ec-bill-half">
+                                                <label>Điện thoại</label>
+                                                <input type="text" name="firstname" placeholder="Nhập điện thoại" required ng-model="order.phoneNumber"/>
+                                            </span>
+                                            <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Địa chỉ</label>
-                                                <input type="text" name="address" placeholder="Nhập địa chỉ..." />
+                                                <input type="text" name="lastname"  placeholder="Nhập địa chỉ" ng-model="order.address"/>
                                             </span>
                                             <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Thành Phố *</label>
@@ -112,6 +116,10 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     </select>
                                                 </span>
                                             </span>
+                                            <span class="ec-bill-wrap">
+                                                <label>Ghi chú</label>
+                                                <textarea name="your-commemt" placeholder="Lưu ý cho người bán..." ng-model="order.description"></textarea>
+                                            </span>
                                         </form>
                                     </div>
 
@@ -120,7 +128,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 
                         </div>
                         <span class="ec-check-order-btn">
-                            <a class="btn btn-primary" href="#">Đặt Hàng</a>
+                            <a class="btn btn-primary" ng-click="order.purchase()">Đặt Hàng</a>
                         </span>
                     </div>
                 </div>

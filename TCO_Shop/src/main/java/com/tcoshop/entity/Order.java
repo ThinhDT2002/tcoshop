@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Orders")
-public class Order implements Serializable{
+public class Order implements Serializable {
 
 	/**
 	 * 
@@ -26,23 +26,27 @@ public class Order implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "Username")
 	private User user;
-	
+
 	private Date createDate;
 	private Integer status;
+
 	private String address;
+	private String description;
 	private String phoneNumber;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
 	private List<OrderDetail> orderDetails;
+
 	public Order() {
 		super();
 	}
-	public Order(Integer id, User user, Date createDate, Integer status, String address, String phoneNumber,
+
+	public Order(Integer id, User user, Date createDate, Integer status, String address, String phoneNumber, String description,
 			List<OrderDetail> orderDetails) {
 		super();
 		this.id = id;
@@ -51,50 +55,73 @@ public class Order implements Serializable{
 		this.status = status;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.description = description;
 		this.orderDetails = orderDetails;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public Date getCreateDate() {
 		return createDate;
 	}
+
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+
 	public Integer getStatus() {
 		return status;
 	}
+
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 	@JsonIgnore
 	public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
+
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-	
+
 }

@@ -127,11 +127,11 @@
                             <div class="ec-header-bottons">
 
                                 <!-- Header User Start -->
-<div class="ec-header-user dropdown">
+					<div class="ec-header-user dropdown">
 						<th:block th:if="${#request.remoteUser}">
 							<button class="dropdown-toggle" data-bs-toggle="dropdown">
 								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
-									alt="" /><span class="ec-btn-title">Xin chào, [[${#request.remoteUser}]]</span>
+									alt="" /><span class="ec-btn-title" id="username">[[${#request.remoteUser}]]</span>
 							</button>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a class="dropdown-item" th:href="@{/user/profile}">Thông tin tài khoản</a></li>

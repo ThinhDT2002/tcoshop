@@ -101,6 +101,7 @@ create table Orders(
 	Status int,
 	Address nvarchar(100),
 	Phone_Number varchar(10),
+	description nvarchar(300),
 	primary key (Id)
 )
 

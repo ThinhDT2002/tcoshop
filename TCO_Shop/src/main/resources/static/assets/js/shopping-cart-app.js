@@ -16,14 +16,14 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				})
 			}
 		},
-		
-		remove(id){
+
+		remove(id) {
 			var index = this.items.findIndex(item => item.id == id);
-			this.items.splice(index,1);
+			this.items.splice(index, 1);
 			this.saveToSessionStorage();
 		},
-		
-		clear(){
+
+		clear() {
 			this.items = [];
 			this.saveToSessionStorage();
 		},
@@ -44,8 +44,8 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			var json = JSON.stringify(angular.copy(this.items));
 			sessionStorage.setItem("cart-tco", json);
 		},
-		
-		loadFromSessionStorage(){
+
+		loadFromSessionStorage() {
 			var json = sessionStorage.getItem("cart-tco");
 			this.items = json ? JSON.parse(json) : [];
 		},
@@ -56,51 +56,58 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		},
 
 		// tính phí ship
-		vat(){
+		vat() {
 			return 30000;
 		},
-		
+
 		get ship() {
-			if(this.count == 0){
+			if (this.count == 0) {
 				return 0;
-			}else if(this.count > 2){
+			} else if (this.count > 2) {
 				return 15000;
-			}else if(this.amount > 10000000){
+			} else if (this.amount > 10000000) {
 				return 0;
 			}
 
 		},
-	
+
 	}
 
 	$scope.cart.loadFromSessionStorage();
-	
+
 	$scope.order = {
-		createDate : new Date(),
-		address : "",
-		account:{username: $("#username").text()},
-		get orderDetails(){
+		createDate: new Date(),
+		address: "",
+		user: { username: $("#username").text() },
+		description: "",
+		phoneNumber: "",
+		
+		get orderDetails() {
 			return $scope.cart.items.map(item => {
-				return{
-					product:{id : item.id},
+				return {
+					product: { id: item.id },
 					price: item.price,
-					quantity : item.qty
+					quantity: item.qty
 				}
 			});
 		},
-		purchase(){
-			var order = angular.copy(this);
-			$http.post("/api/orders",order).then(resp => {
-				alert("Đặt hàng thành công");
-				$scope.cart.clear();
-				location.href="/order/detail/" + resp.data.id;
-			}).catch(error => {
-				alert("Đặt hàng lỗi!")
-				console.log(error)
-				
-			})
+		purchase() {
+			if ($scope.cart.count > 0) {
+				var order = angular.copy(this);
+				$http.post("/api/orders", order).then(resp => {
+					alert("Đặt hàng thành công");
+					$scope.cart.clear();
+					location.href = "/order/detail/" + resp.data.id;
+				}).catch(error => {
+					alert("Đặt hàng lỗi!")
+					console.log(error)
+
+				})
+			}else{
+				alert("Đặt hàng lỗi 12321!")
+			}
 		}
-		
+
 	};
-	
+
 })
