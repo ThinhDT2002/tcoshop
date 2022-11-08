@@ -118,8 +118,8 @@ public class SecurityConfig {
 	        
 	        .and()
 	        .logout()
-	        .logoutUrl("/admin_logout")
-	        .logoutSuccessUrl("/tco-admin/admin_logout")
+	        .logoutUrl("/tco-admin/admin_logout")
+	        .logoutSuccessUrl("/tco-admin/admin_logout_success")
 	        .deleteCookies("JSESSIONID")
 	       
 	        .and()
