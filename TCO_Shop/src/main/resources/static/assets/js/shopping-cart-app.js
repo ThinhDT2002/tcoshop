@@ -76,11 +76,13 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.cart.loadFromSessionStorage();
 
 	$scope.order = {
+		
 		createDate: new Date(),
 		address: "",
 		user: { username: $("#username").text() },
 		description: "",
 		phoneNumber: "",
+		status: false,
 		
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
@@ -104,7 +106,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 				})
 			}else{
-				alert("Đặt hàng lỗi 12321!")
+				alert("Bạn chưa có sản phẩm trong giỏ hàng")
 			}
 		}
 

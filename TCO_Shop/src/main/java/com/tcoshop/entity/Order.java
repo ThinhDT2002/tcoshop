@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,10 +34,16 @@ public class Order implements Serializable {
 	private User user;
 
 	private Date createDate;
-	private Integer status;
+	private Boolean status;
 
+	@NotBlank(message = "Vui lòng nhập tên sản phẩm")
+	@Size(max = 50, message = "Tên sản phẩm tối đa 50 kí tự")
 	private String address;
+	
 	private String description;
+	
+	@NotBlank(message = "Vui lòng nhập tên sản phẩm")
+	@Size(max = 50, message = "Tên sản phẩm tối đa 50 kí tự")
 	private String phoneNumber;
 
 	@JsonIgnore
@@ -46,7 +54,7 @@ public class Order implements Serializable {
 		super();
 	}
 
-	public Order(Integer id, User user, Date createDate, Integer status, String address, String phoneNumber, String description,
+	public Order(Integer id, User user, Date createDate, Boolean status, String address, String phoneNumber, String description,
 			List<OrderDetail> orderDetails) {
 		super();
 		this.id = id;
@@ -91,11 +99,11 @@ public class Order implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public Integer getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 

@@ -98,7 +98,7 @@ create table Orders(
 	constraint FK_Orders_Users
 	foreign key (Username) references Users (Username),
 	Create_Date date,
-	Status int,
+	Status bit,
 	Address nvarchar(100),
 	Phone_Number varchar(10),
 	description nvarchar(300),
