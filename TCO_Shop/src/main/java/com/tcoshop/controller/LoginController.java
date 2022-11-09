@@ -1,6 +1,5 @@
 package com.tcoshop.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,11 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.tcoshop.entity.User;
 
 @Controller
 public class LoginController {
-    private RestTemplate restTemplate = new RestTemplate();
     
     //client
 	@GetMapping("/login")
@@ -33,12 +30,7 @@ public class LoginController {
 	}
 	//admin
 	@RequestMapping("/tco-admin/dashboard")
-    public String getAdmin(Authentication authentication, Model model) {
-	    String currentUserUsername = authentication.getName();
-	    String url = "http://localhost:8080/api/user/" + currentUserUsername;
-	    ResponseEntity<User> entity = restTemplate.getForEntity(url, User.class);
-	    User currentUser = entity.getBody();
-	    model.addAttribute("currentUser", currentUser);
+    public String getAdmin() {		
         return "tco-admin/home/dasb.html";
     }
 	

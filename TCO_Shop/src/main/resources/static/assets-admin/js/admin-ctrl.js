@@ -182,6 +182,7 @@ app4.controller("subcategory-ctrl", function($scope, $http){
 	
 	$scope.edit = function(sub){
 		$scope.form = angular.copy(sub);
+		document.getElementById('text').readOnly = true;
 	}
 	
 	$scope.create = function(){
@@ -253,6 +254,7 @@ app4.controller("subcategory-ctrl", function($scope, $http){
 		$scope.form = {
 			icon: 'default-subcategory.png'
 		};
+		document.getElementById('text').readOnly = false;
 	}
 	
 	$scope.pager = {
