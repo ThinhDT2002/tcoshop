@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -71,6 +72,17 @@ public class UserAPI {
         } catch (NoSuchElementException nSEE) {
             System.out.println(nSEE.getMessage());
             return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PutMapping("/api/user/forgot-password")
+    public void forgotPassword(@RequestBody User user) {
+        try {
+            User userInDB = userService.findByUsername(user.getUsername());
+            userInDB.setPassword(user.getPassword());
+            userService.update(userInDB);
+        } catch (NoSuchElementException e) {
+            throw new NoSuchElementException();
         }
     }
 }
