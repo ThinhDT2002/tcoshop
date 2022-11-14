@@ -33575,3 +33575,12 @@ input[type=email]:focus::-webkit-input-placeholder {
   font-size: 18px;
   color: #fff;
 }
+.error-mess{
+  color: red;
+ }
+.form-group .error-mess{
+ color: red;
+}
+.section-title .error-mess{
+  color: red;
+ }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+<main>
+
+<!-- Ec breadcrumb start -->
+    <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb" ng-app="user-history" ng-controller="user-history">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row ec_breadcrumb_inner">
+                        <div class="col-md-6 col-sm-12">
+                            <h2 class="ec-breadcrumb-title">Lịch sử người dùng</h2>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <!-- ec-breadcrumb-list start -->
+                            <ul class="ec-breadcrumb-list">
+                                <li class="ec-breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                                <li class="ec-breadcrumb-item active">Lịch sử</li>
+                            </ul>
+                            <!-- ec-breadcrumb-list end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ec breadcrumb end -->
+
+    <!-- User history section -->
+    <section class="ec-page-content ec-vendor-uploads ec-user-account section-space-p">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar Area Start -->
+                <div class="ec-shop-leftside ec-vendor-sidebar col-lg-3 col-md-12">
+                    <div class="ec-sidebar-wrap">
+                        <!-- Sidebar Category Block -->
+                        <div class="ec-sidebar-block">
+                            <div class="ec-vendor-block">
+                                <div class="ec-vendor-block-items">
+                                    <ul>
+                                        <li><a href="user-profile.html">Thông tin người dùng</a></li>
+                                        <li><a href="user-history.html">Lịch sử</a></li>
+                                        <li><a href="wishlist.html">Danh sách</a></li>
+                                        <li><a href="cart.html">Giỏ hàng</a></li>
+                                        <li><a href="checkout.html">Thanh toán</a></li>
+                                        <li><a href="track-order.html">Theo dõi đơn hàng</a></li>
+                                        <li><a href="user-invoice.html">Hóa đơn</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-shop-rightside col-lg-9 col-md-12">
+                    <div class="ec-vendor-dashboard-card">
+                        <div class="ec-vendor-card-header">
+                            <h5>Product History</h5>
+                            <div class="ec-header-btn">
+                                <a class="btn btn-lg btn-primary" href="#">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="ec-vendor-card-body">
+                            <div class="ec-vendor-card-table">
+                                <table class="table ec-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Ảnh</th>
+                                            <th scope="col">Tên</th>
+                                            <th scope="col">Ngày</th>
+                                            <th scope="col">Giá</th>
+                                            <th scope="col">Trạng thái</th>
+                                            <th scope="col">Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="(key,stu) in items">
+                                            <th scope="row"><span>225</span></th>
+                                            <td><img class="prod-img" src="assets/images/product-image/1.jpg"
+                                                    alt="product image"></td>
+                                            <td><span>Stylish baby shoes</span></td>
+                                            <td><span>16 Jul 2021</span></td>
+                                            <td><span>$65</span></td>
+                                            <td><span>Active</span></td>
+                                            <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
+                                                        href="#">View</a></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End User history section -->
+
+
+</main>   
+</body>
+</html>
