@@ -80,6 +80,8 @@ public class UserAPI {
         try {
             User userInDB = userService.findByUsername(user.getUsername());
             userInDB.setPassword(user.getPassword());
+            String forgotPassworCode = userInDB.getUsername() + String.valueOf(passwordUtil.generatePassword(9));
+            userInDB.setForgotPasswordCode(forgotPassworCode);
             userService.update(userInDB);
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException();

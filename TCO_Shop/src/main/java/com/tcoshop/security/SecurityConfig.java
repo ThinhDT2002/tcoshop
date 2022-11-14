@@ -67,6 +67,10 @@ public class SecurityConfig {
 	        .authorizeRequests()
 	        .antMatchers("/tco-admin/login")
 	        .permitAll()
+	        .antMatchers("/tco-admin/forgot_password")
+	        .permitAll()
+	        .antMatchers("/tco-admin/retrieve_password")
+	        .permitAll()
 	        .antMatchers("/tco-admin/**")
 	        .hasAnyRole("SADMIN","ADMIN","SHIPPER")
 	        
