@@ -18,7 +18,7 @@ import com.tcoshop.service.OrderService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/orders")
-public class OrderDetailAPI {
+public class OrderAPI {
 	@Autowired
 	OrderService orderService;
 	

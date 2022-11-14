@@ -1,19 +1,16 @@
-const app = angular.module("user-list-app", [])
-app.controller("user-list-ctrl", function($scope, $http) {
+const app2 = angular.module("user-history", [])
+app2.controller("user-history", function($scope, $http) {
 	$scope.items = [];
+	
+	$scope.user = $("#username").text();
+	$scope.initialize = function(){
 
-	$http.get("/api/orders").then(resp => {
-		$scope.items = resp.data;
-	});
-
-	$scope.initialize = function(item) {
-		$http.delete(`/api/products/${item.user}`).then(resp => {
-			var index = $scope.items.findIndex(p => p.user == item.user);
-			alert("Xóa sản phẩm thành công");
-		}).catch(error => {
-			alert("Lỗi xóa sản phẩm");
-			console.log("Error", error);
+		
+		$http.get(`/api/orders/${$scope.user}`).then(resp => {
+			$scope.items = resp.data;
 		});
+		
+
 	}
 
 	$scope.initialize();

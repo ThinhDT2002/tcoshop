@@ -5,7 +5,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <main>
 
 <!-- Ec breadcrumb start -->
-    <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+    <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb" ng-app="user-history" ng-controller="user-history">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -76,7 +76,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="order, state: ${orders}">
+                                        <tr ng-repeat="(key,stu) in items">
                                             <th scope="row"><span>225</span></th>
                                             <td><img class="prod-img" src="assets/images/product-image/1.jpg"
                                                     alt="product image"></td>
