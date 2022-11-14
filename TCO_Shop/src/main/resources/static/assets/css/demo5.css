@@ -22960,4 +22960,10 @@ section.ec-instagram-section {
     text-align: center;
   }
 }
+.error-mess{
+  color: red;
+ }
+.form-group .error-mess{
+ color: red;
+}
 /*# sourceMappingURL=demo5.css.map */
