@@ -1,5 +1,7 @@
 package com.tcoshop.controller.client;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -29,9 +31,15 @@ public class OrderController {
 		return "tco-client/shop/checkout";
 	}
 	
-	@RequestMapping("/order/detail/{id}")
-	public String detail(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("order",orderService.findById(id));
+	@RequestMapping("/order/history")
+	public String detail(Model model, HttpServletRequest request) {
+		String username = request.getRemoteUser();
+		model.addAttribute("orders", orderService.findByUsername(username));
+		return "tco-client/order/user-history";
+	}
+	
+	@RequestMapping("/order/track")
+	public String track(Model model) {
 		return "tco-client/shop/track-order";
 	}
 }
