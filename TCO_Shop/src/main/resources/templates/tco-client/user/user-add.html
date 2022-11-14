@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html xmlns:th="http://www.thymeleaf.org"
 th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Thong tin tai khoan</title>
 </head>
 <body>
-<main th:object = "${userEdit}">
+<main ng-app = "user-profile-app" ng-controller = "user-profile-ctrl" th:object = "${userEdit}">
 <!-- Ec breadcrumb start -->
     <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
         <div class="container">
@@ -76,6 +77,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 			</div>
 		</div>
 		<div class="card bg-white profile-content">
+		<h6>[[${message}]]</h6>
 			<div class="row">
 				<div class="col-lg-11 col-xl-12   ">
 					<div class="profile-content-right profile-right-spacing py-5">
@@ -92,23 +94,22 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 								aria-labelledby="settings-tab">
 								<div class="tab-pane-content mt-5">
 									<label class="error-mess" ></label>
-									<form >
+									<form th:action = "@{/user/add}" enctype="multipart/form-data" method="post">
 										<div class="form-group row mb-6">
 											<div class="row ec-vendor-uploads">
 												<div class="ec-vendor-img-upload">
 													<div class="ec-vendor-main-img">
-													
 														<div class="avatar-upload">
 														<div class="avatar-edit">
 															<input type='file' name="userAvatar" id="imageUpload" class="ec-image-upload"
 																accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
-															<label for="imageUpload"><img th:src="@{/image/user/user.png}"
+															<label for="imageUpload"><img th:src="@{/assets-admin/img/icons/edit.svg}"
 																	class="svg_img header_svg" alt="edit" /></label>
 														</div>
 														<div class="avatar-preview ec-preview">
 															<div class="imagePreview ec-div-preview">
 																<img class="ec-image-preview"
-																	th:src="@{|/image/user/*{avatar}|}"
+																	th:src="@{|/images/user/*{avatar}|}"
 																	alt="Chọn ảnh đại diện" />
 															</div>
 														</div>
@@ -134,34 +135,35 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 											<label for="userName">Tên tài khoản <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<input th:field = "*{username}" type="text" class="form-control" id="userName"
-												placeholder="Tên tài khoản">
+												placeholder="Tên tài khoản" readonly>
 										</div>
 
 										<div class="form-group mb-4">
 											<label for="email">Email <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<input th:field="*{email}" type="email" class="form-control" id="email"
-												placeholder="tco-member@gmail.com">
+												placeholder="tco-member@gmail.com" readonly>
 										</div>
-
-									
-
 										<div class="form-group mb-4">
-											<label for="newPassword">Mật khẩu <span style="color: red;">*</span></label> <br>
+											<label for="phone">Số điện thoại <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
-											<label class="error-mess" ></label>
-											<input  type="password" class="form-control" id="newPassword">
+											<input th:field="*{phone}" type="text" class="form-control" id="phone"
+												placeholder="Số điện thoại">
 										</div>
-
 										<div class="form-group mb-4">
-											<label for="conPassword"> Xác nhận mật khẩu <span style="color: red;">*</span></label> <br>
+											<label for="address">Địa chỉ <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
-											<input name="confirmPassword" type="password" class="form-control" id="conPassword">
+											<input th:field="*{address}" type="text" class="form-control" id="address"
+												placeholder="Địa chỉ">
 										</div>
-
-
+										<div class="form-group mb-4">
+											<label for="introduce">Giới thiệu <span style="color: red;">*</span></label> <br>
+											<label class="error-mess" ></label>
+											<textarea rows="4" class="form-control" id ="introduce" th:field = "*{introduce}">
+											</textarea>
+										</div>
 										<div class="d-flex justify-content-end mt-5">
-											<button type="submit"
+											<button th:formaction = "@{|/user/update/*{username}|}"
 												class="btn btn-primary mb-2 btn-pill">Cập nhật người dùng</button>
 										</div>
 									</form>

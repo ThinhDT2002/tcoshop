@@ -59,6 +59,7 @@ public class UserAPI {
         
         return ResponseEntity.ok(user);
     }
+    
     @PostMapping("/api/user/change-password") 
     public ResponseEntity<User> changePasword(@RequestBody User user) {
         try {
@@ -86,5 +87,15 @@ public class UserAPI {
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException();
         }
+    }
+    @PutMapping("/api/user/{username}")
+    public User update(@PathVariable("username") String username,@RequestBody User user) {
+    	User userInDB = userService.findByUsername(username);
+    	userInDB.setAvatar(user.getAvatar());
+    	userInDB.setFullname(user.getFullname());
+    	userInDB.setPhone(user.getPhone());
+    	userInDB.setAddress(user.getAddress());
+    	userInDB.setIntroduce(user.getIntroduce());
+    	return userService.update(userInDB);
     }
 }

@@ -3,6 +3,8 @@ package com.tcoshop.controller.client;
 
 
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,11 +17,14 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcoshop.entity.MailInformation;
@@ -100,6 +105,7 @@ public class UserController {
     
     @RequestMapping("/user/add")
     public String getAdd(Model model, Authentication authentication) {
+    	
     	String username = authentication.getName();
     	String url = "http://localhost:8080/api/user/" + username;
     	ResponseEntity<User> respEntity = restTemplate.getForEntity(url, User.class);
@@ -107,6 +113,22 @@ public class UserController {
     	model.addAttribute("userEdit", userEdit);
     	return "tco-client/user/user-add.html";
     }
+    
+    @RequestMapping("/user/update/{username}")
+    public String submitUser(Model model, Authentication authentication, RedirectAttributes redirectAttributes,
+    		@RequestParam("userAvatar") Optional<MultipartFile> multipartFile, @ModelAttribute("userEdit") User user) {
+    	
+    	String username = authentication.getName();
+    	String putUrl = "http://localhost:8080/api/user/" + username;
+    	setAvatar(user, multipartFile);
+    	HttpEntity<User> httpEntity = new HttpEntity<User>(user);
+    	restTemplate.put(putUrl, httpEntity);
+    	redirectAttributes.addFlashAttribute("message","Cập nhật tài khoản thành công!");
+    	redirectAttributes.addFlashAttribute("userEdit", user);
+    	
+    	return "redirect:/user/add";
+    }
+    
     
     @GetMapping("/user/forgot")
     public String forgotPassword() {
@@ -191,5 +213,17 @@ public class UserController {
             model.addAttribute("retrievePasswordMessage", "Đã xảy ra lỗi ngoài ý muốn!");
             return "tco-client/user/retrieve-password.html";
         }                         
+    }
+    
+    private void setAvatar(User user, Optional<MultipartFile> multipartFile) {
+    	String fileName = "user.png";
+    	if(!multipartFile.get().isEmpty()) {
+    		fileName = multipartFile.get().getOriginalFilename();
+    	}
+    	if(user.getAvatar() == null || user.getAvatar().equals("user.png")) {
+    		user.setAvatar(fileName);
+    	} else {
+    		user.setAvatar(user.getAvatar());
+    	}
     }
 }

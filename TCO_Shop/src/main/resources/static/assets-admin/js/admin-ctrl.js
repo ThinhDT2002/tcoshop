@@ -1,4 +1,4 @@
-// USER CTRIL
+// USER CTRL
 const app = angular.module("user-list-app",[])
 app.controller("user-list-ctrl", function($scope, $http) {
     $scope.users = [];
@@ -7,10 +7,10 @@ app.controller("user-list-ctrl", function($scope, $http) {
         $scope.users = resp.data;
     }) 
 })
-
 // USER MANAGEMENT CTRL
 const userManagementApp = angular.module("user-management-app",[]);
 userManagementApp.controller("user-management-ctrl", function($scope, $http) {
+	
 	$scope.imageChanged = function(files) {
 		let data = new FormData();
 		data.append('file', files[0]);
