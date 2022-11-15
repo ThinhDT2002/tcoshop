@@ -1,17 +1,31 @@
 const app = angular.module("shopping-cart-app", []);
 
 app.controller("shopping-cart-ctrl", function($scope, $http) {
+	$scope.items = [];
+	
+	var name = $("#username").text();
+	var split = name.split(" ");
+	console.log(split[2]);
+	
+	$scope.initialize = function() {
+		$http.get(`/api/orders/${split[2]}`).then(resp => {
+			$scope.items = resp.data;
+		});
+	}
+
+	$scope.initialize();
+
 	// thay doi hinh anh nguoi dung
 	$scope.imageChanged = function(files) {
 		let data = new FormData();
 		data.append('file', files[0]);
 		$http.post('/api/image/user', data, {
 			transformRequest: angular.identity,
-			headers: {'Content-type': undefined},
+			headers: { 'Content-type': undefined },
 			enctype: 'multipart/form-data'
 		})
 	}
-	
+
 	$scope.cart = {
 		items: [],
 		add(id) {
@@ -90,11 +104,11 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		
 		createDate: new Date(),
 		address: "",
-		user: { username: $("#username").text() },
+		user: { username: split[2] },
 		description: "",
 		phoneNumber: "",
 		status: false,
-		
+
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
 				return {
@@ -104,6 +118,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				}
 			});
 		},
+		
 		purchase() {
 			if ($scope.cart.count > 0) {
 				var order = angular.copy(this);
@@ -116,13 +131,18 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 					console.log(error)
 
 				})
-			}else{
+			} else {
 				alert("Bạn chưa có sản phẩm trong giỏ hàng")
 			}
+		},
+		
+		formatDate(today) {
+			var today = new Date();
+			today.toLocaleFormat('%d-%b-%Y'); // 30-Dec-2011
 		}
 
 	};
-	
-	
+
+
 
 })

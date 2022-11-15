@@ -5,7 +5,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <main>
 
 <!-- Ec breadcrumb start -->
-    <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb" ng-app="user-history" ng-controller="user-history">
+    <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -66,24 +66,21 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <table class="table ec-table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">STT</th>
-                                            <th scope="col">Ảnh</th>
+                                            <th scope="col">Hóa đơn</th>
                                             <th scope="col">Tên</th>
                                             <th scope="col">Ngày</th>
-                                            <th scope="col">Giá</th>
                                             <th scope="col">Trạng thái</th>
                                             <th scope="col">Hành động</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="(key,stu) in items">
-                                            <th scope="row"><span>225</span></th>
-                                            <td><img class="prod-img" src="assets/images/product-image/1.jpg"
-                                                    alt="product image"></td>
-                                            <td><span>Stylish baby shoes</span></td>
-                                            <td><span>16 Jul 2021</span></td>
-                                            <td><span>$65</span></td>
-                                            <td><span>Active</span></td>
+                                        <tr ng-repeat="item in items">
+                                            <th scope="row"><span>{{item.id}}</span></th>
+<!--                                             <td><img class="prod-img" th:src="@{|/images/products/{{order.image1}}|}"
+                                                    alt="product image"></td> -->
+                                            <td><span>[[${currentUser.fullname}]]</span></td>
+                                            <td><span>{{item.createDate}}</span></td>
+                                            <td><span>{{item.status ? 'Đang giao' : 'Đang chờ'}}</span></td>
                                             <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
                                                         href="#">View</a></span></td>
                                         </tr>

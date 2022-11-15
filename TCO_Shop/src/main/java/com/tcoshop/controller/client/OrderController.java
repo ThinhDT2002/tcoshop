@@ -33,8 +33,6 @@ public class OrderController {
 	
 	@RequestMapping("/order/history")
 	public String detail(Model model, HttpServletRequest request) {
-		String username = request.getRemoteUser();
-		model.addAttribute("orders", orderService.findByUsername(username));
 		return "tco-client/order/user-history";
 	}
 	
