@@ -107,7 +107,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		user: { username: split[2] },
 		description: "",
 		phoneNumber: "",
-		status: false,
+		status: "ChoXacNhan",
 
 		get orderDetails() {
 			return $scope.cart.items.map(item => {

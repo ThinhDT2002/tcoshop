@@ -34,7 +34,7 @@ public class Order implements Serializable {
 	private User user;
 
 	private Date createDate;
-	private Boolean status;
+	private String status;
 
 	@NotBlank(message = "Vui lòng nhập tên sản phẩm")
 	@Size(max = 50, message = "Tên sản phẩm tối đa 50 kí tự")
@@ -54,7 +54,7 @@ public class Order implements Serializable {
 		super();
 	}
 
-	public Order(Integer id, User user, Date createDate, Boolean status, String address, String phoneNumber, String description,
+	public Order(Integer id, User user, Date createDate, String status, String address, String phoneNumber, String description,
 			List<OrderDetail> orderDetails) {
 		super();
 		this.id = id;
@@ -99,11 +99,11 @@ public class Order implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public Boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

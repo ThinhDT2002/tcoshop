@@ -98,12 +98,27 @@ create table Orders(
 	constraint FK_Orders_Users
 	foreign key (Username) references Users (Username),
 	Create_Date date,
-	Status bit,
+	Status varchar(30),
 	Address nvarchar(100),
 	Phone_Number varchar(10),
 	description nvarchar(300),
 	primary key (Id)
 )
+
+create table OrderStatus(
+	Id varchar(30),
+	StatusName nvarchar(40),
+	primary key(Id)
+)
+
+insert into OrderStatus
+values
+('ChoXacNhan',N'Chờ xác nhận'),
+('ChuanBi',N'Đang chuẩn bị hàng'),
+('XuatKho',N'Đã xuất kho'),
+('VanChuyen',N'Đang vận chuyển'),
+('DaGiaoHang',N'Đã giao hàng'),
+('HuyBo',N'Huỷ đơn')
 
 create table Orders_Detail(
 	Id int identity(1,1),
