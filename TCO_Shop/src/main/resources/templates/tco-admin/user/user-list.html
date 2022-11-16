@@ -32,13 +32,14 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 							<table  class="table">
 								<thead>
 									<tr>
-										<th>Profile</th>
-										<th>Name</th>
+										<th>Ảnh</th>
+										<th>Tên</th>
 										<th>Email</th>
-										<th>Password</th>
-										<th>FullName</th>
-										<th>Status</th>
-										<th>Action</th>
+										<th>Mật khẩu</th>
+										<th>Họ và tên</th>
+										<th>Số điện thoại</th>
+										<th>Trạng thái</th>
+										<th>Hoạt động</th>
 									</tr>
 								</thead>
 
@@ -49,6 +50,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc0ccdfc1c8c8dfc8c3ccedcac0ccc4c183cec2c0">{{user.email}}</a></td>
 										<td>{{user.password}}</td>
 										<td>{{user.fullname}}</td>
+										<td>{{user.phone}}</td>
 										<td>{{user.status ? 'Đã kích hoạt' : 'Chưa kích hoạt'}}</td>
 										<td>
 											<div class="btn-group mb-1">

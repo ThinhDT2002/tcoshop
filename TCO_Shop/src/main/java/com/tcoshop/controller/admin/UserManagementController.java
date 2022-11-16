@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcoshop.entity.User;
 
@@ -115,9 +116,21 @@ public class UserManagementController {
 	  String url = "http://localhost:8080/api/user/" + username;
 	  user = restTemplate.getForObject(url, User.class);
 	  model.addAttribute("user",user);
-	  return "tco-admin/user/add-user.html";
+	  return "tco-admin/user/user-edit.html";
   }
 
+  @RequestMapping("/tco-admin/userUpdate/{username}")
+  public String updateUser(RedirectAttributes redirectAttributes,
+		 @RequestParam("userAvatar") Optional<MultipartFile> multipartFile,
+		 @ModelAttribute("user") User user, Model model) {
+	  setAvatar(user, multipartFile);
+	  String url = "http://localhost:8080/api/user/" + user.getUsername();
+	  HttpEntity<User> httpEntity = new HttpEntity<User>(user);
+	  restTemplate.put(url, httpEntity);
+	  redirectAttributes.addFlashAttribute("message","Cập nhật tài khỏan " + user.getUsername() + " thành công!");
+	  redirectAttributes.addFlashAttribute("user", user);
+	  return "redirect:/tco-admin/userEdit/" + user.getUsername();
+  }
     private void setAvatar(User user, Optional<MultipartFile> multipartFile) {
         String fileName = "user.png";
         if(!multipartFile.get().isEmpty()) {
