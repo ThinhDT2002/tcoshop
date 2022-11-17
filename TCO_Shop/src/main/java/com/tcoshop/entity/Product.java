@@ -67,13 +67,15 @@ public class Product implements Serializable{
 	private Subcategory subcategory;
 	@OneToMany(mappedBy = "product")
 	private List<ProductVariation> productVariations;
+	@OneToMany(mappedBy =  "product")
+	private List<Review> reviews;
 	public Product() {
 		super();
 	}
 	
 	public Product(Integer id, String name, String image1, String image2, String image3, String image4, Double price,
 			String description, Integer stock, Integer discount, Category category, Subcategory subcategory,
-			List<ProductVariation> productVariations) {
+			List<ProductVariation> productVariations, List<Review> reviews) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -88,6 +90,7 @@ public class Product implements Serializable{
 		this.category = category;
 		this.subcategory = subcategory;
 		this.productVariations = productVariations;
+		this.reviews = reviews;
 	}
 
 	public Integer getId() {
@@ -178,5 +181,15 @@ public class Product implements Serializable{
 	public void setProductVariations(List<ProductVariation> productVariations) {
 		this.productVariations = productVariations;
 	}
+	@JsonIgnore
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+	
+	
 	
 }

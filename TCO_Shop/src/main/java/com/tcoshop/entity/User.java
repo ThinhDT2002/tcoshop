@@ -44,12 +44,14 @@ public class User implements Serializable{
 	private Role role;
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
+	@OneToMany(mappedBy = "user")
+	private List<Review> reviews;
 	public User() {
 		super();
 	}
 	
 	public User(String username, String password, String email, String fullname, String address, Integer phone, String introduce, Boolean status, String activateCode,
-            String forgotPasswordCode, String avatar, Role role, List<Order> orders) {
+            String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews) {
         super();
         this.username = username;
         this.password = password;
@@ -64,6 +66,7 @@ public class User implements Serializable{
         this.avatar = avatar;
         this.role = role;
         this.orders = orders;
+        this.reviews = reviews;
     }
 
     public String getUsername() {
@@ -152,5 +155,15 @@ public class User implements Serializable{
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
 	}
+	@JsonIgnore
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+	
+	
 	
 }

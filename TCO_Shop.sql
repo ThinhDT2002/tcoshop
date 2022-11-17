@@ -111,6 +111,18 @@ create table OrderStatus(
 	primary key(Id)
 )
 
+create table Reviews(
+	Id int identity(1,1),
+	Username varchar(30),
+	constraint FK_Reviews_Users
+	foreign key (Username) references Users(Username),
+	Product_Id int,
+	constraint FK_Reviews_Products
+	foreign key (Product_Id) references Products(Id),
+	Review_Time date,
+	primary key (Id)
+)
+
 insert into OrderStatus
 values
 ('ChoXacNhan',N'Chờ xác nhận'),

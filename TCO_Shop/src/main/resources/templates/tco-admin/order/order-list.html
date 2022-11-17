@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 <body>
-	<main>
+	<main ng-controller="order-ctrl">
 
 		<!-- CONTENT WRAPPER -->
 		<div class="ec-content-wrapper">
@@ -71,14 +71,24 @@
 										</thead>
 
 										<tbody>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+											<tr ng-repeat="order in orders">
+												<td>{{order.id}}</td>
+												<td>
+													<span ng-if="order.user.fullname !== null && order.user.fullname !== undefined">{{order.user.fullname}}</span>
+													<span ng-if="order.user.fullname === null || order.user.fullname === undefined">{{order.user.username}}</span>
+												</td>
+												<td>{{order.createDate | date:'dd/MM/yyyy'}}</td>
+												<td>{{order.phoneNumber}}</td>
+												<td>{{order.address}}</td>
+												<td>
+													<span ng-if="order.status == 'ChoXacNhan'">Chờ xác nhận</span>
+													<span ng-if="order.status == 'ChuanBi'">Chuẩn bị hàng</span>
+													<span ng-if="order.status == 'XuatKho'">Đã xuất kho</span>
+													<span ng-if="order.status == 'VanChuyen'">Đang vận chuyển</span>
+													<span ng-if="order.status == 'DaGiaoHang'">Đã giao hàng</span>
+													<span ng-if="order.status == 'HuyBo'">Huỷ đơn</span>
+												</td>
+												<td>{{order.description}}</td>
 												<td>
 													<div class="btn-group mb-1">
 														<a type="button" class="btn btn-outline-success">Info</a>
@@ -95,7 +105,7 @@
 														</div>
 													</div>
 												</td>
-												<td></td>												
+												<td>Xem chi tiết</td>												
 											</tr>
 										</tbody>
 									</table>

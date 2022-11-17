@@ -25,4 +25,8 @@ adminApp.config(function($routeProvider) {
 		templateUrl: " ",
 		controller: "category-ctrl"
 	})
+	.when("/tco-admin/order", {
+		templateUrl: " ",
+		controller: "order-ctrl"
+	})
 })
