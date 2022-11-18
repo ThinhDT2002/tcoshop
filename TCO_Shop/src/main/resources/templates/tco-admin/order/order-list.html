@@ -22,23 +22,17 @@
 					</div>
 				</div>
 				
-				<label for="pagerSize">Hiển thị: </label>
-				<select>
-					<option value="10">10</option>
-					<option value="15">15</option>
-					<option value="20">20</option>
+				<label>Hiển thị: </label>
+				<select ng-change="pagination()" ng-model="pageSize">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
 				</select>
-				<input type="text" placeholder="Tìm kiếm">
+				<input type="text" ng-model="orderSearch" placeholder="Tìm kiếm">
 				<label for="sortProduct">Bộ lọc</label>
-				<select>
-					<option value="name">A-Z</option>
-					<option value="-name">Z-A</option>
-					<option value="price">Giá tăng dần</option>
-					<option value="-price">Giá giảm dần</option>
-					<option value="discount">Khuyến mãi tăng dần</option>
-					<option value="-discount">Khuyến mãi giảm dần</option>
-					<option value="stock">Số lượng tăng dần</option>
-					<option value="-stock">Số lượng giảm dần</option>
+				<select ng-change="sort()" ng-model="orderProperty">
+					<option value="id">Mã đơn hàng ↑</option>
+					<option value="-id">Mã đơn hàng ↓</option>
 					<!-- 
 					<option value="category">Danh mục A-Z</option>
 					<option value="-category">Danh mục Z-A</option>
@@ -71,7 +65,7 @@
 										</thead>
 
 										<tbody>
-											<tr ng-repeat="order in orders">
+											<tr ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
 												<td>{{order.id}}</td>
 												<td>
 													<span ng-if="order.user.fullname !== null && order.user.fullname !== undefined">{{order.user.fullname}}</span>
@@ -113,11 +107,11 @@
 										<button class="btn btn-danger">
 											<b>First</b>
 										</button>
-										<button class="btn btn-primary">
+										<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage - 1" class="btn btn-primary">
 											<b>Previous</b>
 										</button>
-										<button class="btn btn-success"></button>
-										<button class="btn btn-primary">
+										<button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+										<button ng-disabled="currentPage >= orders.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary">
 											<b>Next</b>
 										</button>
 										<button class="btn btn-danger">
