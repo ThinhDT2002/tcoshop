@@ -100,11 +100,11 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 												<div class="ec-vendor-img-upload">
 													<div class="ec-vendor-main-img">
 														<div class="avatar-upload">
-														<div class="avatar-edit">
-															<input type='file' name="userAvatar" id="imageUpload" class="ec-image-upload"
+														<div style="margin-top: -80px;" class="avatar-edit">
+															<input style="opacity: 0; height: 0;" type="file" name="userAvatar" id="imageUpload" class="ec-image-upload"
 																accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
 															<label for="imageUpload"><img th:src="@{/assets-admin/img/icons/edit.svg}"
-																	class="svg_img header_svg" alt="edit" /></label>
+																	class="svg_img header_svg" alt="edit" /> Click vào để chọn ảnh</label>
 														</div>
 														<div class="avatar-preview ec-preview">
 															<div class="imagePreview ec-div-preview">
@@ -122,7 +122,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 										<div class="row mb-2">
 											<div class="col-lg-6">
 												<div class="form-group">
-													<label for="fullName">Họ và Tên</label>
+													<label style="margin-bottom: 15px;" for="fullName">Họ và Tên</label>
 													<input th:field = "*{fullname}" type="text" class="form-control" id="fullName"
 														placeholder="Họ và Tên">
 													
@@ -132,32 +132,32 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 										</div>
 
 										<div class="form-group mb-4">
-											<label for="userName">Tên tài khoản <span style="color: red;">*</span></label> <br>
+											<label style="margin-bottom: -20px; margin-top: 10px;" for="userName">Tên tài khoản <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<input th:field = "*{username}" type="text" class="form-control" id="userName"
 												placeholder="Tên tài khoản" readonly>
 										</div>
 
 										<div class="form-group mb-4">
-											<label for="email">Email <span style="color: red;">*</span></label> <br>
+											<label style="margin-bottom: -20px;" for="email">Email <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<input th:field="*{email}" type="email" class="form-control" id="email"
 												placeholder="tco-member@gmail.com" readonly>
 										</div>
 										<div class="form-group mb-4">
-											<label for="phone">Số điện thoại <span style="color: red;">*</span></label> <br>
+											<label style="margin-bottom: -20px;" for="phone">Số điện thoại <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<input th:field="*{phone}" type="text" class="form-control" id="phone"
 												placeholder="Số điện thoại">
 										</div>
 										<div class="form-group mb-4">
-											<label for="address">Địa chỉ <span style="color: red;">*</span></label> <br>
+											<label style="margin-bottom: -20px;" for="address">Địa chỉ <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<input th:field="*{address}" type="text" class="form-control" id="address"
 												placeholder="Địa chỉ">
 										</div>
 										<div class="form-group mb-4">
-											<label for="introduce">Mô tả <span style="color: red;">*</span></label> <br>
+											<label style="margin-bottom: -20px;" for="introduce">Mô tả <span style="color: red;">*</span></label> <br>
 											<label class="error-mess" ></label>
 											<textarea rows="4" class="form-control" id ="introduce" th:field = "*{introduce}">
 											</textarea>

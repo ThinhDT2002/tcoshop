@@ -20236,9 +20236,9 @@ button.btn-close.qty_close {
 }
 .ec-product-inner .ec-pro-content .ec-price {
   overflow: hidden;
-  height: 30px;
-  line-height: 30px;
-  font-size: 16px;
+  height: 45px;
+  line-height: 13px;
+  font-size: 7px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
