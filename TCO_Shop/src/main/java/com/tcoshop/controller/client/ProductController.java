@@ -15,8 +15,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import com.tcoshop.entity.Product;
+import com.tcoshop.entity.Review;
 import com.tcoshop.entity.Subcategory;
 import com.tcoshop.service.ProductService;
+import com.tcoshop.service.ReviewService;
 import com.tcoshop.service.SubcategoryService;
 
 @Controller
@@ -26,6 +28,9 @@ public class ProductController {
     
     @Autowired
     SubcategoryService subcategoryService;
+    
+    @Autowired
+    ReviewService reviewService;
 
     void page(Model model, Page<Product> list, @PathVariable("pageNumber") int currentPage) {
         int totalPages = list.getTotalPages();
@@ -70,7 +75,9 @@ public class ProductController {
     @RequestMapping("/product/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id) {
         Product item = productService.findById(id);
+      
         model.addAttribute("item", item);
+        
         return "tco-client/shop/product-gallery-full-width";
     }
 }

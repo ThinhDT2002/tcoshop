@@ -119,6 +119,7 @@ create table Reviews(
 	Product_Id int,
 	constraint FK_Reviews_Products
 	foreign key (Product_Id) references Products(Id),
+	Content nvarchar(200),
 	Review_Time date,
 	primary key (Id)
 )
@@ -145,6 +146,8 @@ create table Orders_Detail(
 	primary key (Id)
 )
 
+insert into Reviews (Username, Product_Id, Content, Review_Time)
+values('khangtg15054', 1,N'Tuyệt Vời','2022-01-01')
 
 insert into Roles(id, name)
 values('ADMIN','Administrators'),

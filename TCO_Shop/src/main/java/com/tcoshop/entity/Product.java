@@ -3,7 +3,9 @@ package com.tcoshop.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -67,7 +69,7 @@ public class Product implements Serializable{
 	private Subcategory subcategory;
 	@OneToMany(mappedBy = "product")
 	private List<ProductVariation> productVariations;
-	@OneToMany(mappedBy =  "product")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy =  "product", fetch=FetchType.EAGER)
 	private List<Review> reviews;
 	public Product() {
 		super();
