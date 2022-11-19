@@ -74,10 +74,8 @@ public class ProductController {
     // trang product detail
     @RequestMapping("/product/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id) {
-        Product item = productService.findById(id);
-      
-        model.addAttribute("item", item);
-        
+        Product item = productService.findById(id);      
+        model.addAttribute("item", item);        
         return "tco-client/shop/product-gallery-full-width";
     }
 }

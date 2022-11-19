@@ -40,11 +40,11 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <div class="ec-vendor-block">
                                 <div class="ec-vendor-block-items">
                                     <ul>
-                                        <li><a href="user-profile.html">Thông tin người dùng</a></li>
-                                        <li><a href="user-history.html">Lịch sử</a></li>
+                                        <li><a th:href="@{/user/profile}">Thông tin người dùng</a></li>
+                                        <li><a th:href="@{/order/history}">Lịch sử đặt hàng</a></li>
                                         <li><a href="wishlist.html">Danh sách</a></li>
-                                        <li><a href="cart.html">Giỏ hàng</a></li>
-                                        <li><a href="checkout.html">Thanh toán</a></li>
+                                        <li><a th:href="@{/cart}">Giỏ hàng</a></li>
+                                        <li><a th:href="@{/checkout}">Thanh toán</a></li>
                                         <li><a href="track-order.html">Theo dõi đơn hàng</a></li>
                                         <li><a href="user-invoice.html">Hóa đơn</a></li>
                                     </ul>
@@ -68,7 +68,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         <tr>
                                             <th scope="col">Hóa đơn</th>
                                             <th scope="col">Tên</th>
-                                            <th scope="col">Ngày</th>
+                                            <th scope="col">Ngày đặt</th>
                                             <th scope="col">Trạng thái</th>
                                             <th scope="col">Hành động</th>
                                         </tr>
@@ -79,8 +79,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <!--                                             <td><img class="prod-img" th:src="@{|/images/products/{{order.image1}}|}"
                                                     alt="product image"></td> -->
                                             <td><span>[[${currentUser.fullname}]]</span></td>
-                                            <td><span>{{item.createDate}}</span></td>
-                                            <td><span>{{item.status ? 'Đang giao' : 'Đang chờ'}}</span></td>
+                                            <td><span>{{item.createDate | date:"dd/MM/yyyy"}}</span></td>
+                                            <td><span>{{item.status}}</span></td>
                                             <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
                                                         href="#">View</a></span></td>
                                         </tr>

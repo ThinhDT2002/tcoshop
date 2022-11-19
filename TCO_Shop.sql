@@ -146,8 +146,7 @@ create table Orders_Detail(
 	primary key (Id)
 )
 
-insert into Reviews (Username, Product_Id, Content, Review_Time)
-values('khangtg15054', 1,N'Tuyệt Vời','2022-01-01')
+
 
 insert into Roles(id, name)
 values('ADMIN','Administrators'),
@@ -163,6 +162,7 @@ values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịn
 	   Tôi đến từ Bình Thuận. Hiện tại đang học lập trình viên Java tại trường cao đẳng FPT Polytechnic. Sở thích của tôi là nghe nhạc, chơi game, đá bóng. Tôi đang độc thân.'
 	  ,1,'0123456789','0123456789','avatar4.png', 'SADMIN'),
 	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'SADMIN')
+
 
 
 insert into Categories(id, name, icon)
@@ -306,3 +306,7 @@ values
 		-- loa vi tinh
 		('Loa Vi Tính A600','a600_1.jpg','a600_2.jpg','a600_3.jpg','a600_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		('Loa Bluetooth OLIKE S1 Đen','OLIKE_1.jpg','OLIKE_2.jpg','OLIKE_3.jpg','OLIKE_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA')
+
+
+insert into Reviews (Username, Product_Id, Content, Review_Time)
+	values('khangtg15054', 1,N'Tuyệt Vời','2022-01-01')

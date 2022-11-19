@@ -125,7 +125,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				$http.post("/api/orders", order).then(resp => {
 					alert("Đặt hàng thành công");
 					$scope.cart.clear();
-					location.href = "/order/detail/" + resp.data.id;
+					location.href = "/order/history";
 				}).catch(error => {
 					alert("Đặt hàng lỗi!")
 					console.log(error)
@@ -135,11 +135,6 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				alert("Bạn chưa có sản phẩm trong giỏ hàng")
 			}
 		},
-		
-		formatDate(today) {
-			var today = new Date();
-			today.toLocaleFormat('%d-%b-%Y'); // 30-Dec-2011
-		}
 
 	};
 

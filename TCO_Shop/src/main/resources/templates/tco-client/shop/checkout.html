@@ -3,8 +3,6 @@
 th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
 <main>
-
-
 <!-- Ec breadcrumb start -->
 <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
     <div class="container">
@@ -17,7 +15,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                     <div class="col-md-6 col-sm-12">
                         <!-- ec-breadcrumb-list start -->
                         <ul class="ec-breadcrumb-list">
-                            <li class="ec-breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="ec-breadcrumb-item"><a th:href="@{/home}">Home</a></li>
                             <li class="ec-breadcrumb-item active">Thanh Toán</li>
                         </ul>
                         <!-- ec-breadcrumb-list end -->
@@ -53,18 +51,25 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         </span>
                                     </span>
                                     <div class="ec-check-bill-form">
-                                        <form action="#" method="post">
+                                        <form action="#" method="post" name="formOrder">
                                             <span class="ec-bill-wrap ec-bill">
-                                                <label>Họ *</label>
+                                                <label>Họ và tên</label>
                                                 <input type="text" name="firstname" placeholder="Nhập họ..." required th:value=" ${currentUser.fullname}"/>
                                             </span>
                                             <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Điện thoại</label>
-                                                <input type="text" name="firstname" placeholder="Nhập điện thoại" required ng-model="order.phoneNumber"/>
+                                                <label>Điện thoại *</label>
+                                                <input type="text" name="phone" placeholder="Nhập điện thoại" ng-minlength="0" ng-maxlength="10" ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" required ng-model="order.phoneNumber"/>
+                                        		<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.phone.$error.required">Nhập số điện thoại</span>
+                                        		<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.phone.$error.pattern">Vui lòng nhập đúng định dạng số điện thoại</span>
+                                                
                                             </span>
                                             <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Địa chỉ</label>
-                                                <input type="text" name="lastname"  placeholder="Nhập địa chỉ" ng-model="order.address"/>
+                                                <label>Địa chỉ *</label>
+                                                <input type="text" name="address" placeholder="Nhập địa chỉ" ng-maxlength="100" required ng-model="order.address"/>
+                                                 <span ng-show="formOrder.address.$invalid || formOrder.address.$dirty">
+                                                	<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.address.$error.required">Vui lòng nhập địa chỉ</span>
+                                                	<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.address.$error.maxlength">Địa chỉ giới hạn 100 từ</span>
+                                                </span>                                               
                                             </span>
                                             <span class="ec-bill-wrap ec-bill-half">
                                                 <label>Thành Phố *</label>
@@ -124,7 +129,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 
                         </div>
                         <span class="ec-check-order-btn">
-                            <a class="btn btn-primary" ng-click="order.purchase()">Đặt Hàng</a>
+                            <a class="btn btn-primary" ng-click="order.purchase()" type="submit">Đặt Hàng</a>
                         </span>
                     </div>
                 </div>

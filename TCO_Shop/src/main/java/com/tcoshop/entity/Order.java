@@ -36,14 +36,14 @@ public class Order implements Serializable {
 	private Date createDate;
 	private String status;
 
-	@NotBlank(message = "Vui lòng nhập tên sản phẩm")
-	@Size(max = 50, message = "Tên sản phẩm tối đa 50 kí tự")
+	@NotBlank(message = "Vui lòng nhập địa chỉ")
+	@Size(max = 100, message = "Địa chỉ tối đa 100 kí tự")
 	private String address;
 	
 	private String description;
 	
-	@NotBlank(message = "Vui lòng nhập tên sản phẩm")
-	@Size(max = 50, message = "Tên sản phẩm tối đa 50 kí tự")
+	@NotBlank(message = "Vui lòng nhập số điện thoại")
+	@Size(max = 10, message = "Số điện thoại tối đa 10 số")
 	private String phoneNumber;
 
 	@JsonIgnore
