@@ -139,7 +139,12 @@ public class UserManagementController {
         if(user.getAvatar() == null || user.getAvatar().equals("user.png")) {
             user.setAvatar(fileName);
         } else {
-            user.setAvatar(user.getAvatar());
+        	if (!fileName.equals(user.getAvatar()) && !fileName.equals("user.png")) {
+				user.setAvatar(fileName);
+			} else {
+				user.setAvatar(user.getAvatar());
+			}
         }
+        
     }
 }

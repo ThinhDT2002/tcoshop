@@ -310,8 +310,4 @@ values
 
 
 insert into Reviews (Username, Product_Id, Content, Review_Time)
-<<<<<<< Updated upstream
 	values('khangtg15054', 1,N'Tuyệt Vời','2022-01-01')
-=======
-values('khangtg15054', 1,N'Tuyệt Vời','2022-01-01')
->>>>>>> Stashed changes
