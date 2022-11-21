@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tcoshop.entity.Category;
+import com.tcoshop.entity.User;
 import com.tcoshop.service.CategoryService;
 
 @Controller
@@ -62,7 +63,7 @@ public class CategoryManagementController {
 		String categoryIdRemoveSpace = categoryId.replaceAll(" ", "");
 		String categoryIdRemoveSpecialCharacter = categoryIdRemoveSpace.replaceAll("[^a-zA-Z0-9]", "");
 		category.setId(categoryIdRemoveSpecialCharacter);
-		setImageIcon(category, 1, imageIcon);
+		setImageIcon(category, imageIcon);
 		try {
 		    Category existCategory = categoryService.findById(categoryIdRemoveSpecialCharacter);
 		    if(existCategory != null) {
@@ -89,11 +90,16 @@ public class CategoryManagementController {
 			model.addAttribute("errorMessage", "Cập nhật danh mục thất bại!");
 			return "tco-admin/category/main-category";
 		}
-		setImageIcon(category, 1, imageIcon);
 		String url = "http://localhost:8080/api/categories/" + category.getId();
+		ResponseEntity<Category> responseEntity = restTemplate.getForEntity(url, Category.class);
+		Category categoryIcon = responseEntity.getBody();
+		category.setIcon(categoryIcon.getIcon());
+		String putUrl = "http://localhost:8080/api/categories/" + category.getId();
+		setImageIcon(categoryIcon, imageIcon);
 		HttpEntity<Category> httpEntity = new HttpEntity<Category>(category);
-		restTemplate.put(url, httpEntity);
+		restTemplate.put(putUrl, httpEntity);
 		redirecAttributes.addFlashAttribute("message","Sửa danh mục thành công!");
+		redirecAttributes.addFlashAttribute("categoryForm", category);
 		return "redirect:/tco-admin/category/" + category.getId();
 	}
 
@@ -105,22 +111,20 @@ public class CategoryManagementController {
 		return "redirect:/tco-admin/category";
 	}
 
-	private void setImageIcon(Category category, Integer IconNumber, Optional<MultipartFile> multipartFile) {
+	private void setImageIcon(Category category, Optional<MultipartFile> multipartFile) {
 		String fileName = "default-category.png";
 		if (!multipartFile.get().isEmpty()) {
 			fileName = multipartFile.get().getOriginalFilename();
 		}
-		switch (IconNumber) {
-		case 1: {
-			if (category.getIcon() == null || category.getIcon().equals("default-category.png")) {
+		if(category.getIcon() == null || category.getIcon().equals("default-category.png")) {
+			category.setIcon(fileName);
+		} else {
+			if(!fileName.equals(category.getIcon()) && !fileName.equals("default-category.png")){
 				category.setIcon(fileName);
 			} else {
 				category.setIcon(category.getIcon());
 			}
-			break;
 		}
-		default:
-			throw new IllegalArgumentException(IconNumber + "invalid");
-		}
+		
 	}
 }
