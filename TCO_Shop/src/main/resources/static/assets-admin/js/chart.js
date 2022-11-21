@@ -30,6 +30,26 @@
 28. STATISTICS
 
 ====== End ======*/
+adminApp.controller("dashboard-ctrl", function($http, $scope) {
+  $scope.turnover = 0;
+  $http.get("http://localhost:8080/api/report/turnover").then(resp => {
+      $scope.turnover = resp.data;
+  })
+
+  $scope.usercount = 0;
+  $http.get("http://localhost:8080/api/report/usercount").then(resp => {
+    $scope.usercount = resp.data;
+  })
+
+  $scope.allproductcount = 0;
+  $http.get("http://localhost:8080/api/report/getallproductcount").then(resp => {
+    $scope.allproductcount = resp.data;
+  })
+
+  $scope.allordercount = 0;
+  $http.get("http://localhost:8080/api/order/getallordercount").then(resp => {
+    $scope.allordercount = resp.data;
+  })
 
 $(document).ready(function() {
   "use strict";
@@ -2605,6 +2625,8 @@ if(typeof curveeml_ctx !== 'undefined' && curveeml_ctx !== null) {
       }
   });
 }
+
+})
 
 /*======== 34. Color Curve Bar Progressive Chart ========*/  
 

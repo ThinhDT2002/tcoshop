@@ -22,4 +22,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query("Select p From Product p where p.subcategory.id=?1")
     Page<Product> findBySubcategoryId(String scid, Pageable pageable);
+
+    @Query(value = "select sum(Products.stock) from Products", nativeQuery = true)
+    Integer getAllProductsCount();
 }
