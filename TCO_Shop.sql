@@ -105,11 +105,12 @@ create table Orders(
 	primary key (Id)
 )
 
-create table OrderStatus(
+create table Order_Status(
 	Id varchar(30),
-	StatusName nvarchar(40),
+	Status_Name nvarchar(40),
 	primary key(Id)
 )
+
 
 create table Reviews(
 	Id int identity(1,1),
@@ -124,7 +125,7 @@ create table Reviews(
 	primary key (Id)
 )
 
-insert into OrderStatus
+insert into Order_Status
 values
 ('ChoXacNhan',N'Chờ xác nhận'),
 ('ChuanBi',N'Đang chuẩn bị hàng'),
