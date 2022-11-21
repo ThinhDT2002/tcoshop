@@ -24,9 +24,9 @@
 				
 				<label>Hiển thị: </label>
 				<select ng-change="pagination()" ng-model="pageSize">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="20">20</option>
 				</select>
 				<input type="text" ng-model="orderSearch" placeholder="Tìm kiếm">
 				<label for="sortProduct">Bộ lọc</label>
@@ -60,14 +60,13 @@
 												<th>Trạng thái</th>
 												<th>Ghi chú</th>
 												<th>Tuỳ chỉnh</th>
-												<th></th>
 											</tr>
 										</thead>
-
+											<!-- cái bảng này đang bị search ngu -->
 										<tbody>
 											<tr ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
 												<td>{{order.id}}</td>
-												<td>
+												<td>									
 													<span ng-if="order.user.fullname !== null && order.user.fullname !== undefined">{{order.user.fullname}}</span>
 													<span ng-if="order.user.fullname === null || order.user.fullname === undefined">{{order.user.username}}</span>
 												</td>
@@ -75,17 +74,14 @@
 												<td>{{order.phoneNumber}}</td>
 												<td>{{order.address}}</td>
 												<td>
-													<span ng-if="order.status == 'ChoXacNhan'">Chờ xác nhận</span>
-													<span ng-if="order.status == 'ChuanBi'">Chuẩn bị hàng</span>
-													<span ng-if="order.status == 'XuatKho'">Đã xuất kho</span>
-													<span ng-if="order.status == 'VanChuyen'">Đang vận chuyển</span>
-													<span ng-if="order.status == 'DaGiaoHang'">Đã giao hàng</span>
-													<span ng-if="order.status == 'HuyBo'">Huỷ đơn</span>
+													<select ng-model = "order.status" ng-change="updateOrderStatus(order)">
+														<option ng-repeat = "os in orderStatus" ng-value="os.id">{{os.statusName}}</option>
+													</select>
 												</td>
 												<td>{{order.description}}</td>
 												<td>
 													<div class="btn-group mb-1">
-														<a type="button" class="btn btn-outline-success">Info</a>
+														<a type="button" class="btn btn-outline-success">Xem chi tiết</a>
 														<button type="button"
 															class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
 															data-bs-toggle="dropdown" aria-haspopup="true"
@@ -98,8 +94,7 @@
 															<a class="dropdown-item">Delete</a>
 														</div>
 													</div>
-												</td>
-												<td>Xem chi tiết</td>												
+												</td>											
 											</tr>
 										</tbody>
 									</table>

@@ -52,4 +52,9 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> findAll() {
 		return orderDAO.findAll();
 	}
+
+    @Override
+    public Order update(Order order) {
+        return orderDAO.save(order);
+    }
 }

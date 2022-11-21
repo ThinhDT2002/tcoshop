@@ -7,6 +7,8 @@ import com.tcoshop.entity.Order;
 
 public interface OrderService {
 	Order create(JsonNode orderData);
+	
+	Order update(Order order);
 
 	Order findById(Integer id);
 

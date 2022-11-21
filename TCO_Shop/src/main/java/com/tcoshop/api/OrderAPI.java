@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +38,12 @@ public class OrderAPI {
 	@GetMapping("/{username}")
 	public List<Order> getByUsername(@PathVariable("username") String username){
 		return orderService.findByUsername(username);
+	}
+	
+	@PutMapping("/{id}")
+	public void updateOrderStatus(@RequestBody Order order, @PathVariable("id") Integer orderId) {
+	    Order orderInDtb = orderService.findById(orderId);
+	    orderInDtb.setStatus(order.getStatus());
+	    orderService.update(orderInDtb);
 	}
 }
