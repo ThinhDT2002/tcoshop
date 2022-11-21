@@ -118,7 +118,12 @@ public class UserController {
     public String submitUser(Model model, Authentication authentication, RedirectAttributes redirectAttributes,
     		@RequestParam("userAvatar") Optional<MultipartFile> multipartFile, @ModelAttribute("userEdit") User user) {
     	
+        
     	String username = authentication.getName();
+    	String getUrl = "http://localhost:8080/api/user/" + username;
+    	ResponseEntity<User> responseEntity = restTemplate.getForEntity(getUrl, User.class);
+    	User userAvatar = responseEntity.getBody();
+    	user.setAvatar(userAvatar.getAvatar());
     	String putUrl = "http://localhost:8080/api/user/" + username;
     	setAvatar(user, multipartFile);
     	HttpEntity<User> httpEntity = new HttpEntity<User>(user);
@@ -223,7 +228,12 @@ public class UserController {
     	if(user.getAvatar() == null || user.getAvatar().equals("user.png")) {
     		user.setAvatar(fileName);
     	} else {
-    		user.setAvatar(user.getAvatar());
+    	    if(!fileName.equals(user.getAvatar()) && !fileName.equals("user.png")) {
+    	        user.setAvatar(fileName);
+    	    } else {
+    	        user.setAvatar(user.getAvatar());
+    	    }
+    		
     	}
     }
 }
