@@ -1,218 +1,276 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+	th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
-<main>
+	<main>
 
-<!-- Ec breadcrumb start -->
-<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="row ec_breadcrumb_inner">
-                    <div class="col-md-6 col-sm-12">
-                        <h2 class="ec-breadcrumb-title">Theo dõi đơn hàng</h2>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <!-- ec-breadcrumb-list start -->
-                        <ul class="ec-breadcrumb-list">
-                            <li class="ec-breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-                            <li class="ec-breadcrumb-item active">Đơn Hàng</li>
-                        </ul>
-                        <!-- ec-breadcrumb-list end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Ec breadcrumb end -->
+		<!-- Ec breadcrumb start -->
+		<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="row ec_breadcrumb_inner">
+							<div class="col-md-6 col-sm-12">
+								<h2 class="ec-breadcrumb-title">Theo dõi đơn hàng</h2>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<!-- ec-breadcrumb-list start -->
+								<ul class="ec-breadcrumb-list">
+									<li class="ec-breadcrumb-item"><a th:href="@{/home}">Trang
+											chủ</a></li>
+									<li class="ec-breadcrumb-item active">Đơn Hàng</li>
+								</ul>
+								<!-- ec-breadcrumb-list end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Ec breadcrumb end -->
 
-<!-- Ec Track Order section -->
-<section class="ec-page-content section-space-p">
-    <div class="container">
-        <!-- Track Order Content Start -->
-            <!-- Track Order Content 1 -->
-            <div class="ec-trackorder-content col-md-12">
-                <div class="ec-trackorder-inner">
-                    <div class="ec-trackorder-top">
-                        <h2 class="ec-order-id">đơn hàng #6152</h2>
-                        <div class="ec-order-detail">
-                            <div>Dự kiến sẽ đến 19/09/2022</div>
-                            <div>Mã đơn hàng <span>v534hb</span></div>
-                        </div>
-                    </div>
-                    <div class="ec-trackorder-bottom">
-                        <div class="ec-progress-track">
-                            <ul id="ec-progressbar">
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_1.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đã được xử lý</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_2.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đang được chuẩn bị</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_3.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">
-                                            đã xuất kho</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_4.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title"> Đang được <br> vận chuyển</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_5.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">Đã giao</span></li>
+		<!-- Ec Track Order section -->
+		<section class="ec-page-content section-space-p" th:object="${order}">
+			<div class="container">
+				<!-- Track Order Content Start -->
+				<!-- Track Order Content 1 -->
+				<div class="ec-trackorder-content col-md-12" ng-if="order.Status == ChoXacNhan">
+					<div class="ec-trackorder-inner">
+						<div class="ec-trackorder-top">
+							<h2 class="ec-order-id">đơn hàng #6152</h2>
+							<div class="ec-order-detail">
+								<div>Dự kiến sẽ đến 19/09/2022</div>
+								<div>
+									Mã đơn hàng <span>[[*{id}]]</span>
+								</div>
+							</div>
+						</div>
+						<div class="ec-trackorder-bottom">
+							<div class="ec-progress-track">
+								<ul id="ec-progressbar">
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Chờ xác nhận</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_2.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đang được chuẩn bị</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_3.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã xuất kho</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title"> Đang được <br> vận chuyển
+									</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã giao</span></li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-<!-- Track Order Content 2 -->
-            <div class="ec-trackorder-content col-md-12">
-                <div class="ec-trackorder-inner">
-                    <div class="ec-trackorder-top">
-                        <h2 class="ec-order-id">đơn hàng #6152</h2>
-                        <div class="ec-order-detail">
-                            <div>Dự kiến sẽ đến 19/09/2022</div>
-                            <div>Mã đơn hàng <span>v534hb</span></div>
-                        </div>
-                    </div>
-                    <div class="ec-trackorder-bottom">
-                        <div class="ec-progress-track">
-                            <ul id="ec-progressbar">
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_1.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đã được xử lý</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_2.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đang được chuẩn bị</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_3.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">
-                                            đã xuất kho</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_4.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title"> Đang được <br> vận chuyển</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_5.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">Đã giao</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Track Order Content 2 -->
+				<div class="ec-trackorder-content col-md-12">
+					<div class="ec-trackorder-inner">
+						<div class="ec-trackorder-top">
+							<h2 class="ec-order-id">đơn hàng #6152</h2>
+							<div class="ec-order-detail">
+								<div>Dự kiến sẽ đến 19/09/2022</div>
+								<div>
+									Mã đơn hàng <span>v534hb</span>
+								</div>
+							</div>
+						</div>
+						<div class="ec-trackorder-bottom">
+							<div class="ec-progress-track">
+								<ul id="ec-progressbar">
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Chờ xác nhận</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">đang được chuẩn bị</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_3.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title"> đã xuất kho</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title"> Đang được <br> vận chuyển
+									</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã giao</span></li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-<!-- Track Order Content 3 -->
-            <div class="ec-trackorder-content col-md-12">
-                <div class="ec-trackorder-inner">
-                    <div class="ec-trackorder-top">
-                        <h2 class="ec-order-id">đơn hàng #6152</h2>
-                        <div class="ec-order-detail">
-                            <div>Dự kiến sẽ đến 19/09/2022</div>
-                            <div>Mã đơn hàng <span>v534hb</span></div>
-                        </div>
-                    </div>
-                    <div class="ec-trackorder-bottom">
-                        <div class="ec-progress-track">
-                            <ul id="ec-progressbar">
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_1.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đã được xử lý</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_2.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đang được chuẩn bị</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_3.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">
-                                            đã xuất kho</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_4.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title"> Đang được <br> vận chuyển</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_5.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">Đã giao</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Track Order Content 3 -->
+				<div class="ec-trackorder-content col-md-12">
+					<div class="ec-trackorder-inner">
+						<div class="ec-trackorder-top">
+							<h2 class="ec-order-id">đơn hàng #6152</h2>
+							<div class="ec-order-detail">
+								<div>Dự kiến sẽ đến 19/09/2022</div>
+								<div>
+									Mã đơn hàng <span>v534hb</span>
+								</div>
+							</div>
+						</div>
+						<div class="ec-trackorder-bottom">
+							<div class="ec-progress-track">
+								<ul id="ec-progressbar">
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Chờ xác nhận</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">đang được chuẩn bị</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title"> đã xuất kho</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title"> Đang được <br> vận chuyển
+									</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã giao</span></li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-<!-- Track Order Content 4 -->
-            <div class="ec-trackorder-content col-md-12">
-                <div class="ec-trackorder-inner">
-                    <div class="ec-trackorder-top">
-                        <h2 class="ec-order-id">đơn hàng #6152</h2>
-                        <div class="ec-order-detail">
-                            <div>Dự kiến sẽ đến 19/09/2022</div>
-                            <div>Mã đơn hàng <span>v534hb</span></div>
-                        </div>
-                    </div>
-                    <div class="ec-trackorder-bottom">
-                        <div class="ec-progress-track">
-                            <ul id="ec-progressbar">
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_1.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đã được xử lý</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_2.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đang được chuẩn bị</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_3.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">
-                                            đã xuất kho</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_4.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title"> Đang được <br> vận chuyển</span></li>
-                                <li class="step0"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_5.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">Đã giao</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Track Order Content 4 -->
+				<div class="ec-trackorder-content col-md-12">
+					<div class="ec-trackorder-inner">
+						<div class="ec-trackorder-top">
+							<h2 class="ec-order-id">đơn hàng #6152</h2>
+							<div class="ec-order-detail">
+								<div>Dự kiến sẽ đến 19/09/2022</div>
+								<div>
+									Mã đơn hàng <span>v534hb</span>
+								</div>
+							</div>
+						</div>
+						<div class="ec-trackorder-bottom">
+							<div class="ec-progress-track">
+								<ul id="ec-progressbar">
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Chờ xác nhận</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">đang được chuẩn bị</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title"> đã xuất kho</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title"> Đang được <br> vận chuyển
+									</span></li>
+									<li class="step0"><span class="ec-track-icon"> <img
+											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
+										class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã giao</span></li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Track Order Content 5 -->
-            <div class="ec-trackorder-content col-md-12">
-                <div class="ec-trackorder-inner">
-                    <div class="ec-trackorder-top">
-                        <h2 class="ec-order-id">đơn hàng #6152</h2>
-                        <div class="ec-order-detail">
-                            <div>Dự kiến sẽ đến 19/09/2022</div>
-                            <div>Mã đơn hàng <span>v534hb</span></div>
-                        </div>
-                    </div>
-                    <div class="ec-trackorder-bottom">
-                        <div class="ec-progress-track">
-                            <ul id="ec-progressbar">
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_1.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đã được xử lý</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_2.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">đang được chuẩn bị</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_3.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">
-                                            đã xuất kho</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_4.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title"> Đang được <br> vận chuyển</span></li>
-                                <li class="step0 active"><span class="ec-track-icon"> <img
-                                            src="assets/images/icons/track_5.png" alt="track_order"></span><span
-                                        class="ec-progressbar-track"></span><span class="ec-track-title">Đã giao</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Track Order Content 5 -->
+				<div class="ec-trackorder-content col-md-12">
+					<div class="ec-trackorder-inner">
+						<div class="ec-trackorder-top">
+							<h2 class="ec-order-id">đơn hàng #6152</h2>
+							<div class="ec-order-detail">
+								<div>Dự kiến sẽ đến 19/09/2022</div>
+								<div>
+									Mã đơn hàng <span>v534hb</span>
+								</div>
+							</div>
+						</div>
+						<div class="ec-trackorder-bottom">
+							<div class="ec-progress-track">
+								<ul id="ec-progressbar">
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Chờ xác nhận</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_2.png}"alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">đang được chuẩn bị</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title"> đã xuất kho</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title"> Đang được <br> vận chuyển
+									</span></li>
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/track_5.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã giao</span></li>
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Track Order Content end -->
-    </div>
-</section>
-<!-- End Track Order section -->
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Tên</th>
+							<th scope="col">Giá</th>
+							<th scope="col">Số lượng</th>
+							<th scope="col">Tổng</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="detail:*{orderDetails}" th:object="${detail}">
+							<th scope="row">[[*{product.id}]]</th>
+							<td>[[*{product.name}]]</td>
+							<td>[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
+							<td>[[*{quantity}]]</td>
+							<td>[[*{#numbers.formatDecimal(price*quantity, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
+						</tr>
+					</tbody>
+
+				</table>
+				<div style="margin-left: 75%;"><h4 th:text="'Thành tiền: ' + ${#numbers.formatDecimal(sum, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h4></div>
+				<!-- Track Order Content end -->
+			</div>
+		</section>
+		<!-- End Track Order section -->
 
 
-</main>   
+	</main>
 </body>
 </html>

@@ -82,7 +82,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <td><span>{{item.createDate | date:"dd/MM/yyyy"}}</span></td>
                                             <td><span>{{item.status}}</span></td>
                                             <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                        href="#">View</a></span></td>
+                                                        th:href="@{|/order/track/{{item.id}}|}">View</a></span></td>
                                         </tr>
                                     </tbody>
                                 </table>

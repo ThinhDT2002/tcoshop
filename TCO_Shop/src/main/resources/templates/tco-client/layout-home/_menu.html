@@ -42,7 +42,7 @@
 								href="javascript:void(0)">Danh mục</a>
 								<ul class="sub-menu" style="width:250px;" >
 									 <li th:each="category : ${categories}" class="dropdown position-static">
-									 <a href="javascript:void(0)"><img th:src="@{|/images/category/${category.icon}|}" style="width: 20px; margin-right: 10px;">[[${category.name}]] <i
+									 <a th:href="@{|/product/list?cid=${category.id}|}"><img th:src="@{|/images/category/${category.icon}|}" style="width: 20px; margin-right: 10px;">[[${category.name}]] <i
 											class="ecicon eci-angle-right"></i></a>
 										<ul class="sub-menu sub-menu-child">
 											<li th:each="subcategory : ${category.subcategories}"> <img th:src="@{|/images/subcategory/${subcategory.icon}|}" style="width: 20px"> <a th:href="@{|/product/list?scid=${subcategory.id}|}" >[[${subcategory.name}]]</a></li>

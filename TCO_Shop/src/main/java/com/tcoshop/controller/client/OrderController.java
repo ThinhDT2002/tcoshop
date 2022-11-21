@@ -1,5 +1,7 @@
 package com.tcoshop.controller.client;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import com.tcoshop.entity.Order;
+import com.tcoshop.entity.OrderDetail;
 import com.tcoshop.entity.User;
 import com.tcoshop.service.OrderService;
 
@@ -36,8 +40,17 @@ public class OrderController {
 		return "tco-client/order/user-history";
 	}
 	
-	@RequestMapping("/order/track")
-	public String track(Model model) {
+	@RequestMapping("/order/track/{id}")
+	public String track(Model model, @PathVariable("id") Integer id) {
+		Order order = orderService.findById(id);
+		model.addAttribute("order", order);
+		List<OrderDetail> ordersDetail = order.getOrderDetails();
+		double tongTien = 0;
+		for(OrderDetail orderDetail : ordersDetail) {
+			double giaSanPham = (orderDetail.getProduct().getPrice() * ((100.0 - orderDetail.getProduct().getDiscount()) / 100)) * orderDetail.getQuantity();
+			tongTien += giaSanPham;
+		}
+		model.addAttribute("sum", tongTien);
 		return "tco-client/shop/track-order";
 	}
 }
