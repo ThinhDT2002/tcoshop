@@ -8,4 +8,6 @@ public interface ReviewService {
 	List<Review> findAll();
 	
 	Review findById(Integer id);
+	
+	List<Review> findByProductId(Integer pid);
 }

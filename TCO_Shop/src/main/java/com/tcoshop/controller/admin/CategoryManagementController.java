@@ -95,7 +95,7 @@ public class CategoryManagementController {
 		Category categoryIcon = responseEntity.getBody();
 		category.setIcon(categoryIcon.getIcon());
 		String putUrl = "http://localhost:8080/api/categories/" + category.getId();
-		setImageIcon(categoryIcon, imageIcon);
+		setImageIcon(category, imageIcon);
 		HttpEntity<Category> httpEntity = new HttpEntity<Category>(category);
 		restTemplate.put(putUrl, httpEntity);
 		redirecAttributes.addFlashAttribute("message","Sửa danh mục thành công!");

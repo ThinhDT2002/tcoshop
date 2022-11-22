@@ -33,4 +33,8 @@ adminApp.config(function($routeProvider) {
 		templateUrl: " ",
 		controller: "dashboard-ctrl"
 	})
+	.when("/tco-admin/review", {
+		templateUrl: " ",
+		controller: "review-ctrl"
+	})
 })

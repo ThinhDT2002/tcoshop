@@ -23,19 +23,27 @@ public class Review implements Serializable{
     @ManyToOne
     @JoinColumn(name = "Product_Id")
     private Product product;
+    private String content;
     @Column(name = "Review_Time")
     private Date time;
     public Review() {
         super();
     }
-    public Review(Integer id, User user, Product product, Date time) {
-        super();
-        this.id = id;
-        this.user = user;
-        this.product = product;
-        this.time = time;
-    }
-    public Integer getId() {
+   
+    
+
+	
+
+	public Review(Integer id, User user, Product product, String content, Date time) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.product = product;
+		this.content = content;
+		this.time = time;
+	}
+
+	public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
@@ -59,6 +67,12 @@ public class Review implements Serializable{
     public void setTime(Date time) {
         this.time = time;
     }
-    
+    public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
     
 }

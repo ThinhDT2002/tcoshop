@@ -73,9 +73,21 @@ public class ProductController {
 
     // trang product detail
     @RequestMapping("/product/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id) {
-        Product item = productService.findById(id);      
-        model.addAttribute("item", item);        
+    public String detail(Model model, @PathVariable("id") Integer id,
+    		@RequestParam("pid") Optional<Integer> pid) {
+    		if(pid.isPresent()) {
+    			Product item = productService.findById(id);
+    			List<Review> review = reviewService.findByProductId(pid.get());
+    			model.addAttribute("reviews",review);
+    			model.addAttribute("item", item);
+    		} else {
+    			Product item = productService.findById(id);
+    			List<Review> review = reviewService.findAll();
+    			model.addAttribute("reviews",review);
+    			model.addAttribute("item", item);
+    		}
+			
+	
         return "tco-client/shop/product-gallery-full-width";
     }
 }

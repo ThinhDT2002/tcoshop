@@ -23,6 +23,13 @@ public class ReviewServiceImpl implements ReviewService{
 	public Review findById(Integer id) {
 		return reviewDao.findById(id).get();
 	}
+
+	@Override
+	public List<Review> findByProductId(Integer pid) {
+		return reviewDao.findByProductId(pid);
+	}
+
+	
 	
 	
 }

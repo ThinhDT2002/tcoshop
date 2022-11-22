@@ -180,7 +180,11 @@ public class ProductManagementController {
 				if(product.getImage1() == null || product.getImage1().equals("default-product.png")) {
 					product.setImage1(fileName);
 				} else {
-					product.setImage1(product.getImage1());
+					if(!fileName.equals(product.getImage1()) && !fileName.equals("default-product.png")) {
+						product.setImage1(fileName);
+					} else {
+						product.setImage1(product.getImage1());
+					}
 				}
 				break;
 			}
@@ -188,7 +192,11 @@ public class ProductManagementController {
 				if(product.getImage2() == null || product.getImage2().equals("default-product.png")) {
 					product.setImage2(fileName);
 				} else {
-					product.setImage2(product.getImage2());
+					if (!fileName.equals(product.getImage2()) && !fileName.equals("default-product.png")) {
+						product.setImage2(fileName);
+					} else {
+						product.setImage2(product.getImage2());
+					}
 				}
 				break;
 			}
@@ -196,7 +204,11 @@ public class ProductManagementController {
 				if(product.getImage3() == null || product.getImage3().equals("default-product.png")) {
 					product.setImage3(fileName);
 				} else {
-					product.setImage3(product.getImage3());
+					if (!fileName.equals(product.getImage3()) && !fileName.equals("default-product.png")) {
+						product.setImage3(fileName);
+					} else {
+						product.setImage3(product.getImage3());
+					}
 				}
 				break;
 			}
@@ -204,7 +216,11 @@ public class ProductManagementController {
 				if(product.getImage4() == null || product.getImage4().equals("default-product.png")) {
 					product.setImage4(fileName);
 				} else {
-					product.setImage4(product.getImage4());
+					if (!fileName.equals(product.getImage4()) && !fileName.equals("default-product.png")) {
+						product.setImage4(fileName);
+					} else {
+						product.setImage4(product.getImage4());
+					}
 				}
 				break;
 			}

@@ -208,13 +208,17 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <div id="ec-spt-nav-review" class="tab-pane fade">
                                 <div class="row">
                                     <div class="ec-t-review-wrapper">
-                                        <div class="ec-t-review-item">
+                                   
+                                        <div class="ec-t-review-item" th:each = "review: ${reviews}">
                                             <div class="ec-t-review-avtar">
                                                 <img th:src="@{/assets/images/review-image/1.jpg}" alt="" />
                                             </div>
+                                           
                                             <div class="ec-t-review-content">
                                                 <div class="ec-t-review-top">
-                                                    <div class="ec-t-review-name">Jeny Doe</div>
+                                                    <div class="ec-t-review-name" >
+                                                    <span th:text = "${review.user.username}"></span>
+                                                    </div>
                                                     <div class="ec-t-review-rating">
                                                         <i class="ecicon eci-star fill"></i>
                                                         <i class="ecicon eci-star fill"></i>
@@ -222,11 +226,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                         <i class="ecicon eci-star fill"></i>
                                                         <i class="ecicon eci-star-o"></i>
                                                     </div>
+                                                    
                                                 </div>
                                                 <div class="ec-t-review-bottom">
-                                                    <p>
-                                                    </p>
+                                                    <span th:text = ${review.content}></span>
                                                 </div>
+                                                 
                                             </div>
                                         </div>
 
