@@ -18952,6 +18952,12 @@ code {
   border: 1px solid #f3f3f3;
   right: 0;
 }
+.sign-inup{
+  background-image: url(../img/banner/banner_Login_Admin.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+}
 
 .sign-inup .container {
   position: relative;
@@ -18986,6 +18992,7 @@ code {
 
 /*===== REGISTRATION =====*/
 .sign-inup .card {
+  box-shadow: 10px 5px 5px #cdcecf5c, -1em 0 1.4em #937be8b3;
   overflow: hidden;
 }
 @media (max-width: 991.98px) {

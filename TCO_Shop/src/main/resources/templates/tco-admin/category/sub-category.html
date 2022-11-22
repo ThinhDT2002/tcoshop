@@ -3,16 +3,15 @@
 	th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 
 <body>
-	<main ng-controller = "subcategory-ctrl">
+	<main ng-controller="subcategory-ctrl">
 		<!-- CONTENT WRAPPER -->
 		<div class="ec-content-wrapper">
 			<div class="content">
-				<div
-					class="breadcrumb-wrapper breadcrumb-wrapper-2 breadcrumb-contacts">
+				<div class="breadcrumb-wrapper breadcrumb-wrapper-2 breadcrumb-contacts">
 					<h1>Sub Category</h1>
 					<p class="breadcrumbs">
-						<span><a href="index.html">Home</a></span> <span><i
-							class="mdi mdi-chevron-right"></i></span>Sub Category
+						<span><a href="index.html">Home</a></span> <span><i class="mdi mdi-chevron-right"></i></span>Sub
+						Category
 					</p>
 				</div>
 				<div class="row">
@@ -22,65 +21,77 @@
 								<div class="ec-cat-form">
 									<h4>Add Sub Category</h4>
 
-									<form name="frmSubcategory" enctype="multipart/form-data" method = "post" novalidate>
+									<form name="frmSubcategory" enctype="multipart/form-data" method="post" novalidate>
 										<div class="row ec-vendor-uploads">
-										<div class="ec-vendor-img-upload">
+											<div class="ec-vendor-img-upload">
 												<div class="ec-vendor-main-img">
-												
+
 													<div class="avatar-upload">
-													<div class="avatar-edit">
-														<input type='file' name="file" id="imageUpload" class="ec-image-upload"
-															accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
-														<label for="imageUpload"><img th:src="@{/assets-admin/img/icons/edit.svg}"
-																class="svg_img header_svg" alt="edit" /></label>
-													</div>
-													<div class="avatar-preview ec-preview">
-														<div class="imagePreview ec-div-preview">
-															<img class="ec-image-preview"
-																ng-src="{{'/images/subcategory/' + form.icon}}"
-																alt="edit" />
+														<div class="avatar-edit">
+															<input type='file' name="file" id="imageUpload"
+																class="ec-image-upload" accept=".png, .jpg, .jpeg"
+																onchange="angular.element(this).scope().imageChanged(this.files)" />
+															<label for="imageUpload"><img
+																	th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="avatar-preview ec-preview">
+															<div class="imagePreview ec-div-preview">
+																<img class="ec-image-preview"
+																	ng-src="{{'/images/subcategory/' + form.icon}}"
+																	alt="edit" />
+															</div>
 														</div>
 													</div>
 												</div>
+											</div>
+											<div class="form-group row">
+												<label for="text" class="col-12 col-form-label">Mã thương hiệu</label>
+												<div class="col-12">
+													<input ng-model="form.id" id="text" name="id" class="form-control"
+														type="text" ng-maxlength="10" ng-required=true>
+													<span ng-show="frmSubcategory.id.$error.required">Vui lòng nhập mã
+														thương hiệu</span>
+													<span ng-show="frmSubcategory.id.$error.maxlength">Vui lòng nhập ít
+														hơn 10 kí tự</span>
 												</div>
 											</div>
-										<div class="form-group row">
-											<label for="text" class="col-12 col-form-label">Mã thương hiệu</label>
-											<div class="col-12">
-												<input ng-model = "form.id" id="text" name="id"
-													class="form-control" type="text" ng-maxlength="10" ng-required=true >
-												<span ng-show="frmSubcategory.id.$error.required">Vui lòng nhập mã thương hiệu</span>
-												<span ng-show="frmSubcategory.id.$error.maxlength">Vui lòng nhập ít hơn 10 kí tự</span>
-											</div>
-										</div>
 
-										<div class="form-group row">
-											<label for="slug" class="col-12 col-form-label">Tên thương hiệu</label>
-											<div class="col-12">
-												<input ng-model = "form.name" id="slug" name="name"
-													class="form-control" type="text" ng-maxlength="40" ng-required= true>
-												<span ng-show="frmSubcategory.name.$error.required">Vui lòng nhập tên thương hiệu</span>
-												<span ng-show="frmSubcategory.name.$error.maxlength">Vui lòng nhập ít hơn 40 kí tự</span>
+											<div class="form-group row">
+												<label for="slug" class="col-12 col-form-label">Tên thương hiệu</label>
+												<div class="col-12">
+													<input ng-model="form.name" id="slug" name="name"
+														class="form-control" type="text" ng-maxlength="40"
+														ng-required=true>
+													<span ng-show="frmSubcategory.name.$error.required">Vui lòng nhập
+														tên thương hiệu</span>
+													<span ng-show="frmSubcategory.name.$error.maxlength">Vui lòng nhập
+														ít hơn 40 kí tự</span>
+												</div>
 											</div>
-										</div>
 
-										<div class="form-group row">
-											<label for="parent-category" class="col-12 col-form-label">Danh mục</label>
-											<div class="col-12">
-												<select ng-model = "form.category.id" id="parent-category" name="category"
-													class="custom-select" ng-required=true>
-													<option ng-repeat = "c in cates" ng-value="c.id">{{c.name}}</option>
-												</select>
-												<span ng-show="frmSubcategory.category.$error.required">Vui lòng chọn danh mục</span>
+											<div class="form-group row">
+												<label for="parent-category" class="col-12 col-form-label">Danh
+													mục</label>
+												<div class="col-12">
+													<select ng-model="form.category.id" id="parent-category"
+														name="category" class="custom-select" ng-required=true>
+														<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}
+														</option>
+													</select>
+													<span ng-show="frmSubcategory.category.$error.required">Vui lòng
+														chọn danh mục</span>
+												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-12">
-												<button ng-if = "form.id == null" ng-click = "create()" class="btn btn-primary">Thêm</button>
-												<button ng-if = "form.id != null" ng-click = "update()" class="btn btn-primary">Cập nhật</button>
-												<button ng-click = "reset()" class="btn btn-primary">Làm mới</button>
+											<div class="row">
+												<div class="col-12">
+													<button ng-if="form.id == null" ng-click="create()"
+														class="btn btn-primary">Thêm</button>
+													<button ng-if="form.id != null" ng-click="update()"
+														class="btn btn-primary">Cập nhật</button>
+													<button ng-click="reset()" class="btn btn-primary">Làm mới</button>
+												</div>
 											</div>
-										</div>
 										</div>
 									</form>
 
@@ -88,84 +99,112 @@
 							</div>
 						</div>
 					</div>
-					
-					<div class="col-xl-8 col-lg-12">
-					
-					<input type="text" ng-model="subcategory" placeholder="Tìm kiếm">
-					
-					<h6>Tổng sản phẩm: {{pager.totalQuantity}}</h6>
-					
-					<label for="pagerSize">Hiển thị: </label>
-						<select ng-change="pager.repaginate()"
-							 ng-model="pager.size" convert-to-number>
-							<option value="10">10</option>
-							<option value="15">15</option>
-							<option value="20">20</option>
-						</select>
-					<label for="sortSubcategory">Bộ lọc</label>
-					<select ng-change="pager.sortBy()" ng-model="pager.sortProperty">
-					<option value="id">ID A-Z</option>
-					<option value="-id">ID Z-A</option>
-					<option value="name">A-Z</option>
-					<option value="-name">Z-A</option>
-					<option value="category.id">Category A-Z</option>
-					<option value="-category.id">Category Z-A</option>
-					
-				</select>
-						<div class="ec-cat-list card card-default">
-							<div class="card-body">
-								<div class="table-responsive">
-									<table class="table">
-										<thead>
-											<tr>
-												<th>Ảnh</th>
-												<th> <button ng-click = "pager.sortBy('id')"></button> Mã thương hiệu</th>
-												<th ng-click = "pager.sortBy('name')">Tên thương hiệu</th>
-												<th>Danh mục</th>
-												<th>Action</th>
-											</tr>
-										</thead>
 
-										<tbody>
-											<tr ng-repeat = "sub in pager.subs | filter: subcategory | orderBy: pager.sortProperty">
-												<td><img class="cat-thumb"
-													th:src="@{|/images/subcategory/{{sub.icon}}|}"/></td>
-												<td>{{sub.id}}</td>
-												<td>{{sub.name}}</td>
-												<td><span class="badge badge-success">{{sub.category.name}}</span></td>
-												<td>
-													<div class="btn-group">
-														<button type="button" class="btn btn-outline-success">Info</button>
-														<button type="button"
-															class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-															data-bs-toggle="dropdown" aria-haspopup="true"
-															aria-expanded="false" data-display="static">
-															<span class="sr-only">Info</span>
-														</button>
-														<div class="dropdown-menu">
-															<button ng-click = "edit(sub)" class="dropdown-item" >Edit</button> 
-															<button ng-click = "delete(sub)" class="dropdown-item">Delete</button>
-														</div>
-													</div>
-												</td>
-											</tr>			
-										</tbody>
-									</table>
-									<div class="panel-footer text-center">
-										<button ng-click="pager.first()" class="btn btn-danger">
-											<b>First</b>
-										</button>
-										<button ng-click="pager.prev()" class="btn btn-primary">
-											<b>Previous</b>
-										</button>
-										<button class="btn btn-success">{{pager.page + 1}} of
-											{{pager.count}}</button>
-										<button ng-click="pager.next()" class="btn btn-primary">
-											<b>Next</b>
-										</button>
-										<button ng-click="pager.last()" class="btn btn-danger">
-											<b>Last</b>
-										</button>
+					<div class="col-xl-8 col-lg-12">
+						<div class="row">
+							<div class="col-12">
+								<div class="card card-default">
+									<div class="card-header card-header-border-bottom d-flex justify-content-between">
+										<div class="card-bar">
+											<div class="col-lg-3 col-md-6">
+												<label for="">Tìm kiếm</label>
+												<input class="form-control" type="text" ng-model="subcategory"
+													placeholder="Tìm kiếm">
+											</div>
+											<div class="col-lg-9 col-md-12 sort">
+												<div class="col-lg-4 col-md-6 p-space">
+													<label for="pagerSize">Hiển thị: </label>
+													<select class="form-control" ng-change="pager.repaginate()"
+														ng-model="pager.size" convert-to-number>
+														<option value="10">10</option>
+														<option value="15">15</option>
+														<option value="20">20</option>
+													</select>
+												</div>
+												<div class="col-lg-4 col-md-6 p-space">
+													<label for="sortSubcategory">Bộ lọc</label>
+													<select class="form-control" ng-change="pager.sortBy()"
+														ng-model="pager.sortProperty">
+														<option value="id">ID A-Z</option>
+														<option value="-id">ID Z-A</option>
+														<option value="name">A-Z</option>
+														<option value="-name">Z-A</option>
+														<option value="category.id">Category A-Z</option>
+														<option value="-category.id">Category Z-A</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div>
+										<h6>Tổng sản phẩm: {{pager.totalQuantity}}</h6>
+									</div>
+									<div class="ec-cat-list card card-default">
+										<div class="card-body">
+											<div class="table-responsive">
+												<table class="table">
+													<thead>
+														<tr>
+															<th>Ảnh</th>
+															<th> <button ng-click="pager.sortBy('id')"></button> Mã
+																thương hiệu</th>
+															<th ng-click="pager.sortBy('name')">Tên thương hiệu</th>
+															<th>Danh mục</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+
+													<tbody>
+														<tr
+															ng-repeat="sub in pager.subs | filter: subcategory | orderBy: pager.sortProperty">
+															<td><img class="cat-thumb"
+																	th:src="@{|/images/subcategory/{{sub.icon}}|}" />
+															</td>
+															<td>{{sub.id}}</td>
+															<td>{{sub.name}}</td>
+															<td><span
+																	class="badge badge-success">{{sub.category.name}}</span>
+															</td>
+															<td>
+																<div class="btn-group">
+																	<button type="button"
+																		class="btn btn-outline-success">Info</button>
+																	<button type="button"
+																		class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+																		data-bs-toggle="dropdown" aria-haspopup="true"
+																		aria-expanded="false" data-display="static">
+																		<span class="sr-only">Info</span>
+																	</button>
+																	<div class="dropdown-menu">
+																		<button ng-click="edit(sub)"
+																			class="dropdown-item">Edit</button>
+																		<button ng-click="delete(sub)"
+																			class="dropdown-item">Delete</button>
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<div class="panel-footer text-center">
+													<button ng-click="pager.first()" class="btn btn-danger">
+														<b>First</b>
+													</button>
+													<button ng-click="pager.prev()" class="btn btn-primary">
+														<b>Previous</b>
+													</button>
+													<button class="btn btn-success">{{pager.page + 1}} of
+														{{pager.count}}</button>
+													<button ng-click="pager.next()" class="btn btn-primary">
+														<b>Next</b>
+													</button>
+													<button ng-click="pager.last()" class="btn btn-danger">
+														<b>Last</b>
+													</button>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -178,4 +217,5 @@
 		<!-- End Content Wrapper -->
 	</main>
 </body>
+
 </html>

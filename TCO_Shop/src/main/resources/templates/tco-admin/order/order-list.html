@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+
 <body>
 	<main ng-controller="order-ctrl">
 
 		<!-- CONTENT WRAPPER -->
 		<div class="ec-content-wrapper">
 			<div class="content">
-				<div
-					class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+				<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
 					<div>
 						<h1>Order</h1>
 						<p class="breadcrumbs">
 							<span><a href="index.html">Home</a></span> <span><i
-								class="mdi mdi-chevron-right"></i></span>Order
+									class="mdi mdi-chevron-right"></i></span>Order
 						</p>
 					</div>
 					<div>
@@ -21,100 +20,119 @@
 							Order</a>
 					</div>
 				</div>
-				
-				<label>Hiển thị: </label>
-				<select ng-change="pagination()" ng-model="pageSize">
-					<option value="5">5</option>
-					<option value="10">10</option>
-					<option value="20">20</option>
-				</select>
-				<input type="text" ng-model="orderSearch" placeholder="Tìm kiếm">
-				<label for="sortProduct">Bộ lọc</label>
-				<select ng-change="sort()" ng-model="orderProperty">
-					<option value="id">Mã đơn hàng ↑</option>
-					<option value="-id">Mã đơn hàng ↓</option>
-					<!-- 
-					<option value="category">Danh mục A-Z</option>
-					<option value="-category">Danh mục Z-A</option>
-					<option value="subcategory">Thương hiệu A-Z</option>
-					<option value="-subcategory">Thương hiệu Z-A</option>
-					 -->
-				</select>
-				<div>
-				<h6>Tổng đơn đặt:</h6>
-				</div>
 				<div class="row">
 					<div class="col-12">
 						<div class="card card-default">
-							<div class="card-body">
-								
-									<table  class="table"
-										style="width: 100%">
-										<thead>
-											<tr>
-												<th>Mã đơn hàng</th>
-												<th>Người mua</th>
-												<th>Ngày đặt</th>
-												<th>Số điện thoại</th>
-												<th>Địa chỉ</th>
-												<th>Trạng thái</th>
-												<th>Ghi chú</th>
-												<th>Tuỳ chỉnh</th>
-											</tr>
-										</thead>
-											<!-- cái bảng này đang bị search ngu -->
-										<tbody>
-											<tr ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
-												<td>{{order.id}}</td>
-												<td>									
-													<span ng-if="order.user.fullname !== null && order.user.fullname !== undefined">{{order.user.fullname}}</span>
-													<span ng-if="order.user.fullname === null || order.user.fullname === undefined">{{order.user.username}}</span>
-												</td>
-												<td>{{order.createDate | date:'dd/MM/yyyy'}}</td>
-												<td>{{order.phoneNumber}}</td>
-												<td>{{order.address}}</td>
-												<td>
-													<select ng-model = "order.status" ng-change="updateOrderStatus(order)">
-														<option ng-repeat = "os in orderStatus" ng-value="os.id">{{os.statusName}}</option>
-													</select>
-												</td>
-												<td>{{order.description}}</td>
-												<td>
-													<div class="btn-group mb-1">
-														<a type="button" class="btn btn-outline-success">Xem chi tiết</a>
-														<button type="button"
-															class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-															data-bs-toggle="dropdown" aria-haspopup="true"
-															aria-expanded="false" data-display="static">
-															<span class="sr-only">Info</span>
-														</button>
-
-														<div class="dropdown-menu">
-															<a class="dropdown-item">Edit</a> 
-															<a class="dropdown-item">Delete</a>
-														</div>
-													</div>
-												</td>											
-											</tr>
-										</tbody>
-									</table>
-									<div class="panel-footer text-center">
-										<button class="btn btn-danger">
-											<b>First</b>
-										</button>
-										<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-											<b>Previous</b>
-										</button>
-										<button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
-										<button ng-disabled="currentPage >= orders.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary">
-											<b>Next</b>
-										</button>
-										<button class="btn btn-danger">
-											<b>Last</b>
-										</button>
+							<div class="card-header card-header-border-bottom d-flex justify-content-between">
+								<div class="card-bar">
+									<div class="col-lg-3 col-md-6">
+										<label>Hiển thị: </label>
+										<select class="form-control" ng-change="pagination()" ng-model="pageSize">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="20">20</option>
+										</select>
 									</div>
-									
-								
+									<div class="col-lg-9 col-md-12 sort">
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="">Tìm kiếm</label>
+											<input class="form-control" type="text" ng-model="orderSearch"
+												placeholder="Tìm kiếm">
+										</div>
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="sortProduct">Bộ lọc</label>
+											<select class="form-control" ng-change="sort()" ng-model="orderProperty">
+												<option value="id">Mã đơn hàng ↑</option>
+												<option value="-id">Mã đơn hàng ↓</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<h6>Tổng đơn đặt:</h6>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-default">
+										<div class="card-body">
+
+											<table class="table" style="width: 100%">
+												<thead>
+													<tr>
+														<th>Mã đơn hàng</th>
+														<th>Người mua</th>
+														<th>Ngày đặt</th>
+														<th>Số điện thoại</th>
+														<th>Địa chỉ</th>
+														<th>Trạng thái</th>
+														<th>Ghi chú</th>
+														<th>Tuỳ chỉnh</th>
+													</tr>
+												</thead>
+												<!-- cái bảng này đang bị search ngu -->
+												<tbody>
+													<tr
+														ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
+														<td>{{order.id}}</td>
+														<td>
+															<span
+																ng-if="order.user.fullname !== null && order.user.fullname !== undefined">{{order.user.fullname}}</span>
+															<span
+																ng-if="order.user.fullname === null || order.user.fullname === undefined">{{order.user.username}}</span>
+														</td>
+														<td>{{order.createDate | date:'dd/MM/yyyy'}}</td>
+														<td>{{order.phoneNumber}}</td>
+														<td>{{order.address}}</td>
+														<td>
+															<select style="border: 0px;" ng-model="order.status"
+																ng-change="updateOrderStatus(order)">
+																<option ng-repeat="os in orderStatus" ng-value="os.id">
+																	{{os.statusName}}</option>
+															</select>
+														</td>
+														<td>{{order.description}}</td>
+														<td>
+															<div class="btn-group mb-1">
+																<a type="button" class="btn btn-outline-success">Xem chi
+																	tiết</a>
+																<button type="button"
+																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+																	data-bs-toggle="dropdown" aria-haspopup="true"
+																	aria-expanded="false" data-display="static">
+																	<span class="sr-only">Info</span>
+																</button>
+
+																<div class="dropdown-menu">
+																	<a class="dropdown-item">Edit</a>
+																	<a class="dropdown-item">Delete</a>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="panel-footer text-center">
+												<button class="btn btn-danger">
+													<b>First</b>
+												</button>
+												<button ng-disabled="currentPage == 0"
+													ng-click="currentPage=currentPage - 1" class="btn btn-primary">
+													<b>Previous</b>
+												</button>
+												<button
+													class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+												<button ng-disabled="currentPage >= orders.length/pageSize - 1"
+													ng-click="currentPage=currentPage+1" class="btn btn-primary">
+													<b>Next</b>
+												</button>
+												<button class="btn btn-danger">
+													<b>Last</b>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -127,4 +145,5 @@
 
 	</main>
 </body>
+
 </html>

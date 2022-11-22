@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+
 <body>
-	<main ng-controller="product-ctrl" th:object = ${item}>
+	<main ng-controller="product-ctrl" th:object=${item}>
 
 		<!-- CONTENT WRAPPER -->
 		<div class="ec-content-wrapper">
 			<div class="content">
-				<div
-					class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
+				<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
 					<div>
 						<h1>Product</h1>
 						<p class="breadcrumbs">
 							<span><a href="index.html">Home</a></span> <span><i
-								class="mdi mdi-chevron-right"></i></span>Product
+									class="mdi mdi-chevron-right"></i></span>Product
 						</p>
 					</div>
 					<div>
@@ -21,105 +20,128 @@
 							Product</a>
 					</div>
 				</div>
-				
-				<label for="pagerSize">Hiển thị: </label>
-				<select ng-change="pager.repaginate()"
-					 ng-model="pager.size" convert-to-number>
-					<option value="10">10</option>
-					<option value="15">15</option>
-					<option value="20">20</option>
-				</select>
-				<input type="text" ng-model="search" placeholder="Tìm kiếm">
-				<label for="sortProduct">Bộ lọc</label>
-				<select ng-change="pager.sortBy()" ng-model="pager.sortProperty">
-					<option value="name">A-Z</option>
-					<option value="-name">Z-A</option>
-					<option value="price">Giá tăng dần</option>
-					<option value="-price">Giá giảm dần</option>
-					<option value="discount">Khuyến mãi tăng dần</option>
-					<option value="-discount">Khuyến mãi giảm dần</option>
-					<option value="stock">Số lượng tăng dần</option>
-					<option value="-stock">Số lượng giảm dần</option>
-					<!-- 
-					<option value="category">Danh mục A-Z</option>
-					<option value="-category">Danh mục Z-A</option>
-					<option value="subcategory">Thương hiệu A-Z</option>
-					<option value="-subcategory">Thương hiệu Z-A</option>
-					 -->
-				</select>
-				<div>
-				<h6>Tổng sản phẩm: {{pager.totalQuantity}}</h6>
-				</div>
 				<div class="row">
 					<div class="col-12">
 						<div class="card card-default">
-							<div class="card-body">
-								
-									<table  class="table"
-										style="width: 100%">
-										<thead>
-											<tr>
-												<th>Sản phẩm</th>
-												<th>Name</th>
-												<th>Giá (VNĐ)</th>
-												<th>Khuyến mãi (%)</th>
-												<th>Giá khuyến mãi (VNĐ)</th>
-												<th>Số lượng</th>
-												<th>Danh mục</th>
-												<th>Thương hiệu</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<tr ng-repeat="item in pager.items | filter: search | orderBy: pager.sortProperty" >
-												<td><img
-													th:src="@{/images/products/{{item.image1}}}"
-													style="width: 100px;" /></td>
-												<td>{{item.name}}</td>
-												<td>{{item.price| number}}</td>
-												<td>{{item.discount}}</td>
-												<td>{{item.price * (100-item.discount)/100 | number}}</td>
-												<td>{{item.stock}}</td>
-												<td>{{item.category.name}}</td>
-												<td>{{item.subcategory.name}}</td>
-												<td>
-													<div class="btn-group mb-1">
-														<a th:href = "@{|/tco-admin/product/detail/{{item.id}}|}" type="button" class="btn btn-outline-success">Info</a>
-														<button type="button"
-															class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-															data-bs-toggle="dropdown" aria-haspopup="true"
-															aria-expanded="false" data-display="static">
-															<span class="sr-only">Info</span>
-														</button>
-
-														<div class="dropdown-menu">
-															<a class="dropdown-item" th:href="@{|/tco-admin/product/{{item.id}}|}">Edit</a> 
-															<a class="dropdown-item" th:href="@{|/tco-admin/product/delete/{{item.id}}|}">Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="panel-footer text-center">
-										<button ng-click="pager.first()" class="btn btn-danger">
-											<b>First</b>
-										</button>
-										<button ng-click="pager.prev()" class="btn btn-primary">
-											<b>Previous</b>
-										</button>
-										<button class="btn btn-success">{{pager.page + 1}} of
-											{{pager.count}}</button>
-										<button ng-click="pager.next()" class="btn btn-primary">
-											<b>Next</b>
-										</button>
-										<button ng-click="pager.last()" class="btn btn-danger">
-											<b>Last</b>
-										</button>
+							<div class="card-header card-header-border-bottom d-flex justify-content-between">
+								<div class="card-bar">
+									<div class="col-lg-3 col-md-6">
+										<label for="pagerSize">Hiển thị: </label>
+										<select class="form-control" ng-change="pager.repaginate()" ng-model="pager.size"
+											convert-to-number>
+											<option value="10">10</option>
+											<option value="15">15</option>
+											<option value="20">20</option>
+										</select>
 									</div>
-									
+	
+									<div class="col-lg-9 col-md-12 sort">
+										<div class="col-lg-4 col-md-6 p-space">
+											<label >Tìm kiếm</label>
+											<input class="form-control" type="text" ng-model="search"
+												placeholder="Tìm kiếm">
+										</div>
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="sortProduct">Bộ lọc</label>
+											<select class="form-control" ng-change="pager.sortBy()"
+												ng-model="pager.sortProperty">
+												<option value="name">A-Z</option>
+												<option value="-name">Z-A</option>
+												<option value="price">Giá tăng dần</option>
+												<option value="-price">Giá giảm dần</option>
+												<option value="discount">Khuyến mãi tăng dần</option>
+												<option value="-discount">Khuyến mãi giảm dần</option>
+												<option value="stock">Số lượng tăng dần</option>
+												<option value="-stock">Số lượng giảm dần</option>
+												<!-- 
+							<option value="category">Danh mục A-Z</option>
+							<option value="-category">Danh mục Z-A</option>
+							<option value="subcategory">Thương hiệu A-Z</option>
+							<option value="-subcategory">Thương hiệu Z-A</option>
+							 -->
+											</select>
+										</div>
+									</div>
+								</div>
+								</div>
 								
+							<div>
+								<h6>Tổng sản phẩm: {{pager.totalQuantity}}</h6>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-default">
+										<div class="card-body">
+
+											<table class="table" style="width: 100%">
+												<thead>
+													<tr>
+														<th>Sản phẩm</th>
+														<th>Name</th>
+														<th>Giá (VNĐ)</th>
+														<th>Khuyến mãi (%)</th>
+														<th>Giá khuyến mãi (VNĐ)</th>
+														<th>Số lượng</th>
+														<th>Danh mục</th>
+														<th>Thương hiệu</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+
+												<tbody>
+													<tr
+														ng-repeat="item in pager.items | filter: search | orderBy: pager.sortProperty">
+														<td><img th:src="@{/images/products/{{item.image1}}}"
+																style="width: 100px;" /></td>
+														<td>{{item.name}}</td>
+														<td>{{item.price| number}}</td>
+														<td>{{item.discount}}</td>
+														<td>{{item.price * (100-item.discount)/100 | number}}</td>
+														<td>{{item.stock}}</td>
+														<td>{{item.category.name}}</td>
+														<td>{{item.subcategory.name}}</td>
+														<td>
+															<div class="btn-group mb-1">
+																<a th:href="@{|/tco-admin/product/detail/{{item.id}}|}"
+																	type="button"
+																	class="btn btn-outline-success">Info</a>
+																<button type="button"
+																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+																	data-bs-toggle="dropdown" aria-haspopup="true"
+																	aria-expanded="false" data-display="static">
+																	<span class="sr-only">Info</span>
+																</button>
+
+																<div class="dropdown-menu">
+																	<a class="dropdown-item"
+																		th:href="@{|/tco-admin/product/{{item.id}}|}">Edit</a>
+																	<a class="dropdown-item"
+																		th:href="@{|/tco-admin/product/delete/{{item.id}}|}">Delete</a>
+																</div>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="panel-footer text-center">
+												<button ng-click="pager.first()" class="btn btn-danger">
+													<b>First</b>
+												</button>
+												<button ng-click="pager.prev()" class="btn btn-primary">
+													<b>Previous</b>
+												</button>
+												<button class="btn btn-success">{{pager.page + 1}} of
+													{{pager.count}}</button>
+												<button ng-click="pager.next()" class="btn btn-primary">
+													<b>Next</b>
+												</button>
+												<button ng-click="pager.last()" class="btn btn-danger">
+													<b>Last</b>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -132,4 +154,5 @@
 
 	</main>
 </body>
+
 </html>
