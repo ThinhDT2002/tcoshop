@@ -18,4 +18,15 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 
 	@Query(value = "select count(Orders.Id) from Orders where Orders.Status != ?1", nativeQuery = true)
 	Integer getAllOrderCount(String status);
+	
+	@Query(value = "select sum(OrderCount)\r\n"
+	        + "from (\r\n"
+	        + "select YEAR(Create_Date) as N'Năm', MONTH(Create_Date) as N'Tháng',count(Id) as OrderCount\r\n"
+	        + "from Orders\r\n"
+	        + "where Status != 'HuyBo' \r\n"
+	        + "and Year(Create_Date) = ?1 \r\n"
+	        + "and MONTH(Create_Date) between ?2 and ?3\r\n"
+	        + "group by YEAR(Create_Date), MONTH(Create_Date)\r\n"
+	        + ") o", nativeQuery = true)
+	Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo);
 }

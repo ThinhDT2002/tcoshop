@@ -5,4 +5,5 @@ public interface ReportService {
     Integer getUserCount(String roleId);
     Integer getAllProductCount();
     Integer getAllOrderCount(String status);
+    Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo);
 }

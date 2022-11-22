@@ -33,4 +33,8 @@ public class ReportServiceImpl implements ReportService {
     public Integer getAllOrderCount(String status) {
         return orderRepository.getAllOrderCount(status);
     }
+    @Override
+    public Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo) {
+        return orderRepository.getSalesReport(year, monthFrom, monthTo);
+    }
 }

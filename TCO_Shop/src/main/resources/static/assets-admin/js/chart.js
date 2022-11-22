@@ -47,9 +47,18 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
   })
 
   $scope.allordercount = 0;
-  $http.get("http://localhost:8080/api/order/getallordercount").then(resp => {
+  $http.get("http://localhost:8080/api/report/getallordercount").then(resp => {
     $scope.allordercount = resp.data;
   })
+  
+  $scope.salesReport = [];
+  function getSalesReport() {
+	$http.get("http://localhost:8080/api/report/getsalesreport/2022").then(resp => {
+		$scope.salesReport = resp.data;
+		console.log($scope.salesReport);
+	})
+  }
+  getSalesReport();
 
 $(document).ready(function() {
   "use strict";
