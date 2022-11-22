@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcoshop.service.ReportService;
@@ -52,5 +53,43 @@ public class ReportAPI {
         reportSales.add(orderCountMonth9And10);
         reportSales.add(orderCountMonth11And12);
         return reportSales;
+    }
+    
+    @GetMapping("/api/report/getordercountperstatus")
+    public List<Integer> getOrderCountPerStatus(@RequestParam("year") Integer year,
+            @RequestParam("monthFrom") Integer monthFrom,
+            @RequestParam("monthTo") Integer monthTo) {
+        List<Integer> orderCountPerStatusReport = new ArrayList<>();
+        int orderChoXacNhan = reportService.getOrderCountPerStatus("ChoXacNhan", year, monthFrom, monthTo);
+        int orderChuanBi = reportService.getOrderCountPerStatus("ChuanBi", year, monthFrom, monthTo);
+        int orderXuatKho = reportService.getOrderCountPerStatus("XuatKho", year, monthFrom, monthTo);
+        int orderVanChuyen = reportService.getOrderCountPerStatus("VanChuyen", year, monthFrom, monthTo);
+        int orderDaGiaoHang = reportService.getOrderCountPerStatus("DaGiaoHang", year, monthFrom, monthTo);
+        int orderHuyBo = reportService.getOrderCountPerStatus("HuyBo", year, monthFrom, monthTo);
+        orderCountPerStatusReport.add(orderChoXacNhan);
+        orderCountPerStatusReport.add(orderChuanBi);
+        orderCountPerStatusReport.add(orderXuatKho);
+        orderCountPerStatusReport.add(orderVanChuyen);
+        orderCountPerStatusReport.add(orderDaGiaoHang);
+        orderCountPerStatusReport.add(orderHuyBo);
+        return orderCountPerStatusReport;
+    }
+    
+    @GetMapping("/api/report/getturnoverperyear")
+    public List<Double> getTurnOverPerYear(@RequestParam("year") Integer year) {
+        List<Double> turnover = new ArrayList<>();
+        double turnover1_2 = reportService.getTurnoverPerYear(year, 1, 2);
+        double turnover3_4 = reportService.getTurnoverPerYear(year, 3, 4);
+        double turnover5_6 = reportService.getTurnoverPerYear(year, 5, 6);
+        double turnover7_8 = reportService.getTurnoverPerYear(year, 7, 8);
+        double turnover9_10 = reportService.getTurnoverPerYear(year, 9, 10);
+        double turnover11_12 = reportService.getTurnoverPerYear(year, 11, 12);
+        turnover.add(turnover1_2);
+        turnover.add(turnover3_4);
+        turnover.add(turnover5_6);
+        turnover.add(turnover7_8);
+        turnover.add(turnover9_10);
+        turnover.add(turnover11_12);
+        return turnover;
     }
 }

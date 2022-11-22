@@ -37,4 +37,16 @@ public class ReportServiceImpl implements ReportService {
     public Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo) {
         return orderRepository.getSalesReport(year, monthFrom, monthTo);
     }
+    @Override
+    public Integer getOrderCountPerStatus(String status, Integer year, Integer monthFrom, Integer monthTo) {
+        return orderRepository.getOrderCountPerStatus(status, year, monthFrom, monthTo);
+    }
+    @Override
+    public Double getTurnoverPerYear(Integer year, Integer monthFrom, Integer monthTo) {
+        Double turnover = orderRepository.getTurnoverPerYear(year, monthFrom, monthTo);
+        if(turnover == null) {
+            return 0.0;
+        }
+        return turnover;
+    }
 }

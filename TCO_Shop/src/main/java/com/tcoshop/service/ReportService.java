@@ -6,4 +6,6 @@ public interface ReportService {
     Integer getAllProductCount();
     Integer getAllOrderCount(String status);
     Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo);
+    Integer getOrderCountPerStatus(String status, Integer year, Integer monthFrom, Integer monthTo);
+    Double getTurnoverPerYear(Integer year, Integer monthFrom, Integer monthTo);
 }

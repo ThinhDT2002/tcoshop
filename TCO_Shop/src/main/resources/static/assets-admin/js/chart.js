@@ -52,13 +52,46 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
   })
   
   $scope.salesReport = [];
-  function getSalesReport() {
-	$http.get("http://localhost:8080/api/report/getsalesreport/2022").then(resp => {
+  function getSalesReport(year) {
+	$http.get(`http://localhost:8080/api/report/getsalesreport/${year}`).then(resp => {
 		$scope.salesReport = resp.data;
-		console.log($scope.salesReport);
 	})
   }
-  getSalesReport();
+  
+  $scope.orderStatusReport = [];
+  function getOrderCountPerStatus(year, monthFrom, monthTo) {
+	let apiUrl = "http://localhost:8080/api/report/getordercountperstatus";
+	$http({
+		url: apiUrl,
+		method: "GET",
+		params: {
+			year: year,
+			monthFrom: monthFrom,
+			monthTo: monthTo
+		}
+	}).then(resp => {
+		$scope.orderStatusReport = resp.data;
+	})
+  }
+  
+  $scope.turnoverPerYear = [];
+  function getTurnoverPerYear(year) {
+	let apiUrl = "http://localhost:8080/api/report/getturnoverperyear";
+	$http({
+		url: apiUrl,
+		method: "GET",
+		params: {
+			year: year
+		}
+	}).then(resp => {
+		$scope.turnoverPerYear = resp.data;
+		console.log($scope.turnoverPerYear);
+	})
+}
+  
+  getSalesReport(2022);
+  getOrderCountPerStatus(2022,11,11);
+  getTurnoverPerYear(2022);
 
 $(document).ready(function() {
   "use strict";
