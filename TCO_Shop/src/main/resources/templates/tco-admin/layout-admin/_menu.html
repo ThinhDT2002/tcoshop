@@ -23,7 +23,38 @@
                     </a>
                     <hr>
                 </li>
+                <!-- Thong ke -->
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)">
+                        <i class="mdi mdi-book-open-page-variant"></i>
+                        <span class="nav-text">Thống Kê</span> <b class="caret"></b>
+                    </a>
+                    <div class="collapse">
+                        <ul class="sub-menu" id="vendors" data-parent="#sidebar-menu">
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/statistics/ordersSold}">
+                                    <span class="nav-text">Đơn hàng đã bán</span>
+                                </a>
+                            </li>
 
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/statistics/orderStatus}">
+                                    <span class="nav-text">Đơn hàng trong tháng</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/statistics/turnover}">
+                                    <span class="nav-text">Doanh thu</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="sidenav-item-link" th:href="@{/tco-admin/statistics/usersRegistered}">
+                                    <span class="nav-text">Người đăng ký</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <!-- Vendors -->
                 <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(0)">

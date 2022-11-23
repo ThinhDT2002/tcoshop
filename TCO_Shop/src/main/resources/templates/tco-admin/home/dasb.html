@@ -54,24 +54,10 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                 <!-- Sales Graph -->
                 <div id="user-acquisition" class="card card-default">
                     <div class="card-header">
-                        <h2>Sales Report</h2>
+                        <h2>Đơn Hàng Đã Bán</h2>
                     </div>
                     <div class="card-body">
-                        <ul class="nav nav-tabs nav-style-border justify-content-between justify-content-lg-start border-bottom"
-                            role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#todays" role="tab"
-                                    aria-selected="true">Today's</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#monthly" role="tab"
-                                    aria-selected="false">Monthly </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#yearly" role="tab"
-                                    aria-selected="false">Yearly</a>
-                            </li>
-                        </ul>
+                        
                         <div class="tab-content pt-4" id="salesReport">
                             <div class="tab-pane fade show active" id="source-medium" role="tabpanel">
                                 <div class="mb-6" style="max-height:247px">
@@ -88,23 +74,22 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                 <!-- Doughnut Chart -->
                 <div class="card card-default">
                     <div class="card-header justify-content-center">
-                        <h2>Orders Overview</h2>
+                        <h2>Đơn Hàng Trong Tháng</h2>
                     </div>
                     <div class="card-body">
                         <canvas id="doChart"></canvas>
                     </div>
-                    <a href="#" class="pb-5 d-block text-center text-muted"><i
-                            class="mdi mdi-download mr-2"></i> Download overall report</a>
+                    
                     <div class="card-footer d-flex flex-wrap bg-white p-0">
                         <div class="col-6">
                             <div class="p-20">
                                 <ul class="d-flex flex-column justify-content-between">
                                     <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
-                                            style="color: #4c84ff"></i>Order Completed</li>
+                                            style="color: #4c84ff"></i>Chờ xác nhận</li>
                                     <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
-                                            style="color: #80e1c1 "></i>Order Unpaid</li>
+                                            style="color: #ffa128"></i>Chuẩn bị giao</li>
                                     <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
-                                            style="color: #ff7b7b "></i>Order returned</li>
+                                            style="color: #7be6ff"></i>Đã xuất kho</li>
                                 </ul>
                             </div>
                         </div>
@@ -112,11 +97,11 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                             <div class="p-20">
                                 <ul class="d-flex flex-column justify-content-between">
                                     <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
-                                            style="color: #8061ef"></i>Order Pending</li>
+                                            style="color: #8061ef"></i>Đang vận chuyển</li>
                                     <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
-                                            style="color: #ffa128"></i>Order Canceled</li>
+                                            style="color: #80e1c1"></i>Đã giao hàng</li>
                                     <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
-                                            style="color: #7be6ff"></i>Order Broken</li>
+                                            style="color: #ff7b7b "></i>Huỷ bỏ</li>
                                 </ul>
                             </div>
                         </div>
@@ -132,10 +117,8 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                     <div class="no-gutters">
                         <div>
                             <div class="card-header justify-content-between">
-                                <h2>User Activity</h2>
-                                <div class="date-range-report ">
-                                    <span></span>
-                                </div>
+                                <h2>Doanh Thu (VNĐ)</h2>
+                                
                             </div>
                             <div class="card-body">
                                 <div class="tab-content" id="userActivityContent">
@@ -154,7 +137,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
             <div class="col-xl-4 col-md-12 p-b-15">
                 <div class="card card-default">
                     <div class="card-header flex-column align-items-start">
-                        <h2>Current Users</h2>
+                        <h2>Người đăng ký</h2>
                     </div>
                     <div class="card-body">
                         <canvas id="currentUser" class="chartjs"></canvas>
