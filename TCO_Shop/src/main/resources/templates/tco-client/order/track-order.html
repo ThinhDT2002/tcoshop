@@ -65,7 +65,7 @@
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
 										class="ec-progressbar-track"></span><span
-										class="ec-track-title"> Đang được <br> vận chuyển
+										class="ec-track-title">Đang được <br> vận chuyển
 									</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
@@ -81,15 +81,15 @@
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">đang được chuẩn bị</span></li>
+										class="ec-track-title">Đang được chuẩn bị</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_3.png}" alt="track_order"></span><span
 										class="ec-progressbar-track"></span><span
-										class="ec-track-title"> đã xuất kho</span></li>
+										class="ec-track-title">Đã xuất kho</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
 										class="ec-progressbar-track"></span><span
-										class="ec-track-title"> Đang được <br> vận chuyển
+										class="ec-track-title">Đang được <br> vận chuyển
 									</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
@@ -97,7 +97,7 @@
 										class="ec-track-title">Đã giao</span></li>
 								</th:block>
 								
-								<th:block th:if="*{status} == 'DaGiaoHang'">
+								<th:block th:if="*{status} == 'XuatKho'">
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
@@ -105,15 +105,15 @@
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">đang được chuẩn bị</span></li>
+										class="ec-track-title">Đang được chuẩn bị</span></li>
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title"> đã xuất kho</span></li>
+										class="ec-track-title">Đã xuất kho</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
 										class="ec-progressbar-track"></span><span
-										class="ec-track-title"> Đang được <br> vận chuyển
+										class="ec-track-title">Đang được <br> vận chuyển
 									</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
@@ -121,7 +121,7 @@
 										class="ec-track-title">Đã giao</span></li>
 								</th:block>
 								
-								<th:block th:if="*{status} == 'HuyBo'">
+								<th:block th:if="*{status} == 'VanChuyen'">
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
@@ -137,7 +137,7 @@
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title"> Đang được <br> vận chuyển
+										class="ec-track-title">Đang được <br> vận chuyển
 									</span></li>
 									<li class="step0"><span class="ec-track-icon"> <img
 											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
@@ -145,7 +145,7 @@
 										class="ec-track-title">Đã giao</span></li>
 								</th:block>
 								
-								<th:block th:if="*{status} == 'VanChuyen'">
+								<th:block th:if="*{status} == 'DaGiaoHang'">
 									<li class="step0 active"><span class="ec-track-icon">
 											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
