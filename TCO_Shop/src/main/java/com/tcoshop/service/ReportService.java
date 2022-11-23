@@ -8,4 +8,5 @@ public interface ReportService {
     Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo);
     Integer getOrderCountPerStatus(String status, Integer year, Integer monthFrom, Integer monthTo);
     Double getTurnoverPerYear(Integer year, Integer monthFrom, Integer monthTo);
+    Integer getUserRegister(int month, int year);
 }

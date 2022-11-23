@@ -20,7 +20,11 @@ public class ReportAPI {
     
     @GetMapping("/api/report/turnover")
     public Double getTurnover() {
-        return reportService.getTurnover("DaGiaoHang");
+        Double turnover = reportService.getTurnover("DaGiaoHang");
+        if(turnover == null) {
+            return 0.0;
+        }
+        return turnover;
     }
     @GetMapping("/api/report/usercount")
     public Integer getUserCount() {
@@ -91,5 +95,35 @@ public class ReportAPI {
         turnover.add(turnover9_10);
         turnover.add(turnover11_12);
         return turnover;
+    }
+    
+    @GetMapping("/api/report/getuserregister")
+    public List<Integer> getUserRegister(@RequestParam("year") Integer year) {
+        List<Integer> userRegisterReport = new ArrayList<>();
+        int userRegister1 = reportService.getUserRegister(1, year);
+        int userRegister2 = reportService.getUserRegister(2, year);
+        int userRegister3 = reportService.getUserRegister(3, year);
+        int userRegister4 = reportService.getUserRegister(4, year);
+        int userRegister5 = reportService.getUserRegister(5, year);
+        int userRegister6 = reportService.getUserRegister(6, year);
+        int userRegister7 = reportService.getUserRegister(7, year);
+        int userRegister8 = reportService.getUserRegister(8, year);
+        int userRegister9 = reportService.getUserRegister(9, year);
+        int userRegister10 = reportService.getUserRegister(10, year);
+        int userRegister11 = reportService.getUserRegister(11, year);
+        int userRegister12 = reportService.getUserRegister(12, year);
+        userRegisterReport.add(userRegister1);
+        userRegisterReport.add(userRegister2);
+        userRegisterReport.add(userRegister3);
+        userRegisterReport.add(userRegister4);
+        userRegisterReport.add(userRegister5);
+        userRegisterReport.add(userRegister6);
+        userRegisterReport.add(userRegister7);
+        userRegisterReport.add(userRegister8);
+        userRegisterReport.add(userRegister9);
+        userRegisterReport.add(userRegister10);
+        userRegisterReport.add(userRegister11);
+        userRegisterReport.add(userRegister12);
+        return userRegisterReport;
     }
 }

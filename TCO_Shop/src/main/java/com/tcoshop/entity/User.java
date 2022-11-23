@@ -1,6 +1,7 @@
 package com.tcoshop.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class User implements Serializable{
 	private String address;
 	private Integer phone;
 	private String introduce;
-	
+	private Date createDate;
 	@NotNull(message = "Vui lòng chọn trạng thái")
 	private Boolean status;
 	private String activateCode;
@@ -51,7 +52,7 @@ public class User implements Serializable{
 	}
 	
 	public User(String username, String password, String email, String fullname, String address, Integer phone, String introduce, Boolean status, String activateCode,
-            String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews) {
+            String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews, Date createDate) {
         super();
         this.username = username;
         this.password = password;
@@ -67,6 +68,7 @@ public class User implements Serializable{
         this.role = role;
         this.orders = orders;
         this.reviews = reviews;
+        this.createDate = createDate;
     }
 
     public String getUsername() {
@@ -162,6 +164,14 @@ public class User implements Serializable{
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 	
 	

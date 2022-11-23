@@ -85,13 +85,28 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 		}
 	}).then(resp => {
 		$scope.turnoverPerYear = resp.data;
-		console.log($scope.turnoverPerYear);
+	})
+  }
+  
+  $scope.userRegisterPerYear = [];
+  function getUserRegisterPerYear(year) {
+	let apiUrl = "http://localhost:8080/api/report/getuserregister";
+	$http({
+		url: apiUrl,
+		method: "GET",
+		params: {
+			year: year
+		}
+	}).then(resp => {
+		$scope.userRegisterPerYear = resp.data;
+		console.log($scope.userRegisterPerYear);
 	})
 }
   
   getSalesReport(2022);
   getOrderCountPerStatus(2022,11,11);
   getTurnoverPerYear(2022);
+  getUserRegisterPerYear(2022);
 
 $(document).ready(function() {
   "use strict";

@@ -34,7 +34,8 @@ create table Users(
 	primary key (Username),
 	Role_Id varchar(10) not null,
 	constraint FK_Users_Roles
-	foreign key (Role_Id) references Roles(Id)
+	foreign key (Role_Id) references Roles(Id),
+	Create_Date date
 )
 
 go

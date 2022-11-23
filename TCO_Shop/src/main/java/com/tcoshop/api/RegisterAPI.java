@@ -1,5 +1,6 @@
 package com.tcoshop.api;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 import javax.mail.MessagingException;
@@ -42,7 +43,7 @@ public class RegisterAPI {
 		user.setFullname("");
 		Role userRole = roleService.getRole("USER");
 		user.setRole(userRole);
-		
+		user.setCreateDate(new Date());
 		try {
     		User userInDatabase = userService.findByUsername(user.getUsername());
     		if(userInDatabase != null) {

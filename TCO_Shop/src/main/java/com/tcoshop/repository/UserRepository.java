@@ -13,4 +13,9 @@ public interface UserRepository extends JpaRepository<User, String>{
 
     @Query(value = "select count(*) from Users where Users.Role_Id = ?1", nativeQuery = true)
     Integer getUserCount(String roleId);
+    
+    @Query(value = "select count(*) from Users\r\n"
+            + "where Month(Create_Date) = ?1 and Year(Create_Date) = ?2 and Role_Id = 'USER'",
+            nativeQuery = true)
+    Integer getUserRegister(int month, int year);
 }

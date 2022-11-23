@@ -1,5 +1,6 @@
 package com.tcoshop.controller.admin;
 
+import java.util.Date;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -84,7 +85,7 @@ public class UserManagementController {
             model.addAttribute("addUserMessage", "Thêm người dùng thất bại!");
             return "tco-admin/user/add-user.html";
         }
-        
+        user.setCreateDate(new Date());
         setAvatar(user, multipartFile);
         String url = "http://localhost:8080/api/user";
         HttpEntity<User> userEntity = new HttpEntity<>(user);

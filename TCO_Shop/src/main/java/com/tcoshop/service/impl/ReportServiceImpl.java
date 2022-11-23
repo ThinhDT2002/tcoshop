@@ -35,11 +35,19 @@ public class ReportServiceImpl implements ReportService {
     }
     @Override
     public Integer getSalesReport(Integer year, Integer monthFrom, Integer monthTo) {
-        return orderRepository.getSalesReport(year, monthFrom, monthTo);
+        Integer salesReport = orderRepository.getSalesReport(year, monthFrom, monthTo);
+        if(salesReport == null) {
+            return 0;
+        }
+        return salesReport;
     }
     @Override
     public Integer getOrderCountPerStatus(String status, Integer year, Integer monthFrom, Integer monthTo) {
-        return orderRepository.getOrderCountPerStatus(status, year, monthFrom, monthTo);
+        Integer orderCount = orderRepository.getOrderCountPerStatus(status, year, monthFrom, monthTo);
+        if(orderCount == null) {
+            return 0;
+        }
+        return orderCount;
     }
     @Override
     public Double getTurnoverPerYear(Integer year, Integer monthFrom, Integer monthTo) {
@@ -48,5 +56,14 @@ public class ReportServiceImpl implements ReportService {
             return 0.0;
         }
         return turnover;
+    }
+    
+    @Override
+    public Integer getUserRegister(int month, int year) {
+        Integer userRegisterCount = userRepository.getUserRegister(month, year);
+        if(userRegisterCount == null) {
+            return 0;
+        }
+        return userRegisterCount;
     }
 }
