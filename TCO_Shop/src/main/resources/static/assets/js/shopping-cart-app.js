@@ -125,7 +125,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				$http.post("/api/orders", order).then(resp => {
 					alert("Đặt hàng thành công");
 					$scope.cart.clear();
-					location.href = "/order/track" + resp.data.id;
+					location.href = "/order/track/" + resp.data.id;
 				}).catch(error => {
 					alert("Đặt hàng lỗi!")
 					console.log(error)

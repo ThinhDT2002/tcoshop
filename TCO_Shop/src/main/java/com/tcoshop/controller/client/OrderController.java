@@ -51,6 +51,6 @@ public class OrderController {
 			tongTien += giaSanPham;
 		}
 		model.addAttribute("sum", tongTien);
-		return "tco-client/shop/track-order";
+		return "tco-client/order/track-order";
 	}
 }
