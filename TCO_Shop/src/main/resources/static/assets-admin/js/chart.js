@@ -50,67 +50,10 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
   $http.get("http://localhost:8080/api/report/getallordercount").then(resp => {
     $scope.allordercount = resp.data;
   })
-  
-  $scope.salesReport = [];
-  function getSalesReport(year) {
-	$http.get(`http://localhost:8080/api/report/getsalesreport/${year}`).then(resp => {
-		$scope.salesReport = resp.data;
-	})
-  }
-  
-  $scope.orderStatusReport = [];
-  function getOrderCountPerStatus(year, monthFrom, monthTo) {
-	let apiUrl = "http://localhost:8080/api/report/getordercountperstatus";
-	$http({
-		url: apiUrl,
-		method: "GET",
-		params: {
-			year: year,
-			monthFrom: monthFrom,
-			monthTo: monthTo
-		}
-	}).then(resp => {
-		$scope.orderStatusReport = resp.data;
-	})
-  }
-  
-  $scope.turnoverPerYear = [];
-  function getTurnoverPerYear(year) {
-	let apiUrl = "http://localhost:8080/api/report/getturnoverperyear";
-	$http({
-		url: apiUrl,
-		method: "GET",
-		params: {
-			year: year
-		}
-	}).then(resp => {
-		$scope.turnoverPerYear = resp.data;
-	})
-  }
-  
-  $scope.userRegisterPerYear = [];
-  function getUserRegisterPerYear(year) {
-	let apiUrl = "http://localhost:8080/api/report/getuserregister";
-	$http({
-		url: apiUrl,
-		method: "GET",
-		params: {
-			year: year
-		}
-	}).then(resp => {
-		$scope.userRegisterPerYear = resp.data;
-		console.log($scope.userRegisterPerYear);
-	})
-}
-  
-  getSalesReport(2022);
-  getOrderCountPerStatus(2022,11,11);
-  getTurnoverPerYear(2022);
-  getUserRegisterPerYear(2022);
 
 $(document).ready(function() {
   "use strict";
-  
+
   /*======== 1. DUAL LINE CHART ========*/
   var dual = document.getElementById("dual-line");
   if (dual !== null) {
@@ -925,52 +868,70 @@ $(document).ready(function() {
     });
   }
 
-  /*======== 11. DOUGHNUT CHART ========*/
-  var doughnut = document.getElementById("doChart");
-  if (doughnut !== null) {
-    var myDoughnutChart = new Chart(doughnut, {
-      type: "doughnut",
-      data: {
-        labels: ["completed", "unpaid", "pending", "canceled", "returned", "Broken"],
-        datasets: [
-          {
-            label: ["completed", "unpaid", "pending", "canceled", "returned", "Broken"],
-            data: [4100, 2500, 1800, 2300, 400, 150],
-            backgroundColor: ["#88aaf3", "#50d7ab", "#9586cd", "#f3d676", "#ed9090", "#a4d9e5"],
-            borderWidth: 1
-            // borderColor: ['#88aaf3','#29cc97','#8061ef','#fec402']
-            // hoverBorderColor: ['#88aaf3', '#29cc97', '#8061ef', '#fec402']
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        },
-        cutoutPercentage: 75,
-        tooltips: {
-          callbacks: {
-            title: function(tooltipItem, data) {
-              return "Order : " + data["labels"][tooltipItem[0]["index"]];
-            },
-            label: function(tooltipItem, data) {
-              return data["datasets"][0]["data"][tooltipItem["index"]];
+  /*======== 11. Don Hang Trong Thang ========*/
+  $scope.orderStatusReport = [];
+  function getOrderCountPerStatus(year, monthFrom, monthTo) {
+    var doughnut = document.getElementById("doChart");
+	let apiUrl = "http://localhost:8080/api/report/getordercountperstatus";
+	$http({
+		url: apiUrl,
+		method: "GET",
+		params: {
+			year: year,
+			monthFrom: monthFrom,
+			monthTo: monthTo
+		}
+	}).then(resp => {
+		$scope.orderStatusReport = resp.data;
+    if (doughnut !== null) {
+      var myDoughnutChart = new Chart(doughnut, {
+        type: "doughnut",
+        data: {
+          labels: ["Chờ xác nhận", "Chuẩn bị giao", "Đã xuất kho", "Đang vận chuyển", "Đã giao hàng", "Huỷ bỏ"],
+          datasets: [
+            {
+              label: ["Chờ xác nhận", "Chuẩn bị giao", "Đã xuất kho", "Đang vận chuyển", "Đã giao hàng", "Huỷ bỏ"],
+              data: [$scope.orderStatusReport[0], $scope.orderStatusReport[1], $scope.orderStatusReport[2], $scope.orderStatusReport[3], $scope.orderStatusReport[4], $scope.orderStatusReport[5]],
+              backgroundColor: ["#4c84ff", "#ffa128", "#7be6ff", "#8061ef", "#80e1c1", "#ff7b7b"],
+              borderWidth: 1
+              // borderColor: ['#88aaf3','#29cc97','#8061ef','#fec402']
+              // hoverBorderColor: ['#88aaf3', '#29cc97', '#8061ef', '#fec402']
             }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            display: false
           },
-          titleFontColor: "#888",
-          bodyFontColor: "#555",
-          titleFontSize: 12,
-          bodyFontSize: 14,
-          backgroundColor: "rgba(256,256,256,0.95)",
-          displayColors: true,
-          borderColor: "rgba(220, 220, 220, 0.9)",
-          borderWidth: 2
+          cutoutPercentage: 75,
+          tooltips: {
+            callbacks: {
+              title: function(tooltipItem, data) {
+                return "Order : " + data["labels"][tooltipItem[0]["index"]];
+              },
+              label: function(tooltipItem, data) {
+                return data["datasets"][0]["data"][tooltipItem["index"]];
+              }
+            },
+            titleFontColor: "#888",
+            bodyFontColor: "#555",
+            titleFontSize: 12,
+            bodyFontSize: 14,
+            backgroundColor: "rgba(256,256,256,0.95)",
+            displayColors: true,
+            borderColor: "rgba(220, 220, 220, 0.9)",
+            borderWidth: 2
+          }
         }
-      }
-    });
+      });
+    }
+	})
   }
+  getOrderCountPerStatus(2022,11,11);
+ 
+  
 
   /*======== 12. POLAR CHART ========*/
   var polar = document.getElementById("polar");
@@ -1123,376 +1084,369 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 14. CURRENT USER BAR CHART ========*/
-  var cUser = document.getElementById("currentUser");
-  if (cUser !== null) {
-    var myUChart = new Chart(cUser, {
-      type: "bar",
-      data: {
-        labels: [
-          "1h",
-          "10 m",
-          "50 m",
-          "30 m",
-          "40 m",
-          "20 m",
-          "30 m",
-          "25 m",
-          "20 m",
-          "5 m",
-          "10 m"
-        ],
-        datasets: [
-          {
-            label: "signup",
-            data: [15, 30, 27, 43, 39, 18, 42, 25, 13, 18, 59],
-            // data: [2, 3.2, 1.8, 2.1, 1.5, 3.5, 4, 2.3, 2.9, 4.5, 1.8, 3.4, 2.8],
-            backgroundColor: "#88aaf3"
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [
+  /*======== 14. Nguoi dang ky ========*/
+  $scope.userRegisterPerYear = [];
+  function getUserRegisterPerYear(year) {
+    var cUser = document.getElementById("currentUser");
+	let apiUrl = "http://localhost:8080/api/report/getuserregister";
+	$http({
+		url: apiUrl,
+		method: "GET",
+		params: {
+			year: year
+		}
+	}).then(resp => {
+		$scope.userRegisterPerYear = resp.data;
+    if (cUser !== null) {
+      var myUChart = new Chart(cUser, {
+        type: "bar",
+        data: {
+          labels: [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          datasets: [
             {
-              gridLines: {
-                drawBorder: true,
-                display: false,
-              },
-              ticks: {
-                fontColor: "#8a909d",
-                fontFamily: "Roboto, sans-serif",
-                display: false, // hide main x-axis line
-                beginAtZero: true,
-                callback: function(tick, index, array) {
-                  return index % 2 ? "" : tick;
+              label: "signup",
+              data: [$scope.userRegisterPerYear[0], $scope.userRegisterPerYear[1], $scope.userRegisterPerYear[2], $scope.userRegisterPerYear[3], $scope.userRegisterPerYear[4], $scope.userRegisterPerYear[5], $scope.userRegisterPerYear[6], $scope.userRegisterPerYear[7], $scope.userRegisterPerYear[8], $scope.userRegisterPerYear[9], $scope.userRegisterPerYear[10], $scope.userRegisterPerYear[11]],
+              // data: [2, 3.2, 1.8, 2.1, 1.5, 3.5, 4, 2.3, 2.9, 4.5, 1.8, 3.4, 2.8],
+              backgroundColor: "#88aaf3"
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  drawBorder: true,
+                  display: false,
+                },
+                ticks: {
+                  fontColor: "#8a909d",
+                  fontFamily: "Roboto, sans-serif",
+                  display: false, // hide main x-axis line
+                  beginAtZero: true,
+                  callback: function(tick, index, array) {
+                    return index % 2 ? "" : tick;
+                  }
+                },
+                barPercentage: 1.8,
+                categoryPercentage: 0.2
+              }
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  drawBorder: true,
+                  display: true,
+                  color: "#eee",
+                  zeroLineColor: "#eee"
+                },
+                ticks: {
+                  fontColor: "#8a909d",
+                  fontFamily: "Roboto, sans-serif",
+                  display: true,
+                  beginAtZero: true
                 }
-              },
-              barPercentage: 1.8,
-              categoryPercentage: 0.2
-            }
-          ],
-          yAxes: [
-            {
-              gridLines: {
-                drawBorder: true,
-                display: true,
-                color: "#eee",
-                zeroLineColor: "#eee"
-              },
-              ticks: {
-                fontColor: "#8a909d",
-                fontFamily: "Roboto, sans-serif",
-                display: true,
-                beginAtZero: true
               }
-            }
-          ]
-        },
-
-        tooltips: {
-          mode: "index",
-          titleFontColor: "#888",
-          bodyFontColor: "#555",
-          titleFontSize: 12,
-          bodyFontSize: 15,
-          backgroundColor: "rgba(256,256,256,0.95)",
-          displayColors: true,
-          xPadding: 10,
-          yPadding: 7,
-          borderColor: "rgba(220, 220, 220, 0.9)",
-          borderWidth: 2,
-          caretSize: 6,
-          caretPadding: 5
-        }
-      }
-    });
-  }
-  /*======== 15. ANALYTICS - USER ACQUISITION ========*/
-  var acquisition = document.getElementById("acquisition");
-  if (acquisition !== null) {
-    var acqData = [
-      {
-        first: [100, 180, 44, 75, 150, 66, 70],
-        second: [144, 44, 177, 76, 23, 189, 12],
-        third: [44, 167, 102, 123, 183, 88, 134]
-      },
-      {
-        first: [144, 44, 110, 5, 123, 89, 12],
-        second: [22, 123, 45, 130, 112, 54, 181],
-        third: [55, 44, 144, 75, 155, 166, 70]
-      },
-      {
-        first: [134, 80, 123, 65, 171, 33, 22],
-        second: [44, 144, 77, 76, 123, 89, 112],
-        third: [156, 23, 165, 88, 112, 54, 181]
-      }
-    ];
-
-    var configAcq = {
-      // The type of chart we want to create
-      type: "line",
-
-      // The data for our dataset
-      data: {
-        labels: [
-          "4 Jan",
-          "5 Jan",
-          "6 Jan",
-          "7 Jan",
-          "8 Jan",
-          "9 Jan",
-          "10 Jan"
-        ],
-        datasets: [
-          {
-            label: "Via Referral",
-            backgroundColor: "rgba(52, 116, 212, .2)",
-            borderColor: "rgba(52, 116, 212, .7)",
-            data: acqData[0].first,
-            lineTension: 0.3,
-            pointBackgroundColor: "rgba(52, 116, 212,0)",
-            pointHoverBackgroundColor: "rgba(52, 116, 212,1)",
-            pointHoverRadius: 3,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: "rectRounded"
+            ]
           },
-          {
-            label: "Direct",
-            backgroundColor: "rgba(255, 192, 203, .3)",
-            borderColor: "rgba(255, 192, 203, .7)",
-            data: acqData[0].second,
-            lineTension: 0.3,
-            pointBackgroundColor: "rgba(255, 192, 203, 0)",
-            pointHoverBackgroundColor: "rgba(255, 192, 203, 1)",
-            pointHoverRadius: 3,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: "rectRounded"
-          },
-          {
-            label: "Via Social",
-            backgroundColor: "rgb(178, 251, 212, .3)",
-            borderColor: "rgba(178, 251, 212, .7)",
-            data: acqData[0].third,
-            lineTension: 0.3,
-            pointBackgroundColor: "rgba(178, 251, 212, 0)",
-            pointHoverBackgroundColor: "rgba(178, 251, 212, 1)",
-            pointHoverRadius: 3,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: "rectRounded"
+  
+          tooltips: {
+            mode: "index",
+            titleFontColor: "#888",
+            bodyFontColor: "#555",
+            titleFontSize: 12,
+            bodyFontSize: 15,
+            backgroundColor: "rgba(256,256,256,0.95)",
+            displayColors: true,
+            xPadding: 10,
+            yPadding: 7,
+            borderColor: "rgba(220, 220, 220, 0.9)",
+            borderWidth: 2,
+            caretSize: 6,
+            caretPadding: 5
           }
-        ]
-      },
+        }
+      });
+    }
+	})
+}
+getUserRegisterPerYear(2022);
+  /*======== 15. ANALYTICS - SALES REPORT ========*/
 
-      // Configuration options go here
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [
+    function getSalesReport(year) {
+      var report = new Object();
+      var acquisition = document.getElementById("acquisition");
+      $http.get(`http://localhost:8080/api/report/getsalesreport/${year}`).then(resp => {
+        if (acquisition !== null) {
+          report = resp.data
+          var acqData = [
             {
-              gridLines: {
+              first: [0, report[0], report[1], report[2], report[3], report[4], report[5]],
+              
+            }
+          ];
+          var maxSize = Math.max(...report);
+          var reportStep = maxSize / 5;
+          var configAcq = {
+            // The type of chart we want to create
+            type: "line",
+      
+            // The data for our dataset
+            data: {
+              labels: [
+                "0",
+                "2",
+                "4",
+                "6",
+                "8",
+                "10",
+                "12 (Tháng)"
+              ],
+              datasets: [
+                {
+                  label: "Đơn hàng",
+                  backgroundColor: "rgba(52, 116, 212, .2)",
+                  borderColor: "rgba(52, 116, 212, .7)",
+                  data: acqData[0].first,
+                  lineTension: 0.3,
+                  pointBackgroundColor: "rgba(52, 116, 212,0)",
+                  pointHoverBackgroundColor: "rgba(52, 116, 212,1)",
+                  pointHoverRadius: 3,
+                  pointHitRadius: 30,
+                  pointBorderWidth: 2,
+                  pointStyle: "rectRounded"
+                },
+              ]
+            },
+      
+            // Configuration options go here
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              legend: {
                 display: false
+              },
+              scales: {
+                xAxes: [
+                  {
+                    gridLines: {
+                      display: false
+                    }
+                  }
+                ],
+                yAxes: [
+                  {
+                    gridLines: {
+                      display: true,
+                      color: "#eee",
+                      zeroLineColor: "#eee"
+                    },
+                    ticks: {
+                      beginAtZero: true,
+                      stepSize: reportStep,
+                      max: maxSize
+                    }
+                  }
+                ]
+              },
+              tooltips: {
+                mode: "index",
+                titleFontColor: "#888",
+                bodyFontColor: "#555",
+                titleFontSize: 12,
+                bodyFontSize: 15,
+                backgroundColor: "rgba(256,256,256,0.95)",
+                displayColors: true,
+                xPadding: 20,
+                yPadding: 10,
+                borderColor: "rgba(220, 220, 220, 0.9)",
+                borderWidth: 2,
+                caretSize: 10,
+                caretPadding: 15
               }
             }
+          };
+      
+          var ctx = document.getElementById("acquisition").getContext("2d");
+          var lineAcq = new Chart(ctx, configAcq);
+          document.getElementById("acqLegend").innerHTML = lineAcq.generateLegend();
+      
+          var items = document.querySelectorAll(
+            "#user-acquisition .nav-tabs .nav-item"
+          );
+          items.forEach(function (item, index) {
+            item.addEventListener("click", function() {
+              configAcq.data.datasets[0].data = acqData[index].first;
+              configAcq.data.datasets[1].data = acqData[index].second;
+              configAcq.data.datasets[2].data = acqData[index].third;
+              lineAcq.update();
+            });
+          });
+        }
+        report = resp.data;
+        return report;
+      })
+    } 
+    var salesReport = getSalesReport(2022);
+ 
+  
+
+  /*======== 16. ANALYTICS - Turnover per year ========*/
+  $scope.turnoverPerYear = [];
+  function getTurnoverPerYear(year) {
+    var activity = document.getElementById("activity");
+	let apiUrl = "http://localhost:8080/api/report/getturnoverperyear";
+	$http({
+		url: apiUrl,
+		method: "GET",
+		params: {
+			year: year
+		}
+	}).then(resp => {
+		$scope.turnoverPerYear = resp.data;
+    if (activity !== null) {
+      var activityData = [
+        {
+          first: [0, $scope.turnoverPerYear[0], $scope.turnoverPerYear[1], $scope.turnoverPerYear[2], $scope.turnoverPerYear[3], $scope.turnoverPerYear[4], $scope.turnoverPerYear[5]],
+        },
+      ];
+      var maxTurnover = Math.max(...$scope.turnoverPerYear);
+      var config = {
+        // The type of chart we want to create
+        type: "line",
+        // The data for our dataset
+        data: {
+          labels: [
+            "0",
+            "2",
+            "4",
+            "6",
+            "8",
+            "10",
+            "12 (Tháng)"
           ],
-          yAxes: [
+          datasets: [
             {
-              gridLines: {
-                display: true,
-                color: "#eee",
-                zeroLineColor: "#eee"
-              },
-              ticks: {
-                beginAtZero: true,
-                stepSize: 50,
-                max: 200
-              }
+              label: "Active",
+              backgroundColor: "transparent",
+              borderColor: "rgba(82, 136, 255, .8)",
+              data: activityData[0].first,
+              lineTension: 0,
+              pointRadius: 5,
+              pointBackgroundColor: "rgba(255,255,255,1)",
+              pointHoverBackgroundColor: "rgba(255,255,255,1)",
+              pointBorderWidth: 2,
+              pointHoverRadius: 7,
+              pointHoverBorderWidth: 1
+            },
+            {
+              label: "Inactive",
+              backgroundColor: "transparent",
+              borderColor: "rgba(255, 199, 15, .8)",
+              data: activityData[0].second,
+              lineTension: 0,
+              borderDash: [10, 5],
+              borderWidth: 1,
+              pointRadius: 5,
+              pointBackgroundColor: "rgba(255,255,255,1)",
+              pointHoverBackgroundColor: "rgba(255,255,255,1)",
+              pointBorderWidth: 2,
+              pointHoverRadius: 7,
+              pointHoverBorderWidth: 1
             }
           ]
         },
-        tooltips: {
-          mode: "index",
-          titleFontColor: "#888",
-          bodyFontColor: "#555",
-          titleFontSize: 12,
-          bodyFontSize: 15,
-          backgroundColor: "rgba(256,256,256,0.95)",
-          displayColors: true,
-          xPadding: 20,
-          yPadding: 10,
-          borderColor: "rgba(220, 220, 220, 0.9)",
-          borderWidth: 2,
-          caretSize: 10,
-          caretPadding: 15
-        }
-      }
-    };
-
-    var ctx = document.getElementById("acquisition").getContext("2d");
-    var lineAcq = new Chart(ctx, configAcq);
-    document.getElementById("acqLegend").innerHTML = lineAcq.generateLegend();
-
-    var items = document.querySelectorAll(
-      "#user-acquisition .nav-tabs .nav-item"
-    );
-    items.forEach(function (item, index) {
-      item.addEventListener("click", function() {
-        configAcq.data.datasets[0].data = acqData[index].first;
-        configAcq.data.datasets[1].data = acqData[index].second;
-        configAcq.data.datasets[2].data = acqData[index].third;
-        lineAcq.update();
-      });
-    });
-  }
-
-  /*======== 16. ANALYTICS - ACTIVITY CHART ========*/
-  var activity = document.getElementById("activity");
-  if (activity !== null) {
-    var activityData = [
-      {
-        first: [0, 65, 52, 115, 98, 165, 125],
-        second: [45, 38, 100, 87, 152, 187, 85]
-      },
-      {
-        first: [0, 65, 77, 33, 49, 100, 100],
-        second: [88, 33, 20, 44, 111, 140, 77]
-      },
-      {
-        first: [0, 40, 77, 55, 33, 116, 50],
-        second: [55, 32, 20, 55, 111, 134, 66]
-      },
-      {
-        first: [0, 44, 22, 77, 33, 151, 99],
-        second: [60, 32, 120, 55, 19, 134, 88]
-      }
-    ];
-
-    var config = {
-      // The type of chart we want to create
-      type: "line",
-      // The data for our dataset
-      data: {
-        labels: [
-          "4 Jan",
-          "5 Jan",
-          "6 Jan",
-          "7 Jan",
-          "8 Jan",
-          "9 Jan",
-          "10 Jan"
-        ],
-        datasets: [
-          {
-            label: "Active",
-            backgroundColor: "transparent",
-            borderColor: "rgba(82, 136, 255, .8)",
-            data: activityData[0].first,
-            lineTension: 0,
-            pointRadius: 5,
-            pointBackgroundColor: "rgba(255,255,255,1)",
-            pointHoverBackgroundColor: "rgba(255,255,255,1)",
-            pointBorderWidth: 2,
-            pointHoverRadius: 7,
-            pointHoverBorderWidth: 1
+        // Configuration options go here
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            display: false
           },
-          {
-            label: "Inactive",
-            backgroundColor: "transparent",
-            borderColor: "rgba(255, 199, 15, .8)",
-            data: activityData[0].second,
-            lineTension: 0,
-            borderDash: [10, 5],
-            borderWidth: 1,
-            pointRadius: 5,
-            pointBackgroundColor: "rgba(255,255,255,1)",
-            pointHoverBackgroundColor: "rgba(255,255,255,1)",
-            pointBorderWidth: 2,
-            pointHoverRadius: 7,
-            pointHoverBorderWidth: 1
-          }
-        ]
-      },
-      // Configuration options go here
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [
-            {
-              gridLines: {
-                display: false,
-              },
-              ticks: {
-                fontColor: "#8a909d", // this here
-              },
-            }
-          ],
-          yAxes: [
-            {
-              gridLines: {
-                fontColor: "#8a909d",
-                fontFamily: "Roboto, sans-serif",
-                display: true,
-                color: "#eee",
-                zeroLineColor: "#eee"
-              },
-              ticks: {
-                // callback: function(tick, index, array) {
-                //   return (index % 2) ? "" : tick;
-                // }
-                stepSize: 50,
-                fontColor: "#8a909d",
-                fontFamily: "Roboto, sans-serif"
+          scales: {
+            xAxes: [
+              {
+                gridLines: {
+                  display: false,
+                },
+                ticks: {
+                  fontColor: "#8a909d", // this here
+                },
               }
-            }
-          ]
-        },
-        tooltips: {
-          mode: "index",
-          intersect: false,
-          titleFontColor: "#888",
-          bodyFontColor: "#555",
-          titleFontSize: 12,
-          bodyFontSize: 15,
-          backgroundColor: "rgba(256,256,256,0.95)",
-          displayColors: true,
-          xPadding: 10,
-          yPadding: 7,
-          borderColor: "rgba(220, 220, 220, 0.9)",
-          borderWidth: 2,
-          caretSize: 6,
-          caretPadding: 5
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  fontColor: "#8a909d",
+                  fontFamily: "Roboto, sans-serif",
+                  display: true,
+                  color: "#eee",
+                  zeroLineColor: "#eee"
+                },
+                ticks: {
+                  // callback: function(tick, index, array) {
+                  //   return (index % 2) ? "" : tick;
+                  // }
+                  stepSize: maxTurnover / 4,
+                  fontColor: "#8a909d",
+                  fontFamily: "Roboto, sans-serif"
+                }
+              }
+            ]
+          },
+          tooltips: {
+            mode: "index",
+            intersect: false,
+            titleFontColor: "#888",
+            bodyFontColor: "#555",
+            titleFontSize: 12,
+            bodyFontSize: 15,
+            backgroundColor: "rgba(256,256,256,0.95)",
+            displayColors: true,
+            xPadding: 10,
+            yPadding: 7,
+            borderColor: "rgba(220, 220, 220, 0.9)",
+            borderWidth: 2,
+            caretSize: 6,
+            caretPadding: 5
+          }
         }
-      }
-    };
-
-    var ctx = document.getElementById("activity").getContext("2d");
-    var myLine = new Chart(ctx, config);
-
-    var items = document.querySelectorAll("#user-activity .nav-tabs .nav-item");
-    items.forEach(function(item, index){
-      item.addEventListener("click", function() {
-        config.data.datasets[0].data = activityData[index].first;
-        config.data.datasets[1].data = activityData[index].second;
-        myLine.update();
+      };
+  
+      var ctx = document.getElementById("activity").getContext("2d");
+      var myLine = new Chart(ctx, config);
+  
+      var items = document.querySelectorAll("#user-activity .nav-tabs .nav-item");
+      items.forEach(function(item, index){
+        item.addEventListener("click", function() {
+          config.data.datasets[0].data = activityData[index].first;
+          config.data.datasets[1].data = activityData[index].second;
+          myLine.update();
+        });
       });
-    });
+    }
+	})
   }
+  getTurnoverPerYear(2022);
+  
 
   /*======== 17. HORIZONTAL BAR CHART1 ========*/
   var hbar1 = document.getElementById("hbar1");

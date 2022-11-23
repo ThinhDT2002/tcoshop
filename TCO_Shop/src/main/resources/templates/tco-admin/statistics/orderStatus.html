@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
+
+<body>
+    <main ng-controller="dashboard-ctrl">
+
+
+        <!-- CONTENT WRAPPER -->
+        <div class="ec-content-wrapper">
+            <div class="content">
+                
+              
+
+                <div class="row">
+                    <div class="col-xl-4 col-md-12 p-b-15">
+                        <!-- Doughnut Chart -->
+                        <div class="card card-default">
+                            <div class="card-header justify-content-center">
+                                <h2>Đơn Hàng Trong Tháng</h2>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="doChart"></canvas>
+                            </div>
+                            
+                            <div class="card-footer d-flex flex-wrap bg-white p-0">
+                                <div class="col-6">
+                                    <div class="p-20">
+                                        <ul class="d-flex flex-column justify-content-between">
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                    style="color: #4c84ff"></i>Chờ xác nhận</li>
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                    style="color: #ffa128"></i>Chuẩn bị giao</li>
+                                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                    style="color: #7be6ff"></i>Đã xuất kho</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-6 border-left">
+                                    <div class="p-20">
+                                        <ul class="d-flex flex-column justify-content-between">
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                    style="color: #8061ef"></i>Đang vận chuyển</li>
+                                            <li class="mb-2"><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                    style="color: #80e1c1"></i>Đã giao hàng</li>
+                                            <li><i class="mdi mdi-checkbox-blank-circle-outline mr-2"
+                                                    style="color: #ff7b7b "></i>Huỷ bỏ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="row">
+                    <div class="col-12 p-b-15">
+                        <!-- Recent Order Table -->
+                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                            <div class="card-header justify-content-between">
+                                <h2>Recent Orders</h2>
+                                <div class="date-range-report">
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0 pb-5">
+                                <table class="table card-table table-responsive table-responsive-large"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Product Name</th>
+                                            <th class="d-none d-lg-table-cell">Units</th>
+                                            <th class="d-none d-lg-table-cell">Order Date</th>
+                                            <th class="d-none d-lg-table-cell">Order Cost</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>24541</td>
+                                            <td>
+                                                <a class="text-dark" href="#"> Coach Swagger</a>
+                                            </td>
+                                            <td class="d-none d-lg-table-cell">1 Unit</td>
+                                            <td class="d-none d-lg-table-cell">Oct 20, 2018</td>
+                                            <td class="d-none d-lg-table-cell">$230</td>
+                                            <td>
+                                                <span class="badge badge-success">Completed</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown show d-inline-block widget-dropdown">
+                                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                        id="dropdown-recent-order1" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        data-display="static"></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">View</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Remove</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>24541</td>
+                                            <td>
+                                                <a class="text-dark" href="#"> Toddler Shoes, Gucci Watch</a>
+                                            </td>
+                                            <td class="d-none d-lg-table-cell">2 Units</td>
+                                            <td class="d-none d-lg-table-cell">Nov 15, 2018</td>
+                                            <td class="d-none d-lg-table-cell">$550</td>
+                                            <td>
+                                                <span class="badge badge-primary">Delayed</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown show d-inline-block widget-dropdown">
+                                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                        id="dropdown-recent-order2" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        data-display="static"></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">View</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Remove</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>24541</td>
+                                            <td>
+                                                <a class="text-dark" href="#"> Hat Black Suits</a>
+                                            </td>
+                                            <td class="d-none d-lg-table-cell">1 Unit</td>
+                                            <td class="d-none d-lg-table-cell">Nov 18, 2018</td>
+                                            <td class="d-none d-lg-table-cell">$325</td>
+                                            <td>
+                                                <span class="badge badge-warning">On Hold</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown show d-inline-block widget-dropdown">
+                                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                        id="dropdown-recent-order3" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        data-display="static"></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">View</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Remove</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>24541</td>
+                                            <td>
+                                                <a class="text-dark" href="#"> Backpack Gents, Swimming Cap Slin</a>
+                                            </td>
+                                            <td class="d-none d-lg-table-cell">5 Units</td>
+                                            <td class="d-none d-lg-table-cell">Dec 13, 2018</td>
+                                            <td class="d-none d-lg-table-cell">$200</td>
+                                            <td>
+                                                <span class="badge badge-success">Completed</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown show d-inline-block widget-dropdown">
+                                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                        id="dropdown-recent-order4" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        data-display="static"></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">View</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Remove</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>24541</td>
+                                            <td>
+                                                <a class="text-dark" href="#"> Speed 500 Ignite</a>
+                                            </td>
+                                            <td class="d-none d-lg-table-cell">1 Unit</td>
+                                            <td class="d-none d-lg-table-cell">Dec 23, 2018</td>
+                                            <td class="d-none d-lg-table-cell">$150</td>
+                                            <td>
+                                                <span class="badge badge-danger">Cancelled</span>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown show d-inline-block widget-dropdown">
+                                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
+                                                        id="dropdown-recent-order5" data-bs-toggle="dropdown"
+                                                        aria-haspopup="true" aria-expanded="false"
+                                                        data-display="static"></a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-item">
+                                                            <a href="#">View</a>
+                                                        </li>
+                                                        <li class="dropdown-item">
+                                                            <a href="#">Remove</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Content -->
+        </div> <!-- End Content Wrapper -->
+
+
+
+    </main>
+</body>
+
+</html>
