@@ -2,11 +2,11 @@ const app = angular.module("shopping-cart-app", []);
 
 app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.items = [];
-	
+
 	var name = $("#username").text();
 	var split = name.split(" ");
 	console.log(split[2]);
-	
+
 	$scope.initialize = function() {
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
@@ -98,10 +98,24 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 	}
 
+	$scope.minus = {
+		get itemIdAndPrice() {
+			return $scope.cart.items.map(obj => {
+				return {
+					id: obj.id, 
+					qty: obj.qty
+				}
+			});
+		}
+	}
+	
+	console.log($scope.minus);
+
+
 	$scope.cart.loadFromSessionStorage();
 
 	$scope.order = {
-		
+
 		createDate: new Date(),
 		address: "",
 		user: { username: split[2] },
@@ -113,12 +127,22 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			return $scope.cart.items.map(item => {
 				return {
 					product: { id: item.id },
-					price: item.price,
+					price: item.price * ((100 - item.discount) / 100),
 					quantity: item.qty
 				}
 			});
 		},
-		
+
+		minusStockinProduct() {
+			var productTest = angular.copy($scope.minus);
+			$http.get(`/api/products/2`).then(resp => {
+				if(stock > 0) stock - qty;
+			
+
+			})
+
+		},
+
 		purchase() {
 			if ($scope.cart.count > 0) {
 				var order = angular.copy(this);
@@ -127,9 +151,8 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 					$scope.cart.clear();
 					location.href = "/order/track/" + resp.data.id;
 				}).catch(error => {
-					alert("Đặt hàng lỗi!")
 					console.log(error)
-
+					alert("Đặt hàng lỗi!")
 				})
 			} else {
 				alert("Bạn chưa có sản phẩm trong giỏ hàng")

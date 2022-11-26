@@ -108,8 +108,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <span>Color</span>
                                             <div class="ec-pro-variation-content">
                                                 <ul>
-                                                    <li class="active"><span
-                                                            style="background-color:#8dc4fa;"></span></li>
+                                                    <li class="active"><span style="background-color:#8dc4fa;"></span></li>
                                                     <li><span style="background-color:#6fd5c7"></span></li>
                                                     <li><span style="background-color:#7ed48d;"></span></li>
                                                     <li><span style="background-color:#e7b97e;"></span></li>
@@ -120,7 +119,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div class="ec-single-qty">
                                         <div class="ec-single-cart ">
-                                            <a class="btn btn-primary" th:attr="ng-click=@{|cart.add(${item.id})|}">Add To Cart</a>
+                                        	<th:block th:if="*{stock} gt 0">
+                                            	<a class="btn btn-primary" th:attr="ng-click=@{|cart.add(${item.id})|}">Add To Cart</a>
+                                         	</th:block>
+                                         	    <th:block th:if="*{stock} eq 0">
+                                            	<button class="btn btn-primary" disabled>Hết hàng</button>
+                                         	</th:block>
                                         </div>
                                         <div class="ec-single-wishlist">
                                             <a class="ec-btn-group wishlist" title="Wishlist"><img

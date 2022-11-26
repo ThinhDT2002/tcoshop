@@ -191,7 +191,7 @@
 							<td>[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 							<td>[[*{quantity}]]</td>
 							<td>[[*{product.discount}]]%</td>
-							<td>[[*{#numbers.formatDecimal( (price - (price * product.discount/100)) * quantity, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
+							<td>[[*{#numbers.formatDecimal( price * quantity, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 						</tr>
 					</tbody>
 
