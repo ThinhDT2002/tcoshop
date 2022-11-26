@@ -1,10 +1,16 @@
 package com.tcoshop.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.repository.OrderRepository;
 import com.tcoshop.repository.ProductRepository;
+import com.tcoshop.repository.ReportRepository;
 import com.tcoshop.repository.UserRepository;
 import com.tcoshop.service.ReportService;
 @Service
@@ -15,6 +21,8 @@ public class ReportServiceImpl implements ReportService {
     UserRepository userRepository;
     @Autowired
     ProductRepository productRepository;
+    @Autowired
+    ReportRepository reportRepository;
     @Override
     public Double getTurnover(String status) {
         return orderRepository.getTurnover(status);
@@ -65,5 +73,17 @@ public class ReportServiceImpl implements ReportService {
             return 0;
         }
         return userRegisterCount;
+    }
+    @Override
+    public List<SaleReport> getTableSaleReport(Integer year) {
+        return reportRepository.getSaleReport(year);
+    }
+    @Override
+    public List<OrderStatusReport> getTableDataOrderStatusReport(Integer year) {
+        return reportRepository.getOrderStatusReport(year);
+    }
+    @Override
+    public List<TurnoverReport> getTurnoverReport(Integer year) {
+        return reportRepository.getTurnoverReport(year);
     }
 }

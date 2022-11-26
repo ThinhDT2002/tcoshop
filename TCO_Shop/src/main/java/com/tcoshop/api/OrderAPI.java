@@ -34,6 +34,11 @@ public class OrderAPI {
 		return orderService.findAll();
 	}
 	
+	@GetMapping("/id/{id}")
+	public Order getOrderById(@PathVariable("id") Integer id) {
+	    return orderService.findById(id);
+	}
+	
 	@GetMapping("/{username}")
 	public List<Order> getByUsername(@PathVariable("username") String username){
 		return orderService.findByUsername(username);

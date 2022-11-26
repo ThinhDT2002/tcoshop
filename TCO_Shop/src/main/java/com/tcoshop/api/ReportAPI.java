@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.service.ReportService;
 
 @RestController
@@ -125,5 +128,20 @@ public class ReportAPI {
         userRegisterReport.add(userRegister11);
         userRegisterReport.add(userRegister12);
         return userRegisterReport;
+    }
+    
+    @GetMapping("/api/report/saleReport/tableData")
+    public List<SaleReport> getTableData(@RequestParam("year") Integer year) {
+        return reportService.getTableSaleReport(year);
+    }
+    
+    @GetMapping("/api/report/ordetStatusReport/tableData")
+    public List<OrderStatusReport> getOSRData(@RequestParam("year") Integer year) {
+        return reportService.getTableDataOrderStatusReport(year);
+    }
+    
+    @GetMapping("/api/report/turnoverReport/tableData")
+    public List<TurnoverReport> getTurnoverReport(@RequestParam("year") Integer year) {
+        return reportService.getTurnoverReport(year);
     }
 }

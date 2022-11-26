@@ -4,10 +4,11 @@ package com.tcoshop.controller.admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class StatisticsController {
 	@RequestMapping("/tco-admin/statistics/ordersSold")
-    public String getOderSold() {
+    public String getOderSold() {    
         return "tco-admin/statistics/ordersSold.html";
     }
     

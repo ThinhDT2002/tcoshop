@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "Orders_Detail")
 public class OrderDetail implements Serializable{
@@ -23,6 +25,7 @@ public class OrderDetail implements Serializable{
 	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "Order_Id")
+//	@JsonIgnoreProperties({"orderDetails"})
 	private Order order;
 	@ManyToOne
 	@JoinColumn(name = "Product_Id")
