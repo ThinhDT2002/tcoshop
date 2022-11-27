@@ -1,6 +1,7 @@
 const app = angular.module("shopping-cart-app", []);
 
 app.controller("shopping-cart-ctrl", function($scope, $http) {
+	
 	$scope.items = [];
 
 	var name = $("#username").text();
@@ -25,6 +26,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			enctype: 'multipart/form-data'
 		})
 	}
+
 
 	$scope.cart = {
 		items: [],

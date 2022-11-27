@@ -240,10 +240,10 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         </div>
 
                                     </div>
-                                    <div class="ec-ratting-content">
+                                    <div class="ec-ratting-content" >
                                         <h3>Add a Review</h3>
                                         <div class="ec-ratting-form">
-                                            <form action="#">
+                                            <form method = "post" >
                                                 <div class="ec-ratting-star">
                                                     <span>Your rating:</span>
                                                     <div class="ec-t-review-rating">
@@ -257,15 +257,16 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                 <div class="ec-ratting-input">
                                                     <input name="your-name" placeholder="Name" type="text" />
                                                 </div>
-                                                <div class="ec-ratting-input">
-                                                    <input name="your-email" placeholder="Email*" type="email"
-                                                        required />
-                                                </div>
+                                                
                                                 <div class="ec-ratting-input form-submit">
-                                                    <textarea name="your-commemt"
-                                                        placeholder="Enter Your Comment"></textarea>
-                                                    <button class="btn btn-primary" type="submit"
-                                                        value="Submit">Submit</button>
+                                                    <textarea ng-model = "formReview.content" name="your-commemt"
+                                                        placeholder="Enter Your Comment" ></textarea>
+                                                    <div class="form-group col-sm-6">
+														<input  type="date" class="form-control">
+													</div>
+                                                    <button
+                                                    class="btn btn-primary" 
+                                                        >Submit</button>
                                                 </div>
                                             </form>
                                         </div>

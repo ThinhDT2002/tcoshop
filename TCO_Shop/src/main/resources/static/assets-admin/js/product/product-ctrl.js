@@ -47,52 +47,34 @@ adminApp.controller("product-ctrl", function($scope, $http){
 		}
 	});
 	
-	$scope.pager = {
-		page: 0,
-		size: "10",
-		sortProperty: 'name',
-		get items(){
-			var start = this.page * Number(this.size);
-			return $scope.items.slice(start, start + Number(this.size));
-		},
+	$scope.sortProperty = 'name';
+	
+	$scope.sort = function(){
 		
-		get count(){
-		return Math.ceil(1.0 * $scope.items.length / Number(this.size));
-		
-		},
-		get totalQuantity(){
-			return $scope.items.length;
-		},
-		
-		get repaginate(){
-			this.page = 0;
-			this.count;	
-		},
-		
-		
-		first(){
-			this.page = 0;
-		},
-		prev(){
-			this.page--;
-			if(this.page < 0){
-				this.last();
-			}
-			
-		},
-		next(){
-			this.page++;		
-			if(this.page >= this.count){
-				this.first();
-			}
-			
-		},
-		last(){
-			this.page = this.count -1;
-		},
-		// Không xóa cái hàm bên dưới
-		 get sortBy() {
-
-		},
 	}
+	
+	$scope.currentPage = 0;
+	$scope.pageSize = "10";
+	
+	$scope.totalQuantity = function(){
+		return $scope.items.length;
+	}
+	
+	$scope.numberOfPages = function(){
+		return Math.ceil($scope.items.length / $scope.pageSize);
+	}
+	for(let i = 0; i < 45; i++){
+		$scope.items.push("Item " + i);
+	}
+	
+	$scope.pagination = function(){
+		$scope.currentPage = 0;
+	}
+	
+})
+adminApp.filter('startFrom', function(){
+		return function(input, start){
+			start = +start;
+			return input.slice(start);
+		}
 });

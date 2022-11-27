@@ -19,13 +19,43 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 		
 		<div class="row">
 			<div class="col-12">
-				
-				<form action="" class="search-bar">
-					<input type="search" name="search" pattern=".*\S.*" required ng-model="account">
-					<button class="search-btn" type="submit">
-						<span>Search</span>
-					</button>
-				</form>
+				<div class="card card-default">
+					<div class="card-header card-header-border-bottom d-flex justify-content-between">
+					<div class="card-bar">
+						 <div class="col-lg-3 col-md-6">
+						 	<label>Hiển thị: </label>
+								<select class="form-control" ng-change="pagination()" ng-model="pageSize">
+									<option value="2">2</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+						 </div>
+						 <div class="col-lg-9 col-md-12 sort">
+						 	<div class="col-lg-4 col-md-6 p-space">
+						 		<form action="" class="search-bar">
+									<input type="search" name="search" pattern=".*\S.*" required ng-model="account">
+									<button class="search-btn" type="submit">
+										<span>Search</span>
+									</button>
+								</form>
+						 	</div>
+						 	<div class="col-lg-4 col-md-6 p-space">
+						 		<label for="sortUser">Bộ lọc</label>
+								<select class="form-control" ng-change="sort()" ng-model="userProperty">
+									<option value="username">Mã người dùng ↑</option>
+									<option value="-username">Mã người dùng ↓</option>
+									<option value="fullname">Tên người dùng ↑</option>
+									<option value="-fullname">Tên người dùng ↓</option>
+									<option value="email">Email ↑</option>
+									<option value="-email">Email ↓</option>
+								</select>
+						 	</div>
+						 </div>
+					</div>
+				</div>
+				<div>
+					<h6>Tổng người dùng: {{totalQuantity()}}</h6>
+				</div>
 				<div class="ec-vendor-list card card-default">
 					<div class="card-body">
 						<div class="table-responsive">
@@ -44,7 +74,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 								</thead>
 
 								<tbody>
-									<tr ng-repeat="user in users | filter: account">
+									<tr ng-repeat="user in users | filter: account | orderBy: userProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
 										<td><img class="vendor-thumb" ng-src="/images/user/{{user.avatar}}" alt="user profile" /></td>
 										<td>{{user.username}}</td>
 										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc0ccdfc1c8c8dfc8c3ccedcac0ccc4c183cec2c0">{{user.email}}</a></td>
@@ -76,12 +106,29 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 											</div>
 										</td>
 									</tr>
-									
-
 								</tbody>
 							</table>
+							<div class="panel-footer text-center">
+								<button ng-click = "pagination()" class="btn btn-danger">
+									<b>First</b>
+								</button>
+								<button ng-disabled="currentPage == 0"
+									ng-click="currentPage=currentPage - 1" class="btn btn-primary">
+									<b>Previous</b>
+								</button>
+								<button
+									class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+								<button ng-disabled="currentPage >= orders.length/pageSize - 1"
+									ng-click="currentPage=currentPage+1" class="btn btn-primary">
+									<b>Next</b>
+								</button>
+								<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
+									<b>Last</b>
+								</button>
+							</div>
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>

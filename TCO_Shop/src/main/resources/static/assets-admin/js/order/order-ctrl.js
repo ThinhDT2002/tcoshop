@@ -28,6 +28,11 @@ adminApp.controller("order-ctrl", function($http, $scope) {
 	$scope.currentPage = 0;
 	$scope.pageSize = "10";
 	
+	$scope.totalQuantity = function(){
+		return $scope.orders.length;
+	}
+	
+
 	$scope.numberOfPages = function() {
 		return Math.ceil($scope.orders.length / $scope.pageSize);
 	}

@@ -1,4 +1,5 @@
-adminApp.controller("review-ctrl", function($scope, $http){
+const app3 = aungular.module("review-client-app", []);
+app3.controller("review-client-ctrl", function($scope, $http){
 	
 	$scope.revs = [];
 	$scope.form = [];

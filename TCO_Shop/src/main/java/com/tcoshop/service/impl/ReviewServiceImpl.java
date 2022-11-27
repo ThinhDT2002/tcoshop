@@ -29,6 +29,11 @@ public class ReviewServiceImpl implements ReviewService{
 		return reviewDao.findByProductId(pid);
 	}
 
+	@Override
+	public Review create(Review review) {
+		return reviewDao.save(review);
+	}
+
 	
 	
 	

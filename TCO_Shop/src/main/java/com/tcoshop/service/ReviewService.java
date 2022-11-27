@@ -10,4 +10,6 @@ public interface ReviewService {
 	Review findById(Integer id);
 	
 	List<Review> findByProductId(Integer pid);
+
+	Review create(Review review);
 }

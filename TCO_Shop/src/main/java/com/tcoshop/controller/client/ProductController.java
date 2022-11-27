@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,19 +76,12 @@ public class ProductController {
     @RequestMapping("/product/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id,
     		@RequestParam("pid") Optional<Integer> pid) {
-    		if(pid.isPresent()) {
+    		
     			Product item = productService.findById(id);
-    			List<Review> review = reviewService.findByProductId(pid.get());
-    			model.addAttribute("reviews",review);
+    			List<Review> listReview = reviewService.findAll();
+    			model.addAttribute("reviews", listReview);
     			model.addAttribute("item", item);
-    		} else {
-    			Product item = productService.findById(id);
-    			List<Review> review = reviewService.findAll();
-    			model.addAttribute("reviews",review);
-    			model.addAttribute("item", item);
-    		}
-			
-	
+    
         return "tco-client/shop/product-gallery-full-width";
     }
 }

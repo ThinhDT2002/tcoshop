@@ -124,10 +124,15 @@ public class UserManagementController {
   public String updateUser(RedirectAttributes redirectAttributes,
 		 @RequestParam("userAvatar") Optional<MultipartFile> multipartFile,
 		 @ModelAttribute("user") User user, Model model) {
+	  String getUrl = "http://localhost:8080/api/user/" + user.getUsername();
+	  ResponseEntity<User> responseEntity = restTemplate.getForEntity(getUrl, User.class);
+	  User userIcon = responseEntity.getBody();
+	  user.setAvatar(userIcon.getAvatar());
+	  
+	  String putUrl = "http://localhost:8080/api/user/" + user.getUsername();
 	  setAvatar(user, multipartFile);
-	  String url = "http://localhost:8080/api/user/" + user.getUsername();
 	  HttpEntity<User> httpEntity = new HttpEntity<User>(user);
-	  restTemplate.put(url, httpEntity);
+	  restTemplate.put(putUrl, httpEntity);
 	  redirectAttributes.addFlashAttribute("message","Cập nhật tài khỏan " + user.getUsername() + " thành công!");
 	  redirectAttributes.addFlashAttribute("user", user);
 	  return "redirect:/tco-admin/userEdit/" + user.getUsername();
