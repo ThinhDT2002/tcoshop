@@ -470,7 +470,7 @@
                             <span class="cart-price"><span>{{cart.formatNumber(item.price)}} VNĐ</span> x {{item.qty}}</span>
                             <div class="qty-plus-minus">
                                 <!-- <input class="qty-input" type="text" name="ec_qtybtn" value="1" /> -->
-                                <input class="qty-input" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1">
+                                <input class="qty-input" ng-change="cart.saveToSessionStorage()" ng-model="item.qty" type="number" min="1">
                             </div>
                             <a href="javascript:void(0)" class="remove" th:attr="ng-click=@{|cart.remove(item.id)|}">❌</a>
                         </div>

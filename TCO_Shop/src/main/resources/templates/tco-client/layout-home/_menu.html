@@ -492,7 +492,7 @@
                             <a th:href="@{|/product/detail/{{item.id}}|}" class="cart_pro_title">{{item.name}}</a>
                             <span class="cart-price"><span>{{cart.formatNumber(item.price)}} VNĐ</span> x {{item.qty}}</span>
                             <div class="qty-plus-minus">
-								<input class="qty-input" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1">
+								<input class="qty-input" ng-change="cart.saveToSessionStorage()" ng-model="item.qty" type="number" min="1">
                             </div>
                             <a href="#" class="remove" th:attr="ng-click=@{|cart.remove(item.id)|}">×</a>
                         </div>

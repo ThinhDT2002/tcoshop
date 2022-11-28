@@ -223,8 +223,13 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                             <div class="ec-pro-actions">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
-                                                        class="svg_img pro_svg" alt="" /></a>
-                                                <button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ</button>
+                                                        class="svg_img pro_svg" alt="" /></a>                                             
+                                                <th:block th:if="${p.stock} gt 0">
+                                            		<button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ</button>
+                                         		</th:block>
+                                         	    	<th:block th:if="${p.stock} eq 0">
+                                            		<button title="Add To Cart" class="add-to-cart btn btn-primary" disabled>Hết hàng</button>
+                                         		</th:block>                                               
                                                 <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><img

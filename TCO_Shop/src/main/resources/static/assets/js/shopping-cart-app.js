@@ -32,14 +32,19 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		items: [],
 		add(id) {
 			var item = this.items.find(item => item.id == id);
+			
+			
 			if (item) {
 				item.qty++;
 				this.saveToSessionStorage();
 			} else {
 				$http.get(`/api/products/${id}`).then(resp => {
+					
 					resp.data.qty = 1;
 					this.items.push(resp.data);
 					this.saveToSessionStorage();
+					
+					
 				})
 			}
 		},
@@ -100,20 +105,6 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 	}
 
-	$scope.minus = {
-		get itemIdAndPrice() {
-			return $scope.cart.items.map(obj => {
-				return {
-					id: obj.id, 
-					qty: obj.qty
-				}
-			});
-		}
-	}
-	
-	console.log($scope.minus);
-
-
 	$scope.cart.loadFromSessionStorage();
 
 	$scope.order = {
@@ -133,16 +124,6 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 					quantity: item.qty
 				}
 			});
-		},
-
-		minusStockinProduct() {
-			var productTest = angular.copy($scope.minus);
-			$http.get(`/api/products/2`).then(resp => {
-				if(stock > 0) stock - qty;
-			
-
-			})
-
 		},
 
 		purchase() {

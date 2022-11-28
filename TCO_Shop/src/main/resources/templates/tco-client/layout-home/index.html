@@ -94,9 +94,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7 col-sm-12 col-xs-12">
+                        <div class="col-md-7 col-sm-12 col-xs-12" th:each="a:*{product}">
                             <div class="quickview-pro-content">
-                                <h5 class="ec-quick-title"><a href="product-left-sidebar.html">Giảng viên với khẩu hiệu broguing</a></h5>
+                                <h5 class="ec-quick-title"><a href="product-left-sidebar.html" th:text="${a.name}"></a></h5>
                                 <div class="ec-quickview-rating">
                                     <i class="ecicon eci-star fill"></i>
                                     <i class="ecicon eci-star fill"></i>
@@ -156,76 +156,7 @@
                     <p>kết nối với Facebook</p>
                 </div>
             </a>
-            <!-- Chat Button For Whatsapp -->
-            <!-- <a id="cp-whatsapp" href="#" class="cp-list" data-number="0123456789" data-message="Xin hãy giúp tôi! Tôi đã nhận sai sản phẩm từ trang web của bạn." target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-whatsapp.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>Whatsapp</h2>
-                    <p>trò chuyện trực tiếp trên Whatsapp</p>
-                </div>
-            </a> -->
-            <!-- Chat Button For Instagram -->
-            <!-- <a class="cp-list" href="bỏ link vào" target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-instagram.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>Instagram</h2>
-                    <p>thảo luận qua Instagram</p>
-                </div>
-            </a> -->
-            <!-- Chat Button For LinkedIn -->
-            <!-- <a class="cp-list" href="bỏ link vào" target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-linkedin.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>LinkedIn</h2>
-                    <p>thảo luận qua LinkedIn</p>
-                </div>
-            </a> -->
-            <!-- Chat Button For Twitter -->
-            <!-- <a class="cp-list" href="bỏ link vào" target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-twitter.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>Twitter</h2>
-                    <p>dễ dàng trò chuyện qua Twitter</p>
-                </div>
-            </a> -->
-            <!-- Chat Button For Skype -->
-            <!-- <a class="cp-list" href=" bỏ link vào vd: skype:kathiriyaketan57?chat" target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-skype.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>Skype</h2>
-                    <p>trò chuyện trên Skype</p>
-                </div>
-            </a> -->
-            <!-- Chat Button For Telegram -->
-            <!-- <a class="cp-list" href="bỏ link vào vd: https://t.me/kathiriyaketan" target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-telegram.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>Telegram</h2>
-                    <p> nhận giải pháp qua Telegram</p>
-                </div>
-            </a> -->
-            <!-- Chat Button For Viber -->
-            <!-- <a class="cp-list" href="bỏ link vào vd: viber://chat?number=+0123456789" target="_blank">
-                <div class="cp-image">
-                    <img src="assets/images/chat-pro/cp-viber.png" alt=""/>
-                </div>	
-                <div class="cp-content">
-                    <h2>Viber</h2>
-                    <p> giải pháp tức thì qua Viber</p>
-                </div>
-            </a> -->
+                       
             <!-- Mail Button For Email -->
             <a class="cp-list" href="bỏ link vào vd: https://loopinfosol.in/cdn-cgi/l/email-protection#ea818b9e82839883938b818f9e8b84dfddaa8d878b8386c4898587" target="_blank">
                 <div class="cp-image">
@@ -260,14 +191,6 @@
     <div id="ec-popnews-bg"></div>
     <div id="ec-popnews-box" class="animate__animated animate__slideInDown">
         <div id="ec-popnews-close"><i class="ecicon eci-close"></i></div>
-        <!-- <div id="ec-popnews-box-content">
-            <h1>Đăng ký nhận bản tin</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <form id="ec-popnews-form" action="#" method="post">
-                <input type="email" name="newsemail" placeholder="Email Address" required />
-                <button type="button" class="btn btn-secondary" name="subscribe">Đăng ký</button>
-            </form>
-        </div> -->
         <img src="../images/banner/quangcao1.png" alt="">
     </div>
     <!-- Newsletter Modal end -->
