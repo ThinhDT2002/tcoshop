@@ -38,6 +38,5 @@ public class TurnoverReport implements Serializable{
     }
     public void setTurnover(Double turnover) {
         this.turnover = turnover;
-    }
-    
+    }    
 }

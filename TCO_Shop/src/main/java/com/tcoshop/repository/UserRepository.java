@@ -1,5 +1,7 @@
 package com.tcoshop.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,4 +20,8 @@ public interface UserRepository extends JpaRepository<User, String>{
             + "where Month(Create_Date) = ?1 and Year(Create_Date) = ?2 and Role_Id = 'USER'",
             nativeQuery = true)
     Integer getUserRegister(int month, int year);
+
+    @Query(value = "select * from Users where YEAR(Create_Date) = ?1 and Role_Id = 'USER'\r\n"
+            + "and Month(Create_Date) = ?2", nativeQuery = true)
+    List<User> getUserByYearAndMonth(int year, int month);
 }

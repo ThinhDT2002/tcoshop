@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
+import com.tcoshop.entity.UserRegistryReport;
 
 @Repository
 public class ReportRepository {
@@ -33,4 +35,18 @@ public class ReportRepository {
                 .setParameter("year", year).getResultList();
         return report;
     }
+    
+    public List<TurnoverDetailReport> getTurnoverDetailReport(Integer year, Integer month) {
+        List<TurnoverDetailReport> report = em.createNamedQuery("findTurnoverDetailReport", TurnoverDetailReport.class)
+                .setParameter("year", year).setParameter("month", month)
+                .getResultList();
+        return report;
+    }
+    
+    public List<UserRegistryReport> getUserRegistryReport(int year) {
+        List<UserRegistryReport> report = em.createNamedQuery("findUserRegistryReport", UserRegistryReport.class)
+                .setParameter("year", year)
+                .getResultList();
+        return report;
+    }    
 }

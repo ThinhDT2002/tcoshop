@@ -1,5 +1,20 @@
 adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$scope.turnoverPerYear = [];
+	$scope.turnoverDetailReport = [];
+	function getTurnoverDetailReport(year, month) {
+		$http({
+			url: "/api/report/turnoverReport/detail",
+			method: "GET",
+			params: {
+				year: year,
+				month: month
+			}
+		}).then(resp => {
+			$scope.turnoverDetailReport = resp.data;
+			console.log($scope.turnoverDetailReport);
+		})
+	}
+	
   function getTurnoverPerYear(year) {
 	$scope.turnoverReport = [];
 	$http({
@@ -10,7 +25,6 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 		}
 	}).then(resp => {
 		$scope.turnoverReport = resp.data;
-		console.log($scope.turnoverReport);
 	})
 	
     var activity = document.getElementById("activity");
@@ -147,4 +161,5 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	})
   }
   getTurnoverPerYear(2022);
+  getTurnoverDetailReport(2022, 11);
 })
