@@ -2,6 +2,7 @@ package com.tcoshop.service;
 
 import java.util.List;
 
+import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
@@ -24,4 +25,8 @@ public interface ReportService {
     List<TurnoverDetailReport> getTurnoverDetailReport(Integer year, Integer month);
     List<UserRegistryReport> getUserRegistryReport(int year);
     List<User> getUserRegistryByMonthAndYear(int year, int month);
+    List<Integer> getAllOrderYear();
+    List<Order> findByMonthAndYear(int month, int year);
+    Integer findOrderCountByYearAndStatus(int year, String status);
+    List<Order> findByYearAndStatus(int year, String status);
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
@@ -83,6 +84,24 @@ public class ReportAPI {
         orderCountPerStatusReport.add(orderDaGiaoHang);
         orderCountPerStatusReport.add(orderHuyBo);
         return orderCountPerStatusReport;
+    }
+    
+    @GetMapping("/api/report/getOrderCountByYearAndStatus")
+    public List<Integer> getOrderCountByYearAndStatus(@RequestParam("year") Integer year) {
+        List<Integer> report = new ArrayList<>();
+        int orderChoXacNhan = reportService.findOrderCountByYearAndStatus(year, "ChoXacNhan");
+        int orderChuanBi = reportService.findOrderCountByYearAndStatus(year, "ChuanBi");
+        int orderXuatKho = reportService.findOrderCountByYearAndStatus(year, "XuatKho");
+        int orderVanChuyen = reportService.findOrderCountByYearAndStatus(year, "VanChuyen");
+        int orderDaGiaoHang = reportService.findOrderCountByYearAndStatus(year, "DaGiaoHang");
+        int orderHuyBo = reportService.findOrderCountByYearAndStatus(year, "HuyBo");
+        report.add(orderChoXacNhan);
+        report.add(orderChuanBi);
+        report.add(orderXuatKho);
+        report.add(orderVanChuyen);
+        report.add(orderDaGiaoHang);
+        report.add(orderHuyBo);
+        return report;
     }
     
     @GetMapping("/api/report/getturnoverperyear")
@@ -164,6 +183,21 @@ public class ReportAPI {
     public List<User> getUserRegistryDetailReport(@RequestParam("year") Integer year,
             @RequestParam("month") Integer month) {
         return reportService.getUserRegistryByMonthAndYear(year, month);
+    }
+    
+    @GetMapping("/api/report/saleReport/allYearOrder")
+    public List<Integer> getAllOrderYear() {
+        return reportService.getAllOrderYear();
+    }
+    @GetMapping("/api/report/saleReportDetail")
+    public List<Order> getSaleReportDetail(@RequestParam("year") Integer year,
+            @RequestParam("month") Integer month) {
+        return reportService.findByMonthAndYear(month, year);
+    }
+    @GetMapping("/api/report/orderStatusReportDetail")
+    public List<Order> getOrderStatusReportDetail(@RequestParam("year") Integer year,
+            @RequestParam("status") String status) {
+        return reportService.findByYearAndStatus(year, status);
     }
     
 }

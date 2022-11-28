@@ -11,7 +11,11 @@ import com.tcoshop.entity.Order;
 public interface OrderRepository extends JpaRepository<Order, Integer>{
 	@Query("SELECT o FROM Order o WHERE o.user.username=?1")
 	List<Order> findByUsername(String username);
-
+	@Query(value = "select * from Orders where MONTH(Create_Date) = ?1 and Year(Create_Date) = ?2", nativeQuery = true)
+	List<Order> findByMonthAndYear(int month, int year);
+	@Query(value = "select * from Orders \r\n"
+	        + "where Year(Create_Date) = ?1 and Status = ?2", nativeQuery = true)
+	List<Order> findByYearAndStatus(int year, String status);
 	@Query(value = "select sum(od.Price) from Orders o join Orders_Detail od on o.Id = od.Order_Id where o.Status =?1",
 	 nativeQuery = true)
 	Double getTurnover(String status);
@@ -41,4 +45,11 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	        + "and Year(Orders.Create_Date) = ?1 \r\n"
 	        + "and Month(Orders.Create_Date) between ?2 and ?3", nativeQuery = true)
 	Double getTurnoverPerYear(Integer year, Integer monthFrom, Integer monthTo);
+	
+	@Query(value = "select distinct YEAR(Create_Date) as 'Year' from Orders", nativeQuery = true)
+	List<Integer> getAllYearOrder();
+	
+	@Query(value = "select count(*) as 'OrderCount' from Orders \r\n"
+	        + "where Year(Create_Date) = ?1 and Status = ?2", nativeQuery = true)
+	Integer findOrderCountByYearAndStatus(int year, String status);
 }

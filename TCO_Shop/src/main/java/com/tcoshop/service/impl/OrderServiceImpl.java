@@ -12,8 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tcoshop.service.OrderService;
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderDetail;
+import com.tcoshop.entity.Product;
 import com.tcoshop.repository.OrderDetailRepository;
 import com.tcoshop.repository.OrderRepository;
+import com.tcoshop.repository.ProductRepository;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -22,6 +24,9 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	OrderDetailRepository orderDetailDAO;
+	
+	@Autowired
+	ProductRepository productRepository;
 	
 	@Override
 	public Order create(JsonNode orderData) {
@@ -34,6 +39,13 @@ public class OrderServiceImpl implements OrderService{
 		};
 		List<OrderDetail> details = mapper.convertValue(orderData.get("orderDetails"),type)
 				.stream().peek(d -> d.setOrder(order)).collect(Collectors.toList());
+		for(OrderDetail orderDetail : details) {
+		    int productId = orderDetail.getProduct().getId();
+		    Product product = productRepository.findById(productId).get();
+		    int remainStock = product.getStock() - orderDetail.getQuantity();
+		    product.setStock(remainStock);
+		    productRepository.save(product);
+		}
 		orderDetailDAO.saveAll(details);
 		return order;
 	}

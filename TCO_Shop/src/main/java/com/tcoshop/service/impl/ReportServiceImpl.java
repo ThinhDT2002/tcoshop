@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
@@ -100,5 +101,21 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<User> getUserRegistryByMonthAndYear(int year, int month) {
         return userRepository.getUserByYearAndMonth(year, month);
+    }
+    @Override
+    public List<Integer> getAllOrderYear() {
+        return orderRepository.getAllYearOrder();
+    }
+    @Override
+    public List<Order> findByMonthAndYear(int month, int year) {
+        return orderRepository.findByMonthAndYear(month, year);
+    }
+    @Override
+    public Integer findOrderCountByYearAndStatus(int year, String status) {
+        return orderRepository.findOrderCountByYearAndStatus(year, status);
+    }
+    @Override
+    public List<Order> findByYearAndStatus(int year, String status) {
+        return orderRepository.findByYearAndStatus(year, status);
     }
 }
