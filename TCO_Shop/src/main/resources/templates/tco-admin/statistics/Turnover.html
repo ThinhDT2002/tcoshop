@@ -27,10 +27,7 @@
                                                 <canvas id="activity" class="chartjs"></canvas>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card-footer d-flex flex-wrap bg-white border-top">
-                                        <a href="#" class="text-uppercase py-3">In-Detail Overview</a>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -209,11 +206,87 @@
 									</button>
 									<button
 										class="btn btn-success">{{currentPageProductStock+1}}/{{numberOfPagesProductStock()}}</button>
-									<button ng-disabled="currentPageProductStock >= productStock.length/pageSizeProductStock - 1"
+									<button ng-disabled="currentPageProductStock >= productsStock.length/pageSizeProductStock - 1"
 										ng-click="currentPageProductStock=currentPageProductStock+1" class="btn btn-primary">
 										<b>Next</b>
 									</button>
 									<button ng-click = "currentPageProductStock = numberOfPagesProductStock() -1" class="btn btn-danger">
+										<b>Last</b>
+									</button>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12 p-b-15">
+                        <!-- Recent Order Table -->
+                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                            <div class="card-header card-header-border-bottom d-flex justify-content-between">
+								<div class="card-bar">
+									<div class="col-lg-3 col-md-6">
+										<label>Hiển thị: </label>
+										<select class="form-control" ng-change="paginationProductNotSold()" ng-model="pageSizeProductNotSold">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="20">20</option>
+										</select>
+									</div>
+									<div class="col-lg-9 col-md-12 sort">
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="">Tìm kiếm</label>
+											<input class="form-control" type="text" ng-model="productNotSoldSearch"
+												placeholder="Tìm kiếm">
+										</div>
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="sortProduct">Bộ lọc</label>
+											<select class="form-control" ng-change="productNotSoldSort()" ng-model="productNotSoldProperty">
+												<option value="name">Tên sản phẩm ↑</option>
+												<option value="-name">Tên sản phẩm ↓</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <div class="card-header justify-content-between">
+                                <h2>Hàng chưa bán được trong tháng này</h2>                               
+                            </div>
+                            <div class="card-body pt-0 pb-5">
+                                <table class="table card-table table-responsive table-responsive-large"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>                                           
+                                            <th>Mã sản phẩm</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng</th>                                         
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat = "productNotSold in productsNotSold | filter: productNotSoldSearch | orderBy: productNotSoldProperty | startFrom: currentPageProductNotSold*pageSizeProductNotSold | limitTo: pageSizeProductNotSold">                                            
+                                            <td>
+                                            	{{productNotSold.id}}
+                                            </td>
+                                            <td>{{productNotSold.name}}</td>
+                                            <td>{{productNotSold.stock}}</td>                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="panel-footer text-center">
+									<button ng-click = "paginationProductNotSold()" class="btn btn-danger">
+										<b>First</b>
+									</button>
+									<button ng-disabled="currentPageProductNotSold == 0"
+										ng-click="currentPageProductNotSold=currentPageProductNotSold - 1" class="btn btn-primary">
+										<b>Previous</b>
+									</button>
+									<button
+										class="btn btn-success">{{currentPageProductNotSold+1}}/{{numberOfPagesProductNotSold()}}</button>
+									<button ng-disabled="currentPageProductNotSold >= productsNotSold.length/pageSizeProductNotSold - 1"
+										ng-click="currentPageProductNotSold=currentPageProductNotSold+1" class="btn btn-primary">
+										<b>Next</b>
+									</button>
+									<button ng-click = "currentPageProductNotSold = numberOfPagesProductNotSold() -1" class="btn btn-danger">
 										<b>Last</b>
 									</button>
 								</div>

@@ -12,6 +12,7 @@ import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.UserRegistryReport;
+import com.tcoshop.entity.UserShoppingReport;
 
 @Repository
 public class ReportRepository {
@@ -49,4 +50,10 @@ public class ReportRepository {
                 .getResultList();
         return report;
     }    
+    
+    public List<UserShoppingReport> getUserShoppingReporot() {
+        List<UserShoppingReport> report = em.createNamedQuery("findUserShoppingReport", UserShoppingReport.class)
+                .getResultList();
+        return report;
+    }
 }

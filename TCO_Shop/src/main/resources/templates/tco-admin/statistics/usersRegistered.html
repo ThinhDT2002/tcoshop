@@ -20,9 +20,6 @@
                             <div class="card-body">
                                 <canvas id="currentUser" class="chartjs"></canvas>
                             </div>
-                            <div class="card-footer d-flex flex-wrap bg-white border-top">
-                                <a href="#" class="text-uppercase py-3">In-Detail Overview</a>
-                            </div>
                         </div>
                     </div>
 				
@@ -32,9 +29,9 @@
                         <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                             <div class="card-header justify-content-between">
                                 <h2>Thống kê người dùng</h2>
-                                <div class="date-range-report">
-                                    <span></span>
-                                </div>
+                                <select ng-change="showReport()" ng-model="yearValue">  
+                                	<option ng-repeat="year in allYearUserRegistry" ng-value="year">{{year}}</option>                                                     	
+                                </select>                            
                             </div>
                             <div class="card-body pt-0 pb-5">
                                 <table class="table card-table table-responsive table-responsive-large"
@@ -51,21 +48,8 @@
                                             <td>
                                             	{{userReport.userRegistry}}
                                             </td>                                            
-                                            <td class="text-right">
-                                                <div class="dropdown show d-inline-block widget-dropdown">
-                                                    <a class="dropdown-toggle icon-burger-mini" href="#" role="button"
-                                                        id="dropdown-recent-order5" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false"
-                                                        data-display="static"></a>
-                                                    <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li class="dropdown-item">
-                                                            <a href="#">View</a>
-                                                        </li>
-                                                        <li class="dropdown-item">
-                                                            <a href="#">Remove</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                            <td>
+                                            	<button ng-click="getUserRegistryDetailReport(yearValue, userReport.month)">Xem chi tiết</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -79,11 +63,37 @@
                     <div class="col-12 p-b-15">
                         <!-- Recent Order Table -->
                         <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                            <div class="card-header card-header-border-bottom d-flex justify-content-between">
+								<div class="card-bar">
+									<div class="col-lg-3 col-md-6">
+										<label>Hiển thị: </label>
+										<select class="form-control" ng-change="pagination()" ng-model="pageSize">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="20">20</option>
+										</select>
+									</div>
+									<div class="col-lg-9 col-md-12 sort">
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="">Tìm kiếm</label>
+											<input class="form-control" type="text" ng-model="userSearch"
+												placeholder="Tìm kiếm">
+										</div>
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="sortProduct">Bộ lọc</label>
+											<select class="form-control" ng-change="sort()" ng-model="userProperty">
+												<option value="username">Tên đăng nhập ↑</option>
+												<option value="-username">Tên đăng nhập ↓</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<h6>Số người đăng ký: {{totalQuantity()}}</h6>
+							</div>
                             <div class="card-header justify-content-between">
                                 <h2>Người dùng đăng ký trong tháng</h2>
-                                <div class="date-range-report">
-                                    <span></span>
-                                </div>
                             </div>
                             <div class="card-body pt-0 pb-5">
                                 <table class="table card-table table-responsive table-responsive-large"
@@ -98,7 +108,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>                                                                                                                        
-                                        <tr ng-repeat="userRegistry in userRegistryDetailReport">
+                                        <tr ng-repeat="userRegistry in userRegistryDetailReport | filter: userSearch | orderBy: userProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
                                             <td>{{userRegistry.username}}</td>
                                             <td>
                                                 {{userRegistry.email}}
@@ -125,10 +135,103 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                <div class="panel-footer text-center">
+									<button ng-click = "pagination()" class="btn btn-danger">
+										<b>First</b>
+									</button>
+									<button ng-disabled="currentPage == 0"
+										ng-click="currentPage=currentPage - 1" class="btn btn-primary">
+										<b>Previous</b>
+									</button>
+									<button
+										class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+									<button ng-disabled="currentPage >= userRegistryDetailReport.length/pageSize - 1"
+										ng-click="currentPage=currentPage+1" class="btn btn-primary">
+										<b>Next</b>
+									</button>
+									<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
+										<b>Last</b>
+									</button>
+								</div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-12 p-b-15">
+                        <!-- Recent Order Table -->
+                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                            <div class="card-header card-header-border-bottom d-flex justify-content-between">
+								<div class="card-bar">
+									<div class="col-lg-3 col-md-6">
+										<label>Hiển thị: </label>
+										<select class="form-control" ng-change="paginationUserShopping()" ng-model="pageSizeUserShopping">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="20">20</option>
+										</select>
+									</div>
+									<div class="col-lg-9 col-md-12 sort">
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="">Tìm kiếm</label>
+											<input class="form-control" type="text" ng-model="userShoppingSearch"
+												placeholder="Tìm kiếm">
+										</div>
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="sortProduct">Bộ lọc</label>
+											<select class="form-control" ng-change="sortUserShopping()" ng-model="userShoppingProperty">
+												<option value="username">Tên đăng nhập ↑</option>
+												<option value="-username">Tên đăng nhập ↓</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+                            <div class="card-header justify-content-between">
+                                <h2>Khách mua hàng</h2>
+                            </div>
+                            <div class="card-body pt-0 pb-5">
+                                <table class="table card-table table-responsive table-responsive-large"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên đăng ký</th>
+                                            <th>Số sản phẩm mua</th>                                                                                      
+                                        </tr>
+                                    </thead>
+                                    <tbody>                                                                                                                        
+                                        <tr ng-repeat="userShopping in userShoppingReport | filter: userShoppingSearch | orderBy: userShoppingProperty | startFrom: currentPageUserShopping*pageSizeUserShopping | limitTo: pageSizeUserShopping">
+                                            <td>{{userShopping.username}}</td>
+                                            <td>
+                                                {{userShopping.productBuy}}
+                                            </td>                                                                                     
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="panel-footer text-center">
+									<button ng-click = "paginationUserShopping()" class="btn btn-danger">
+										<b>First</b>
+									</button>
+									<button ng-disabled="currentPageUserShopping == 0"
+										ng-click="currentPageUserShopping=currentPageUserShopping - 1" class="btn btn-primary">
+										<b>Previous</b>
+									</button>
+									<button
+										class="btn btn-success">{{currentPageUserShopping+1}}/{{numberOfPagesUserShopping()}}</button>
+									<button ng-disabled="currentPageUserShopping >= userShoppingReport.length/pageSizeUserShopping - 1"
+										ng-click="currentPageUserShopping=currentPageUserShopping+1" class="btn btn-primary">
+										<b>Next</b>
+									</button>
+									<button ng-click = "currentPageUserShopping = numberOfPagesUserShopping() -1" class="btn btn-danger">
+										<b>Last</b>
+									</button>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div> <!-- End Content -->
         </div> <!-- End Content Wrapper -->
 	</div>

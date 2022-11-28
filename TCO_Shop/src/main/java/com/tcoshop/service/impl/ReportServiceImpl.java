@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.User;
 import com.tcoshop.entity.UserRegistryReport;
+import com.tcoshop.entity.UserShoppingReport;
 import com.tcoshop.repository.OrderRepository;
 import com.tcoshop.repository.ProductRepository;
 import com.tcoshop.repository.ReportRepository;
@@ -117,5 +119,17 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<Order> findByYearAndStatus(int year, String status) {
         return orderRepository.findByYearAndStatus(year, status);
+    }
+    @Override
+    public List<Product> findProductNotSoldInMonth(int month, int year) {
+        return productRepository.findProductNotSoldInMonth(month, year);
+    }
+    @Override
+    public List<Integer> findAllYearUserRegistry() {
+        return userRepository.findAllYearUserRegistry();
+    }
+    @Override
+    public List<UserShoppingReport> findAllUserShoppingReport() {
+        return reportRepository.getUserShoppingReporot();
     }
 }

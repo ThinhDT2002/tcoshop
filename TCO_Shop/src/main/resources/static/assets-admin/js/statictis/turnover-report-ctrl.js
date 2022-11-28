@@ -3,13 +3,14 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$http.get("/api/report/saleReport/allYearOrder").then(resp => {
 		$scope.allOrderYear = resp.data;
 	})
+	// Tồn kho start
 	$scope.productsStock = [];
 	$http.get("/api/products").then(resp => {
 		$scope.productsStock = resp.data;
 	})
 	
 	$scope.productStockProperty = 'name';
-
+	
 	$scope.productStockSort = function() {
 
 	}
@@ -24,6 +25,39 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$scope.paginationProductStock = function() {
 		$scope.currentPageProductStock = 0;
 	}
+	// Tồn kho end
+	//Not sold start
+	$scope.productsNotSold = [];
+	var today = new Date();
+	var month = String(today.getMonth() + 1).padStart(2, '0');
+	var year = today.getFullYear();
+	$http({
+		url: "/api/report/productNotSoldInMonth",
+		method: "GET",
+		params: {
+			year: year,
+			month: month
+		}
+	}).then(resp=> {
+		$scope.productsNotSold = resp.data;
+	})
+	$scope.productNotSoldProperty = 'name';
+	
+	$scope.productNotSoldSort = function() {
+
+	}
+
+	$scope.currentPageProductNotSold = 0;
+	$scope.pageSizeProductNotSold = "10";
+
+	$scope.numberOfPagesProductNotSold = function() {
+		return Math.ceil($scope.productsNotSold.length / $scope.pageSizeProductNotSold);
+	}
+	
+	$scope.paginationProductNotSold = function() {
+		$scope.currentPageProductNotSold = 0;
+	}
+	//Not sold end
 	
 	$scope.turnoverPerYear = [];
 	$scope.turnoverDetailReport = [];

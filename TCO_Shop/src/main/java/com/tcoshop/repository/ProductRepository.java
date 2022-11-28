@@ -25,4 +25,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "select sum(Products.stock) from Products", nativeQuery = true)
     Integer getAllProductsCount();
+    
+    @Query(value = "select * from Products \r\n"
+            + "where Products.Id not in (\r\n"
+            + "select Orders_Detail.Product_Id from Orders \r\n"
+            + "join Orders_Detail on Orders.Id = Orders_Detail.Order_Id\r\n"
+            + "where Month(Orders.Create_Date) = ?1 and Year(Orders.Create_Date) = ?2\r\n"
+            + ")", nativeQuery = true)
+    List<Product> findProductNotSoldInMonth(int month, int year);
 }

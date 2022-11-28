@@ -17,11 +17,15 @@ public interface UserRepository extends JpaRepository<User, String>{
     Integer getUserCount(String roleId);
     
     @Query(value = "select count(*) from Users\r\n"
-            + "where Month(Create_Date) = ?1 and Year(Create_Date) = ?2 and Role_Id = 'USER'",
+            + "where Month(Create_Date) = ?1 and Year(Create_Date) = ?2 and Role_Id = 'USER'"
+            + "and Users.Status = 1",
             nativeQuery = true)
     Integer getUserRegister(int month, int year);
 
     @Query(value = "select * from Users where YEAR(Create_Date) = ?1 and Role_Id = 'USER'\r\n"
-            + "and Month(Create_Date) = ?2", nativeQuery = true)
+            + "and Month(Create_Date) = ?2 and Users.Status = 1", nativeQuery = true)
     List<User> getUserByYearAndMonth(int year, int month);
+    
+    @Query(value = "select distinct Year(Create_Date) from Users", nativeQuery = true)
+    List<Integer> findAllYearUserRegistry();
 }

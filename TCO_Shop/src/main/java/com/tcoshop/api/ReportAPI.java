@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.User;
 import com.tcoshop.entity.UserRegistryReport;
+import com.tcoshop.entity.UserShoppingReport;
 import com.tcoshop.service.ReportService;
 
 @RestController
@@ -198,6 +200,22 @@ public class ReportAPI {
     public List<Order> getOrderStatusReportDetail(@RequestParam("year") Integer year,
             @RequestParam("status") String status) {
         return reportService.findByYearAndStatus(year, status);
+    }
+    
+    @GetMapping("/api/report/productNotSoldInMonth")
+    public List<Product> getProductNotSoldInMonth(@RequestParam("month") Integer month,
+            @RequestParam("year") Integer year) {
+        return reportService.findProductNotSoldInMonth(month, year);
+    }
+    
+    @GetMapping("/api/report/getYearUserRegistry")
+    public List<Integer> getYearUserRegistry() {
+        return reportService.findAllYearUserRegistry();
+    }
+    
+    @GetMapping("/api/report/getUserShoppingReport")
+    public List<UserShoppingReport> getUserShoppingReport() {
+        return reportService.findAllUserShoppingReport();
     }
     
 }

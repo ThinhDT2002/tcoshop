@@ -67,6 +67,9 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer d-flex flex-wrap bg-white border-top">
+                       <a th:href="@{/tco-admin/statistics/ordersSold}" class="text-uppercase py-3">Chi tiết</a>
+                   </div>
                 </div>
             </div>
 
@@ -106,6 +109,9 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer d-flex flex-wrap bg-white border-top">
+                        <a th:href="@{/tco-admin/statistics/orderStatus}" class="text-uppercase py-3">Chi tiết</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,7 +134,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                                 </div>
                             </div>
                             <div class="card-footer d-flex flex-wrap bg-white border-top">
-                                <a href="#" class="text-uppercase py-3">In-Detail Overview</a>
+                                <a th:href="@{/tco-admin/statistics/turnover}" class="text-uppercase py-3">Chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -143,7 +149,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                         <canvas id="currentUser" class="chartjs"></canvas>
                     </div>
                     <div class="card-footer d-flex flex-wrap bg-white border-top">
-                        <a href="#" class="text-uppercase py-3">In-Detail Overview</a>
+                        <a th:href="@{/tco-admin/statistics/usersRegistered}" class="text-uppercase py-3">Chi tiết</a>
                     </div>
                 </div>
             </div>

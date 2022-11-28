@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.User;
 import com.tcoshop.entity.UserRegistryReport;
+import com.tcoshop.entity.UserShoppingReport;
 
 public interface ReportService {
     Double getTurnover(String status);
@@ -29,4 +31,7 @@ public interface ReportService {
     List<Order> findByMonthAndYear(int month, int year);
     Integer findOrderCountByYearAndStatus(int year, String status);
     List<Order> findByYearAndStatus(int year, String status);
+    List<Product> findProductNotSoldInMonth(int month, int year);
+    List<Integer> findAllYearUserRegistry();
+    List<UserShoppingReport> findAllUserShoppingReport();
 }
