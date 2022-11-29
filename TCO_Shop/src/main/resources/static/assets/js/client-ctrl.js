@@ -19,6 +19,16 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			$scope.items = resp.data;
 		});
 	}
+	
+	// con mắt ở trang index home
+	$scope.display = {
+		items : null,
+		get(id) {			
+			$http.get(`/api/products/${id}`).then(resp => {
+				this.items = resp.data;
+			})
+		}
+	}
 
 	$scope.initialize();
 
