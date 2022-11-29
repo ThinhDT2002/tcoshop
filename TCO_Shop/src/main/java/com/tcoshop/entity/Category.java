@@ -1,6 +1,7 @@
 package com.tcoshop.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -82,6 +83,6 @@ public class Category implements Serializable{
 	}
 	public void setProducts(List<Product> products) {
 		this.products = products;
-	}
+	}	
 	
 }

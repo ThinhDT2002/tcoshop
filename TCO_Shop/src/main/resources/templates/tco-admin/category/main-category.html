@@ -79,6 +79,7 @@
 							</div>
 						</div>
 					</div>
+					<!--  -->
 					<div class="col-xl-8 col-lg-12">
 						<div class="ec-cat-list card card-default">
 							<div class="card-body">
@@ -94,22 +95,20 @@
 										</thead>
 
 										<tbody>
-											<tr th:each="category : ${categories}">
+											<tr ng-repeat="category in categories">
 												<td><img class="cat-thumb"
-													th:src="@{|/images/category/${category.icon}|}"/></td>
-												<td>[[${category.id}]]</td>
-												<td>[[${category.name}]]</td>
-												<th:block>
-												<td th:if="${#lists.size(category.subcategories)} > 0">
+													th:src="@{|/images/category/{{category.icon}}|}"/></td>
+												<td>{{category.id}}</td>
+												<td>{{category.name}}</td>
+												<td ng-if="category.subcategories.length > 0">
 													<span
-														class="ec-sub-cat-count" title="Total Sub Categories" th:text="${#lists.size(category.subcategories)}"></span>
+														class="ec-sub-cat-count" title="Total Sub Categories">{{category.subcategories.length}}</span>
 													<span
 													class="ec-sub-cat-list">
-														<span th:each="subcategory : ${category.subcategories}" class="ec-sub-cat-tag">[[${subcategory.name}]]</span>
+														<span ng-repeat="subcategory in category.subcategories" class="ec-sub-cat-tag">{{subcategory.name}}</span>
 												</span>
-												</td>
-												
-												<td th:if="${#lists.size(category.subcategories)} == 0">
+												</td>											
+												<td ng-if="category.subcategories.length == 0">
 													<span class="ec-sub-cat-list"> <span
 														class="ec-sub-cat-count" title="Total Sub Categories">0</span>
 												</span>
@@ -125,8 +124,8 @@
 														</button>
 
 														<div class="dropdown-menu">
-															<a class="dropdown-item" th:href = "@{|/tco-admin/category/${category.id}|}">Chỉnh sửa</a> <a
-																class="dropdown-item" th:href="@{|/tco-admin/category/delete/${category.id}|}">Xoá</a>
+															<a class="dropdown-item" th:href = "@{|/tco-admin/category/{{category.id}}|}">Chỉnh sửa</a> <a
+																class="dropdown-item" th:href="@{|/tco-admin/category/delete/{{category.id}}|}">Xoá</a>
 														</div>
 													</div>
 												</td>
@@ -137,7 +136,7 @@
 								
 							</div>
 						</div>
-					</div>
+					</div>								
 				</div>
 			</div>
 			<!-- End Content -->

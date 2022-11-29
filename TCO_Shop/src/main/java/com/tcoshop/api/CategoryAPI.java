@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcoshop.entity.Category;
+import com.tcoshop.entity.Subcategory;
 import com.tcoshop.service.CategoryService;
 
 @RestController
@@ -31,7 +32,7 @@ public class CategoryAPI {
 	
 	@GetMapping("/api/categories")
 	public List<Category> getAll(){
-		return categoryService.findAll();
+	    return categoryService.findAll();
 	}
 	
 	@GetMapping("/api/categories/{id}")
