@@ -28,4 +28,7 @@ public interface UserRepository extends JpaRepository<User, String>{
     
     @Query(value = "select distinct Year(Create_Date) from Users", nativeQuery = true)
     List<Integer> findAllYearUserRegistry();
+    
+    @Query(value = "select top 6 * from Users order by Create_Date DESC", nativeQuery = true)
+    List<User> findTop6ByCreatedateDESC();
 }

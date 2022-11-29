@@ -71,7 +71,6 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 			}
 		}).then(resp => {
 			$scope.turnoverDetailReport = resp.data;
-			console.log($scope.turnoverDetailReport);
 		})
 	}
 	

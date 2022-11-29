@@ -3,9 +3,11 @@ package com.tcoshop.service;
 import java.util.List;
 
 import com.tcoshop.entity.Order;
+import com.tcoshop.entity.OrderDetail;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TopProduct;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.User;
@@ -34,4 +36,9 @@ public interface ReportService {
     List<Product> findProductNotSoldInMonth(int month, int year);
     List<Integer> findAllYearUserRegistry();
     List<UserShoppingReport> findAllUserShoppingReport();
+    List<Order> findTop5OrderByCreateDate();
+    List<OrderDetail> findTop5OrderDetail();
+    List<User> findTop6ByCreatedateDESC();
+    List<TopProduct> findTopProducts();
+    List<Product> findProductBestSold();
 }

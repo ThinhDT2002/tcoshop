@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TopProduct;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.UserRegistryReport;
@@ -53,6 +54,12 @@ public class ReportRepository {
     
     public List<UserShoppingReport> getUserShoppingReporot() {
         List<UserShoppingReport> report = em.createNamedQuery("findUserShoppingReport", UserShoppingReport.class)
+                .getResultList();
+        return report;
+    }
+    
+    public List<TopProduct> getTopProduct() {
+        List<TopProduct> report = em.createNamedQuery("findTopProduct", TopProduct.class)
                 .getResultList();
         return report;
     }

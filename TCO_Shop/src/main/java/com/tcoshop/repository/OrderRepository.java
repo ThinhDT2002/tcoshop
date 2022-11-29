@@ -52,4 +52,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	@Query(value = "select count(*) as 'OrderCount' from Orders \r\n"
 	        + "where Year(Create_Date) = ?1 and Status = ?2", nativeQuery = true)
 	Integer findOrderCountByYearAndStatus(int year, String status);
+	
+	@Query(value = "select top 5 * from Orders \r\n"
+	        + "order by Create_Date DESC", nativeQuery = true)
+	List<Order> findTop5OrderByCreateDate();
 }

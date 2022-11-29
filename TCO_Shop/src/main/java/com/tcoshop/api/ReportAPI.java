@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcoshop.entity.Order;
+import com.tcoshop.entity.OrderDetail;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TopProduct;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.User;
@@ -218,4 +220,24 @@ public class ReportAPI {
         return reportService.findAllUserShoppingReport();
     }
     
+    @GetMapping("/api/report/top5OrdersByCreateDate")
+    public List<Order> getTop50OrdersByCreateDate() {
+        return reportService.findTop5OrderByCreateDate();
+    }
+    @GetMapping("/api/report/top5OrderDetail")
+    public List<OrderDetail> getTop5OrderDetail() {
+        return reportService.findTop5OrderDetail();
+    }
+    @GetMapping("/api/report/top6NewUser")
+    public List<User> getTop6NewUser() {
+        return reportService.findTop6ByCreatedateDESC();
+    }
+    @GetMapping("/api/report/topProduct")
+    public List<TopProduct> getTopProducts() {
+        return reportService.findTopProducts();
+    }
+    @GetMapping("/api/report/productBestSold")
+    public List<Product> getProductBestSold() {
+        return reportService.findProductBestSold();
+    }
 }

@@ -197,7 +197,8 @@
                                     <thead>
                                         <tr>
                                             <th>Tên đăng ký</th>
-                                            <th>Số sản phẩm mua</th>                                                                                      
+                                            <th>Số sản phẩm mua</th> 
+                                            <th>Tổng số tiền đã chi</th>                                                                                     
                                         </tr>
                                     </thead>
                                     <tbody>                                                                                                                        
@@ -205,7 +206,8 @@
                                             <td>{{userShopping.username}}</td>
                                             <td>
                                                 {{userShopping.productBuy}}
-                                            </td>                                                                                     
+                                            </td>  
+                                            <td>{{userShopping.totalCash | currency}}</td>                                                                                   
                                         </tr>
                                     </tbody>
                                 </table>

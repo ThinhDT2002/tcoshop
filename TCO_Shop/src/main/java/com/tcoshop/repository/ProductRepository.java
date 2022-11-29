@@ -33,4 +33,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             + "where Month(Orders.Create_Date) = ?1 and Year(Orders.Create_Date) = ?2\r\n"
             + ")", nativeQuery = true)
     List<Product> findProductNotSoldInMonth(int month, int year);
+    
+    @Query(value = "select * from Products\r\n"
+            + "where Id in\r\n"
+            + "(\r\n"
+            + "select top 3 Products.Id as 'Id'\r\n"
+            + "from Orders_Detail\r\n"
+            + "join Products on Products.Id = Orders_Detail.Order_Id\r\n"
+            + "group by Products.Id order by COUNT(Product_Id) desc\r\n"
+            + ")", nativeQuery = true)
+    List<Product> findProductBestSold();
 }

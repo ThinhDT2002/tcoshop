@@ -6,14 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tcoshop.entity.Order;
+import com.tcoshop.entity.OrderDetail;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TopProduct;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.entity.User;
 import com.tcoshop.entity.UserRegistryReport;
 import com.tcoshop.entity.UserShoppingReport;
+import com.tcoshop.repository.OrderDetailRepository;
 import com.tcoshop.repository.OrderRepository;
 import com.tcoshop.repository.ProductRepository;
 import com.tcoshop.repository.ReportRepository;
@@ -29,6 +32,8 @@ public class ReportServiceImpl implements ReportService {
     ProductRepository productRepository;
     @Autowired
     ReportRepository reportRepository;
+    @Autowired
+    OrderDetailRepository orderDetailRepository;
     @Override
     public Double getTurnover(String status) {
         return orderRepository.getTurnover(status);
@@ -131,5 +136,25 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List<UserShoppingReport> findAllUserShoppingReport() {
         return reportRepository.getUserShoppingReporot();
+    }
+    @Override
+    public List<Order> findTop5OrderByCreateDate() {
+        return orderRepository.findTop5OrderByCreateDate();
+    }
+    @Override
+    public List<OrderDetail> findTop5OrderDetail() {
+        return orderDetailRepository.findTop5OrderDetail();
+    }
+    @Override
+    public List<User> findTop6ByCreatedateDESC() {
+        return userRepository.findTop6ByCreatedateDESC();
+    }
+    @Override
+    public List<TopProduct> findTopProducts() {
+        return reportRepository.getTopProduct();
+    }
+    @Override
+    public List<Product> findProductBestSold() {
+        return productRepository.findProductBestSold();
     }
 }
