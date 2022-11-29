@@ -1,20 +1,56 @@
 const app = angular.module("shopping-cart-app", []);
 
 app.controller("shopping-cart-ctrl", function($scope, $http) {
-	
-	$scope.items = [];
+	$scope.products = [];
 
+	// lấy giỏ hàng của người dùng abcxyz
+	$scope.items = [];
+	// lấy tên của người dùng
 	var name = $("#username").text();
 	var split = name.split(" ");
 	console.log(split[2]);
 
 	$scope.initialize = function() {
+		$http.get("/api/products").then(resp => {
+			$scope.products = resp.data;
+		});
+
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
 		});
 	}
 
 	$scope.initialize();
+
+	$scope.pager = {
+		page: 0,
+		size: 8,
+		get items() {
+			var start = this.page * this.size;
+			return $scope.products.slice(start, start + this.size);
+		},
+		get count() {
+			return Math.ceil(1.0 * $scope.items.length / this.size);
+		},
+		first() {
+			this.page = 0;
+		},
+		prev() {
+			this.page--;
+			if (this.page < 0) {
+				this.last();
+			}
+		},
+		next() {
+			this.page++;
+			if (this.page >= this.count) {
+				this.first();
+			}
+		},
+		last() {
+			this.page = this.count - 1;
+		}
+	}
 
 	// thay doi hinh anh nguoi dung
 	$scope.imageChanged = function(files) {
@@ -32,19 +68,19 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		items: [],
 		add(id) {
 			var item = this.items.find(item => item.id == id);
-			
-			
+
+
 			if (item) {
 				item.qty++;
 				this.saveToSessionStorage();
 			} else {
 				$http.get(`/api/products/${id}`).then(resp => {
-					
+
 					resp.data.qty = 1;
 					this.items.push(resp.data);
 					this.saveToSessionStorage();
-					
-					
+
+
 				})
 			}
 		},
