@@ -168,15 +168,15 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                 <div class="col">
                     <div class="tab-content">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ec-product-content" th:each=" p: ${items}">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ec-product-content" ng-repeat="item in pager.items">
                                 <div class="ec-product-inner">
                                     <div class="ec-product-hover"></div>
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" th:src="@{|/images/products/${p.image1}|}"
+                                                <img class="main-image" th:src="@{|/images/products/{{item.image1}}|}"
                                                     alt="Product" />
-                                                <img class="hover-image" th:src="@{|/images/products/${p.image2}|}"
+                                                <img class="hover-image" th:src="@{|/images/products/{{item.image2}}|}"
                                                     alt="Product" />
                                             </a>
                                         </div>
@@ -187,8 +187,8 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                                 <div class="ec-pro-color">
                                                     <ul class="ec-opt-swatch ec-change-img">
                                                         <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="images/products/${p.image1}"
-                                                                data-src-hover="images/products/${p.image2}"
+                                                                data-src="images/products/{{item.image1}}"
+                                                                data-src-hover="images/products/{{item.image2}}"
                                                                 data-tooltip="Gray"><span
                                                                     style="background-color:#ef7ca3;"></span></a></li>
                                                     </ul>
@@ -200,13 +200,13 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
-                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Laptop</a></h6>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>
+                                        <h6 class="ec-pro-stitle"><a th:href="@{|/product/list?cid={{item.category.id}}|}">{{item.category.name}}</a></h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">                 
-	                                               <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-	                                               <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>  
+                                                <span class="ec-price">                 	                                              
+	                                               <span class="new-price">{{cart.formatNumber(item.price * (100 - item.discount)/100)}} VNĐ</span>
+	                                               <span class="old-price">{{cart.formatNumber(item.price)}} VNĐ</span>
                                                 </span>
                                                 <span class="ec-pro-rating">
                                                     <i class="ecicon eci-star fill"></i>
@@ -224,12 +224,12 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
                                                         class="svg_img pro_svg" alt="" /></a>                                             
-                                                <th:block th:if="${p.stock} gt 0">
-                                            		<button title="Add To Cart" class="add-to-cart btn btn-primary" th:attr="ng-click=@{|cart.add(${p.id})|}">Thêm vào giỏ</button>
-                                         		</th:block>
-                                         	    	<th:block th:if="${p.stock} eq 0">
+                                                <span ng-if="item.stock > 0">
+                                            		<button title="Add To Cart" class="add-to-cart btn btn-primary" ng-click="cart.add(item.id)">Thêm vào giỏ</button>
+                                         		</span>
+                                         	    <span ng-if="item.stock == 0">
                                             		<button title="Add To Cart" class="add-to-cart btn btn-primary" disabled>Hết hàng</button>
-                                         		</th:block>                                               
+                                         		</span>                                             
                                                 <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><img
@@ -240,6 +240,11 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                     </div>
                                 </div>
                             </div>
+                          </div>
+                         </div>
+                        </div>
+                       </div>
+                      </div>
     </section>
     <!-- ec Product tab Area End -->
 
