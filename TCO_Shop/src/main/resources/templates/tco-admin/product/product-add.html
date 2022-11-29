@@ -9,13 +9,14 @@
 			<div class="content">
 				<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
 					<div>
-						<h1>Add Product</h1>
-						<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
-							<span><i class="mdi mdi-chevron-right"></i></span>Product
+						<h1>Thêm sản phẩm</h1>
+						<p class="breadcrumbs"><span><a th:href="@{/tco-admin}">Bảng điều khiển</a></span>
+							<span><i class="mdi mdi-chevron-right"></i></span>Thêm sản phẩm
 						</p>
 					</div>
 					<div>
-						<a th:href="@{/tco-admin/product/list}" class="btn btn-primary"> View All
+						<a th:href="@{/tco-admin/product/list}" class="btn btn-primary"> Danh sách sản phẩm
+						
 						</a>
 					</div>
 				</div>
@@ -23,7 +24,7 @@
 					<div class="col-12" th:object="${item}">
 						<div class="card card-default">
 							<div class="card-header card-header-border-bottom">
-								<h2>Add Product</h2>
+								<h2>Thêm sản phẩm</h2>
 							</div>
 							<div class="card-body">
 							<form th:action="@{|/category/subcategory/*{id}|}" enctype="multipart/form-data" method="post" class="row g-3">
@@ -173,8 +174,8 @@
 												<div class="col-md-12">
 													<button th:if="*{id} == -999" th:formaction="@{/tco-admin/product/submit}" class="btn btn-primary">Thêm sản phẩm</button>
 													<button th:if="*{id} != -999" th:formaction="@{|/tco-admin/product/update/*{id}|}" class="btn btn-primary">Sửa sản phẩm</button>
-													<button th:if="*{id} != -999" th:formaction="@{|/tco-admin/product/delete/*{id}|}" class="btn btn-primary">Delete</button>
-													<button th:formaction="@{/tco-admin/product/add}" class="btn btn-primary">Reset</button>
+													<button th:if="*{id} != -999" th:formaction="@{|/tco-admin/product/delete/*{id}|}" class="btn btn-primary">Xoá sản phẩm</button>
+													<button th:formaction="@{/tco-admin/product/add}" class="btn btn-primary">Làm mới</button>
 												</div>
 												</div>																			
 												<div>

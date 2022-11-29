@@ -137,20 +137,20 @@
                                 </table>
                                 <div class="panel-footer text-center">
 									<button ng-click = "pagination()" class="btn btn-danger">
-										<b>First</b>
+										<b>Trang đầu</b>
 									</button>
 									<button ng-disabled="currentPage == 0"
 										ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-										<b>Previous</b>
+										<b>Trước</b>
 									</button>
 									<button
 										class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
 									<button ng-disabled="currentPage >= userRegistryDetailReport.length/pageSize - 1"
 										ng-click="currentPage=currentPage+1" class="btn btn-primary">
-										<b>Next</b>
+										<b>Tiếp</b>
 									</button>
 									<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
-										<b>Last</b>
+										<b>Trang cuối</b>
 									</button>
 								</div>
                             </div>
@@ -207,26 +207,26 @@
                                             <td>
                                                 {{userShopping.productBuy}}
                                             </td>  
-                                            <td>{{userShopping.totalCash | currency}}</td>                                                                                   
+                                            <td>{{userShopping.totalCash | currency:undefined:0}} VND</td>                                                                                   
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class="panel-footer text-center">
 									<button ng-click = "paginationUserShopping()" class="btn btn-danger">
-										<b>First</b>
+										<b>Trang đầu</b>
 									</button>
 									<button ng-disabled="currentPageUserShopping == 0"
 										ng-click="currentPageUserShopping=currentPageUserShopping - 1" class="btn btn-primary">
-										<b>Previous</b>
+										<b>Trước</b>
 									</button>
 									<button
 										class="btn btn-success">{{currentPageUserShopping+1}}/{{numberOfPagesUserShopping()}}</button>
 									<button ng-disabled="currentPageUserShopping >= userShoppingReport.length/pageSizeUserShopping - 1"
 										ng-click="currentPageUserShopping=currentPageUserShopping+1" class="btn btn-primary">
-										<b>Next</b>
+										<b>Tiếp</b>
 									</button>
 									<button ng-click = "currentPageUserShopping = numberOfPagesUserShopping() -1" class="btn btn-danger">
-										<b>Last</b>
+										<b>Trang cuối</b>
 									</button>
 								</div>
                             </div>

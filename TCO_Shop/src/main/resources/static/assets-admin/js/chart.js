@@ -99,7 +99,6 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 		method: "GET"
 	}).then(resp => {
 		$scope.topProduct = resp.data;
-		console.log($scope.topProduct);
 	})
 	
 	$scope.productBestSold = [];
@@ -107,8 +106,7 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 		url: "/api/report/productBestSold",
 		method: "GET"
 	}).then(resp => {
-		$scope.productBestSold = resp.data;
-		console.log($scope.productBestSold);
+		$scope.productBestSold = resp.data;		
 	})
 	
 	$(document).ready(function() {

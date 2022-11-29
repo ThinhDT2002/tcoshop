@@ -14,7 +14,7 @@ adminApp.controller("user-list-ctrl", function($scope, $http) {
 	
 	}
 	$scope.currentPage = 0;
-	$scope.pageSize = "2";
+	$scope.pageSize = "5";
 	
 	$scope.totalQuantity = function(){
 		return $scope.users.length;
@@ -28,6 +28,32 @@ adminApp.controller("user-list-ctrl", function($scope, $http) {
 	
 	$scope.pagination = function(){
 		$scope.currentPage = 0;
+	}
+	
+	$scope.delete = function(user) {
+		let text = "Bạn có muốn xoá người dùng này không ?";
+		if(confirm(text) == true) {
+			let currentUsername = document.getElementById("currentAuthentication").innerText;	
+			if(currentUsername == user.username) {
+				alert("Bạn không thể xoá chính mình");
+			} else {
+				$http({
+					url: "/api/user",
+					method: "DELETE",
+					params: {
+						username: user.username
+					}
+				}).then(resp => {
+					alert("Xoá người dùng thành công");
+					location.reload();
+				}).catch(error => {
+					alert("Có lỗi xảy ra khi xoá người dùng");
+					console.log(error);
+				})
+			}
+		} else {
+			
+		}	
 	}
 
 })

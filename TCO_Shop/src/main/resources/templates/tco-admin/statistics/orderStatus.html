@@ -156,7 +156,7 @@
                                             <td class="d-none d-lg-table-cell">{{order.createDate | date: "dd/MM/yyyy"}}</td>
                                             <td class="d-none d-lg-table-cell">
                                             	<span ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id">
-                                            		{{((orderDetail.product.price) * ((100 - orderDetail.product.discount) / 100)) * orderDetail.quantity}} <br>
+                                            		{{((orderDetail.product.price) * ((100 - orderDetail.product.discount) / 100)) * orderDetail.quantity | currency:undefined:0}} VND <br>
                                             	</span>
                                             </td>
                                             <td>
@@ -167,20 +167,20 @@
                                 </table>
                                 <div class="panel-footer text-center">
 									<button ng-click = "pagination()" class="btn btn-danger">
-										<b>First</b>
+										<b>Trang đầu</b>
 									</button>
 									<button ng-disabled="currentPage == 0"
 										ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-										<b>Previous</b>
+										<b>Trước</b>
 									</button>
 									<button
 										class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
 									<button ng-disabled="currentPage >= orders.length/pageSize - 1"
 										ng-click="currentPage=currentPage+1" class="btn btn-primary">
-										<b>Next</b>
+										<b>Tới</b>
 									</button>
 									<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
-										<b>Last</b>
+										<b>Trang cuối</b>
 									</button>
 								</div>
                             </div>

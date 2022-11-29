@@ -10,4 +10,5 @@ public interface UserService {
 	User create(User user);
 	User update(User user);
 	User findByActivateCode(String activateCode);
+	void deleteByUsername(String username);
 }

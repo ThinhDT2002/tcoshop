@@ -30,6 +30,7 @@
                     <ul class="dropdown-menu dropdown-menu-right ec-dropdown-menu">
                         <!-- User image -->
                         <li class="dropdown-header">
+                        	<div id="currentAuthentication" style="display:none;">[[${currentUser.username}]]</div>
                             <img th:src="@{|/images/user/${currentUser.avatar}|}" class="img-circle" alt="User Image" />
                             <div th:if="${currentUser.fullname} != null" class="d-inline-block">
                                 [[${currentUser.fullname}]] <small class="pt-1"><a
@@ -49,6 +50,7 @@
                                 <i class="mdi mdi-account"></i> Thông tin cá nhân
                             </a>
                         </li>
+                        <!--
                         <li>
                             <a href="#">
                                 <i class="mdi mdi-email"></i> Message
@@ -57,11 +59,12 @@
                         <li>
                             <a href="#"> <i class="mdi mdi-diamond-stone"></i> Projects </a>
                         </li>
+                        -->
                         <li>
                             <a th:href="@{/tco-admin/change_password}"> <i class="mdi mdi-file-lock"></i> Đổi mật khẩu </a>
                         </li>
                         <li class="right-sidebar-in">
-                            <a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Setting </a>
+                            <a href="javascript:0"> <i class="mdi mdi-settings-outline"></i> Cài đặt </a>
                         </li>
                         <li class="dropdown-footer">
                             <a th:href="@{/tco-admin/admin_logout}"> <i class="mdi mdi-logout"></i> Log Out </a>

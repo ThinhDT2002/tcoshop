@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService{
     public User findByActivateCode(String activateCode) {
         return userRepository.findByActivateCode(activateCode);
     }
+
+    @Override
+    public void deleteByUsername(String username) {
+        userRepository.deleteById(username);
+    }
 }

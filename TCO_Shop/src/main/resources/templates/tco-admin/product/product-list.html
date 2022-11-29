@@ -9,15 +9,14 @@
 			<div class="content">
 				<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
 					<div>
-						<h1>Product</h1>
+						<h1>Danh sách sản phẩm</h1>
 						<p class="breadcrumbs">
-							<span><a href="index.html">Home</a></span> <span><i
-									class="mdi mdi-chevron-right"></i></span>Product
+							<span><a th:href="@{/tco-admin}">Bảng điều khiển</a></span> <span><i
+									class="mdi mdi-chevron-right"></i></span>Danh sách sản phẩm
 						</p>
 					</div>
 					<div>
-						<a th:href="@{/tco-admin/product/add}" class="btn btn-primary"> Add
-							Product</a>
+						<a th:href="@{/tco-admin/product/add}" class="btn btn-primary"> Thêm sản phẩm</a>
 					</div>
 				</div>
 				<div class="row">
@@ -124,17 +123,17 @@
 											</table>
 											<div class="panel-footer text-center">
 												<button ng-click = "pagination()" class="btn btn-danger">
-													<b>First</b>
+													<b>Trang đầu</b>
 												</button>
 												<button ng-disabled = "currentPage == 0" ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-													<b>Previous</b>
+													<b>Trước</b>
 												</button>
 												<button class="btn btn-success">{{currentPage + 1}}/{{numberOfPages()}}</button>
 												<button ng-disabled = "currentPage >= items.length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary">
-													<b>Next</b>
+													<b>Tiếp</b>
 												</button>
 												<button ng-click = "currentPage = numberOfPages() - 1" class="btn btn-danger">
-													<b>Last</b>
+													<b>Trang cuối</b>
 												</button>
 											</div>
 										</div>

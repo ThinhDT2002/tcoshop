@@ -8,10 +8,9 @@
 		<div class="ec-content-wrapper">
 			<div class="content">
 				<div class="breadcrumb-wrapper breadcrumb-wrapper-2 breadcrumb-contacts">
-					<h1>Sub Category</h1>
+					<h1>Thương hiệu</h1>
 					<p class="breadcrumbs">
-						<span><a href="index.html">Home</a></span> <span><i class="mdi mdi-chevron-right"></i></span>Sub
-						Category
+						<span><a th:href="@{/tco-admin}">Bảng điều khiển</a></span> <span><i class="mdi mdi-chevron-right"></i></span>Thương hiệu
 					</p>
 				</div>
 				<div class="row">
@@ -19,7 +18,7 @@
 						<div class="ec-cat-list card card-default mb-24px">
 							<div class="card-body">
 								<div class="ec-cat-form">
-									<h4>Add Sub Category</h4>
+									<h4>Thêm thương hiệu</h4>
 
 									<form name="frmSubcategory" enctype="multipart/form-data" method="post" novalidate>
 										<div class="row ec-vendor-uploads">
@@ -171,18 +170,18 @@
 															<td>
 																<div class="btn-group">
 																	<button type="button"
-																		class="btn btn-outline-success">Info</button>
+																		class="btn btn-outline-success">Chỉnh sửa</button>
 																	<button type="button"
 																		class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
 																		data-bs-toggle="dropdown" aria-haspopup="true"
 																		aria-expanded="false" data-display="static">
-																		<span class="sr-only">Info</span>
+																		<span class="sr-only">Chi tiết</span>
 																	</button>
 																	<div class="dropdown-menu">
 																		<button ng-click="edit(sub)"
-																			class="dropdown-item">Edit</button>
+																			class="dropdown-item">Chỉnh sửa</button>
 																		<button ng-click="delete(sub)"
-																			class="dropdown-item">Delete</button>
+																			class="dropdown-item">Xoá</button>
 																	</div>
 																</div>
 															</td>
@@ -191,17 +190,17 @@
 												</table>
 												<div class="panel-footer text-center">
 													<button ng-click="pagination()" class="btn btn-danger">
-														<b>First</b>
+														<b>Trang đầu</b>
 													</button>
 													<button ng-disabled = "currentPage == 0" ng-click="currentPage = currentPage - 1" class="btn btn-primary">
-														<b>Previous</b>
+														<b>Trước</b>
 													</button>
 													<button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
 													<button ng-disabled = "currentPage >= subs.length/pageSize-1" ng-click="currentPage = currentPage+1" class="btn btn-primary">
-														<b>Next</b>
+														<b>Tới</b>
 													</button>
 													<button ng-click="currentPage = numberOfPages() -1" class="btn btn-danger">
-														<b>Last</b>
+														<b>Trang cuối</b>
 													</button>
 												</div>
 											</div>

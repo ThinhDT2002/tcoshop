@@ -8,10 +8,10 @@
 			<div class="content">
 				<div
 					class="breadcrumb-wrapper breadcrumb-wrapper-2 breadcrumb-contacts">
-					<h1>Main Category</h1>
+					<h1>Danh mục chính</h1>
 					<p class="breadcrumbs">
-						<span><a href="index.html">Home</a></span> <span><i
-							class="mdi mdi-chevron-right"></i></span>Main Category
+						<span><a th:href="@{/tco-admin}">Bảng điều khiển</a></span> <span><i
+							class="mdi mdi-chevron-right"></i></span>Danh mục chính	
 					</p>
 				</div>
 				<div class="row">
@@ -19,7 +19,7 @@
 						<div class="ec-cat-list card card-default mb-24px">
 							<div class="card-body">
 								<div class="ec-cat-form">
-									<h4>Add New Category</h4>
+									<h4>Thêm mới danh mục</h4>
 									<div class="card-body">
 									<h6>[[${message}]]</h6>
 									<div th:text = ${errorMessage}></div>
@@ -57,7 +57,7 @@
 											</div>
 
 											<div class="form-group row">
-												<label for="slug" class="col-12 col-form-label">Name</label>
+												<label for="slug" class="col-12 col-form-label">Tên danh mục</label>
 												<div class="col-12">
 													<input th:field = *{name} id="name" name="text"
 														class="form-control" type="text">
@@ -66,9 +66,9 @@
 											</div>
 											<div class="row">
 												<div class="col-12">
-													<button th:if = "${categoryForm.id} == null" th:formaction = "@{/tco-admin/category/submit}"  class="btn btn-primary">Submit</button>
-													<button th:if = "${categoryForm.id} == null" th:formaction="@{/tco-admin/category}"  class="btn btn-primary">Reset</button>
-													<button th:if = "${categoryForm.id} != null" th:formaction="@{|/tco-admin/category/update/${categoryForm.id}|}"  class="btn btn-primary">Update</button>
+													<button th:if = "${categoryForm.id} == null" th:formaction = "@{/tco-admin/category/submit}"  class="btn btn-primary">Thêm</button>
+													<button th:if = "${categoryForm.id} == null" th:formaction="@{/tco-admin/category}"  class="btn btn-primary">Tạo mới</button>
+													<button th:if = "${categoryForm.id} != null" th:formaction="@{|/tco-admin/category/update/${categoryForm.id}|}"  class="btn btn-primary">Cập nhật</button>
 												</div>
 												
 											</div>
@@ -87,9 +87,9 @@
 											<tr>
 												<th>Icon</th>
 												<th>ID</th>
-												<th>Name</th>
-												<th>Sub Categories</th>
-												<th>Action</th>
+												<th>Tên</th>
+												<th>Thương hiệu</th>
+												<th>Tuỳ chỉnh</th>
 											</tr>
 										</thead>
 
@@ -125,8 +125,8 @@
 														</button>
 
 														<div class="dropdown-menu">
-															<a class="dropdown-item" th:href = "@{|/tco-admin/category/${category.id}|}">Edit</a> <a
-																class="dropdown-item" th:href="@{|/tco-admin/category/delete/${category.id}|}">Delete</a>
+															<a class="dropdown-item" th:href = "@{|/tco-admin/category/${category.id}|}">Chỉnh sửa</a> <a
+																class="dropdown-item" th:href="@{|/tco-admin/category/delete/${category.id}|}">Xoá</a>
 														</div>
 													</div>
 												</td>

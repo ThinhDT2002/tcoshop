@@ -55,7 +55,7 @@
                                     <tbody>
                                         <tr ng-repeat = "turnoverPerMonth in turnoverReport">
                                             <td>{{turnoverPerMonth.month}}</td>
-                                            <td>{{turnoverPerMonth.turnover}}</td>
+                                            <td>{{turnoverPerMonth.turnover | currency:undefined:0}} VND</td>
                                             <td>
                                             	<button ng-click="getTurnoverDetailReport(yearValue, turnoverPerMonth.month)">Xem chi tiết</button>
                                             </td>
@@ -116,26 +116,26 @@
                                             	<a th:href="@{|/tco-admin/product/detail/{{turnoverDetail.id}}|}">{{turnoverDetail.productName}}</a>
                                             </td>
                                             <td>{{turnoverDetail.quantity}}</td>
-                                            <td>{{turnoverDetail.turnover}}</td>                                            
+                                            <td>{{turnoverDetail.turnover | currency:undefined:0}}</td>                                            
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class="panel-footer text-center">
 									<button ng-click = "pagination()" class="btn btn-danger">
-										<b>First</b>
+										<b>Trang đầu</b>
 									</button>
 									<button ng-disabled="currentPage == 0"
 										ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-										<b>Previous</b>
+										<b>Trước</b>
 									</button>
 									<button
 										class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
 									<button ng-disabled="currentPage >= turnoverDetailReport.length/pageSize - 1"
 										ng-click="currentPage=currentPage+1" class="btn btn-primary">
-										<b>Next</b>
+										<b>Tới</b>
 									</button>
 									<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
-										<b>Last</b>
+										<b>Trang cuối</b>
 									</button>
 								</div>
                             </div>
@@ -198,20 +198,20 @@
                                 </table>
                                 <div class="panel-footer text-center">
 									<button ng-click = "paginationProductStock()" class="btn btn-danger">
-										<b>First</b>
+										<b>Trang đầu</b>
 									</button>
 									<button ng-disabled="currentPageProductStock == 0"
 										ng-click="currentPageProductStock=currentPageProductStock - 1" class="btn btn-primary">
-										<b>Previous</b>
+										<b>Trước</b>
 									</button>
 									<button
 										class="btn btn-success">{{currentPageProductStock+1}}/{{numberOfPagesProductStock()}}</button>
 									<button ng-disabled="currentPageProductStock >= productsStock.length/pageSizeProductStock - 1"
 										ng-click="currentPageProductStock=currentPageProductStock+1" class="btn btn-primary">
-										<b>Next</b>
+										<b>Tới</b>
 									</button>
 									<button ng-click = "currentPageProductStock = numberOfPagesProductStock() -1" class="btn btn-danger">
-										<b>Last</b>
+										<b>Trang cuối</b>
 									</button>
 								</div>
                             </div>
@@ -274,20 +274,20 @@
                                 </table>
                                 <div class="panel-footer text-center">
 									<button ng-click = "paginationProductNotSold()" class="btn btn-danger">
-										<b>First</b>
+										<b>Trang đầu</b>
 									</button>
 									<button ng-disabled="currentPageProductNotSold == 0"
 										ng-click="currentPageProductNotSold=currentPageProductNotSold - 1" class="btn btn-primary">
-										<b>Previous</b>
+										<b>Trước</b>
 									</button>
 									<button
 										class="btn btn-success">{{currentPageProductNotSold+1}}/{{numberOfPagesProductNotSold()}}</button>
 									<button ng-disabled="currentPageProductNotSold >= productsNotSold.length/pageSizeProductNotSold - 1"
 										ng-click="currentPageProductNotSold=currentPageProductNotSold+1" class="btn btn-primary">
-										<b>Next</b>
+										<b>Tới</b>
 									</button>
 									<button ng-click = "currentPageProductNotSold = numberOfPagesProductNotSold() -1" class="btn btn-danger">
-										<b>Last</b>
+										<b>Trang cuối</b>
 									</button>
 								</div>
                             </div>
