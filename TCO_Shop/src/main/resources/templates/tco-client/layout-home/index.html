@@ -61,63 +61,44 @@
                             <!-- Swiper -->
                             <div class="qty-product-cover">
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image1}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image1}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image2}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image2}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image3}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image3}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image4}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image4}}|}" alt="">
                                 </div>
                             </div>
                             <div class="qty-nav-thumb">
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image1}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image1}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image2}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image2}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image3}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image3}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image4}}|}" alt="">
+                                    <img class="img-responsive" th:src="@{|/images/products/{{display.items.image4}}|}" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12">
                             <div class="quickview-pro-content">
                                 <h5 class="ec-quick-title"><a th:href="@{|/product/detail/{{display.items.id}}|}">{{display.items.name}}</a></h5>
-                                <div class="ec-quickview-rating">
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star"></i>
-                                </div>
+                               
 
                                 <div class="ec-quickview-desc">Lorem Ipsum is simply dummy text of the printing and
                                     typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
                                     since the 1500s,</div>
                                 <div class="ec-quickview-price">
-                                    <span class="new-price">{{cart.formatNumber(display.items.price * (100 - display.items.discount)/100)}} VNĐ</span> -
-                                    <span class="old-price">{{cart.formatNumber(display.items.price)}} VNĐ</span>
-                                </div>
-
-                                <div class="ec-pro-variation">
-                                    <div class="ec-pro-variation-inner ec-pro-variation-color">
-                                        <span>Màu</span>
-                                        <div class="ec-pro-variation-content">
-                                            <ul>
-                                                <li><span style="background-color:#202020;"></span></li>
-                                                <li><span style="background-color:#0d4fcf;"></span></li>
-                                                <li><span style="background-color:#f93434;"></span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    <span class="old-price">{{display.items.price | currency:'':0}} VNĐ</span> -
+                                    <span class="new-price">{{display.items.price * (100 - display.items.discount)/100 | currency:'':0}} VNĐ</span>
                                 </div>
                                 <div class="ec-quickview-qty">
                                     <div class="ec-quickview-cart ">

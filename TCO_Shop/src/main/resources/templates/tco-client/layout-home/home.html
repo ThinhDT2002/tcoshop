@@ -60,87 +60,14 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
         <div class="container">
             <div class="row">
                 <div class="ec_cat_slider">
-                    <div class="ec_cat_content">
+                    <div class="ec_cat_content" th:each="category:${categories}">
                         <div class="ec_cat_inner">
-                            <a href="#">
-                                <h2 class="d-none">Loại</h2>
+                            <a th:href="@{|/product/list?cid=${category.id}|}">	
                                 <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/8.svg}" class="svg_img cat_svg" alt="" />
+                                    <img th:src="@{|/images/category/${category.icon}|}" class="svg_img cat_svg" alt="" />
                                 </div>
                                 <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Laptops & PC</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ec_cat_content">
-                        <div class="ec_cat_inner">
-                            <a href="#">
-                                <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/9.svg}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Đồng hồ thông minh</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ec_cat_content">
-                        <div class="ec_cat_inner">
-                            <a href="#">
-                                <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/10.svg}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Camera</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ec_cat_content">
-                        <div class="ec_cat_inner">
-                            <a href="#">
-                                <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/11.svg}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Tai cầm</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ec_cat_content">
-                        <div class="ec_cat_inner">
-                            <a href="#">
-                                <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/12.svg}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Tai nghe</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ec_cat_content">
-                        <div class="ec_cat_inner">
-                            <a href="#">
-                                <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/13.svg}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Thực tế ảo</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ec_cat_content">
-                        <div class="ec_cat_inner">
-                            <a href="#">
-                                <div class="ec-cat-image">
-                                    <img th:src="@{/images/category-image/14.svg}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">Camera</span>
+                                    <span class="ec-section-title">[[${category.name}]]</span>
                                 </div>
                             </a>
                         </div>
