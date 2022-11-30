@@ -74,21 +74,13 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <div class="single-pro-desc single-pro-desc-no-sidebar">
                                 <div class="single-pro-content">
                                     <h5 class="ec-single-title">[[*{name}]]</h5>
-                                    <div class="ec-single-rating-wrap">
-                                        <div class="ec-single-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star-o"></i>
-                                        </div>
-                                        <span class="ec-read-review"><a href="#ec-spt-nav-review">Be the first to
-                                                review this product</a></span>
+                                    <div class="ec-single-rating-wrap">                                        
+                                        <span class="ec-read-review"><a href="#ec-spt-nav-review">Xem thêm các sản phẩm khác</a></span>
                                     </div>
                                     <div class="ec-single-desc">[[*{description}]]</div>
                                     <div class="ec-single-price-stoke">
                                         <div class="ec-single-price">
-                                            <span class="ec-single-ps-title">As low as</span>
+                                            <span class="ec-single-ps-title">Giá chỉ</span>
                                                  
                                             <span th:if="discount == 0" class="new-price">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
                                             <div th:if="discount != 0">
@@ -98,25 +90,13 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             </div>
                                         </div>
                                         <div class="ec-single-stoke">
-                                            <span class="ec-single-ps-title">IN STOCK</span>
-                                            <span class="ec-single-sku">SKU#: WH12</span>
+                                            <span th:if="*{stock} > 0" class="ec-single-ps-title">CÒN HÀNG</span>
+                                            <span th:if="*{stock} == 0" class="ec-single-ps-title">HẾT HÀNG</span>
+                                            <span class="ec-single-sku">ID: [[*{id}]]</span>
                                         </div>
                                     </div>
 
-                                    <div class="ec-pro-variation">
-                                        <div class="ec-pro-variation-inner ec-pro-variation-color">
-                                            <span>Color</span>
-                                            <div class="ec-pro-variation-content">
-                                                <ul>
-                                                    <li class="active"><span style="background-color:#8dc4fa;"></span></li>
-                                                    <li><span style="background-color:#6fd5c7"></span></li>
-                                                    <li><span style="background-color:#7ed48d;"></span></li>
-                                                    <li><span style="background-color:#e7b97e;"></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    
                                     <div class="ec-single-qty">
                                         <div class="ec-single-cart ">
                                         	<th:block th:if="*{stock} gt 0">
@@ -131,13 +111,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     th:src="@{/assets/images/icons/wishlist.svg}" class="svg_img pro_svg"
                                                     alt="" /></a>
                                         </div>
-                                        <div class="ec-single-quickview">
-                                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                title="Quick view" data-bs-toggle="modal"
-                                                data-bs-target="#ec_quickview_modal"><img
-                                                    th:src="@{/assets/images/icons/quickview.svg}" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                        </div>
+                                        
                                     </div>
                                     <div class="ec-single-social">
                                         <ul class="mb-0">
@@ -209,33 +183,33 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 </div>
                             </div>
 
-                            <div id="ec-spt-nav-review" class="tab-pane fade">
+                            <div id="ec-spt-nav-review" class="tab-pane fade" ng-controller="review-ctrl">
                                 <div class="row">
-                                    <div class="ec-t-review-wrapper">
-                                   
-                                        <div class="ec-t-review-item" th:each = "review: ${reviews}">
+                                    <div class="ec-t-review-wrapper">                                  
+                                        <div class="ec-t-review-item" ng-repeat = "review in reviews">
                                             <div class="ec-t-review-avtar">
-                                                <img th:src="@{/assets/images/review-image/1.jpg}" alt="" />
+                                                <img th:src="@{|/images/user/{{review.user.avatar}}|}" alt="" />
                                             </div>
                                            
                                             <div class="ec-t-review-content">
                                                 <div class="ec-t-review-top">
                                                     <div class="ec-t-review-name" >
-                                                    <span th:text = "${review.user.username}"></span>
-                                                    </div>
-                                                    <div class="ec-t-review-rating">
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star-o"></i>
-                                                    </div>
-                                                    
+                                                    <span>{{review.user.username}}</span>
+                                                    </div>                                                                                                    
                                                 </div>
                                                 <div class="ec-t-review-bottom">
-                                                    <span th:text = ${review.content}></span>
-                                                </div>
-                                                 
+                                                    <span id="contentReview{{review.id}}">{{review.content}}</span>
+                                                    <div style="display: none;" class="ec-ratting-input form-submit" id="editReview{{review.id}}">
+	                                                    <textarea ng-model = "editReviewForm.content" name="your-commemt"></textarea>  
+	                                                    <button class="btn btn-primary" ng-click="undo(review)">Huỷ</button>   
+	                                                    <button class="btn btn-primary" ng-click="updateReview(editReviewForm)">Gửi</button>                                                    	                                                   
+                                                	</div>                                                      
+                                                    <div ng-if="review.user.username == currentAuthenticationUsername">
+                                                    	<button ng-click="edit(review)">Sửa</button>
+                                                   	 	<button>Xoá</button>
+                                                    </div>                                           
+                                                </div>                                                
+                                                <span>{{review.time | date:"dd/MM/yyyy 'at' h:mma"}}</span>                                           
                                             </div>
                                         </div>
 
@@ -243,30 +217,13 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     <div class="ec-ratting-content" >
                                         <h3>Add a Review</h3>
                                         <div class="ec-ratting-form">
-                                            <form method = "post" >
-                                                <div class="ec-ratting-star">
-                                                    <span>Your rating:</span>
-                                                    <div class="ec-t-review-rating">
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star-o"></i>
-                                                        <i class="ecicon eci-star-o"></i>
-                                                        <i class="ecicon eci-star-o"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="ec-ratting-input">
-                                                    <input name="your-name" placeholder="Name" type="text" />
-                                                </div>
-                                                
+                                            <form method = "post">                                                                                             
                                                 <div class="ec-ratting-input form-submit">
-                                                    <textarea ng-model = "formReview.content" name="your-commemt"
-                                                        placeholder="Enter Your Comment" ></textarea>
-                                                    <div class="form-group col-sm-6">
-														<input  type="date" class="form-control">
-													</div>
+                                                    <textarea ng-model = "reviewForm.content" name="your-commemt"
+                                                        placeholder="Để lại bình luận của bạn về sản phẩm này" ></textarea>                                                   
                                                     <button
-                                                    class="btn btn-primary" 
-                                                        >Submit</button>
+                                                    class="btn btn-primary" ng-click="createReview()" 
+                                                        >Gửi</button>
                                                 </div>
                                             </form>
                                         </div>

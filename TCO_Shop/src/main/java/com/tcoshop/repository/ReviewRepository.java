@@ -11,6 +11,7 @@ import com.tcoshop.entity.Review;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer>{
-	@Query("Select r From Review r where r.product.id=?1")
-	List<Review> findByProductId(Integer pid);
+	@Query(value = "select * from Reviews where Product_Id = ?1 \r\n"
+	        + "order by Review_Time DESC", nativeQuery = true)
+	List<Review> findByProductId(Integer productId);
 }

@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +28,23 @@ public class ReviewAPI {
 		return ResponseEntity.ok(reviewService.findAll());
 	}
 	
+	@GetMapping("/{productId}")
+	public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable("productId") Integer productId) {
+	    return ResponseEntity.ok(reviewService.findByProductId(productId));
+	}
+	
 	@PostMapping
 	public Review create(@RequestBody Review review) {
-		return reviewService.create(review);
+		reviewService.create(review);
+		return review;
+	}
+	
+	@PutMapping
+	public Review update(@RequestBody Review review) {
+	    Review reviewInDB = reviewService.findById(review.getId());
+	    reviewInDB.setContent(review.getContent());
+	    reviewService.update(reviewInDB);
+	    return review;
 	}
 	
 }

@@ -34,6 +34,11 @@ public class ReviewServiceImpl implements ReviewService{
 		return reviewDao.save(review);
 	}
 
+    @Override
+    public Review update(Review review) {
+        return reviewDao.save(review);
+    }
+
 	
 	
 	
