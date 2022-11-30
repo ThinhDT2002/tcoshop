@@ -18,6 +18,12 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<Review> findAll() {
 		return reviewDao.findAll();
 	}
+	
+
+	@Override
+	public List<Review> findTop10Review() {
+		return reviewDao.findTop10Review();
+	}
 
 	@Override
 	public Review findById(Integer id) {
@@ -43,8 +49,5 @@ public class ReviewServiceImpl implements ReviewService{
     public void delete(Integer reviewId) {
         reviewDao.deleteById(reviewId);      
     }
-
-	
-	
 	
 }

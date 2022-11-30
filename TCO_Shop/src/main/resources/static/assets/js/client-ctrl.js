@@ -2,6 +2,8 @@ const app = angular.module("shopping-cart-app", []);
 
 app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.products = [];
+	$scope.reviews = [];
+
 
 	// lấy giỏ hàng của người dùng abcxyz
 	$scope.items = [];
@@ -11,10 +13,12 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	console.log(split[2]);
 
 	$scope.initialize = function() {
+		$http.get("/api/reviews/top10").then(resp => {
+			$scope.reviews = resp.data;
+		});
 		$http.get("/api/products").then(resp => {
 			$scope.products = resp.data;
 		});
-
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
 		});
@@ -234,12 +238,12 @@ app.controller("review-ctrl", function($http, $scope) {
 				reviewData.product = {
 					id: productId
 				}
-				
+
 				$http.post("/api/reviews", reviewData).then(resp => {
 					$scope.reviews.push(resp.data);
 					$scope.reviewForm = {};
 				})
-				
+
 			} else {
 				const arr = currentUser.split(" ");
 				currentUser = arr[arr.length - 1];
@@ -259,17 +263,14 @@ app.controller("review-ctrl", function($http, $scope) {
 					reviewData.product = {
 						id: productId
 					}
-					
+
 					$http.post("/api/reviews", reviewData).then(resp => {
 						$scope.reviews.push(resp.data);
 						$scope.reviewForm = {};
 					})
-					
+
 				})
-			}
-			/*
-			
-			*/
+			}			
 		}
 	}
 	$scope.editReviewForm = {};

@@ -179,7 +179,7 @@ values
 		('ELECTRONIC',N'Gia dụng điện','iconElectric.png'),
 		('PHONE',N'Điện thoại, Table, Phụ kiện','phone.png'),
 		('PURIFIER',N'Lọc nước, Máy nước nóng','purifier.png'),
-		('KITCHEN',N'Đồ dùng nhà bếp, Gia đình','iconBep.jpg'),
+		('KITCHEN',N'Đồ dùng nhà bếp, Gia đình','iconBep.png'),
 		('ROOM',N'Phòng khách, Phòng ăn','room.png'),
 		('BEDROOM',N'Phòng ngủ, Trang trí','bedroom.png'),
 		('HEALTH',N'Sức khỏe và sắc đẹp','health.png')

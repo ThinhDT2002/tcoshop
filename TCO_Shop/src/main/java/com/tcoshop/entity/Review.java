@@ -32,14 +32,14 @@ public class Review implements Serializable{
     private Date time;
     @Column(name = "Review_Time_Detail")
     private String timeDetail;
-    private boolean edited;
+    private Boolean edited;
     public Review() {
         super();
     }
    
 
 	public Review(Integer id, User user, Product product, String content, Date time, String timeDetail,
-            boolean edited) {
+            Boolean edited) {
         super();
         this.id = id;
         this.user = user;
@@ -62,12 +62,12 @@ public class Review implements Serializable{
     }
 
 
-    public boolean isEdited() {
+    public Boolean isEdited() {
         return edited;
     }
 
 
-    public void setEdited(boolean edited) {
+    public void setEdited(Boolean edited) {
         this.edited = edited;
     }
 

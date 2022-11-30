@@ -111,20 +111,8 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                     <div class="ec-pro-content">
                                         <div class="ec-pro-option">
                                             <div class="ec-pro-opt-inner">
-                                                <div class="ec-pro-color">
-                                                    <ul class="ec-opt-swatch ec-change-img">
-                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="images/products/{{item.image1}}"
-                                                                data-src-hover="images/products/{{item.image2}}"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#ef7ca3;"></span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="ec-pro-compare">
-                                                    <a href="compare.html" class="ec-btn-group compare"
-                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                </div>
+                                                
+                                                
                                             </div>
                                         </div>
                                         <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>
@@ -1182,12 +1170,13 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
             <div class="row">
                 <div class="ec-test-outer">
                     <ul id="ec-testimonial-slider">
-                        <li class="ec-test-item">
+                        <li class="ec-test-item" ng-repeat="review in reviews">
                             <div class="ec-test-inner">
                                 <div class="ec-test-img"><img alt="testimonial" title="testimonial"
                                         src="assets/images/testimonial/1.jpg" /></div>
                                 <div class="ec-test-content">
-                                    <div class="ec-test-name">Nano</div>
+                                    <div class="ec-test-name">{{review.user.username}}</div>
+                                    <div class="ec-test-name">2</div>
                                     <div class="ec-test-designation">Việt Nam</div>
                                     <div class="ec-test-rating">
                                         <i class="ecicon eci-star fill"></i>
@@ -1196,72 +1185,11 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                         <i class="ecicon eci-star fill"></i>
                                         <i class="ecicon eci-star fill"></i>
                                     </div>
-                                    <div class="ec-test-desc">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry</div>
+                                    <div class="ec-test-desc">content</div>
 
                                 </div>
                             </div>
-                        </li>
-                        <li class="ec-test-item">
-                            <div class="ec-test-inner">
-                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
-                                        src="assets/images/testimonial/2.jpg" /></div>
-                                <div class="ec-test-content">
-                                    <div class="ec-test-name">Lương Văn Bịp</div>
-                                    <div class="ec-test-designation">Việt Nam</div>
-                                    <div class="ec-test-rating">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                    </div>
-                                    <div class="ec-test-desc">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry</div>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li class="ec-test-item">
-                            <div class="ec-test-inner">
-                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
-                                        src="assets/images/testimonial/3.jpg" /></div>
-                                <div class="ec-test-content">
-                                    <div class="ec-test-name">Zũn Đé</div>
-                                    <div class="ec-test-designation">Việt Nam</div>
-                                    <div class="ec-test-rating">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                    </div>
-                                    <div class="ec-test-desc">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry</div>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li class="ec-test-item">
-                            <div class="ec-test-inner">
-                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
-                                        src="assets/images/testimonial/1.jpg" /></div>
-                                <div class="ec-test-content">
-                                    <div class="ec-test-name">Thuận Nè</div>
-                                    <div class="ec-test-designation">Việt Nam</div>
-                                    <div class="ec-test-rating">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                    </div>
-                                    <div class="ec-test-desc">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry</div>
-
-                                </div>
-                            </div>
-                        </li>
+                        </li>                 
                     </ul>
                 </div>
             </div>

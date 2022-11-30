@@ -30,6 +30,11 @@ public class ReviewAPI {
 		return ResponseEntity.ok(reviewService.findAll());
 	}
 	
+	@GetMapping("/top10")
+	public ResponseEntity<List<Review>> get10Review(){
+		return ResponseEntity.ok(reviewService.findTop10Review());
+	}
+	
 	@GetMapping("/{productId}")
 	public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable("productId") Integer productId) {
 	    return ResponseEntity.ok(reviewService.findByProductId(productId));
