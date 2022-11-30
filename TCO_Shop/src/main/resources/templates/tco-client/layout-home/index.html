@@ -61,42 +61,36 @@
                             <!-- Swiper -->
                             <div class="qty-product-cover">
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/39_1.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image1}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/39_2.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image2}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/40_1.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image3}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/40_2.jpg" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/41_1.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image4}}|}" alt="">
                                 </div>
                             </div>
                             <div class="qty-nav-thumb">
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/39_1.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image1}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/39_2.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image2}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/40_1.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image3}}|}" alt="">
                                 </div>
                                 <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/40_2.jpg" alt="">
-                                </div>
-                                <div class="qty-slide">
-                                    <img class="img-responsive" src="assets/images/product-image/41_1.jpg" alt="">
+                                    <img class="img-responsive" th:src="@{|/assets/images/product-image/{{display.items.image4}}|}" alt="">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12">
                             <div class="quickview-pro-content">
-                                <h5 class="ec-quick-title"><a href="product-gallery-full-width.html">Giảng viên với khẩu hiệu broguing</a></h5>
+                                <h5 class="ec-quick-title"><a th:href="@{|/product/detail/{{display.items.id}}|}">{{display.items.name}}</a></h5>
                                 <div class="ec-quickview-rating">
                                     <i class="ecicon eci-star fill"></i>
                                     <i class="ecicon eci-star fill"></i>
@@ -109,8 +103,8 @@
                                     typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
                                     since the 1500s,</div>
                                 <div class="ec-quickview-price">
-                                    <span class="old-price">$200.00</span>
-                                    <span class="new-price">$159.00</span>
+                                    <span class="new-price">{{cart.formatNumber(display.items.price * (100 - display.items.discount)/100)}} VNĐ</span> -
+                                    <span class="old-price">{{cart.formatNumber(display.items.price)}} VNĐ</span>
                                 </div>
 
                                 <div class="ec-pro-variation">
@@ -126,11 +120,13 @@
                                     </div>
                                 </div>
                                 <div class="ec-quickview-qty">
-                                    <div class="qty-plus-minus">
-                                        <input class="qty-input" type="text" name="ec_qtybtn" value="1" />
-                                    </div>
                                     <div class="ec-quickview-cart ">
-                                        <button class="btn btn-primary">Thêm vào giỏ</button>
+                                         <span ng-if="display.items.stock > 0">
+                                            <button title="Add To Cart" class="add-to-cart btn btn-primary" ng-click="cart.add(display.items.id)">Thêm vào giỏ</button>
+                                         </span>
+                                         <span ng-if="display.items.stock == 0">
+                                            <button title="Add To Cart" class="add-to-cart btn btn-primary" disabled>Hết hàng</button>
+                                         </span> 
                                     </div>
                                 </div>
                             </div>

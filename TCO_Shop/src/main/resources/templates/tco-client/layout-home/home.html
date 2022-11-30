@@ -230,11 +230,11 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                          	    <span ng-if="item.stock == 0">
                                             		<button title="Add To Cart" class="add-to-cart btn btn-primary" disabled>Hết hàng</button>
                                          		</span>                                             
-                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                <button ng-click="display.get(item.id)" href="#" class="ec-btn-group quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><img
                                                         src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></a>
+                                                        alt="" /></button>
                                             </div>
                                         </div>
                                     </div>
