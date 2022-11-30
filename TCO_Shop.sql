@@ -123,10 +123,10 @@ create table Reviews(
 	foreign key (Product_Id) references Products(Id),
 	Content nvarchar(200),
 	Review_Time date,
+	Review_Time_Detail varchar(30),
+	edited bit,
 	primary key (Id)
 )
-
-
 
 insert into Order_Status
 values

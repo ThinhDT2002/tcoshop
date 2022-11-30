@@ -30,24 +30,49 @@ public class Review implements Serializable{
     private String content;
     @Column(name = "Review_Time")
     private Date time;
+    @Column(name = "Review_Time_Detail")
+    private String timeDetail;
+    private boolean edited;
     public Review() {
         super();
     }
    
-    
+
+	public Review(Integer id, User user, Product product, String content, Date time, String timeDetail,
+            boolean edited) {
+        super();
+        this.id = id;
+        this.user = user;
+        this.product = product;
+        this.content = content;
+        this.time = time;
+        this.timeDetail = timeDetail;
+        this.edited = edited;
+    }
 
 	
 
-	public Review(Integer id, User user, Product product, String content, Date time) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.product = product;
-		this.content = content;
-		this.time = time;
-	}
+    public String getTimeDetail() {
+        return timeDetail;
+    }
 
-	public Integer getId() {
+
+    public void setTimeDetail(String timeDetail) {
+        this.timeDetail = timeDetail;
+    }
+
+
+    public boolean isEdited() {
+        return edited;
+    }
+
+
+    public void setEdited(boolean edited) {
+        this.edited = edited;
+    }
+
+
+    public Integer getId() {
         return id;
     }
     public void setId(Integer id) {

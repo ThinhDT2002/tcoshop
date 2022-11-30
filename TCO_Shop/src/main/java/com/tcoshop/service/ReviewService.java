@@ -14,4 +14,6 @@ public interface ReviewService {
 	Review create(Review review);
 	
 	Review update(Review review);
+	
+	void delete(Integer reviewId);
 }

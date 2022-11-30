@@ -159,18 +159,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         <div class="tab-content  ec-single-pro-tab-content">
                             <div id="ec-spt-nav-details" class="tab-pane fade show active">
                                 <div class="ec-single-pro-tab-desc">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to
-                                        make a type specimen book. It has survived not only five centuries, but also
-                                        the leap into electronic typesetting, remaining essentially unchanged.
-                                    </p>
-                                    <ul>
-                                        <li>Any Product types that You want - Simple, Configurable</li>
-                                        <li>Downloadable/Digital Products, Virtual Products</li>
-                                        <li>Inventory Management with Backordered items</li>
-                                        <li>Flatlock seams throughout.</li>
-                                    </ul>
+                                    [[*{description}]]
                                 </div>
                             </div>
                             <div id="ec-spt-nav-info" class="tab-pane fade">
@@ -194,7 +183,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <div class="ec-t-review-content">
                                                 <div class="ec-t-review-top">
                                                     <div class="ec-t-review-name" >
-                                                    <span>{{review.user.username}}</span>
+                                                    <span ng-if="review.edited == 0">{{review.user.username}}</span>
+                                                    <span ng-if="review.edited == 1">{{review.user.username}} (đã chỉnh sửa)</span>
                                                     </div>                                                                                                    
                                                 </div>
                                                 <div class="ec-t-review-bottom">
@@ -206,10 +196,10 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                 	</div>                                                      
                                                     <div ng-if="review.user.username == currentAuthenticationUsername">
                                                     	<button ng-click="edit(review)">Sửa</button>
-                                                   	 	<button>Xoá</button>
+                                                   	 	<button ng-click="delete(review.id)">Xoá</button>
                                                     </div>                                           
                                                 </div>                                                
-                                                <span>{{review.time | date:"dd/MM/yyyy 'at' h:mma"}}</span>                                           
+                                                <span>{{review.time | date:"dd/MM/yyyy"}} at {{review.timeDetail}}</span>                                           
                                             </div>
                                         </div>
 

@@ -19,11 +19,11 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			$scope.items = resp.data;
 		});
 	}
-	
+
 	// con mắt ở trang index home
 	$scope.display = {
-		items : null,
-		get(id) {			
+		items: null,
+		get(id) {
 			$http.get(`/api/products/${id}`).then(resp => {
 				this.items = resp.data;
 			})
@@ -213,6 +213,8 @@ app.controller("review-ctrl", function($http, $scope) {
 	})
 	$scope.reviewForm = {};
 	$scope.createReview = function() {
+		let currentDate = new Date();
+		let currentHour = currentDate.toLocaleTimeString();
 		let reviewData = angular.copy($scope.reviewForm);
 		if (reviewData.content === undefined) {
 
@@ -227,13 +229,17 @@ app.controller("review-ctrl", function($http, $scope) {
 					username: currentUser,
 					avatar: currentUserAvatar
 				};
+				reviewData.timeDetail = currentHour;
+				reviewData.edited = 0;
 				reviewData.product = {
 					id: productId
 				}
+				
 				$http.post("/api/reviews", reviewData).then(resp => {
 					$scope.reviews.push(resp.data);
 					$scope.reviewForm = {};
 				})
+				
 			} else {
 				const arr = currentUser.split(" ");
 				currentUser = arr[arr.length - 1];
@@ -248,13 +254,17 @@ app.controller("review-ctrl", function($http, $scope) {
 						username: currentUser,
 						avatar: currentUserAvatar
 					};
+					reviewData.timeDetail = currentHour;
+					reviewData.edited = 0;
 					reviewData.product = {
 						id: productId
 					}
+					
 					$http.post("/api/reviews", reviewData).then(resp => {
 						$scope.reviews.push(resp.data);
 						$scope.reviewForm = {};
 					})
+					
 				})
 			}
 			/*
@@ -278,6 +288,8 @@ app.controller("review-ctrl", function($http, $scope) {
 	}
 
 	$scope.updateReview = function(editedReview) {
+		let currentDate = new Date();
+		let currentHour = currentDate.toLocaleTimeString();
 		let currentUser = document.getElementById("nguoidunghientai").innerText;
 		let currentUserAvatar = "";
 		const arr = currentUser.split(" ");
@@ -295,14 +307,33 @@ app.controller("review-ctrl", function($http, $scope) {
 			};
 			editedReview.product = {
 				id: productId
-			}		
+			}
+			editedReview.timeDetail = currentHour;
+			editedReview.edited = 1;
 			$http.put("/api/reviews", editedReview).then(resp => {
 				let index = $scope.reviews.findIndex(rv => rv.id == editedReview.id);
 				$scope.reviews[index] = editedReview;
 				document.getElementById("editReview" + editedReview.id).style.display = "none";
-				document.getElementById("contentReview" + editedReview.id).style.display = "block";			
+				document.getElementById("contentReview" + editedReview.id).style.display = "block";
 			})
-			
+
 		})
+	}
+
+	$scope.delete = function(reviewId) {
+		let text = "Xoá đánh giá này ?";
+		if (confirm(text) == true) {
+			$http({
+				url: "/api/reviews",
+				method: "DELETE",
+				params: {
+					reviewId: reviewId
+				}
+			}).then(resp => {
+				let index = $scope.reviews.findIndex(rv => rv.id == reviewId);
+				$scope.reviews.splice(index, 1);
+				alert("Xoá thành công");
+			})
+		}
 	}
 })
