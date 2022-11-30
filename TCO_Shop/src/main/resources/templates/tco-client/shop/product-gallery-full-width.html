@@ -237,9 +237,9 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="section-title">
-                    <h2 class="ec-bg-title">Related products</h2>
-                    <h2 class="ec-title">Related products</h2>
-                    <p class="sub-title">Browse The Collection of Top Products</p>
+                    <h2 class="ec-bg-title">Sản phẩm liên quan</h2>
+                    <h2 class="ec-title">Sản phẩm liên quan</h2>
+                    <p class="sub-title">Các sản phẩm có cùng danh mục</p>
                 </div>
             </div>
         </div>
@@ -255,7 +255,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <img class="hover-image"
                                     th:src="@{|/images/products/${p.image2}|}" alt="Product" />
                             </a>
-                            <span class="percentage">20%</span>
+                            <span class="percentage">[[*{discount}]]%</span>
                             <a href="#" class="quickview" data-link-action="quickview"
                                 title="Quick view" data-bs-toggle="modal"
                                 data-bs-target="#ec_quickview_modal"><img
