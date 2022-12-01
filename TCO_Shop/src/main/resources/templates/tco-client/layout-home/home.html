@@ -1225,12 +1225,10 @@
                                     <li class="ec-test-item">
                                         <div class="ec-test-inner">
                                             <div class="ec-test-img"><img alt="testimonial" title="testimonial"
-                                                    src="assets/images/testimonial/1.jpg" /></div>
+                                                    th:src="@{|/images/user/avatar3.png|}" /></div>
                                             <div class="ec-test-content">
                                                 <div class="ec-test-name">Duy An</div>
-                                                <div class="ec-test-name">2</div>
-                                                <div class="ec-test-designation">Việt Nam</div>
-                                                <div class="ec-test-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem blanditiis, harum ullam aliquid tempore sunt culpa facilis cumque, quas praesentium nostrum voluptatibus. Ducimus, ullam et sint minima neque reprehenderit vero.</div>
+                                                <div class="ec-test-desc">Sản phẩn rất tuyệt vời ạ !</div>
                                             </div>
                                         </div>
                                     </li>
@@ -1239,12 +1237,10 @@
                                     <li class="ec-test-item">
                                         <div class="ec-test-inner">
                                             <div class="ec-test-img"><img alt="testimonial" title="testimonial"
-                                                    src="assets/images/testimonial/1.jpg" /></div>
+                                                    th:src="@{|/images/user/{{review.user.avatar}}|}" /></div>
                                             <div class="ec-test-content">
                                                 <div class="ec-test-name">{{review.user.fullname}}</div>
-                                                <div class="ec-test-name">2</div>
-                                                <div class="ec-test-designation">Việt Nam</div>
-                                                <div class="ec-test-desc">content</div>
+                                                <div class="ec-test-desc">{{review.content}}</div>
                                             </div>
                                         </div>
                                     </li>
