@@ -1,109 +1,318 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
+
 <body>
-<main>
-    <!-- Main Slider Start -->
-    <div class="ec-main-slider section ">
-        <div class="ec-slider">
-            <div class="ec-slide-item d-flex slide-1">
-                <div class="container align-self-center">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                            <div class="ec-slide-content slider-animation">
-                                <h2 class="ec-slide-stitle">hàng mới về</h2>
-                                <h1 class="ec-slide-title">tai nghe thời trang</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ec-slide-item d-flex slide-2">
-                <div class="container align-self-center">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                            <div class="ec-slide-content slider-animation">
-                                <h2 class="ec-slide-stitle">Mặt hàng thịnh hành</h2>
-                                <h1 class="ec-slide-title">Máy ảnh chuyển động</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ec-slide-item d-flex slide-3">
-                <div class="container align-self-center">
-                    <div class="row">
-                        <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
-                            <div class="ec-slide-content slider-animation">
-                                <h2 class="ec-slide-stitle">hàng mới về</h2>
-                                <h1 class="ec-slide-title">google nest</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Main Slider End -->
-
-    <!--  category Section Start -->
-    <section class="section ec-category-section section-space-mb">
-        <div class="container">
-            <div class="row">
-                <div class="ec_cat_slider">
-                    <div class="ec_cat_content" th:each="category:${categories}">
-                        <div class="ec_cat_inner">
-                            <a th:href="@{|/product/list?cid=${category.id}|}">	
-                                <div class="ec-cat-image">
-                                    <img th:src="@{|/images/category/${category.icon}|}" class="svg_img cat_svg" alt="" />
-                                </div>
-                                <div class="ec-cat-desc">
-                                    <span class="ec-section-title">[[${category.name}]]</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--category Section End -->
-
-    <!-- Product tab Area Start -->
-    <section class="section ec-product-tab section-space-p">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-title-block">
-                    <div class="section-title">
-                        <h2 class="ec-title">Sản phẩm nổi bật</h2>
-                        <h6 class="ec-sub-title">Lorem Ipsum is simply dummy text of the printing</h6>
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="row m-tb-minus-15">
-                <div class="col">
-                    <div class="tab-content">
+    <main>
+        <!-- Main Slider Start -->
+        <div class="ec-main-slider section ">
+            <div class="ec-slider">
+                <div class="ec-slide-item d-flex slide-1">
+                    <div class="container align-self-center">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ec-product-content" ng-repeat="item in pager.items">
+                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                <div class="ec-slide-content slider-animation">
+                                    <h2 class="ec-slide-stitle">hàng mới về</h2>
+                                    <h1 class="ec-slide-title">tai nghe thời trang</h1>
+                                    <p>Nó mang đến cho những người yêu âm nhạc một trải nghiệm âm thanh tuyệt vời. Hứa hẹn sẽ đem đến trải nghiệm hoàn toàn đắm chìm nhờ khả năng khử tiếng ồn thụ động và âm thanh vòm 7.1 hiện đại.</p>
+                                    <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-slide-item d-flex slide-2">
+                    <div class="container align-self-center">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                <div class="ec-slide-content slider-animation">
+                                    <h2 class="ec-slide-stitle">Mặt hàng thịnh hành</h2>
+                                    <h1 class="ec-slide-title">Máy ảnh thông minh</h1>
+                                    <p>Đem tới chế độ xem toàn cảnh 360° với độ nét cao và tầm nhìn rõ nét vào ban đêm, phiên bản mới nhất được cải tiến nhiều ở khả năng nhận diện hoạt động của người thông qua thuật toán AI và cơ chế điều khiển thông minh bằng giọng nói.</p>
+                                    <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ec-slide-item d-flex slide-3">
+                    <div class="container align-self-center">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 align-self-center">
+                                <div class="ec-slide-content slider-animation">
+                                    <h2 class="ec-slide-stitle">hàng mới về</h2>
+                                    <h1 class="ec-slide-title">google nest</h1>
+                                    <p>The holidays just got more helpful. With great deals on your favorite Google Nest devices, you can find something for everyone on your list—including yourself</p>
+                                    <a href="#" class="btn btn-lg btn-secondary">Mua sắm ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Slider End -->
+
+        <!--  category Section Start -->
+        <section class="section ec-category-section section-space-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="ec_cat_slider">
+                        <div class="ec_cat_content" th:each="category:${categories}">
+                            <div class="ec_cat_inner">
+                                <a th:href="@{|/product/list?cid=${category.id}|}">
+                                    <div class="ec-cat-image">
+                                        <img th:src="@{|/images/category/${category.icon}|}" class="svg_img cat_svg"
+                                            alt="" />
+                                    </div>
+                                    <div class="ec-cat-desc">
+                                        <span class="ec-section-title">[[${category.name}]]</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--category Section End -->
+
+        <!-- Product tab Area Start -->
+        <section class="section ec-product-tab section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-title-block">
+                        <div class="section-title">
+                            <h2 class="ec-title">Sản phẩm nổi bật</h2>
+                            <h6 class="ec-sub-title">Lorem Ipsum is simply dummy text of the printing</h6>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row m-tb-minus-15">
+                    <div class="col">
+                        <div class="tab-content">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 ec-product-content"
+                                    ng-repeat="item in pager.items">
+                                    <div class="ec-product-inner">
+                                        <div class="ec-product-hover"></div>
+                                        <div class="ec-pro-image-outer">
+                                            <div class="ec-pro-image">
+                                                <a href="product-left-sidebar.html" class="image">
+                                                    <img class="main-image"
+                                                        th:src="@{|/images/products/{{item.image1}}|}" alt="Product" />
+                                                    <img class="hover-image"
+                                                        th:src="@{|/images/products/{{item.image2}}|}" alt="Product" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ec-pro-content">
+                                            <div class="ec-pro-option">
+                                                <div class="ec-pro-opt-inner">
+
+
+                                                </div>
+                                            </div>
+                                            <h5 class="ec-pro-title"><a
+                                                    th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>
+                                            <h6 class="ec-pro-stitle"><a
+                                                    th:href="@{|/product/list?cid={{item.category.id}}|}">{{item.category.name}}</a>
+                                            </h6>
+                                            <div class="ec-pro-rat-price">
+                                                <div class="ec-pro-rat-pri-inner">
+                                                    <span class="ec-price">
+                                                        <span class="new-price">{{cart.formatNumber(item.price * (100 -
+                                                            item.discount)/100)}} VNĐ</span>
+                                                        <span class="old-price">{{cart.formatNumber(item.price)}}
+                                                            VNĐ</span>
+                                                    </span>
+                                                    <span class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                        <i class="ecicon eci-star-o"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="pro-hidden-block">
+
+                                                <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the
+                                                    printing.</div>
+                                                <div class="ec-pro-actions">
+                                                    <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                            src="assets/images/icons/pro_wishlist.svg"
+                                                            class="svg_img pro_svg" alt="" /></a>
+                                                    <span ng-if="item.stock > 0">
+                                                        <button title="Add To Cart" class="add-to-cart btn btn-primary"
+                                                            ng-click="cart.add(item.id)">Thêm vào giỏ</button>
+                                                    </span>
+                                                    <span ng-if="item.stock == 0">
+                                                        <button title="Add To Cart" class="add-to-cart btn btn-primary"
+                                                            disabled>Hết hàng</button>
+                                                    </span>
+                                                    <button ng-click="display.get(item.id)" href="#"
+                                                        class="ec-btn-group quickview" data-link-action="quickview"
+                                                        title="Quick view" data-bs-toggle="modal"
+                                                        data-bs-target="#ec_quickview_modal"><img
+                                                            src="assets/images/icons/quickview.svg"
+                                                            class="svg_img pro_svg" alt="" /></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ec Product tab Area End -->
+
+        <!-- ec Banner Section Start -->
+        <section class="ec-banner section section-space-p">
+            <h2 class="d-none">Banner</h2>
+            <div class="container">
+                <div class="row m-tb-minus-15">
+                    <div class="ec-banners">
+                        <div class="ec-banner-left col-sm-6">
+                            <div class="ec-banner-block ec-banner-block-1 col-sm-12">
+                                <div class="banner-block">
+                                    <img src="assets/images/banner/23.png" alt="" />
+                                    <div class="banner-content">
+                                        <span class="ec-banner-stitle">Máy tính bảng lenovo</span>
+                                        <span class="ec-banner-title">GIẢM GIÁ tới 70%</span>
+                                        <span class="ec-banner-btn"><a href="#" class="btn-primary">Mua sắm
+                                                ngay</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ec-banner-right col-sm-6">
+                            <div class="ec-banner-block ec-banner-block-2 col-sm-12">
+                                <div class="banner-block">
+                                    <img src="assets/images/banner/24.png" alt="" />
+                                    <div class="banner-content">
+                                        <span class="ec-banner-stitle">Xiaoyi YI 1080p</span>
+                                        <span class="ec-banner-title">Camera IP WiFi 36</span>
+                                        <span class="ec-banner-btn"><a href="#" class="btn-primary">Mua sắm
+                                                ngay</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ec Banner Section End -->
+
+        <!--  Feature & Special Section Start -->
+        <section class="section ec-exe-spe-section section-space-ptb-100 section-space-mt section-space-mb-100"
+            style="background-image: url('assets/images/special-product/background.jpg');">
+            <div class="container">
+                <div class="row">
+                    <!--  Special Section Start -->
+                    <div class="ec-spe-section col-lg-6 col-md-12 col-sm-12 margin-b-30">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title mb-6">
+                                <h2 class="ec-title">Ưu đãi trong ngày</h2>
+                            </div>
+                        </div>
+
+                        <div class="ec-spe-products">
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner ec-product-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="product-left-sidebar.html" class="image"><img class="main-image"
+                                                    src="assets/images/special-product/1_1.jpg" alt="Product" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung gaming
+                                                console s8</a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Gaming</a></h6>
+                                        <div class="ec-pro-rat-price">
+                                            <span class="ec-price">
+                                                <span class="new-price">$159.00</span>
+                                                <span class="old-price">$200.00</span>
+                                            </span>
+                                        </div>
+                                        <div class="ec-fs-pro-progress">
+                                            <span class="ec-fs-pro-progress-desc"><span>Đã mua:
+                                                    <b>0</b></span><span>Có sẵn: <b>350</b></span></span>
+                                            <span class="ec-fs-pro-progressbar"></span>
+                                        </div>
+                                        <div class="countdowntimer">
+                                            <span class="ec-fs-count-desc"> Khẩn trương lên! ưu đãi kết thúc sau:</span>
+                                            <span id="ec-fs-count-1"></span>
+                                        </div>
+                                        <div class="ec-pro-actions">
+                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                giỏ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ec-fs-product">
+                                <div class="ec-fs-pro-inner ec-product-inner">
+                                    <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
+                                        <div class="ec-fs-pro-image">
+                                            <a href="product-left-sidebar.html" class="image"><img class="main-image"
+                                                    src="assets/images/special-product/2_1.jpg" alt="Product" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Tai nghe không dây
+                                                với mic neckband </a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Đa phương
+                                                tiện</a></h6>
+                                        <div class="ec-pro-rat-price">
+                                            <span class="ec-price">
+                                                <span class="new-price">$480.00</span>
+                                                <span class="old-price">$700.00</span>
+                                            </span>
+                                        </div>
+                                        <div class="ec-fs-pro-progress">
+                                            <span class="ec-fs-pro-progress-desc"><span>Đã mua:
+                                                    <b>0</b></span><span>Có sẵn: <b>200</b></span></span>
+                                            <span class="ec-fs-pro-progressbar"></span>
+                                        </div>
+                                        <div class="countdowntimer">
+                                            <span class="ec-fs-count-desc"> Khẩn trương lên! ưu đãi kết thúc sau:</span>
+                                            <span id="ec-fs-count-2"></span>
+                                        </div>
+                                        <div class="ec-pro-actions">
+                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                giỏ</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Special Section End -->
+                    <!--  Feature Section Start -->
+                    <div class="ec-exe-section col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title mb-6">
+                                <h2 class="ec-title">Sản phẩm độc quyền</h2>
+                            </div>
+                        </div>
+
+                        <div class="ec-exe-products product-mt-minus-15">
+                            <div class="ec-product-content">
                                 <div class="ec-product-inner">
                                     <div class="ec-product-hover"></div>
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" th:src="@{|/images/products/{{item.image1}}|}"
+                                                <img class="main-image" src="assets/images/special-product/3_1.jpg"
                                                     alt="Product" />
-                                                <img class="hover-image" th:src="@{|/images/products/{{item.image2}}|}"
+                                                <img class="hover-image" src="assets/images/special-product/3_2.jpg"
                                                     alt="Product" />
                                             </a>
                                         </div>
@@ -111,17 +320,36 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                     <div class="ec-pro-content">
                                         <div class="ec-pro-option">
                                             <div class="ec-pro-opt-inner">
-                                                
-                                                
+                                                <div class="ec-pro-color">
+                                                    <ul class="ec-opt-swatch ec-change-img">
+                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
+                                                                data-src="assets/images/special-product/3_1.jpg"
+                                                                data-src-hover="assets/images/special-product/3_1.jpg"
+                                                                data-tooltip="Gray"><span
+                                                                    style="background-color:#dbdbdb;"></span></a></li>
+                                                        <li><a href="#" class="ec-opt-clr-img"
+                                                                data-src="assets/images/special-product/3_2.jpg"
+                                                                data-src-hover="assets/images/special-product/3_2.jpg"
+                                                                data-tooltip="Orange"><span
+                                                                    style="background-color:#76e7e7;"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ec-pro-compare">
+                                                    <a href="compare.html" class="ec-btn-group compare"
+                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
+                                                            class="svg_img pro_svg" alt="" /></a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>
-                                        <h6 class="ec-pro-stitle"><a th:href="@{|/product/list?cid={{item.category.id}}|}">{{item.category.name}}</a></h6>
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">JBLK wireless
+                                                speaker</a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Multimedia</a>
+                                        </h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">                 	                                              
-	                                               <span class="new-price">{{cart.formatNumber(item.price * (100 - item.discount)/100)}} VNĐ</span>
-	                                               <span class="old-price">{{cart.formatNumber(item.price)}} VNĐ</span>
+                                                <span class="ec-price">
+                                                    <span class="new-price">$230.00</span>
+                                                    <span class="old-price">$360.00</span>
                                                 </span>
                                                 <span class="ec-pro-rating">
                                                     <i class="ecicon eci-star fill"></i>
@@ -134,1217 +362,1097 @@ th:replace="~{tco-client/layout-home/index :: dynamic(~{::main})}">
                                         </div>
                                         <div class="pro-hidden-block">
 
-                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.</div>
+                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.
+                                            </div>
                                             <div class="ec-pro-actions">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
-                                                        class="svg_img pro_svg" alt="" /></a>                                             
-                                                <span ng-if="item.stock > 0">
-                                            		<button title="Add To Cart" class="add-to-cart btn btn-primary" ng-click="cart.add(item.id)">Thêm vào giỏ</button>
-                                         		</span>
-                                         	    <span ng-if="item.stock == 0">
-                                            		<button title="Add To Cart" class="add-to-cart btn btn-primary" disabled>Hết hàng</button>
-                                         		</span>                                             
-                                                <button ng-click="display.get(item.id)" href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                        class="svg_img pro_svg" alt="" /></a>
+                                                <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                    giỏ</button>
+                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
                                                     title="Quick view" data-bs-toggle="modal"
                                                     data-bs-target="#ec_quickview_modal"><img
                                                         src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
-                         </div>
-                        </div>
-                       </div>
-                      </div>
-    </section>
-    <!-- ec Product tab Area End -->
-
-    <!-- ec Banner Section Start -->
-    <section class="ec-banner section section-space-p">
-        <h2 class="d-none">Banner</h2>
-        <div class="container">
-            <div class="row m-tb-minus-15">
-                <div class="ec-banners">
-                    <div class="ec-banner-left col-sm-6">
-                        <div class="ec-banner-block ec-banner-block-1 col-sm-12">
-                            <div class="banner-block">
-                                <img src="assets/images/banner/23.png" alt="" />
-                                <div class="banner-content">
-                                    <span class="ec-banner-stitle">Máy tính bảng lenovo</span>
-                                    <span class="ec-banner-title">GIẢM GIÁ tới 70%</span>
-                                    <span class="ec-banner-btn"><a href="#" class="btn-primary">Mua sắm ngay</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ec-banner-right col-sm-6">
-                        <div class="ec-banner-block ec-banner-block-2 col-sm-12">
-                            <div class="banner-block">
-                                <img src="assets/images/banner/24.png" alt="" />
-                                <div class="banner-content">
-                                    <span class="ec-banner-stitle">Xiaoyi YI 1080p</span>
-                                    <span class="ec-banner-title">Camera IP WiFi 36</span>
-                                    <span class="ec-banner-btn"><a href="#" class="btn-primary">Mua sắm ngay</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ec Banner Section End -->
-
-    <!--  Feature & Special Section Start -->
-    <section class="section ec-exe-spe-section section-space-ptb-100 section-space-mt section-space-mb-100"
-        style="background-image: url('assets/images/special-product/background.jpg');">
-        <div class="container">
-            <div class="row">
-                <!--  Special Section Start -->
-                <div class="ec-spe-section col-lg-6 col-md-12 col-sm-12 margin-b-30">
-                    <div class="col-md-12 text-left">
-                        <div class="section-title mb-6">
-                            <h2 class="ec-title">Ưu đãi trong ngày</h2>
-                        </div>
-                    </div>
-
-                    <div class="ec-spe-products">
-                        <div class="ec-fs-product">
-                            <div class="ec-fs-pro-inner ec-product-inner">
-                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
-                                    <div class="ec-fs-pro-image">
-                                        <a href="product-left-sidebar.html" class="image"><img class="main-image"
-                                                src="assets/images/special-product/1_1.jpg" alt="Product" /></a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung gaming console s8</a></h5>
-                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Gaming</a></h6>
-                                    <div class="ec-pro-rat-price">
-                                        <span class="ec-price">
-                                            <span class="new-price">$159.00</span>
-                                            <span class="old-price">$200.00</span>
-                                        </span>
-                                    </div>
-                                    <div class="ec-fs-pro-progress">
-                                        <span class="ec-fs-pro-progress-desc"><span>Đã mua:
-                                                <b>0</b></span><span>Có sẵn: <b>350</b></span></span>
-                                        <span class="ec-fs-pro-progressbar"></span>
-                                    </div>
-                                    <div class="countdowntimer">
-                                        <span class="ec-fs-count-desc"> Khẩn trương lên! ưu đãi kết thúc sau:</span>
-                                        <span id="ec-fs-count-1"></span>
-                                    </div>
-                                    <div class="ec-pro-actions">
-                                        <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ec-fs-product">
-                            <div class="ec-fs-pro-inner ec-product-inner">
-                                <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
-                                    <div class="ec-fs-pro-image">
-                                        <a href="product-left-sidebar.html" class="image"><img class="main-image"
-                                                src="assets/images/special-product/2_1.jpg" alt="Product" /></a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Tai nghe không dây với mic neckband </a></h5>
-                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Đa phương tiện</a></h6>
-                                    <div class="ec-pro-rat-price">
-                                        <span class="ec-price">
-                                            <span class="new-price">$480.00</span>
-                                            <span class="old-price">$700.00</span>
-                                        </span>
-                                    </div>
-                                    <div class="ec-fs-pro-progress">
-                                        <span class="ec-fs-pro-progress-desc"><span>Đã mua:
-                                                <b>0</b></span><span>Có sẵn: <b>200</b></span></span>
-                                        <span class="ec-fs-pro-progressbar"></span>
-                                    </div>
-                                    <div class="countdowntimer">
-                                        <span class="ec-fs-count-desc"> Khẩn trương lên! ưu đãi kết thúc sau:</span>
-                                        <span id="ec-fs-count-2"></span>
-                                    </div>
-                                    <div class="ec-pro-actions">
-                                        <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--  Special Section End -->
-                <!--  Feature Section Start -->
-                <div class="ec-exe-section col-lg-6 col-md-12 col-sm-12">
-                    <div class="col-md-12 text-left">
-                        <div class="section-title mb-6">
-                            <h2 class="ec-title">Sản phẩm độc quyền</h2>
-                        </div>
-                    </div>
-
-                    <div class="ec-exe-products product-mt-minus-15">
-                        <div class="ec-product-content">
-                            <div class="ec-product-inner">
-                                <div class="ec-product-hover"></div>
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/special-product/3_1.jpg"
-                                                alt="Product" />
-                                            <img class="hover-image" src="assets/images/special-product/3_2.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <div class="ec-pro-option">
-                                        <div class="ec-pro-opt-inner">
-                                            <div class="ec-pro-color">
-                                                <ul class="ec-opt-swatch ec-change-img">
-                                                    <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                            data-src="assets/images/special-product/3_1.jpg"
-                                                            data-src-hover="assets/images/special-product/3_1.jpg"
-                                                            data-tooltip="Gray"><span
-                                                                style="background-color:#dbdbdb;"></span></a></li>
-                                                    <li><a href="#" class="ec-opt-clr-img"
-                                                            data-src="assets/images/special-product/3_2.jpg"
-                                                            data-src-hover="assets/images/special-product/3_2.jpg"
-                                                            data-tooltip="Orange"><span
-                                                                style="background-color:#76e7e7;"></span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="ec-pro-compare">
-                                                <a href="compare.html" class="ec-btn-group compare" title="Compare"><img
-                                                        src="assets/images/icons/compare_5.svg" class="svg_img pro_svg"
                                                         alt="" /></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">JBLK wireless speaker</a></h5>
-                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Multimedia</a></h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$230.00</span>
-                                                <span class="old-price">$360.00</span>
-                                            </span>
-                                            <span class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star-o"></i>
-                                                <i class="ecicon eci-star-o"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="pro-hidden-block">
-
-                                        <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing. </div>
-                                        <div class="ec-pro-actions">
-                                            <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                                    src="assets/images/icons/pro_wishlist.svg" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
-                                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                title="Quick view" data-bs-toggle="modal"
-                                                data-bs-target="#ec_quickview_modal"><img
-                                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="ec-product-content">
-                            <div class="ec-product-inner">
-                                <div class="ec-product-hover"></div>
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/special-product/4_1.jpg"
-                                                alt="Product" />
-                                            <img class="hover-image" src="assets/images/special-product/4_2.jpg"
-                                                alt="Product" />
-                                        </a>
+                            <div class="ec-product-content">
+                                <div class="ec-product-inner">
+                                    <div class="ec-product-hover"></div>
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/special-product/4_1.jpg"
+                                                    alt="Product" />
+                                                <img class="hover-image" src="assets/images/special-product/4_2.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <div class="ec-pro-option">
-                                        <div class="ec-pro-opt-inner">
-                                            <div class="ec-pro-color">
-                                                <ul class="ec-opt-swatch ec-change-img">
-                                                    <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                            data-src="assets/images/special-product/4_1.jpg"
-                                                            data-src-hover="assets/images/special-product/4_2.jpg"
-                                                            data-tooltip="Gray"><span
-                                                                style="background-color:#202020;"></span></a></li>
-                                                </ul>
+                                    <div class="ec-pro-content">
+                                        <div class="ec-pro-option">
+                                            <div class="ec-pro-opt-inner">
+                                                <div class="ec-pro-color">
+                                                    <ul class="ec-opt-swatch ec-change-img">
+                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
+                                                                data-src="assets/images/special-product/4_1.jpg"
+                                                                data-src-hover="assets/images/special-product/4_2.jpg"
+                                                                data-tooltip="Gray"><span
+                                                                    style="background-color:#202020;"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ec-pro-compare">
+                                                    <a href="compare.html" class="ec-btn-group compare"
+                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
+                                                            class="svg_img pro_svg" alt="" /></a>
+                                                </div>
                                             </div>
-                                            <div class="ec-pro-compare">
-                                                <a href="compare.html" class="ec-btn-group compare" title="Compare"><img
-                                                        src="assets/images/icons/compare_5.svg" class="svg_img pro_svg"
+                                        </div>
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Galacy 8 phone 4gb
+                                                | 64gb </a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Phone</a></h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$159.00</span>
+                                                    <span class="old-price">$200.00</span>
+                                                </span>
+                                                <span class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star-o"></i>
+                                                    <i class="ecicon eci-star-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="pro-hidden-block">
+
+                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.
+                                            </div>
+                                            <div class="ec-pro-actions">
+                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                        src="assets/images/icons/pro_wishlist.svg"
+                                                        class="svg_img pro_svg" alt="" /></a>
+                                                <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                    giỏ</button>
+                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                    title="Quick view" data-bs-toggle="modal"
+                                                    data-bs-target="#ec_quickview_modal"><img
+                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
                                                         alt="" /></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Galacy 8 phone 4gb | 64gb </a></h5>
-                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Phone</a></h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$159.00</span>
-                                                <span class="old-price">$200.00</span>
-                                            </span>
-                                            <span class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star-o"></i>
-                                                <i class="ecicon eci-star-o"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="pro-hidden-block">
-
-                                        <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.</div>
-                                        <div class="ec-pro-actions">
-                                            <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                                    src="assets/images/icons/pro_wishlist.svg" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
-                                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                title="Quick view" data-bs-toggle="modal"
-                                                data-bs-target="#ec_quickview_modal"><img
-                                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="ec-product-content">
-                            <div class="ec-product-inner">
-                                <div class="ec-product-hover"></div>
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/special-product/6_1.jpg"
-                                                alt="Product" />
-                                            <img class="hover-image" src="assets/images/special-product/6_2.jpg"
-                                                alt="Product" />
-                                        </a>
+                            <div class="ec-product-content">
+                                <div class="ec-product-inner">
+                                    <div class="ec-product-hover"></div>
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/special-product/6_1.jpg"
+                                                    alt="Product" />
+                                                <img class="hover-image" src="assets/images/special-product/6_2.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <div class="ec-pro-option">
-                                        <div class="ec-pro-opt-inner">
-                                            <div class="ec-pro-color">
-                                                <ul class="ec-opt-swatch ec-change-img">
-                                                    <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                            data-src="assets/images/special-product/6_1.jpg"
-                                                            data-src-hover="assets/images/special-product/6_1.jpg"
-                                                            data-tooltip="Gray"><span
-                                                                style="background-color:#dfdfdf;"></span></a></li>
-                                                    <li><a href="#" class="ec-opt-clr-img"
-                                                            data-src="assets/images/special-product/6_2.jpg"
-                                                            data-src-hover="assets/images/special-product/6_2.jpg"
-                                                            data-tooltip="Orange"><span
-                                                                style="background-color:#91b6ff;"></span></a></li>
-                                                </ul>
+                                    <div class="ec-pro-content">
+                                        <div class="ec-pro-option">
+                                            <div class="ec-pro-opt-inner">
+                                                <div class="ec-pro-color">
+                                                    <ul class="ec-opt-swatch ec-change-img">
+                                                        <li class="active"><a href="#" class="ec-opt-clr-img"
+                                                                data-src="assets/images/special-product/6_1.jpg"
+                                                                data-src-hover="assets/images/special-product/6_1.jpg"
+                                                                data-tooltip="Gray"><span
+                                                                    style="background-color:#dfdfdf;"></span></a></li>
+                                                        <li><a href="#" class="ec-opt-clr-img"
+                                                                data-src="assets/images/special-product/6_2.jpg"
+                                                                data-src-hover="assets/images/special-product/6_2.jpg"
+                                                                data-tooltip="Orange"><span
+                                                                    style="background-color:#91b6ff;"></span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ec-pro-compare">
+                                                    <a href="compare.html" class="ec-btn-group compare"
+                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
+                                                            class="svg_img pro_svg" alt="" /></a>
+                                                </div>
                                             </div>
-                                            <div class="ec-pro-compare">
-                                                <a href="compare.html" class="ec-btn-group compare" title="Compare"><img
-                                                        src="assets/images/icons/compare_5.svg" class="svg_img pro_svg"
+                                        </div>
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Ultra sound smart
+                                                speaker</a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Multimedia</a>
+                                        </h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$768.00</span>
+                                                    <span class="old-price">$845.00</span>
+                                                </span>
+                                                <span class="ec-pro-rating">
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star fill"></i>
+                                                    <i class="ecicon eci-star-o"></i>
+                                                    <i class="ecicon eci-star-o"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="pro-hidden-block">
+
+                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.
+                                            </div>
+                                            <div class="ec-pro-actions">
+                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                        src="assets/images/icons/pro_wishlist.svg"
+                                                        class="svg_img pro_svg" alt="" /></a>
+                                                <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                    giỏ</button>
+                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
+                                                    title="Quick view" data-bs-toggle="modal"
+                                                    data-bs-target="#ec_quickview_modal"><img
+                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
                                                         alt="" /></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Ultra sound smart speaker</a></h5>
-                                    <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Multimedia</a></h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$768.00</span>
-                                                <span class="old-price">$845.00</span>
-                                            </span>
-                                            <span class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star-o"></i>
-                                                <i class="ecicon eci-star-o"></i>
-                                            </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Feature Section End -->
+
+                </div>
+            </div>
+        </section>
+        <!-- Feature & Special Section End -->
+
+        <!--  offer Section Start -->
+        <section class="section ec-offer-section section-space-mt section-space-mb">
+            <h2 class="d-none">Offer</h2>
+            <div class="container">
+                <div class="ec-offer-inner ofr-img">
+                    <!-- <img src="assets/images/offer-image/offer_bg.png" alt="" class="offer_bg" /> -->
+                    <div class="col-sm-6 ec-offer-content">
+                        <div class="ec-offer-content-inner">
+                            <h2 class="ec-offer-stitle">black friday</h2>
+                            <h2 class="ec-offer-title">giảm giá tới 60%</h2>
+                            <span class="ec-offer-desc">Chọn phụ kiện cho các tiện ích yêu thích của bạn</span>
+                            <span class="ec-offer-btn"><a href="#" class="btn btn-primary">Mua sắm ngay</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- offer Section End -->
+
+        <!-- All Product Start -->
+        <section class="section ec-all-products section-space-p">
+            <h2 class="d-none">tất cả sản phẩm</h2>
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-all-product-content ec-new-product-content margin-b-30">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title">
+                                <h2 class="ec-title">Hàng mới về</h2>
+                            </div>
+                        </div>
+                        <div class="ec-new-slider">
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/39_1.jpg"
+                                                    alt="Product" />
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="pro-hidden-block">
-
-                                        <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.</div>
-                                        <div class="ec-pro-actions">
-                                            <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                                    src="assets/images/icons/pro_wishlist.svg" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
-                                            <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                title="Quick view" data-bs-toggle="modal"
-                                                data-bs-target="#ec_quickview_modal"><img
-                                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                    alt="" /></a>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant
+                                                image</a></h5>
+                                        <h6 class="ec-pro-stitle">Camera</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$589.00</span>
+                                                    <span class="old-price">$658.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/40_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Google nest
+                                                speaker</a></h5>
+                                        <h6 class="ec-pro-stitle">Multimedia</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$256.00</span>
+                                                    <span class="old-price">$298.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/41_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless
+                                                airpods</a></h5>
+                                        <h6 class="ec-pro-stitle">accessories</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$56.00</span>
+                                                    <span class="old-price">$78.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/42_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">iPhone 13 max</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Phone</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$2580.00</span>
+                                                    <span class="old-price">$3650.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/43_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Room Purifier</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$385.00</span>
+                                                    <span class="old-price">$456.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/44_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless
+                                                headphone</a></h5>
+                                        <h6 class="ec-pro-stitle">Music</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$159.00</span>
+                                                    <span class="old-price">$200.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/45_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung laptop</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Laptop</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$1520.00</span>
+                                                    <span class="old-price">$1752.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/46_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
+                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$20.00</span>
+                                                    <span class="old-price">$30.00</span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--  Feature Section End -->
+                    <div
+                        class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-all-product-content ec-special-product-content margin-b-30">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title">
+                                <h2 class="ec-title">Ưu đãi đặc biệt</h2>
+                            </div>
+                        </div>
+                        <div class="ec-special-slider">
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/42_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">iPhone 13 max</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Phone</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$2580.00</span>
+                                                    <span class="old-price">$3650.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/43_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Room Purifier</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$385.00</span>
+                                                    <span class="old-price">$456.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/44_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless
+                                                headphone</a></h5>
+                                        <h6 class="ec-pro-stitle">Music</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$159.00</span>
+                                                    <span class="old-price">$200.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/45_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung laptop</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Laptop</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$1520.00</span>
+                                                    <span class="old-price">$1752.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/41_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless
+                                                airpods</a></h5>
+                                        <h6 class="ec-pro-stitle">accessories</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$56.00</span>
+                                                    <span class="old-price">$78.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/39_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant
+                                                image</a></h5>
+                                        <h6 class="ec-pro-stitle">Camera</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$589.00</span>
+                                                    <span class="old-price">$658.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/40_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Google nest
+                                                speaker</a></h5>
+                                        <h6 class="ec-pro-stitle">Multimedia</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$256.00</span>
+                                                    <span class="old-price">$298.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/46_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
+                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$20.00</span>
+                                                    <span class="old-price">$30.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-all-product-content ec-best-product-content">
+                        <div class="col-md-12 text-left">
+                            <div class="section-title">
+                                <h2 class="ec-title">Bán chạy nhất</h2>
+                            </div>
+                        </div>
+                        <div class="ec-best-slider">
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/44_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless
+                                                headphone</a></h5>
+                                        <h6 class="ec-pro-stitle">Music</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$159.00</span>
+                                                    <span class="old-price">$200.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/45_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung laptop</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Laptop</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$1520.00</span>
+                                                    <span class="old-price">$1752.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/42_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">iPhone 13 max</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Phone</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$2580.00</span>
+                                                    <span class="old-price">$3650.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/43_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Room Purifier</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$385.00</span>
+                                                    <span class="old-price">$456.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/40_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Google nest
+                                                speaker</a></h5>
+                                        <h6 class="ec-pro-stitle">Multimedia</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$256.00</span>
+                                                    <span class="old-price">$298.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/41_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless
+                                                airpods</a></h5>
+                                        <h6 class="ec-pro-stitle">accessories</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$56.00</span>
+                                                    <span class="old-price">$78.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/46_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
+                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$20.00</span>
+                                                    <span class="old-price">$30.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 ec-all-product-block">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" src="assets/images/product-image/39_1.jpg"
+                                                    alt="Product" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant
+                                                image</a></h5>
+                                        <h6 class="ec-pro-stitle">Camera</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span class="ec-price">
+                                                    <span class="new-price">$589.00</span>
+                                                    <span class="old-price">$658.00</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            </div>
-        </div>
-    </section>
-    <!-- Feature & Special Section End -->
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-right-banner-content dis-n-767">
+                        <div class="ec-right-banner-inner">
+                            <div class="right-banner-block">
+                                <img class="right-banner-img" src="assets/images/banner/22.png" alt="Banner" />
+                                <div class="right-banner-content">
+                                    <span class="ec-right-banner-title">mi 8 lite</span>
+                                    <span class="ec-right-banner-stitle">selfies and style</span>
+                                    <span class="ec-right-banner-btn"><a href="#" class="btn-primary">Thêm vào
+                                            giỏ</a></span>
+                                </div>
+                            </div>
 
-    <!--  offer Section Start -->
-    <section class="section ec-offer-section section-space-mt section-space-mb">
-        <h2 class="d-none">Offer</h2>
-        <div class="container">
-            <div class="ec-offer-inner ofr-img">
-                <!-- <img src="assets/images/offer-image/offer_bg.png" alt="" class="offer_bg" /> -->
-                <div class="col-sm-6 ec-offer-content">
-                    <div class="ec-offer-content-inner">
-                        <h2 class="ec-offer-stitle">black friday</h2>
-                        <h2 class="ec-offer-title">giảm giá tới 60%</h2>
-                        <span class="ec-offer-desc">Chọn phụ kiện cho các tiện ích yêu thích của bạn</span>
-                        <span class="ec-offer-btn"><a href="#" class="btn btn-primary">Mua sắm ngay</a></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- offer Section End -->
+        </section>
+        <!-- All Item end -->
 
-    <!-- All Product Start -->
-    <section class="section ec-all-products section-space-p">
-        <h2 class="d-none">tất cả sản phẩm</h2>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-all-product-content ec-new-product-content margin-b-30">
-                    <div class="col-md-12 text-left">
+        <!-- ec testimonial Start -->
+        <section class="section ec-test-section section-space-ptb-100 section-space-mt section-space-mb"
+            style="background-image: url('assets/images/testimonial/testimonial_bg.jpg');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-title-block">
                         <div class="section-title">
-                            <h2 class="ec-title">Hàng mới về</h2>
-                        </div>
-                    </div>
-                    <div class="ec-new-slider">
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/39_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant image</a></h5>
-                                    <h6 class="ec-pro-stitle">Camera</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$589.00</span>
-                                                <span class="old-price">$658.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/40_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Google nest speaker</a></h5>
-                                    <h6 class="ec-pro-stitle">Multimedia</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$256.00</span>
-                                                <span class="old-price">$298.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/41_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless airpods</a></h5>
-                                    <h6 class="ec-pro-stitle">accessories</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$56.00</span>
-                                                <span class="old-price">$78.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/42_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">iPhone 13 max</a></h5>
-                                    <h6 class="ec-pro-stitle">Phone</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$2580.00</span>
-                                                <span class="old-price">$3650.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/43_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Room Purifier</a></h5>
-                                    <h6 class="ec-pro-stitle">Electronics</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$385.00</span>
-                                                <span class="old-price">$456.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/44_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless headphone</a></h5>
-                                    <h6 class="ec-pro-stitle">Music</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$159.00</span>
-                                                <span class="old-price">$200.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/45_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung laptop</a></h5>
-                                    <h6 class="ec-pro-stitle">Laptop</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$1520.00</span>
-                                                <span class="old-price">$1752.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/46_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
-                                    <h6 class="ec-pro-stitle">Electronics</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$20.00</span>
-                                                <span class="old-price">$30.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h2 class="ec-title">Đánh giá của khách hàng</h2>
+                            <!-- <h6 class="ec-sub-title">Lorem Ipsum is simply dummy text of the printing</h6> -->
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-all-product-content ec-special-product-content margin-b-30">
-                    <div class="col-md-12 text-left">
-                        <div class="section-title">
-                            <h2 class="ec-title">Ưu đãi đặc biệt</h2>
-                        </div>
-                    </div>
-                    <div class="ec-special-slider">
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/42_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">iPhone 13 max</a></h5>
-                                    <h6 class="ec-pro-stitle">Phone</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$2580.00</span>
-                                                <span class="old-price">$3650.00</span>
-                                            </span>
+                <div class="row">
+                    <div class="ec-test-outer">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <li class="ec-test-item">
+                                        <div class="ec-test-inner">
+                                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                                    src="assets/images/testimonial/1.jpg" /></div>
+                                            <div class="ec-test-content">
+                                                <div class="ec-test-name">Duy An</div>
+                                                <div class="ec-test-name">2</div>
+                                                <div class="ec-test-designation">Việt Nam</div>
+                                                <div class="ec-test-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem blanditiis, harum ullam aliquid tempore sunt culpa facilis cumque, quas praesentium nostrum voluptatibus. Ducimus, ullam et sint minima neque reprehenderit vero.</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </li>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/43_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Room Purifier</a></h5>
-                                    <h6 class="ec-pro-stitle">Electronics</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$385.00</span>
-                                                <span class="old-price">$456.00</span>
-                                            </span>
+                                <div class="carousel-item" ng-repeat="review in reviews">
+                                    <li class="ec-test-item">
+                                        <div class="ec-test-inner">
+                                            <div class="ec-test-img"><img alt="testimonial" title="testimonial"
+                                                    src="assets/images/testimonial/1.jpg" /></div>
+                                            <div class="ec-test-content">
+                                                <div class="ec-test-name">{{review.user.fullname}}</div>
+                                                <div class="ec-test-name">2</div>
+                                                <div class="ec-test-designation">Việt Nam</div>
+                                                <div class="ec-test-desc">content</div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </li>
                                 </div>
                             </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="slick-prev slick-arrow" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="slick-next slick-arrow" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/44_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless headphone</a></h5>
-                                    <h6 class="ec-pro-stitle">Music</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$159.00</span>
-                                                <span class="old-price">$200.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/45_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung laptop</a></h5>
-                                    <h6 class="ec-pro-stitle">Laptop</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$1520.00</span>
-                                                <span class="old-price">$1752.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/41_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless airpods</a></h5>
-                                    <h6 class="ec-pro-stitle">accessories</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$56.00</span>
-                                                <span class="old-price">$78.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/39_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant image</a></h5>
-                                    <h6 class="ec-pro-stitle">Camera</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$589.00</span>
-                                                <span class="old-price">$658.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/40_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Google nest speaker</a></h5>
-                                    <h6 class="ec-pro-stitle">Multimedia</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$256.00</span>
-                                                <span class="old-price">$298.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/46_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
-                                    <h6 class="ec-pro-stitle">Electronics</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$20.00</span>
-                                                <span class="old-price">$30.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-all-product-content ec-best-product-content">
-                    <div class="col-md-12 text-left">
-                        <div class="section-title">
-                            <h2 class="ec-title">Bán chạy nhất</h2>
-                        </div>
-                    </div>
-                    <div class="ec-best-slider">
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/44_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless headphone</a></h5>
-                                    <h6 class="ec-pro-stitle">Music</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$159.00</span>
-                                                <span class="old-price">$200.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/45_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung laptop</a></h5>
-                                    <h6 class="ec-pro-stitle">Laptop</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$1520.00</span>
-                                                <span class="old-price">$1752.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/42_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">iPhone 13 max</a></h5>
-                                    <h6 class="ec-pro-stitle">Phone</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$2580.00</span>
-                                                <span class="old-price">$3650.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/43_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Room Purifier</a></h5>
-                                    <h6 class="ec-pro-stitle">Electronics</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$385.00</span>
-                                                <span class="old-price">$456.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/40_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Google nest speaker</a></h5>
-                                    <h6 class="ec-pro-stitle">Multimedia</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$256.00</span>
-                                                <span class="old-price">$298.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/41_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Wireless airpods</a></h5>
-                                    <h6 class="ec-pro-stitle">accessories</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$56.00</span>
-                                                <span class="old-price">$78.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/46_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
-                                    <h6 class="ec-pro-stitle">Electronics</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$20.00</span>
-                                                <span class="old-price">$30.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ec-all-product-block">
-                            <div class="ec-all-product-inner">
-                                <div class="ec-pro-image-outer">
-                                    <div class="ec-pro-image">
-                                        <a href="product-left-sidebar.html" class="image">
-                                            <img class="main-image" src="assets/images/product-image/39_1.jpg"
-                                                alt="Product" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="ec-pro-content">
-                                    <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant image</a></h5>
-                                    <h6 class="ec-pro-stitle">Camera</h6>
-                                    <div class="ec-pro-rat-price">
-                                        <div class="ec-pro-rat-pri-inner">
-                                            <span class="ec-price">
-                                                <span class="new-price">$589.00</span>
-                                                <span class="old-price">$658.00</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12 col-xs-6 ec-right-banner-content dis-n-767">
-                    <div class="ec-right-banner-inner">
-                        <div class="right-banner-block">
-                            <img class="right-banner-img" src="assets/images/banner/22.png" alt="Banner" />
-                            <div class="right-banner-content">
-                                <span class="ec-right-banner-title">mi 8 lite</span>
-                                <span class="ec-right-banner-stitle">selfies and style</span>
-                                <span class="ec-right-banner-btn"><a href="#" class="btn-primary">Thêm vào giỏ</a></span>
-                            </div>
-                        </div>
-
+                        <!-- <ul id="ec-testimonial-slider">
+                                        
+                    </ul> -->
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- All Item end -->
+        </section>
+        <!-- ec testimonial end -->
 
-    <!-- ec testimonial Start -->
-    <section class="section ec-test-section section-space-ptb-100 section-space-mt section-space-mb"
-        style="background-image: url('assets/images/testimonial/testimonial_bg.jpg');">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 section-title-block">
-                    <div class="section-title">
-                        <h2 class="ec-title">Đánh giá của khách hàng</h2>
-                        <!-- <h6 class="ec-sub-title">Lorem Ipsum is simply dummy text of the printing</h6> -->
+        <!-- Ec Brand Section Start -->
+        <section class="section ec-brand-area section-space-p">
+            <h2 class="d-none">Thương hiệu</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="ec-brand-outer">
+                        <ul id="ec-brand-slider">
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                            th:src="@{/images/brand-image/9.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/10.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/11.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/12.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/13.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/14.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/15.jpg}" /></a></div>
+                            </li>
+                            <li class="ec-brand-item">
+                                <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
+                                    th:src="@{/images/brand-image/16.jpg}" /></a></div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="ec-test-outer">
-                    <ul id="ec-testimonial-slider">
-                        <li class="ec-test-item" ng-repeat="review in reviews">
-                            <div class="ec-test-inner">
-                                <div class="ec-test-img"><img alt="testimonial" title="testimonial"
-                                        src="assets/images/testimonial/1.jpg" /></div>
-                                <div class="ec-test-content">
-                                    <div class="ec-test-name">{{review.user.username}}</div>
-                                    <div class="ec-test-name">2</div>
-                                    <div class="ec-test-designation">Việt Nam</div>
-                                    <div class="ec-test-rating">
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                        <i class="ecicon eci-star fill"></i>
-                                    </div>
-                                    <div class="ec-test-desc">content</div>
+        </section>
+        <!-- Ec Brand Section End -->
 
-                                </div>
+        <!-- Ec Instagram Start -->
+        <section class="section ec-instagram-section section-space-pt">
+            <div class="ec-insta-wrapper">
+                <div class="ec-insta-outer">
+                    <div class="insta-auto">
+                        <h2 class="d-none">Instagram</h2>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/1.jpg" alt="">
+                                </a>
                             </div>
-                        </li>                 
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ec testimonial end -->
-
-    <!-- Ec Brand Section Start -->
-    <section class="section ec-brand-area section-space-p">
-        <h2 class="d-none">Thương hiệu</h2>
-        <div class="container">
-            <div class="row">
-                <div class="ec-brand-outer">
-                    <ul id="ec-brand-slider">
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/1.png" /></a></div>
-                        </li>
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/2.png" /></a></div>
-                        </li>
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/3.png" /></a></div>
-                        </li>
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/4.png" /></a></div>
-                        </li>
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/5.png" /></a></div>
-                        </li>
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/6.png" /></a></div>
-                        </li>
-                        <li class="ec-brand-item">
-                            <div class="ec-brand-img"><a href="#"><img alt="brand" title="brand"
-                                        src="assets/images/brand-image/7.png" /></a></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Ec Brand Section End -->
-
-    <!-- Ec Instagram Start -->
-    <section class="section ec-instagram-section section-space-pt">
-        <div class="ec-insta-wrapper">
-            <div class="ec-insta-outer">
-                <div class="insta-auto">
-                    <h2 class="d-none">Instagram</h2>
-                    <!-- instagram item -->
-                    <div class="ec-insta-item">
-                        <div class="ec-insta-inner">
-                            <a href="#" target="_blank"><img src="assets/images/instragram-image/1.jpg" alt="">
-                            </a>
                         </div>
-                    </div>
-                    <!-- instagram item -->
-                    <div class="ec-insta-item">
-                        <div class="ec-insta-inner">
-                            <a href="#" target="_blank"><img src="assets/images/instragram-image/2.jpg" alt="">
-
-                            </a>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/2.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- instagram item -->
-                    <div class="ec-insta-item">
-                        <div class="ec-insta-inner">
-                            <a href="#" target="_blank"><img src="assets/images/instragram-image/3.jpg" alt="">
-
-                            </a>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/3.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- instagram item -->
-                    <div class="ec-insta-item">
-                        <div class="ec-insta-inner">
-                            <a href="#" target="_blank"><img src="assets/images/instragram-image/4.jpg" alt="">
-
-                            </a>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/4.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- instagram item -->
-                    <div class="ec-insta-item">
-                        <div class="ec-insta-inner">
-                            <a href="#" target="_blank"><img src="assets/images/instragram-image/5.jpg" alt="">
-
-                            </a>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/5.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <!-- instagram item -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Ec Instagram End -->
-
-    <!--  services Section Start -->
-    <section class="section ec-services-section">
-        <h2 class="d-none">Dịch vụ</h2>
-        <div class="container">
-            <div class="row">
-                <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-3">
-                    <div class="ec_ser_inner">
-                        <div class="ec-service-image">
-                            <img src="assets/images/icons/service_5_1.svg" class="svg_img" alt="" />
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/6.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                        <div class="ec-service-desc">
-                            <h2>Miễn phí vận chuyển</h2>
-                            <p>Miễn phí vận chuyển cho tất cả các đơn hàng tại Việt Nam</p>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/7.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-3">
-                    <div class="ec_ser_inner">
-                        <div class="ec-service-image">
-                            <img src="assets/images/icons/service_2.svg" class="svg_img" alt="" />
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/8.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                        <div class="ec-service-desc">
-                            <h2>đảm bảo tiền</h2>
-                            <p>Đảm bảo hoàn tiền trong 30 ngày</p>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/9.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-3">
-                    <div class="ec_ser_inner">
-                        <div class="ec-service-image">
-                            <img src="assets/images/icons/service_3.svg" class="svg_img" alt="" />
-                        </div>
-                        <div class="ec-service-desc">
-                            <h2>hỗ trợ trực tuyến</h2>
-                            <p>Chúng tôi hỗ trợ trực tuyến 24/7 trong ngày</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-3">
-                    <div class="ec_ser_inner">
-                        <div class="ec-service-image">
-                            <img src="assets/images/icons/service_5_4.svg" class="svg_img" alt="" />
-                        </div>
-                        <div class="ec-service-desc">
-                            <h2>Giảm giá thành viên</h2>
-                            <p>Đơn đặt hàng bất cứ khi nào trên $ 120,00</p>
+                        <!-- instagram item -->
+                        <div class="ec-insta-item">
+                            <div class="ec-insta-inner">
+                                <a href="#" target="_blank"><img src="images/instragram-image/10.jpg" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--services Section End -->
-	
-</main>
+        </section>
+        <!-- Ec Instagram End -->
+
+        <!--  services Section Start -->
+        <section class="section ec-services-section">
+            <h2 class="d-none">Dịch vụ</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="ec_ser_content ec_ser_content_1 col-sm-12 col-md-3">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="assets/images/icons/service_5_1.svg" class="svg_img" alt="" />
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2>Miễn phí vận chuyển</h2>
+                                <p>Miễn phí vận chuyển cho tất cả các đơn hàng tại Việt Nam</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec_ser_content ec_ser_content_2 col-sm-12 col-md-3">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="assets/images/icons/service_2.svg" class="svg_img" alt="" />
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2>đảm bảo tiền</h2>
+                                <p>Đảm bảo hoàn tiền trong 30 ngày</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec_ser_content ec_ser_content_3 col-sm-12 col-md-3">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="assets/images/icons/service_3.svg" class="svg_img" alt="" />
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2>hỗ trợ trực tuyến</h2>
+                                <p>Chúng tôi hỗ trợ trực tuyến 24/7 trong ngày</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ec_ser_content ec_ser_content_4 col-sm-12 col-md-3">
+                        <div class="ec_ser_inner">
+                            <div class="ec-service-image">
+                                <img src="assets/images/icons/service_5_4.svg" class="svg_img" alt="" />
+                            </div>
+                            <div class="ec-service-desc">
+                                <h2>Giảm giá thành viên</h2>
+                                <p>Đơn đặt hàng bất cứ khi nào trên $ 120,00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--services Section End -->
+
+    </main>
 </body>
+
 </html>

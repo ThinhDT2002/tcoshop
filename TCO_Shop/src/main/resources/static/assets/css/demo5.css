@@ -21302,6 +21302,9 @@ section.ec-test-section {
 .ec-test-section li.ec-test-item {
   display: block !important;
   padding: 0 15px;
+  width: 50%;
+  height: 70%;
+  margin: 0 25%;
 }
 .ec-test-section .slick-track {
   display: -webkit-box;
