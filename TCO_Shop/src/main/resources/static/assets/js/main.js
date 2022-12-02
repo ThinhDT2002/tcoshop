@@ -14,11 +14,11 @@
     //                 : (alert("Sorry, This Functionality Has Been Disabled!"), !1);
     //         });
     // });
-function ecCreateCookie(b, c, d) {
-    var a = new Date();
-    a.setTime(a.getTime() + 864e5 * d),
-        (document.cookie = b + "=" + c + "; expires=" + a.toGMTString());
-}
+    function ecCreateCookie(b, c, d) {
+        var a = new Date();
+        a.setTime(a.getTime() + 864e5 * d),
+            (document.cookie = b + "=" + c + "; expires=" + a.toGMTString());
+    }
 function ecDeleteCookie(a, b) {
     var c = new Date(0).toGMTString();
     document.cookie = a + "=" + b + "; expires=" + c;
@@ -991,12 +991,12 @@ function ecCheckCookie() {
                     $(".ec-checkout-coupan-content").slideToggle("slow");
                 });
         }),
-        setInterval(function () {
-            $(".recent-purchase").stop().slideToggle("slow");
-        }, 1e4),
-        $(".recent-close").click(function () {
-            $(".recent-purchase").stop().slideToggle("slow");
-        }),
+        // setInterval(function () {
+        //     $(".recent-purchase").stop().slideToggle("slow");
+        // }, 1e4),
+        // $(".recent-close").click(function () {
+        //     $(".recent-purchase").stop().slideToggle("slow");
+        // }),
         $(document).ready(function () {
             $(".ec-list").on("click", function () {
                 var a = $(this).attr("data-number"),

@@ -58,7 +58,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                         class="amount">{{cart.formatNumber(item.price)}} VNĐ</span></td>
                                                 <td data-label="Quantity" class="ec-cart-pro-qty"
                                                     style="text-align: center;">
-                                                    <div class="cart-qty-plus-minus">
+                                                    <div class="cart-qty-plus-minus-new">
                                                         <input class="cart-plus-minus"
                                                             name="cartqtybutton" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"/>
                                                     </div>
@@ -74,8 +74,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="ec-cart-update-bottom">
-                                            <a th:href="@{|/product/list|}">Tiếp tục mua hàng</a>
-                                            <a class="btn btn-primary" th:href="@{|/checkout|}">Thanh toán</a>
+                                            <a class="text-decoration-none" th:href="@{|/product/list|}">Tiếp tục mua hàng</a>
+                                            <a class="btn btn-primary text-decoration-none" th:href="@{|/checkout|}">Thanh toán</a>
                                         </div>
                                     </div>
                                 </div>

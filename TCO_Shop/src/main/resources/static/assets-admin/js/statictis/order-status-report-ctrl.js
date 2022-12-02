@@ -6,6 +6,7 @@ adminApp.controller("order-status-report-ctrl", function($http, $scope) {
 	$scope.orders = [];
 	$scope.ordersDetail = [];
 	$scope.getOrderStatusDetailReport = function(year, status) {
+		
 		$http({
 			url: "/api/report/orderStatusReportDetail",
 			method: "GET",
@@ -14,12 +15,15 @@ adminApp.controller("order-status-report-ctrl", function($http, $scope) {
 				status: status
 			}
 		}).then(resp => {
+			
 			$scope.orders = resp.data;
 			console.log($scope.orders);
+			
 		})
 
 		$http.get("/api/ordersDetail").then(resp => {
 			$scope.ordersDetail = resp.data;
+			
 		})
 	}
 	
@@ -36,7 +40,7 @@ adminApp.controller("order-status-report-ctrl", function($http, $scope) {
 		return $scope.orders.length;
 	}
 
-
+	
 	$scope.numberOfPages = function() {
 		return Math.ceil($scope.orders.length / $scope.pageSize);
 	}
@@ -120,4 +124,5 @@ adminApp.controller("order-status-report-ctrl", function($http, $scope) {
 	$scope.showReport = function() {
 		getOrderCountPerStatus($scope.yearValue);
 	}
+	
 })

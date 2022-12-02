@@ -1,321 +1,352 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+
 <body>
-<main>
-<!-- Ec breadcrumb start -->
-<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="row ec_breadcrumb_inner">
-                    <div class="col-md-6 col-sm-12">
-                        <h2 class="ec-breadcrumb-title">Thanh Toán</h2>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <!-- ec-breadcrumb-list start -->
-                        <ul class="ec-breadcrumb-list">
-                            <li class="ec-breadcrumb-item"><a th:href="@{/home}">Home</a></li>
-                            <li class="ec-breadcrumb-item active">Thanh Toán</li>
-                        </ul>
-                        <!-- ec-breadcrumb-list end -->
+    <main>
+        <!-- Ec breadcrumb start -->
+        <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row ec_breadcrumb_inner">
+                            <div class="col-md-6 col-sm-12">
+                                <h2 class="ec-breadcrumb-title">Thanh Toán</h2>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <!-- ec-breadcrumb-list start -->
+                                <ul class="ec-breadcrumb-list">
+                                    <li class="ec-breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+                                    <li class="ec-breadcrumb-item active">Thanh Toán</li>
+                                </ul>
+                                <!-- ec-breadcrumb-list end -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- Ec breadcrumb end -->
+        <!-- Ec breadcrumb end -->
 
-<!-- Ec checkout page -->
-<section class="ec-page-content section-space-p">
-    <div class="container">
-        <div class="row">
-            <div class="ec-checkout-leftside col-lg-8 col-md-12 ">
-                <!-- checkout content Start -->
-                <div class="ec-checkout-content">
-                    <div class="ec-checkout-inner">
-                        <div class="ec-checkout-wrap margin-bottom-30 padding-bottom-3">
-                            <div class="ec-checkout-block ec-check-bill">
-                                <h3 class="ec-checkout-title">Chi Tiết Hóa Đơn</h3>
-                                <div class="ec-bl-block-content">
-                                    <div class="ec-check-bill-form">
-                                        <form action="#" method="post" name="formOrder">
-                                            <span class="ec-bill-wrap ec-bill">
-                                                <label>Họ và tên</label>
-                                                <input type="text" name="firstname" placeholder="Nhập họ..." required th:value=" ${currentUser.fullname}"/>
+        <!-- Ec checkout page -->
+        <section class="ec-page-content section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="ec-checkout-leftside col-lg-8 col-md-12 ">
+                        <!-- checkout content Start -->
+                        <div class="ec-checkout-content">
+                            <div class="ec-checkout-inner">
+                                <div class="ec-checkout-wrap margin-bottom-30 padding-bottom-3">
+                                    <div class="ec-checkout-block ec-check-bill">
+                                        <h3 class="ec-checkout-title">Chi Tiết Hóa Đơn</h3>
+                                        <div class="ec-bl-block-content">
+                                            <div class="ec-check-bill-form">
+                                                <form action="#" method="post" name="formOrder">
+                                                    <span class="ec-bill-wrap ec-bill">
+                                                        <label>Họ và tên</label>
+                                                        <input type="text" name="firstname" placeholder="Nhập họ..."
+                                                            required th:value=" ${currentUser.fullname}" />
+                                                    </span>
+                                                    <span class="ec-bill-wrap ec-bill-half">
+                                                        <label>Điện thoại *</label>
+                                                        <input type="text" name="phone" placeholder="Nhập điện thoại"
+                                                            ng-minlength="0" ng-maxlength="10"
+                                                            ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" required
+                                                            ng-model="order.phoneNumber" />
+                                                        <span style="margin: 5px; font-size: 15px; color: red;"
+                                                            ng-show="formOrder.phone.$error.required">Nhập số điện
+                                                            thoại</span>
+                                                        <span style="margin: 5px; font-size: 15px; color: red;"
+                                                            ng-show="formOrder.phone.$error.pattern">Vui lòng nhập đúng
+                                                            định dạng số điện thoại</span>
+
+                                                    </span>
+                                                    <span class="ec-bill-wrap ec-bill-half">
+                                                        <label>Địa chỉ *</label>
+                                                        <input type="text" name="address" placeholder="Nhập địa chỉ"
+                                                            ng-maxlength="100" required ng-model="order.address" />
+                                                        <span
+                                                            ng-show="formOrder.address.$invalid || formOrder.address.$dirty">
+                                                            <span style="margin: 5px; font-size: 15px; color: red;"
+                                                                ng-show="formOrder.address.$error.required">Vui lòng
+                                                                nhập địa chỉ</span>
+                                                            <span style="margin: 5px; font-size: 15px; color: red;"
+                                                                ng-show="formOrder.address.$error.maxlength">Địa chỉ
+                                                                giới hạn 100 từ</span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="ec-bill-wrap">
+                                                        <label>Ghi chú</label>
+                                                        <textarea name="your-commemt"
+                                                            placeholder="Lưu ý cho người bán..."
+                                                            ng-model="order.description"></textarea>
+                                                    </span>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <span class="ec-check-order-btn">
+                                    <a class="btn btn-primary" ng-click="order.purchase()" type="submit">Đặt Hàng</a>
+                                </span>
+                            </div>
+                        </div>
+                        <!--cart content End -->
+                    </div>
+                    <!-- Sidebar Area Start -->
+                    <div class="ec-checkout-rightside col-lg-4 col-md-12">
+                        <div class="ec-sidebar-wrap">
+                            <!-- Sidebar Summary Block -->
+                            <div class="ec-sidebar-block">
+                                <div class="ec-sb-title">
+                                    <h3 class="ec-sidebar-title">Chi Tiết Đơn Hàng</h3>
+                                </div>
+                                <div class="ec-sb-block-content">
+                                    <div class="ec-checkout-summary">
+                                        <div>
+                                            <span class="text-left">Giá Sản Phẩm</span>
+                                            <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-left">Phí Vận Chuyển</span>
+                                            <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-left">Mã Giảm Giá</span>
+                                            <span class="text-right"><a class="ec-checkout-coupan">Áp Dụng Mã Giảm
+                                                    Giá</a></span>
+                                        </div>
+                                        <div class="ec-checkout-coupan-content">
+                                            <form class="ec-checkout-coupan-form" name="ec-checkout-coupan-form"
+                                                method="post" action="#">
+                                                <input class="ec-coupan" type="text" required=""
+                                                    placeholder="Nhập mã giảm giá..." name="ec-coupan" value="">
+                                                <button class="ec-coupan-btn button btn-primary" type="submit"
+                                                    name="subscribe" value="">Áp Dụng</button>
+                                            </form>
+                                        </div>
+                                        <div class="ec-checkout-summary-total">
+                                            <span class="text-left">Thành Tiền</span>
+                                            <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}}
+                                                VNĐ</span>
+                                        </div>
+                                    </div>
+                                    <div class="ec-checkout-pro" ng-repeat="item in cart.items">
+                                        <div class="col-sm-12 mb-0">
+                                            <div class="ec-product-inner">
+                                                <div class="ec-pro-image-outer">
+                                                    <div class="ec-pro-image">
+                                                        <a href="product-left-sidebar.html" class="image">
+                                                            <img class="main-image"
+                                                                th:src="@{|/images/products/{{item.image1}}|}"
+                                                                alt="Product" />
+                                                            <img class="hover-image"
+                                                                th:src="@{|/images/products/{{item.image2}}|}"
+                                                                alt="Product" />
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="ec-pro-content">
+                                                    <h5 class="ec-pro-title"><a
+                                                            th:href="@{|/product/detail/{{item.id}}|}">{{item.name}} x
+                                                            {{item.qty}}</a></h5>
+                                                    <div class="ec-pro-rating">
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star fill"></i>
+                                                        <i class="ecicon eci-star"></i>
+                                                    </div>
+                                                    <span class="ec-price">
+                                                        <span class="old-price">{{cart.formatNumber(item.price)}}
+                                                            VNĐ</span>
+                                                    </span>
+                                                    <span class="ec-price">
+                                                        <span class="new-price">{{cart.formatNumber(item.price* (100 -
+                                                            item.discount) / 100)}} VNĐ</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sidebar Summary Block -->
+                        </div>
+                        <div class="ec-sidebar-wrap ec-checkout-del-wrap">
+                            <!-- Sidebar Summary Block -->
+                            <div class="ec-sidebar-block">
+                                <div class="ec-sb-title">
+                                    <h3 class="ec-sidebar-title">Phương Thức Vận Chuyển</h3>
+                                </div>
+                                <div class="ec-sb-block-content">
+                                    <div class="ec-checkout-del">
+                                        <div class="ec-del-desc">Vui lòng chọn phương thức giao hàng ưa thích để sử dụng
+                                            cho đơn hàng này.</div>
+                                        <form action="#">
+                                            <span class="ec-del-option">
+                                                <span>
+                                                    <span class="ec-del-opt-head">Miễn Phí Vận Chuyển</span>
+                                                    <input type="radio" id="del1" name="radio-group" checked>
+                                                    <label for="del1">Tỉ Lệ - $0 .00</label>
+                                                </span>
+                                                <span>
+                                                    <span class="ec-del-opt-head">Tỉ Lệ Cố Định</span>
+                                                    <input type="radio" id="del2" name="radio-group">
+                                                    <label for="del2">Tỉ Lệ - $5.00</label>
+                                                </span>
                                             </span>
-                                            <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Điện thoại *</label>
-                                                <input type="text" name="phone" placeholder="Nhập điện thoại" ng-minlength="0" ng-maxlength="10" ng-pattern="/^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/" required ng-model="order.phoneNumber"/>
-                                        		<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.phone.$error.required">Nhập số điện thoại</span>
-                                        		<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.phone.$error.pattern">Vui lòng nhập đúng định dạng số điện thoại</span>
-                                                
-                                            </span>
-                                            <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Địa chỉ *</label>
-                                                <input type="text" name="address" placeholder="Nhập địa chỉ" ng-maxlength="100" required ng-model="order.address"/>
-                                                 <span ng-show="formOrder.address.$invalid || formOrder.address.$dirty">
-                                                	<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.address.$error.required">Vui lòng nhập địa chỉ</span>
-                                                	<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.address.$error.maxlength">Địa chỉ giới hạn 100 từ</span>
-                                                </span>                                               
-                                            </span>
-                                            <span class="ec-bill-wrap">
-                                                <label>Ghi chú</label>
-                                                <textarea name="your-commemt" placeholder="Lưu ý cho người bán..." ng-model="order.description"></textarea>
+                                            <span class="ec-del-commemt">
+                                                <span class="ec-del-opt-head">Tin Nhắn</span>
+                                                <textarea name="your-commemt"
+                                                    placeholder="Lưu ý cho người bán..."></textarea>
                                             </span>
                                         </form>
                                     </div>
-
                                 </div>
                             </div>
-
+                            <!-- Sidebar Summary Block -->
                         </div>
-                        <span class="ec-check-order-btn">
-                            <a class="btn btn-primary" ng-click="order.purchase()" type="submit">Đặt Hàng</a>
-                        </span>
-                    </div>
-                </div>
-                <!--cart content End -->
-            </div>
-            <!-- Sidebar Area Start -->
-            <div class="ec-checkout-rightside col-lg-4 col-md-12">
-                <div class="ec-sidebar-wrap">
-                    <!-- Sidebar Summary Block -->
-                    <div class="ec-sidebar-block">
-                        <div class="ec-sb-title">
-                            <h3 class="ec-sidebar-title">Chi Tiết Đơn Hàng</h3>
-                        </div>
-                        <div class="ec-sb-block-content">
-                            <div class="ec-checkout-summary">
-                                <div>
-                                    <span class="text-left">Giá Sản Phẩm</span>
-                                    <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
+                        <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
+                            <!-- Sidebar Payment Block -->
+                            <div class="ec-sidebar-block">
+                                <div class="ec-sb-title">
+                                    <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
                                 </div>
-                                <div>
-                                    <span class="text-left">Phí Vận Chuyển</span>
-                                    <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
-                                </div>
-                                <div>
-                                    <span class="text-left">Mã Giảm Giá</span>
-                                    <span class="text-right"><a class="ec-checkout-coupan">Áp Dụng Mã Giảm Giá</a></span>
-                                </div>
-                                <div class="ec-checkout-coupan-content">
-                                    <form class="ec-checkout-coupan-form" name="ec-checkout-coupan-form"
-                                        method="post" action="#">
-                                        <input class="ec-coupan" type="text" required=""
-                                            placeholder="Nhập mã giảm giá..." name="ec-coupan" value="">
-                                        <button class="ec-coupan-btn button btn-primary" type="submit"
-                                            name="subscribe" value="">Áp Dụng</button>
-                                    </form>
-                                </div>
-                                <div class="ec-checkout-summary-total">
-                                    <span class="text-left">Thành Tiền</span>
-                                    <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</span>
-                                </div>
-                            </div>
-                            <div class="ec-checkout-pro" ng-repeat="item in cart.items">
-                                <div class="col-sm-12 mb-0">
-                                    <div class="ec-product-inner">
-                                        <div class="ec-pro-image-outer">
-                                            <div class="ec-pro-image">
-                                                <a href="product-left-sidebar.html" class="image">
-                                                    <img class="main-image"
-                                                        th:src="@{|/images/products/{{item.image1}}|}"
-                                                        alt="Product" />
-                                                    <img class="hover-image"
-                                                        th:src="@{|/images/products/{{item.image2}}|}"
-                                                        alt="Product" />
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="ec-pro-content">
-                                            <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}} x {{item.qty}}</a></h5>
-                                            <div class="ec-pro-rating">
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star fill"></i>
-                                                <i class="ecicon eci-star"></i>
-                                            </div>
-                                            <span class="ec-price">
-                                                <span class="old-price">{{cart.formatNumber(item.price)}} VNĐ</span>
-                                                <span class="new-price">{{cart.formatNumber(item.price* (100 - item.discount) / 100)}} VNĐ</span>
+                                <div class="ec-sb-block-content">
+                                    <div class="ec-checkout-pay">
+                                        <div class="ec-pay-desc">Vui lòng chọn phương thức thanh toán ưa thích để sử
+                                            dụng cho đơn hàng này.</div>
+                                        <form action="#">
+                                            <span class="ec-pay-option">
+                                                <span>
+                                                    <input type="radio" id="pay1" name="radio-group" checked>
+                                                    <label for="pay1">Thanh Toán Khi Nhận Hàng</label>
+                                                </span>
                                             </span>
+                                            <span class="ec-pay-commemt">
+                                                <span class="ec-pay-opt-head">Tin Nhắn</span>
+                                                <textarea name="your-commemt"
+                                                    placeholder="Lưu ý cho người bán..."></textarea>
+                                            </span>
+                                            <span class="ec-pay-agree"><input type="checkbox" value=""><a href="#">Tôi
+                                                    đã đọc và đồng ý với các
+                                                    <span>Điều khoản & Điều kiện</span></a><span
+                                                    class="checked"></span></span>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Sidebar Payment Block -->
+                        </div>
+                        <div class="ec-sidebar-wrap ec-check-pay-img-wrap">
+                            <!-- Sidebar Payment Block -->
+                            <div class="ec-sidebar-block">
+                                <div class="ec-sb-title">
+                                    <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
+                                </div>
+                                <div class="ec-sb-block-content">
+                                    <div class="ec-check-pay-img-inner">
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment1.png" alt="">
+                                        </div>
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment2.png" alt="">
+                                        </div>
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment3.png" alt="">
+                                        </div>
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment4.png" alt="">
+                                        </div>
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment5.png" alt="">
+                                        </div>
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment6.png" alt="">
+                                        </div>
+                                        <div class="ec-check-pay-img">
+                                            <img src="assets/images/icons/payment7.png" alt="">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Sidebar Payment Block -->
                         </div>
                     </div>
-                    <!-- Sidebar Summary Block -->
-                </div>
-                <div class="ec-sidebar-wrap ec-checkout-del-wrap">
-                    <!-- Sidebar Summary Block -->
-                    <div class="ec-sidebar-block">
-                        <div class="ec-sb-title">
-                            <h3 class="ec-sidebar-title">Phương Thức Vận Chuyển</h3>
-                        </div>
-                        <div class="ec-sb-block-content">
-                            <div class="ec-checkout-del">
-                                <div class="ec-del-desc">Vui lòng chọn phương thức giao hàng ưa thích để sử dụng cho đơn hàng này.</div>
-                                <form action="#">
-                                    <span class="ec-del-option">
-                                        <span>
-                                            <span class="ec-del-opt-head">Miễn Phí Vận Chuyển</span>
-                                            <input type="radio" id="del1" name="radio-group" checked>
-                                            <label for="del1">Tỉ Lệ  - $0 .00</label>
-                                        </span>
-                                        <span>
-                                            <span class="ec-del-opt-head">Tỉ Lệ Cố Định</span>
-                                            <input type="radio" id="del2" name="radio-group">
-                                            <label for="del2">Tỉ Lệ - $5.00</label>
-                                        </span>
-                                    </span>
-                                    <span class="ec-del-commemt">
-                                        <span class="ec-del-opt-head">Tin Nhắn</span>
-                                        <textarea name="your-commemt" placeholder="Lưu ý cho người bán..."></textarea>
-                                    </span>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sidebar Summary Block -->
-                </div>
-                <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
-                    <!-- Sidebar Payment Block -->
-                    <div class="ec-sidebar-block">
-                        <div class="ec-sb-title">
-                            <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
-                        </div>
-                        <div class="ec-sb-block-content">
-                            <div class="ec-checkout-pay">
-                                <div class="ec-pay-desc">Vui lòng chọn phương thức thanh toán ưa thích để sử dụng cho đơn hàng này.</div>
-                                <form action="#">
-                                    <span class="ec-pay-option">
-                                        <span>
-                                            <input type="radio" id="pay1" name="radio-group" checked>
-                                            <label for="pay1">Thanh Toán Khi Nhận Hàng</label>
-                                        </span>
-                                    </span>
-                                    <span class="ec-pay-commemt">
-                                        <span class="ec-pay-opt-head">Tin Nhắn</span>
-                                        <textarea name="your-commemt" placeholder="Lưu ý cho người bán..."></textarea>
-                                    </span>
-                                    <span class="ec-pay-agree"><input type="checkbox" value=""><a href="#">Tôi đã đọc và đồng ý với các 
-                                        <span>Điều khoản & Điều kiện</span></a><span
-                                            class="checked"></span></span>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sidebar Payment Block -->
-                </div>
-                <div class="ec-sidebar-wrap ec-check-pay-img-wrap">
-                    <!-- Sidebar Payment Block -->
-                    <div class="ec-sidebar-block">
-                        <div class="ec-sb-title">
-                            <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
-                        </div>
-                        <div class="ec-sb-block-content">
-                            <div class="ec-check-pay-img-inner">
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment1.png" alt="">
-                                </div>
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment2.png" alt="">
-                                </div>
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment3.png" alt="">
-                                </div>
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment4.png" alt="">
-                                </div>
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment5.png" alt="">
-                                </div>
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment6.png" alt="">
-                                </div>
-                                <div class="ec-check-pay-img">
-                                    <img src="assets/images/icons/payment7.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sidebar Payment Block -->
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- New Product Start -->
-<section class="section ec-new-product section-space-p">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="section-title">
-                    <h2 class="ec-bg-title">Sản Phẩm Mới</h2>
-                    <h2 class="ec-title">Sản Phẩm Mới</h2>
-                    <p class="sub-title">Các Sản Phẩm Hot Và Bán Chạy Của Shop</p>
+        <!-- New Product Start -->
+        <section class="section ec-new-product section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-title">
+                            <h2 class="ec-bg-title">Sản Phẩm Mới</h2>
+                            <h2 class="ec-title">Sản Phẩm Mới</h2>
+                            <p class="sub-title">Các Sản Phẩm Hot Và Bán Chạy Của Shop</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <!-- New Product Content -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
-                <div class="ec-product-inner">
-                    <div class="ec-pro-image-outer">
-                        <div class="ec-pro-image">
-                            <a href="product-left-sidebar.html" class="image">
-                                <img class="main-image"
-                                    src="assets/images/product-image/6_1.jpg" alt="Product" />
-                                <img class="hover-image"
-                                    src="assets/images/product-image/6_2.jpg" alt="Product" />
-                            </a>
-                            <span class="percentage">20%</span>
-                            <a href="#" class="quickview" data-link-action="quickview"
-                                title="Quick view" data-bs-toggle="modal"
-                                data-bs-target="#ec_quickview_modal"><img
-                                    src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                    alt="" /></a>
-                            <div class="ec-pro-actions">
-                                <a href="compare.html" class="ec-btn-group compare"
-                                    title="Compare"><img src="assets/images/icons/compare.svg"
-                                        class="svg_img pro_svg" alt="" /></a>
-                                <button title="Add To Cart" class=" add-to-cart"><img
-                                        src="assets/images/icons/cart.svg" class="svg_img pro_svg"
-                                        alt="" /> Add To Cart</button>
-                                <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                        src="assets/images/icons/wishlist.svg"
-                                        class="svg_img pro_svg" alt="" /></a>
+                <div class="row">
+                    <!-- New Product Content -->
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                        <div class="ec-product-inner">
+                            <div class="ec-pro-image-outer">
+                                <div class="ec-pro-image">
+                                    <a href="product-left-sidebar.html" class="image">
+                                        <img class="main-image" src="assets/images/product-image/6_1.jpg"
+                                            alt="Product" />
+                                        <img class="hover-image" src="assets/images/product-image/6_2.jpg"
+                                            alt="Product" />
+                                    </a>
+                                    <span class="percentage">20%</span>
+                                    <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
+                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
+                                            src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
+                                            alt="" /></a>
+                                    <div class="ec-pro-actions">
+                                        <a href="compare.html" class="ec-btn-group compare" title="Compare"><img
+                                                src="assets/images/icons/compare.svg" class="svg_img pro_svg"
+                                                alt="" /></a>
+                                        <button title="Add To Cart" class=" add-to-cart"><img
+                                                src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" /> Add
+                                            To Cart</button>
+                                        <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                src="assets/images/icons/wishlist.svg" class="svg_img pro_svg"
+                                                alt="" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ec-pro-content">
+                                <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Round Neck T-Shirt</a></h5>
+                                <div class="ec-pro-rating">
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star fill"></i>
+                                    <i class="ecicon eci-star"></i>
+                                </div>
+                                <div class="ec-pro-list-desc">Lorem Ipsum is simply dummy text of the printing and
+                                    typesetting industry. Lorem Ipsum is simply dutmmy text ever since the 1500s, when
+                                    an unknown printer took a galley.</div>
+                                <span class="ec-price">
+                                    <span class="old-price">$27.00</span>
+                                    <span class="new-price">$22.00</span>
+                                </span>
                             </div>
                         </div>
                     </div>
-                    <div class="ec-pro-content">
-                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Round Neck T-Shirt</a></h5>
-                        <div class="ec-pro-rating">
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star"></i>
-                        </div>
-                        <div class="ec-pro-list-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dutmmy text ever since the 1500s, when an unknown printer took a galley.</div>
-                        <span class="ec-price">
-                            <span class="old-price">$27.00</span>
-                            <span class="new-price">$22.00</span>
-                        </span>
-                    </div>
+                    <div class="col-sm-12 shop-all-btn"><a href="#">Xem Thêm Sản Phẩm</a></div>
                 </div>
             </div>
-            <div class="col-sm-12 shop-all-btn"><a href="#">Xem Thêm Sản Phẩm</a></div>
-        </div>
-    </div>
-</section>
-<!-- New Product end -->
+        </section>
+        <!-- New Product end -->
 
-</main>   
+    </main>
 </body>
+
 </html>

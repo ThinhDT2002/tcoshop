@@ -25129,3 +25129,53 @@ div.dataTables_wrapper div.dataTables_filter {
 .form-group .error-mess{
  color: red;
 }
+
+.popup{
+  background: rgba(0, 0, 0,0.6);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content{
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-right: 18%;
+  position: relative;
+}
+
+.button-popup{
+  background-color: #20B2AA;
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 5px;
+  box-shadow: 6px 6px 29px -4px rgba(0, 0, 0,0.75);
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+.button-popup:hover{
+  background: rgb(103, 97, 97);
+  color: #00BFFF;
+}
+
+.close{
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  box-shadow: 6px 6px 29px -4px rgba(0, 0, 0,0.75);
+  text-align: center;
+  cursor: pointer;
+}

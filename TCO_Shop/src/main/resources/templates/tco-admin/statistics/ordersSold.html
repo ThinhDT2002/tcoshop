@@ -53,7 +53,7 @@
                                             <td>{{tableData.orderCount}}</td>    
                                             <td>{{tableData.productCount}}</td>                                        
                                             <td class="text-right">
-                                                <button ng-click="getSaleReportDetail(yearValue, tableData.month)">Xem chi tiết</button>
+                                                <button class="button-popup" ng-click="getSaleReportDetail(yearValue, tableData.month)">Xem chi tiết</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -61,102 +61,109 @@
                             </div>
                         </div>
                     </div>
-                </div>                
-                <div class="row">
-                    <div class="col-12 p-b-15">
-                        <!-- Recent Order Table -->
-                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
-                        <div class="card-header card-header-border-bottom d-flex justify-content-between">
-								<div class="card-bar">
-									<div class="col-lg-3 col-md-6">
-										<label>Hiển thị: </label>
-										<select class="form-control" ng-change="pagination()" ng-model="pageSize">
-											<option value="5">5</option>
-											<option value="10">10</option>
-											<option value="20">20</option>
-										</select>
-									</div>
-									<div class="col-lg-9 col-md-12 sort">
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="">Tìm kiếm</label>
-											<input class="form-control" type="text" ng-model="orderSearch"
-												placeholder="Tìm kiếm">
-										</div>
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="sortProduct">Bộ lọc</label>
-											<select class="form-control" ng-change="sort()" ng-model="orderProperty">
-												<option value="id">Mã đơn hàng ↑</option>
-												<option value="-id">Mã đơn hàng ↓</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div>
-								<h6>Tổng đơn đặt: {{totalQuantity()}}</h6>
-							</div>
-                            <div class="card-header justify-content-between">
-                                <h2>Đơn hàng</h2>
-                            </div>
-                            <div class="card-body pt-0 pb-5">
-                                <table class="table card-table table-responsive table-responsive-large"
-                                    style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Mã đơn hàng</th>
-                                            <th>Sản phẩm</th>
-                                            <th class="d-none d-lg-table-cell">Số lượng</th>
-                                            <th class="d-none d-lg-table-cell">Ngày đặt</th>
-                                            <th class="d-none d-lg-table-cell">Giá</th>
-                                            <th>Status</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
-                                            <td>{{order.id}}</td>
-                                            <td>
-                                           		<a ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id" class="text-dark" th:href="@{|/tco-admin/product/detail/{{orderDetail.product.id}}|}">{{orderDetail.product.name}} <br></a>                                            
-                                            </td>
-                                            <td class="d-none d-lg-table-cell">
-                                            	<span ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id">
-                                            		{{orderDetail.quantity}} <br>
-                                            	</span>
-                                            </td>
-                                            <td class="d-none d-lg-table-cell">{{order.createDate | date: "dd/MM/yyyy"}}</td>
-                                            <td class="d-none d-lg-table-cell">
-                                            	<span ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id">
-                                            		{{((orderDetail.product.price) * ((100 - orderDetail.product.discount) / 100)) * orderDetail.quantity | currency:undefined:0}} VND <br>
-                                            	</span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-success">{{order.status}}</span>
-                                            </td>                                        
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="panel-footer text-center">
-									<button ng-click = "pagination()" class="btn btn-danger">
-										<b>Trang đầu</b>
-									</button>
-									<button ng-disabled="currentPage == 0"
-										ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-										<b>Trước</b>
-									</button>
-									<button
-										class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
-									<button ng-disabled="currentPage >= orders.length/pageSize - 1"
-										ng-click="currentPage=currentPage+1" class="btn btn-primary">
-										<b>Tiếp</b>
-									</button>
-									<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
-										<b>Trang cuối</b>
-									</button>
-								</div>
+                </div>    
+                  <button class="button-popup" id="button-popup" >Hiện bảng chi tiết</button>  
+                <div class="popup">
+                    <div class="popup-content">
+                        <div class="close">X</div>
+                        <div class="row">
+                            <div class="col-12 p-b-15">
+                                <!-- Recent Order Table -->
+                                <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                                <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                                        <div class="card-bar">
+                                            <div class="col-lg-3 col-md-6">
+                                                <label>Hiển thị: </label>
+                                                <select class="form-control" ng-change="pagination()" ng-model="pageSize">
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="20">20</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-9 col-md-12 sort">
+                                                <div class="col-lg-4 col-md-6 p-space">
+                                                    <label for="">Tìm kiếm</label>
+                                                    <input class="form-control" type="text" ng-model="orderSearch"
+                                                        placeholder="Tìm kiếm">
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 p-space">
+                                                    <label for="sortProduct">Bộ lọc</label>
+                                                    <select class="form-control" ng-change="sort()" ng-model="orderProperty">
+                                                        <option value="id">Mã đơn hàng ↑</option>
+                                                        <option value="-id">Mã đơn hàng ↓</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6>Tổng đơn đặt: {{totalQuantity()}}</h6>
+                                    </div>
+                                    <div class="card-header justify-content-between">
+                                        <h2>Đơn hàng</h2>
+                                    </div>
+                                    <div class="card-body pt-0 pb-5">
+                                        <table class="table card-table table-responsive table-responsive-large"
+                                            style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã đơn hàng</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th class="d-none d-lg-table-cell">Số lượng</th>
+                                                    <th class="d-none d-lg-table-cell">Ngày đặt</th>
+                                                    <th class="d-none d-lg-table-cell">Giá</th>
+                                                    <th>Status</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
+                                                    <td>{{order.id}}</td>
+                                                    <td>
+                                                           <a ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id" class="text-dark" th:href="@{|/tco-admin/product/detail/{{orderDetail.product.id}}|}">{{orderDetail.product.name}} <br></a>                                            
+                                                    </td>
+                                                    <td class="d-none d-lg-table-cell">
+                                                        <span ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id">
+                                                            {{orderDetail.quantity}} <br>
+                                                        </span>
+                                                    </td>
+                                                    <td class="d-none d-lg-table-cell">{{order.createDate | date: "dd/MM/yyyy"}}</td>
+                                                    <td class="d-none d-lg-table-cell">
+                                                        <span ng-repeat="orderDetail in ordersDetail" ng-if="orderDetail.order.id == order.id">
+                                                            {{((orderDetail.product.price) * ((100 - orderDetail.product.discount) / 100)) * orderDetail.quantity | currency:undefined:0}} VND <br>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge badge-success">{{order.status}}</span>
+                                                    </td>                                        
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="panel-footer text-center">
+                                            <button ng-click = "pagination()" class="btn btn-danger">
+                                                <b>Trang đầu</b>
+                                            </button>
+                                            <button ng-disabled="currentPage == 0"
+                                                ng-click="currentPage=currentPage - 1" class="btn btn-primary">
+                                                <b>Trước</b>
+                                            </button>
+                                            <button
+                                                class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+                                            <button ng-disabled="currentPage >= orders.length/pageSize - 1"
+                                                ng-click="currentPage=currentPage+1" class="btn btn-primary">
+                                                <b>Tiếp</b>
+                                            </button>
+                                            <button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
+                                                <b>Trang cuối</b>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>        
+               
                 
             </div> <!-- End Content -->
         </div> <!-- End Content Wrapper -->
@@ -164,6 +171,7 @@
 
 	</div>
     </main>
+   
 </body>
 
 </html>
