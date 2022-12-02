@@ -39,17 +39,6 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <div class="ec-checkout-block ec-check-bill">
                                 <h3 class="ec-checkout-title">Chi Tiết Hóa Đơn</h3>
                                 <div class="ec-bl-block-content">
-                                    <div class="ec-check-subtitle">Phương Thức Thanh Toán</div>
-                                    <span class="ec-bill-option">
-                                        <span>
-                                            <input type="radio" id="bill1" name="radio-group">
-                                            <label for="bill1">Tôi muốn sử dụng địa chỉ hiện có</label>
-                                        </span>
-                                        <span>
-                                            <input type="radio" id="bill2" name="radio-group" checked>
-                                            <label for="bill2">Tôi muốn sử dụng địa chỉ mới</label>
-                                        </span>
-                                    </span>
                                     <div class="ec-check-bill-form">
                                         <form action="#" method="post" name="formOrder">
                                             <span class="ec-bill-wrap ec-bill">
@@ -70,52 +59,6 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                 	<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.address.$error.required">Vui lòng nhập địa chỉ</span>
                                                 	<span style="margin: 5px; font-size: 15px; color: red;" ng-show="formOrder.address.$error.maxlength">Địa chỉ giới hạn 100 từ</span>
                                                 </span>                                               
-                                            </span>
-                                            <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Thành Phố *</label>
-                                                <span class="ec-bl-select-inner">
-                                                    <select name="ec_select_city" id="ec-select-city"
-                                                        class="ec-bill-select">
-                                                        <option selected disabled>Thành Phố</option>
-                                                        <option value="1">TP.HCM</option>
-                                                        <option value="2">Hà Nội</option>
-                                                        <option value="3">Thủ Đức</option>
-                                                        <option value="4">Đà Nẵng</option>
-                                                        <option value="5">Quảng Ninh</option>
-                                                    </select>
-                                                </span>
-                                            </span>
-                                            <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Mã Bưu Điện</label>
-                                                <input type="text" name="postalcode" placeholder="Nhập mã bưu điện..." />
-                                            </span>
-                                            <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Quốc Gia *</label>
-                                                <span class="ec-bl-select-inner">
-                                                    <select name="ec_select_country" id="ec-select-country"
-                                                        class="ec-bill-select">
-                                                        <option selected disabled>Quốc Gia</option>
-                                                        <option value="1">Việt Nam</option>
-                                                        <option value="2">Trung Quốc</option>
-                                                        <option value="3">Mỹ</option>
-                                                        <option value="4">Hàn</option>
-                                                        <option value="5">Nhật Bản</option>
-                                                    </select>
-                                                </span>
-                                            </span>
-                                            <span class="ec-bill-wrap ec-bill-half">
-                                                <label>Tỉnh Thành</label>
-                                                <span class="ec-bl-select-inner">
-                                                    <select name="ec_select_state" id="ec-select-state"
-                                                        class="ec-bill-select">
-                                                        <option selected disabled>Tỉnh Thành</option>
-                                                        <option value="1">Đồng Nai</option>
-                                                        <option value="2">Long An</option>
-                                                        <option value="3">Bình Dương</option>
-                                                        <option value="4">Hưng Yên</option>
-                                                        <option value="5">Bắc Ninh</option>
-                                                    </select>
-                                                </span>
                                             </span>
                                             <span class="ec-bill-wrap">
                                                 <label>Ghi chú</label>

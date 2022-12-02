@@ -31,7 +31,7 @@
 						<th:block th:if="${#request.remoteUser}">
 							<button class="dropdown-toggle" data-bs-toggle="dropdown">
 								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
-									alt="" /><span class="ec-btn-title">Xin chào, [[${#request.remoteUser}]]</span>
+									alt="" /><div class="ec-btn-title" id="nguoidunghientai">Xin chào, [[${#request.remoteUser}]]</div>
 							</button>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a class="dropdown-item" th:href="@{/user/profile}">Thông tin tài khoản</a></li>

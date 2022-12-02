@@ -8,7 +8,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	// lấy giỏ hàng của người dùng abcxyz
 	$scope.items = [];
 	// lấy tên của người dùng
-	var name = $("#username").text();
+	var name = $("#nguoidunghientai").text();
 	var split = name.split(" ");
 	console.log(split[2]);
 
@@ -77,24 +77,18 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		})
 	}
 
-
 	$scope.cart = {
 		items: [],
 		add(id) {
 			var item = this.items.find(item => item.id == id);
-
-
 			if (item) {
 				item.qty++;
 				this.saveToSessionStorage();
 			} else {
 				$http.get(`/api/products/${id}`).then(resp => {
-
 					resp.data.qty = 1;
 					this.items.push(resp.data);
 					this.saveToSessionStorage();
-
-
 				})
 			}
 		},
@@ -158,8 +152,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.cart.loadFromSessionStorage();
 
 	$scope.order = {
-
-		createDate: new Date(),
+		createDate: new Date(),		
 		address: "",
 		user: { username: split[2] },
 		description: "",
@@ -175,6 +168,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				}
 			});
 		},
+		
 
 		purchase() {
 			if ($scope.cart.count > 0) {
