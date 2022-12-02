@@ -71,6 +71,12 @@ adminApp.controller("product-ctrl", function($scope, $http){
 		$scope.currentPage = 0;
 	}
 	
+	$scope.productVariations = [];
+	$scope.productVariationValues = new Array($scope.productVariations.length);
+	$http.get("/api/variation/all").then(resp => {
+		$scope.productVariations = resp.data;
+	})
+	
 })
 adminApp.filter('startFrom', function(){
 		return function(input, start){

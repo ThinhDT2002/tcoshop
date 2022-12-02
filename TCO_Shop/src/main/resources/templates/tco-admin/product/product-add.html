@@ -156,21 +156,13 @@
 												<div class="col-ml-12">
 													<select style="margin: 20px 0 10px;" class="btn btn-primary"  id="product-detail">
 														<option value="all">Chọn thuộc tính</option>
-														<option value="dungtich">Dung tích</option>
-														<option value="hang">Hãng</option>
-														<option value="congnghe">Công nghệ</option>
+														<option ng-repeat="productVariation in productVariations" ng-value="productVariation.id">{{productVariation.name}}</option>
 													</select>
 													<div id="details-container">
-														<div class="dungtich details" style="margin: 20px 0 20px;">
-															<input class="form-control" type="text" id="dungtich-input" placeholder="dung tích">
-														</div>
-														<div class="hang details" style="margin: 20px 0 20px;">
-															<input class="form-control" type="text" id="hang-input" placeholder="Hãng">
-														</div>
-														<div class="congnghe details" style="margin: 20px 0 20px;">
-															<input class="form-control" type="text" id="congnghe-input" placeholder="Công nghệ">
-														</div>
-												</div>
+														<div ng-repeat="productVariation in productVariations" class="{{productVariation.id}} details" style="margin: 20px 0 20px;">
+															<input class="form-control" ng-model="productVariationValues[$index]" type="text" id="{{productVariation.id}}-input" placeholder="{{productVariation.name}}">
+														</div>												
+													</div>
 												<div class="col-md-12">
 													<button th:if="*{id} == -999" th:formaction="@{/tco-admin/product/submit}" class="btn btn-primary">Thêm sản phẩm</button>
 													<button th:if="*{id} != -999" th:formaction="@{|/tco-admin/product/update/*{id}|}" class="btn btn-primary">Sửa sản phẩm</button>
