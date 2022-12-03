@@ -67,8 +67,8 @@
 											<div class="row">
 												<div class="col-12">
 													<button th:if = "${categoryForm.id} == null" th:formaction = "@{/tco-admin/category/submit}"  class="btn btn-primary">Thêm</button>
-													<button th:if = "${categoryForm.id} == null" th:formaction="@{/tco-admin/category}"  class="btn btn-primary">Tạo mới</button>
 													<button th:if = "${categoryForm.id} != null" th:formaction="@{|/tco-admin/category/update/${categoryForm.id}|}"  class="btn btn-primary">Cập nhật</button>
+													<button th:formaction="@{/tco-admin/category}"  class="btn btn-primary">Tạo mới</button>
 												</div>
 												
 											</div>
