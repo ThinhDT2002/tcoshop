@@ -8,8 +8,8 @@
         <!-- CONTENT WRAPPER -->
         <div class="ec-content-wrapper">
             <div class="content">
-                
-              
+
+
 
                 <div class="row">
                     <div class="col-xl-8 col-md-12 p-b-15">
@@ -19,7 +19,7 @@
                                 <div>
                                     <div class="card-header justify-content-between">
                                         <h2>Doanh Thu (VNĐ)</h2>
-                                        
+
                                     </div>
                                     <div class="card-body">
                                         <div class="tab-content" id="userActivityContent">
@@ -27,277 +27,315 @@
                                                 <canvas id="activity" class="chartjs"></canvas>
                                             </div>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                <div class="row">
-                    <div class="col-12 p-b-15">
-                        <!-- Recent Order Table -->
-                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
-                            <div class="card-header justify-content-between">
-                                <h2>Doanh thu trong năm</h2>
-                                <select ng-change="showReport()" ng-model="yearValue">  
-                                	<option ng-repeat="orderYear in allOrderYear" ng-value="orderYear">{{orderYear}}</option>                                                     	
-                                </select>
-                            </div>
-                            <div class="card-body pt-0 pb-5">
-                                <table class="table card-table table-responsive table-responsive-large"
-                                    style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>Tháng</th>
-                                            <th>Doanh thu</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat = "turnoverPerMonth in turnoverReport">
-                                            <td>{{turnoverPerMonth.month}}</td>
-                                            <td>{{turnoverPerMonth.turnover | currency:undefined:0}} VND</td>
-                                            <td>
-                                            	<button ng-click="getTurnoverDetailReport(yearValue, turnoverPerMonth.month)">Xem chi tiết</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-12 p-b-15">
-                        <!-- Recent Order Table -->
-                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
-                            <div class="card-header card-header-border-bottom d-flex justify-content-between">
-								<div class="card-bar">
-									<div class="col-lg-3 col-md-6">
-										<label>Hiển thị: </label>
-										<select class="form-control" ng-change="pagination()" ng-model="pageSize">
-											<option value="5">5</option>
-											<option value="10">10</option>
-											<option value="20">20</option>
-										</select>
-									</div>
-									<div class="col-lg-9 col-md-12 sort">
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="">Tìm kiếm</label>
-											<input class="form-control" type="text" ng-model="turnoverDetailSearch"
-												placeholder="Tìm kiếm">
-										</div>
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="sortProduct">Bộ lọc</label>
-											<select class="form-control" ng-change="sort()" ng-model="turnoverDetailProperty">
-												<option value="productName">Tên sản phẩm ↑</option>
-												<option value="-productName">Tên sản phẩm ↓</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <div class="card-header justify-content-between">
-                                <h2>Doanh thu trong tháng</h2>                               
-                            </div>
-                            <div class="card-body pt-0 pb-5">
-                                <table class="table card-table table-responsive table-responsive-large"
-                                    style="width:100%">
-                                    <thead>
-                                        <tr>                                           
-                                            <th>Sản phẩm</th>
-                                            <th>Số lượng</th>
-                                            <th>Doanh thu</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat = "turnoverDetail in turnoverDetailReport | filter: turnoverDetailSearch | orderBy: turnoverDetailProperty | startFrom: currentPage*pageSize | limitTo: pageSize">                                            
-                                            <td>
-                                            	<a th:href="@{|/tco-admin/product/detail/{{turnoverDetail.id}}|}">{{turnoverDetail.productName}}</a>
-                                            </td>
-                                            <td>{{turnoverDetail.quantity}}</td>
-                                            <td>{{turnoverDetail.turnover | currency:undefined:0}}</td>                                            
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="panel-footer text-center">
-									<button ng-click = "pagination()" class="btn btn-danger">
-										<b>Trang đầu</b>
-									</button>
-									<button ng-disabled="currentPage == 0"
-										ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-										<b>Trước</b>
-									</button>
-									<button
-										class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
-									<button ng-disabled="currentPage >= turnoverDetailReport.length/pageSize - 1"
-										ng-click="currentPage=currentPage+1" class="btn btn-primary">
-										<b>Tới</b>
-									</button>
-									<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
-										<b>Trang cuối</b>
-									</button>
-								</div>
+                    <div class="row">
+                        <div class="col-12 p-b-15">
+                            <!-- Recent Order Table -->
+                            <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                                <div class="card-header justify-content-between">
+                                    <h2>Doanh thu trong năm</h2>
+                                    <select ng-change="showReport()" ng-model="yearValue">
+                                        <option ng-repeat="orderYear in allOrderYear" ng-value="orderYear">{{orderYear}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="card-body pt-0 pb-5">
+                                    <table class="table card-table table-responsive table-responsive-large"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Tháng</th>
+                                                <th>Doanh thu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="turnoverPerMonth in turnoverReport">
+                                                <td>{{turnoverPerMonth.month}}</td>
+                                                <td>{{turnoverPerMonth.turnover | currency:'':0}} VND</td>
+                                                <td>
+                                                    <button class="button-popup"
+                                                        ng-click="getTurnoverDetailReport(yearValue, turnoverPerMonth.month)"  data-bs-toggle="modal" data-bs-target="#exampleModal">Xem
+                                                        chi tiết</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-12 p-b-15">
-                        <!-- Recent Order Table -->
-                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
-                            <div class="card-header card-header-border-bottom d-flex justify-content-between">
-								<div class="card-bar">
-									<div class="col-lg-3 col-md-6">
-										<label>Hiển thị: </label>
-										<select class="form-control" ng-change="paginationProductStock()" ng-model="pageSizeProductStock">
-											<option value="5">5</option>
-											<option value="10">10</option>
-											<option value="20">20</option>
-										</select>
-									</div>
-									<div class="col-lg-9 col-md-12 sort">
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="">Tìm kiếm</label>
-											<input class="form-control" type="text" ng-model="productStockSearch"
-												placeholder="Tìm kiếm">
-										</div>
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="sortProduct">Bộ lọc</label>
-											<select class="form-control" ng-change="productStockSort()" ng-model="productStockProperty">
-												<option value="name">Tên sản phẩm ↑</option>
-												<option value="-name">Tên sản phẩm ↓</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <div class="card-header justify-content-between">
-                                <h2>Hàng tồn kho</h2>                               
-                            </div>
-                            <div class="card-body pt-0 pb-5">
-                                <table class="table card-table table-responsive table-responsive-large"
-                                    style="width:100%">
-                                    <thead>
-                                        <tr>                                           
-                                            <th>Mã sản phẩm</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Số lượng</th>                                         
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat = "productStock in productsStock | filter: productStockSearch | orderBy: productStockProperty | startFrom: currentPageProductStock*pageSizeProductStock | limitTo: pageSizeProductStock">                                            
-                                            <td>
-                                            	{{productStock.id}}
-                                            </td>
-                                            <td>{{productStock.name}}</td>
-                                            <td>{{productStock.stock}}</td>                                            
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="panel-footer text-center">
-									<button ng-click = "paginationProductStock()" class="btn btn-danger">
-										<b>Trang đầu</b>
-									</button>
-									<button ng-disabled="currentPageProductStock == 0"
-										ng-click="currentPageProductStock=currentPageProductStock - 1" class="btn btn-primary">
-										<b>Trước</b>
-									</button>
-									<button
-										class="btn btn-success">{{currentPageProductStock+1}}/{{numberOfPagesProductStock()}}</button>
-									<button ng-disabled="currentPageProductStock >= productsStock.length/pageSizeProductStock - 1"
-										ng-click="currentPageProductStock=currentPageProductStock+1" class="btn btn-primary">
-										<b>Tới</b>
-									</button>
-									<button ng-click = "currentPageProductStock = numberOfPagesProductStock() -1" class="btn btn-danger">
-										<b>Trang cuối</b>
-									</button>
-								</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-12 p-b-15">
-                        <!-- Recent Order Table -->
-                        <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
-                            <div class="card-header card-header-border-bottom d-flex justify-content-between">
-								<div class="card-bar">
-									<div class="col-lg-3 col-md-6">
-										<label>Hiển thị: </label>
-										<select class="form-control" ng-change="paginationProductNotSold()" ng-model="pageSizeProductNotSold">
-											<option value="5">5</option>
-											<option value="10">10</option>
-											<option value="20">20</option>
-										</select>
-									</div>
-									<div class="col-lg-9 col-md-12 sort">
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="">Tìm kiếm</label>
-											<input class="form-control" type="text" ng-model="productNotSoldSearch"
-												placeholder="Tìm kiếm">
-										</div>
-										<div class="col-lg-4 col-md-6 p-space">
-											<label for="sortProduct">Bộ lọc</label>
-											<select class="form-control" ng-change="productNotSoldSort()" ng-model="productNotSoldProperty">
-												<option value="name">Tên sản phẩm ↑</option>
-												<option value="-name">Tên sản phẩm ↓</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <div class="card-header justify-content-between">
-                                <h2>Hàng chưa bán được trong tháng này</h2>                               
-                            </div>
-                            <div class="card-body pt-0 pb-5">
-                                <table class="table card-table table-responsive table-responsive-large"
-                                    style="width:100%">
-                                    <thead>
-                                        <tr>                                           
-                                            <th>Mã sản phẩm</th>
-                                            <th>Tên sản phẩm</th>
-                                            <th>Số lượng</th>                                         
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat = "productNotSold in productsNotSold | filter: productNotSoldSearch | orderBy: productNotSoldProperty | startFrom: currentPageProductNotSold*pageSizeProductNotSold | limitTo: pageSizeProductNotSold">                                            
-                                            <td>
-                                            	{{productNotSold.id}}
-                                            </td>
-                                            <td>{{productNotSold.name}}</td>
-                                            <td>{{productNotSold.stock}}</td>                                            
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="panel-footer text-center">
-									<button ng-click = "paginationProductNotSold()" class="btn btn-danger">
-										<b>Trang đầu</b>
-									</button>
-									<button ng-disabled="currentPageProductNotSold == 0"
-										ng-click="currentPageProductNotSold=currentPageProductNotSold - 1" class="btn btn-primary">
-										<b>Trước</b>
-									</button>
-									<button
-										class="btn btn-success">{{currentPageProductNotSold+1}}/{{numberOfPagesProductNotSold()}}</button>
-									<button ng-disabled="currentPageProductNotSold >= productsNotSold.length/pageSizeProductNotSold - 1"
-										ng-click="currentPageProductNotSold=currentPageProductNotSold+1" class="btn btn-primary">
-										<b>Tới</b>
-									</button>
-									<button ng-click = "currentPageProductNotSold = numberOfPagesProductNotSold() -1" class="btn btn-danger">
-										<b>Trang cuối</b>
-									</button>
-								</div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" style="margin: 5% 20%; display: block;">
+                            <div class="modal-content" style="width: 200%;">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết doanh thu trong tháng</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-12 p-b-15">
+                                            <!-- Recent Order Table -->
+                                            <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                                                <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                                                    <div class="card-bar">
+                                                        <div class="col-lg-3 col-md-6">
+                                                            <label>Hiển thị: </label>
+                                                            <select class="form-control" ng-change="pagination()" ng-model="pageSize">
+                                                                <option value="5">5</option>
+                                                                <option value="10">10</option>
+                                                                <option value="20">20</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-lg-9 col-md-12 sort">
+                                                            <div class="col-lg-4 col-md-6 p-space">
+                                                                <label for="">Tìm kiếm</label>
+                                                                <input class="form-control" type="text" ng-model="turnoverDetailSearch"
+                                                                    placeholder="Tìm kiếm">
+                                                            </div>
+                                                            <div class="col-lg-4 col-md-6 p-space">
+                                                                <label for="sortProduct">Bộ lọc</label>
+                                                                <select class="form-control" ng-change="sort()"
+                                                                    ng-model="turnoverDetailProperty">
+                                                                    <option value="productName">Tên sản phẩm ↑</option>
+                                                                    <option value="-productName">Tên sản phẩm ↓</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-header justify-content-between">
+                                                    <h2>Doanh thu trong tháng</h2>
+                                                </div>
+                                                <div class="card-body pt-0 pb-5">
+                                                    <table class="table card-table table-responsive table-responsive-large"
+                                                        style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Sản phẩm</th>
+                                                                <th>Số lượng</th>
+                                                                <th>Doanh thu</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr
+                                                                ng-repeat="turnoverDetail in turnoverDetailReport | filter: turnoverDetailSearch | orderBy: turnoverDetailProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
+                                                                <td>
+                                                                    <a
+                                                                        th:href="@{|/tco-admin/product/detail/{{turnoverDetail.id}}|}">{{turnoverDetail.productName}}</a>
+                                                                </td>
+                                                                <td>{{turnoverDetail.quantity}}</td>
+                                                                <td>{{turnoverDetail.turnover | currency:'':0}} VND</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="panel-footer text-center">
+                                                        <button ng-click="pagination()" class="btn btn-danger">
+                                                            <b>Trang đầu</b>
+                                                        </button>
+                                                        <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage - 1"
+                                                            class="btn btn-primary">
+                                                            <b>Trước</b>
+                                                        </button>
+                                                        <button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+                                                        <button ng-disabled="currentPage >= turnoverDetailReport.length/pageSize - 1"
+                                                            ng-click="currentPage=currentPage+1" class="btn btn-primary">
+                                                            <b>Tới</b>
+                                                        </button>
+                                                        <button ng-click="currentPage = numberOfPages() -1" class="btn btn-danger">
+                                                            <b>Trang cuối</b>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-            </div> <!-- End Content -->
-        </div> <!-- End Content Wrapper -->
-	</div>
+                   
+
+                    <div class="row">
+                        <div class="col-12 p-b-15">
+                            <!-- Recent Order Table -->
+                            <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                                <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                                    <div class="card-bar">
+                                        <div class="col-lg-3 col-md-6">
+                                            <label>Hiển thị: </label>
+                                            <select class="form-control" ng-change="paginationProductStock()"
+                                                ng-model="pageSizeProductStock">
+                                                <option value="5">5</option>
+                                                <option value="10">10</option>
+                                                <option value="20">20</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-9 col-md-12 sort">
+                                            <div class="col-lg-4 col-md-6 p-space">
+                                                <label for="">Tìm kiếm</label>
+                                                <input class="form-control" type="text" ng-model="productStockSearch"
+                                                    placeholder="Tìm kiếm">
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 p-space">
+                                                <label for="sortProduct">Bộ lọc</label>
+                                                <select class="form-control" ng-change="productStockSort()"
+                                                    ng-model="productStockProperty">
+                                                    <option value="name">Tên sản phẩm ↑</option>
+                                                    <option value="-name">Tên sản phẩm ↓</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-header justify-content-between">
+                                    <h2>Hàng tồn kho</h2>
+                                </div>
+                                <div class="card-body pt-0 pb-5">
+                                    <table class="table card-table table-responsive table-responsive-large"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã sản phẩm</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Số lượng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                ng-repeat="productStock in productsStock | filter: productStockSearch | orderBy: productStockProperty | startFrom: currentPageProductStock*pageSizeProductStock | limitTo: pageSizeProductStock">
+                                                <td>
+                                                    {{productStock.id}}
+                                                </td>
+                                                <td>{{productStock.name}}</td>
+                                                <td>{{productStock.stock}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="panel-footer text-center">
+                                        <button ng-click="paginationProductStock()" class="btn btn-danger">
+                                            <b>Trang đầu</b>
+                                        </button>
+                                        <button ng-disabled="currentPageProductStock == 0"
+                                            ng-click="currentPageProductStock=currentPageProductStock - 1"
+                                            class="btn btn-primary">
+                                            <b>Trước</b>
+                                        </button>
+                                        <button
+                                            class="btn btn-success">{{currentPageProductStock+1}}/{{numberOfPagesProductStock()}}</button>
+                                        <button
+                                            ng-disabled="currentPageProductStock >= productsStock.length/pageSizeProductStock - 1"
+                                            ng-click="currentPageProductStock=currentPageProductStock+1"
+                                            class="btn btn-primary">
+                                            <b>Tới</b>
+                                        </button>
+                                        <button ng-click="currentPageProductStock = numberOfPagesProductStock() -1"
+                                            class="btn btn-danger">
+                                            <b>Trang cuối</b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 p-b-15">
+                            <!-- Recent Order Table -->
+                            <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
+                                <div class="card-header card-header-border-bottom d-flex justify-content-between">
+                                    <div class="card-bar">
+                                        <div class="col-lg-3 col-md-6">
+                                            <label>Hiển thị: </label>
+                                            <select class="form-control" ng-change="paginationProductNotSold()"
+                                                ng-model="pageSizeProductNotSold">
+                                                <option value="5">5</option>
+                                                <option value="10">10</option>
+                                                <option value="20">20</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-9 col-md-12 sort">
+                                            <div class="col-lg-4 col-md-6 p-space">
+                                                <label for="">Tìm kiếm</label>
+                                                <input class="form-control" type="text" ng-model="productNotSoldSearch"
+                                                    placeholder="Tìm kiếm">
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 p-space">
+                                                <label for="sortProduct">Bộ lọc</label>
+                                                <select class="form-control" ng-change="productNotSoldSort()"
+                                                    ng-model="productNotSoldProperty">
+                                                    <option value="name">Tên sản phẩm ↑</option>
+                                                    <option value="-name">Tên sản phẩm ↓</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-header justify-content-between">
+                                    <h2>Hàng chưa bán được trong tháng này</h2>
+                                </div>
+                                <div class="card-body pt-0 pb-5">
+                                    <table class="table card-table table-responsive table-responsive-large"
+                                        style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã sản phẩm</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Số lượng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                ng-repeat="productNotSold in productsNotSold | filter: productNotSoldSearch | orderBy: productNotSoldProperty | startFrom: currentPageProductNotSold*pageSizeProductNotSold | limitTo: pageSizeProductNotSold">
+                                                <td>
+                                                    {{productNotSold.id}}
+                                                </td>
+                                                <td>{{productNotSold.name}}</td>
+                                                <td>{{productNotSold.stock}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="panel-footer text-center">
+                                        <button ng-click="paginationProductNotSold()" class="btn btn-danger">
+                                            <b>Trang đầu</b>
+                                        </button>
+                                        <button ng-disabled="currentPageProductNotSold == 0"
+                                            ng-click="currentPageProductNotSold=currentPageProductNotSold - 1"
+                                            class="btn btn-primary">
+                                            <b>Trước</b>
+                                        </button>
+                                        <button
+                                            class="btn btn-success">{{currentPageProductNotSold+1}}/{{numberOfPagesProductNotSold()}}</button>
+                                        <button
+                                            ng-disabled="currentPageProductNotSold >= productsNotSold.length/pageSizeProductNotSold - 1"
+                                            ng-click="currentPageProductNotSold=currentPageProductNotSold+1"
+                                            class="btn btn-primary">
+                                            <b>Tới</b>
+                                        </button>
+                                        <button ng-click="currentPageProductNotSold = numberOfPagesProductNotSold() -1"
+                                            class="btn btn-danger">
+                                            <b>Trang cuối</b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- End Content -->
+            </div> <!-- End Content Wrapper -->
+        </div>
 
 
     </main>
