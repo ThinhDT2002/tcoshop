@@ -32,4 +32,31 @@ adminApp.controller("category-ctrl", function($scope, $http) {
 			console.log($scope.categories);
 		})
 	})
+	
+	$scope.cateProperty = 'id';
+	$scope.sort = function(){
+		
+	}
+	$scope.currentPage = 0;
+	$scope.pageSize = "5";
+	$scope.totalQuantity = function(){
+		return $scope.categories.length;
+	}
+	$scope.numberOfPages = function(){
+		return Math.ceil($scope.categories.length / $scope.pageSize);
+	}
+	for(let i= 0; i< 45; i++){
+		$scope.categories.push("Item " + i);
+	}
+	
+	$scope.pagination = function(){
+		$scope.currentPage = 0;
+	}
+	
+})
+adminApp.filter('startFrom', function() {
+	return function(input, start) {
+		start = +start;
+		return input.slice(start);
+	}
 });

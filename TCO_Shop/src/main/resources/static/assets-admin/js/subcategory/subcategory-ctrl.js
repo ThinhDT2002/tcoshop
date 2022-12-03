@@ -9,6 +9,7 @@ adminApp.controller("subcategory-ctrl", function($scope, $http){
 			$scope.form = {
 			icon: 'default-subcategory.png'
 			};
+			
 		});
 		
 		$http.get("/api/categories").then(resp =>{

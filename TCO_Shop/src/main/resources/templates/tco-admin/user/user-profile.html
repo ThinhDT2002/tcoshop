@@ -3,7 +3,7 @@
 			<html xmlns:th="http://www.thymeleaf.org"
 			th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 			<body>
-			<main>
+			<main ng-controller="user-management-ctrl">
 			
 			
 			<!-- CONTENT WRAPPER -->
@@ -306,72 +306,76 @@
 												</div>
 											</div>
 										</div>
-			
+										<label class="error-mess">[[${message}]]</label>
 										<div class="tab-pane fade" id="settings" role="tabpanel"
 											aria-labelledby="settings-tab">
 											<div class="tab-pane-content mt-5">
-												<form>
+												<form th:action = "@{|/tco-admin/userProfileUpdate/${user.username}|}" enctype="multipart/form-data" method = "post">
 													<div class="form-group row mb-6">
-														<label for="coverImage"
-															class="col-sm-4 col-lg-2 col-form-label">User Image</label>
-														<div class="col-sm-8 col-lg-10">
-															<div class="custom-file mb-1">
-																<input type="file" class="custom-file-input"
-																	id="coverImage" required>
-																<label class="custom-file-label" for="coverImage">Choose
-																	file...</label>
-																<div class="invalid-feedback">Example invalid custom
-																	file feedback</div>
+											<div class="row ec-vendor-uploads">
+												<div class="ec-vendor-img-upload">
+													<div class="ec-vendor-main-img">
+													
+														<div class="avatar-upload">
+														<div class="avatar-edit">
+															<input type='file' name="userAvatar" id="imageUpload" class="ec-image-upload"
+																accept=".png, .jpg, .jpeg" onchange="angular.element(this).scope().imageChanged(this.files)"/>
+															<label for="imageUpload"><img th:src="@{/assets-admin/img/icons/edit.svg}"
+																	class="svg_img header_svg" alt="edit" /></label>
+														</div>
+														<div class="avatar-preview ec-preview">
+															<div class="imagePreview ec-div-preview">
+																<img class="ec-image-preview"
+																	th:src="@{|/images/user/*{avatar}|}"
+																	alt="Chọn ảnh đại diện" style="width: 20%"/>
 															</div>
 														</div>
 													</div>
+													</div>
+												</div>
+											</div>
+										</div>
 			
 													<div class="row mb-2">
-														<div class="col-lg-6">
+														<div class="col-lg-12">
 															<div class="form-group">
-																<label for="firstName">First name</label>
-																<input type="text" class="form-control" id="firstName"
+																<label for="firstName">Họ và Tên</label>
+																<input th:field = "${user.fullname}" type="text" class="form-control" id="firstName"
 																	value="First name">
 															</div>
 														</div>
 			
-														<div class="col-lg-6">
-															<div class="form-group">
-																<label for="lastName">Last name</label>
-																<input type="text" class="form-control" id="lastName"
-																	value="Last name">
-															</div>
-														</div>
+														
 													</div>
 			
 													<div class="form-group mb-4">
 														<label for="userName">User name</label>
-														<input type="text" class="form-control" id="userName"
-															value="User name">
-														<span class="d-block mt-1">Accusamus nobis at omnis consequuntur
-															culpa tempore saepe animi.</span>
+														<input th:field = "${user.username}" type="text" class="form-control" id="userName"
+															value="User name" readonly>
+														
 													</div>
 			
 													<div class="form-group mb-4">
 														<label for="email">Email</label>
-														<input type="email" class="form-control" id="email"
-															value="tco.example@gmail.com">
+														<input th:field = "${user.email}" type="email" class="form-control" id="email"
+															value="tco.example@gmail.com" readonly>
 													</div>
-			
 													<div class="form-group mb-4">
-														<label for="oldPassword">Old password</label>
-														<input type="password" class="form-control" id="oldPassword">
+														<label for="phone">Số điện thoại</label>
+														<input th:field = "${user.phone}" type="text" class="form-control" id="phone"
+															>
 													</div>
-			
 													<div class="form-group mb-4">
-														<label for="newPassword">New password</label>
-														<input type="password" class="form-control" id="newPassword">
+														<label for="address">Địa chỉ</label>
+														<input th:field = "${user.address}" type="text" class="form-control" id="address"
+															>
 													</div>
-			
 													<div class="form-group mb-4">
-														<label for="conPassword">Confirm password</label>
-														<input type="password" class="form-control" id="conPassword">
+														<label for="introduce">Mô tả</label>
+														<input th:field = "${user.introduce}" type="text" class="form-control" id="introduce"
+															>
 													</div>
+													
 			
 													<div class="d-flex justify-content-end mt-5">
 														<button type="submit"
