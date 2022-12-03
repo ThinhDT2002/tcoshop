@@ -165,9 +165,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <div id="ec-spt-nav-info" class="tab-pane fade">
                                 <div class="ec-single-pro-tab-moreinfo">
                                     <ul>
-                                        <li><span>Weight</span> 1000 g</li>
-                                        <li><span>Dimensions</span> 35 × 30 × 7 cm</li>
-                                        <li><span>Color</span> Black, Pink, Red, White</li>
+                                        <li th:each="productVariation : *{productVariations}"><span>[[${productVariation.name}]]</span> [[${productVariation.value}]]</li>                                    
                                     </ul>
                                 </div>
                             </div>

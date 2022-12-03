@@ -38,8 +38,7 @@ public class SubcategoryController {
 			product.setImage2("default-product.png");
 			product.setImage3("default-product.png");
 			product.setImage4("default-product.png");
-	        List<ProductVariation> productVariations = product.getProductVariations();
-	        
+	        List<ProductVariation> productVariations = product.getProductVariations();	      
 	        product.setProductVariations(productVariations);
 			model.addAttribute("sub", subcategories);
 			model.addAttribute("item", product);
