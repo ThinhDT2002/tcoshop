@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Product_Variations")
+@Table(name = "Products_Variations")
 public class ProductVariation implements Serializable{
 	/**
 	 * 

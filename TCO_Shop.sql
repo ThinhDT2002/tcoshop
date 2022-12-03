@@ -87,7 +87,7 @@ create table Products_Variations(
 	Id int identity(1,1),
 	Product_Id int,
 	constraint FK_ProductsVariations_Products
-	foreign key (Product_Id) references Products(Id),
+	foreign key (Product_Id) references Products(Id) on delete cascade,
 	Name nvarchar(20) not null,
 	Value nvarchar(20) not null,
 	primary key (Id)

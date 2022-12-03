@@ -40,11 +40,15 @@ adminApp.controller("product-variations-ctrl", function($http, $scope) {
 	$scope.edit = function(productVariation) {
 		$scope.productVariationForm = productVariation;
 		document.getElementById("variationID").readOnly = true;
+		document.getElementById("updateButton").style.display = "inline-block";
+		document.getElementById("createButton").style.display = "none";
 	}
 	
 	$scope.reset = function() {
 		$scope.productVariationForm = {};
 		document.getElementById("variationID").readOnly = false;
+		document.getElementById("updateButton").style.display = "none";
+		document.getElementById("createButton").style.display = "inline-block";
 	}
 	
 	$scope.update = function(productVariation) {

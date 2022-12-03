@@ -37,9 +37,9 @@
 											</div>										
 											<div class="row">
 												<div class="col-12">
-													<button ng-if="productVariationForm.id == null" ng-click="create(productVariationForm)"
+													<button id="createButton" ng-click="create(productVariationForm)"
 														class="btn btn-primary">Thêm</button>
-													<button ng-if="productVariationForm.id != null" ng-click="update(productVariationForm)"
+													<button style="display:none" id="updateButton" ng-click="update(productVariationForm)"
 														class="btn btn-primary">Cập nhật</button>
 													<button ng-click="reset()" class="btn btn-primary">Làm mới</button>
 												</div>
