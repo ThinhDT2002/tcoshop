@@ -112,11 +112,11 @@
                                             <span class="text-left">Phí Vận Chuyển</span>
                                             <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
                                         </div>
-                                        <div>
+                                        <!-- <div>
                                             <span class="text-left">Mã Giảm Giá</span>
                                             <span class="text-right"><a class="ec-checkout-coupan">Áp Dụng Mã Giảm
                                                     Giá</a></span>
-                                        </div>
+                                        </div> -->
                                         <div class="ec-checkout-coupan-content">
                                             <form class="ec-checkout-coupan-form" name="ec-checkout-coupan-form"
                                                 method="post" action="#">
@@ -174,40 +174,7 @@
                             </div>
                             <!-- Sidebar Summary Block -->
                         </div>
-                        <div class="ec-sidebar-wrap ec-checkout-del-wrap">
-                            <!-- Sidebar Summary Block -->
-                            <div class="ec-sidebar-block">
-                                <div class="ec-sb-title">
-                                    <h3 class="ec-sidebar-title">Phương Thức Vận Chuyển</h3>
-                                </div>
-                                <div class="ec-sb-block-content">
-                                    <div class="ec-checkout-del">
-                                        <div class="ec-del-desc">Vui lòng chọn phương thức giao hàng ưa thích để sử dụng
-                                            cho đơn hàng này.</div>
-                                        <form action="#">
-                                            <span class="ec-del-option">
-                                                <span>
-                                                    <span class="ec-del-opt-head">Miễn Phí Vận Chuyển</span>
-                                                    <input type="radio" id="del1" name="radio-group" checked>
-                                                    <label for="del1">Tỉ Lệ - $0 .00</label>
-                                                </span>
-                                                <span>
-                                                    <span class="ec-del-opt-head">Tỉ Lệ Cố Định</span>
-                                                    <input type="radio" id="del2" name="radio-group">
-                                                    <label for="del2">Tỉ Lệ - $5.00</label>
-                                                </span>
-                                            </span>
-                                            <span class="ec-del-commemt">
-                                                <span class="ec-del-opt-head">Tin Nhắn</span>
-                                                <textarea name="your-commemt"
-                                                    placeholder="Lưu ý cho người bán..."></textarea>
-                                            </span>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Sidebar Summary Block -->
-                        </div>
+                        
                         <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
                             <!-- Sidebar Payment Block -->
                             <div class="ec-sidebar-block">
@@ -225,24 +192,15 @@
                                                     <label for="pay1">Thanh Toán Khi Nhận Hàng</label>
                                                 </span>
                                             </span>
-                                            <span class="ec-pay-commemt">
-                                                <span class="ec-pay-opt-head">Tin Nhắn</span>
-                                                <textarea name="your-commemt"
-                                                    placeholder="Lưu ý cho người bán..."></textarea>
-                                            </span>
-                                            <span class="ec-pay-agree"><input type="checkbox" value=""><a href="#">Tôi
-                                                    đã đọc và đồng ý với các
-                                                    <span>Điều khoản & Điều kiện</span></a><span
-                                                    class="checked"></span></span>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <!-- Sidebar Payment Block -->
                         </div>
-                        <div class="ec-sidebar-wrap ec-check-pay-img-wrap">
+                        <!-- <div class="ec-sidebar-wrap ec-check-pay-img-wrap"> -->
                             <!-- Sidebar Payment Block -->
-                            <div class="ec-sidebar-block">
+                            <!-- <div class="ec-sidebar-block">
                                 <div class="ec-sb-title">
                                     <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
                                 </div>
@@ -271,9 +229,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Sidebar Payment Block -->
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -285,8 +243,8 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="section-title">
-                            <h2 class="ec-bg-title">Sản Phẩm Mới</h2>
-                            <h2 class="ec-title">Sản Phẩm Mới</h2>
+                            <h2 class="ec-bg-title">Sản Phẩm Khác</h2>
+                            <h2 class="ec-title">Sản Phẩm Khác</h2>
                             <p class="sub-title">Các Sản Phẩm Hot Và Bán Chạy Của Shop</p>
                         </div>
                     </div>
@@ -340,7 +298,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 shop-all-btn"><a href="#">Xem Thêm Sản Phẩm</a></div>
+                    <div class="col-sm-12 shop-all-btn"><a th:href="@{/product/list}">Xem Thêm Sản Phẩm</a></div>
                 </div>
             </div>
         </section>

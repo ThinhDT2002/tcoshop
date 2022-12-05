@@ -461,7 +461,7 @@ function ecCheckCookie()
 
     /*----------------------------- All Product Slider -------------------------------- */    
     $('.ec-all-products .ec-new-slider,.ec-all-products .ec-special-slider,.ec-all-products .ec-best-slider').slick({
-        rows: 4,
+        rows: 1,
         dots: false,
         arrows: true,
         infinite: true,

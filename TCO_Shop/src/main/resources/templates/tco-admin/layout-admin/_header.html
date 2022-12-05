@@ -33,13 +33,13 @@
                         	<div id="currentAuthentication" style="display:none;">[[${currentUser.username}]]</div>
                             <img th:src="@{|/images/user/${currentUser.avatar}|}" class="img-circle" alt="User Image" />
                             <div th:if="${currentUser.fullname} != null" class="d-inline-block">
-                                [[${currentUser.fullname}]] <small class="pt-1"><a
+                                [[${currentUser.fullname}]] <small class="pt-1"><a style="padding: 0 0; font-size: 13px;"
                                         href="https://loopinfosol.in/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
                                         data-cfemail="b0dadfd8de9ed5c8d1ddc0dcd5f0d7ddd1d9dc9ed3dfdd">[[${currentUser.email}]]</a></small>
                             </div>
                             <div th:if="${currentUser.fullname} == null" class="d-inline-block">
-                                [[${currentUser.username}]] <small class="pt-1"><a
+                                [[${currentUser.username}]] <small class="pt-1"><a style="padding: 0 0; font-size: 13px;"
                                         href="https://loopinfosol.in/cdn-cgi/l/email-protection"
                                         class="__cf_email__"
                                         data-cfemail="b0dadfd8de9ed5c8d1ddc0dcd5f0d7ddd1d9dc9ed3dfdd">[[${currentUser.email}]]</a></small>

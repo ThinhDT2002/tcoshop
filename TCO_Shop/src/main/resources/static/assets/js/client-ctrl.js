@@ -5,9 +5,19 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.reviews = [];
 	
 	$scope.newProducts = [];
+	$scope.newProducts1 = [];
+	$scope.newProducts2 = [];
 	$http.get("/api/products/newProducts").then(resp => {
 		$scope.newProducts = resp.data;
-		console.log($scope.newProducts);
+	}).then(function() {
+		for(let i = 0; i < $scope.newProducts.length; i++) {
+			if(i <= 3) {
+				$scope.newProducts1.push($scope.newProducts[i]);
+
+			}  else {
+				$scope.newProducts2.push($scope.newProducts[i]);
+			}
+		}
 	})
 
 	// lấy giỏ hàng của người dùng abcxyz
@@ -15,7 +25,6 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	// lấy tên của người dùng
 	var name = $("#nguoidunghientai").text();
 	var split = name.split(" ");
-	console.log(split[2]);
 
 	$scope.initialize = function() {
 		$http.get("/api/reviews/top10").then(resp => {
