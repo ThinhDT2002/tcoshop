@@ -174,6 +174,7 @@ values
 		('FRIDGE',N'Tủ lạnh, Tủ đông, Tủ mát','fridge.png'),
 		('LAPTOP',N'Laptop, linh kiện Laptop','laptop.png'),
 		('WASHER',N'Máy giặt, Máy sấy','washer.png'),
+
 		('AIRFRESHER',N'Máy lạnh, Quạt, Lọc khí','airFresher.png'),
 		('ELECTRONIC',N'Gia dụng điện','iconElectric.png'),
 		('PHONE',N'Điện thoại, Table, Phụ kiện','phone.png'),
@@ -207,7 +208,24 @@ values
 		('AC','Acer','LAPTOP','acer.png'),
 		('AS','Asus','LAPTOP','asus.png'),
 		('MS','MSI','LAPTOP','MSI.jpg'),
-		('LE','Lenovo','LAPTOP','lenovo.png')
+		('LE','Lenovo','LAPTOP','lenovo.png'),
+
+		-- air
+		('REFRIGE',N'Máy lạnh','AIRFRESHER','refrige.png'),
+		('FAN',N'Quạt','AIRFRESHER','fan.png'),
+		('AIR',N'Lọc khí','AIRFRESHER','air.png'),
+
+		-- ELECTRONIC
+		('POT',N'Nồi điện','ELECTRONIC','pot.png'),
+		('KITCHEN',N'Bếp tiện nghi','ELECTRONIC','kitchen.png'),
+
+		-- phone
+		('PHONE',N'Điện thoại','PHONE','phone.png'),
+
+		-- PURIFIER
+		('PURIFIER',N'Lọc nước','PURIFIER','purifier.png'),
+
+		-- kitchen
 
 
 insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id,subcategory_id)
