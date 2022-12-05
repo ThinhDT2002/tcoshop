@@ -24,7 +24,7 @@ create table Users(
 	Password varchar(30),
 	Email varchar(40) not null,
 	Fullname nvarchar(40),
-	Address nvarchar(100),
+	Address nvarchar(200),
 	Phone int,
 	Introduce nvarchar(300),
 	Status bit,
@@ -42,7 +42,7 @@ go
 
 create table Variations(
 	Id varchar(20) not null,
-	Name nvarchar(20) not null,
+	Name nvarchar(40) not null,
 	primary key (Id)
 )
 
@@ -71,7 +71,7 @@ create table Products(
 	Image3 varchar(50),
 	Image4 varchar(50),
 	Price decimal(12,2) not null,
-	Description nvarchar(200),
+	Description nvarchar(500),
 	Stock int not null,
 	Discount int,
 	Category_Id varchar(10) not null,
@@ -88,8 +88,8 @@ create table Products_Variations(
 	Product_Id int,
 	constraint FK_ProductsVariations_Products
 	foreign key (Product_Id) references Products(Id) on delete cascade,
-	Name nvarchar(20) not null,
-	Value nvarchar(20) not null,
+	Name nvarchar(40) not null,
+	Value nvarchar(50) not null,
 	primary key (Id)
 )
 
@@ -121,7 +121,7 @@ create table Reviews(
 	Product_Id int,
 	constraint FK_Reviews_Products
 	foreign key (Product_Id) references Products(Id),
-	Content nvarchar(200),
+	Content nvarchar(300),
 	Review_Time date,
 	Review_Time_Detail varchar(30),
 	edited bit,
@@ -146,7 +146,7 @@ create table Orders_Detail(
 	constraint FK_OrdersDetail_Products
 	foreign key (Product_Id) references Products (Id),
 	Quantity int,
-	Price decimal(10,2),
+	Price decimal(12,2),
 	primary key (Id)
 )
 
@@ -165,9 +165,8 @@ values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịn
 	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',N'Đường Đông Bắc, Quận 12',0337429181,N'Nick name của tôi là Cris Khang.
 	   Tôi đến từ Bình Thuận. Hiện tại đang học lập trình viên Java tại trường cao đẳng FPT Polytechnic. Sở thích của tôi là nghe nhạc, chơi game, đá bóng. Tôi đang độc thân.'
 	  ,1,'0123456789','0123456789','avatar4.png', 'SADMIN'),
-	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'SADMIN')
-insert into Users(username, password, email, fullname, address, phone,introduce, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
-values('Guest','123456','Guest@tcoshom.com','Khách','None', 0123456789, 'hello' , 1, 0123456789, 0123456789, 'avatar1.png', 'USER')
+	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'SADMIN'),
+	  ('Guest','123456','Guest@tcoshom.com','Khách','None', 0123456789, 'hello' , 1, 0123456789, 0123456789, 'avatar1.png', 'USER')
 
 insert into Categories(id, name, icon)
 values
