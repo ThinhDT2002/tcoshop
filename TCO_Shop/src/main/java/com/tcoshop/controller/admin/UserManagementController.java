@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -119,6 +120,16 @@ public class UserManagementController {
 	  model.addAttribute("user",user);
 	  return "tco-admin/user/user-edit.html";
   }
+  
+  @RequestMapping("/tco-admin/userProfile")
+  public String getUserProfile2(Model model, Authentication auth) {
+	  String username = auth.getName();
+	  String url = "http://localhost:8080/api/user/" + username;
+	  ResponseEntity<User> respEntity = restTemplate.getForEntity(url, User.class);
+	  User userProfile = respEntity.getBody();
+	  model.addAttribute("user",userProfile);
+	  return "tco-admin/user/user-profile.html";
+  }
 
   @RequestMapping("/tco-admin/userUpdate/{username}")
   public String updateUser(RedirectAttributes redirectAttributes,
@@ -137,6 +148,25 @@ public class UserManagementController {
 	  redirectAttributes.addFlashAttribute("user", user);
 	  return "redirect:/tco-admin/userEdit/" + user.getUsername();
   }
+  
+  @RequestMapping("/tco-admin/userProfileUpdate/{username}")
+  public String updateUserProfile(RedirectAttributes redirectAttributes,
+		 @RequestParam("userAvatar") Optional<MultipartFile> multipartFile,
+		 @ModelAttribute("user") User user, Model model) {
+	  String getUrl = "http://localhost:8080/api/user/" + user.getUsername();
+	  ResponseEntity<User> responseEntity = restTemplate.getForEntity(getUrl, User.class);
+	  User userIcon = responseEntity.getBody();
+	  user.setAvatar(userIcon.getAvatar());
+	  
+	  String putUrl = "http://localhost:8080/api/user/" + user.getUsername();
+	  setAvatar(user, multipartFile);
+	  HttpEntity<User> httpEntity = new HttpEntity<User>(user);
+	  restTemplate.put(putUrl, httpEntity);
+	  redirectAttributes.addFlashAttribute("message","Cập nhật tài khỏan " + user.getUsername() + " thành công!");
+	  redirectAttributes.addFlashAttribute("user", user);
+	  return "redirect:/tco-admin/user/" + user.getUsername();
+  }
+  
     private void setAvatar(User user, Optional<MultipartFile> multipartFile) {
         String fileName = "user.png";
         if(!multipartFile.get().isEmpty()) {

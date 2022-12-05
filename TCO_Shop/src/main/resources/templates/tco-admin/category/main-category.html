@@ -67,8 +67,8 @@
 											<div class="row">
 												<div class="col-12">
 													<button th:if = "${categoryForm.id} == null" th:formaction = "@{/tco-admin/category/submit}"  class="btn btn-primary">Thêm</button>
-													<button th:if = "${categoryForm.id} == null" th:formaction="@{/tco-admin/category}"  class="btn btn-primary">Tạo mới</button>
 													<button th:if = "${categoryForm.id} != null" th:formaction="@{|/tco-admin/category/update/${categoryForm.id}|}"  class="btn btn-primary">Cập nhật</button>
+													<button th:formaction="@{/tco-admin/category}"  class="btn btn-primary">Tạo mới</button>
 												</div>
 												
 											</div>
@@ -81,61 +81,119 @@
 					</div>
 					<!--  -->
 					<div class="col-xl-8 col-lg-12">
-						<div class="ec-cat-list card card-default">
-							<div class="card-body">
-									<table class="table">
-										<thead>
-											<tr>
-												<th>Icon</th>
-												<th>ID</th>
-												<th>Tên</th>
-												<th>Thương hiệu</th>
-												<th>Tuỳ chỉnh</th>
-											</tr>
-										</thead>
+						<div class="row">
+							<div class="col-12">
+								<div class="card card-default">
+									<div class="card-header card-header-border-bottom d-flex justify-content-between">
+										<div class="card-bar">
+											<div class="col-lg-3 col-md-6">
+												<label for="pagerSize">Hiển thị: </label>
+													<select class="form-control" ng-change="pagination()"
+														ng-model="pageSize" >
+														<option value="5">5</option>
+														<option value="8">8</option>
+														<option value="15">15</option>
+													</select>
+											</div>
+											<div class="col-lg-9 col-md-12 sort">
+												<div class="col-lg-4 col-md-6 p-space">
+													<label for="">Tìm kiếm</label>
+													<input class="form-control" type="text" ng-model="cateSearch"
+														placeholder="Tìm kiếm">
+												</div>
+												
+												<div class="col-lg-4 col-md-6 p-space">
+													<label for="sortSubcategory">Bộ lọc</label>
+													<select class="form-control" ng-change="sort()"
+														ng-model="cateProperty">
+														<option value="id">Mã danh mục ↑</option>
+														<option value="-id">Mã danh mục ↓</option>
+														<option value="name">Tên danh mục ↑</option>
+														<option value="-name">Tên danh mục ↓</option>
+														
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
 
-										<tbody>
-											<tr ng-repeat="category in categories">
-												<td><img class="cat-thumb"
-													th:src="@{|/images/category/{{category.icon}}|}"/></td>
-												<td>{{category.id}}</td>
-												<td>{{category.name}}</td>
-												<td ng-if="category.subcategories.length > 0">
-													<span
-														class="ec-sub-cat-count" title="Total Sub Categories">{{category.subcategories.length}}</span>
-													<span
-													class="ec-sub-cat-list">
-														<span ng-repeat="subcategory in category.subcategories" class="ec-sub-cat-tag">{{subcategory.name}}</span>
-												</span>
-												</td>											
-												<td ng-if="category.subcategories.length == 0">
-													<span class="ec-sub-cat-list"> <span
-														class="ec-sub-cat-count" title="Total Sub Categories">0</span>
-												</span>
-												</td>
-												<td style="width: 20%;">
-													<div class="btn-group">
-														<button type="button" class="btn btn-outline-success">Chi tiết</button>
-														<button type="button"
-															class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-															data-bs-toggle="dropdown" aria-haspopup="true"
-															aria-expanded="false" data-display="static">
-															<span class="sr-only">Info</span>
-														</button>
-
-														<div class="dropdown-menu">
-															<a class="dropdown-item" th:href = "@{|/tco-admin/category/{{category.id}}|}">Chỉnh sửa</a> <a
-																class="dropdown-item" th:href="@{|/tco-admin/category/delete/{{category.id}}|}">Xoá</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-
-										</tbody>
-									</table>
-								
+									<div>
+										<h6>Tổng danh mục: {{totalQuantity()}}</h6>
+									</div>
+								</div>
+								<div class="ec-cat-list card card-default">
+									<div class="card-body">
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Icon</th>
+														<th>ID</th>
+														<th>Tên</th>
+														<th>Thương hiệu</th>
+														<th>Tuỳ chỉnh</th>
+													</tr>
+												</thead>
+		
+												<tbody>
+													<tr ng-repeat="category in categories | filter: cateSearch | orderBy: cateProperty | startFrom: currentPage*pageSize
+														| limitTo: pageSize">
+														<td><img class="cat-thumb"
+															th:src="@{|/images/category/{{category.icon}}|}"/></td>
+														<td>{{category.id}}</td>
+														<td>{{category.name}}</td>
+														<td ng-if="category.subcategories.length > 0">
+															<span
+																class="ec-sub-cat-count" title="Total Sub Categories">{{category.subcategories.length}}</span>
+															<span
+															class="ec-sub-cat-list">
+																<span ng-repeat="subcategory in category.subcategories" class="ec-sub-cat-tag">{{subcategory.name}}</span>
+														</span>
+														</td>											
+														<td ng-if="category.subcategories.length == 0">
+															<span class="ec-sub-cat-list"> <span
+																class="ec-sub-cat-count" title="Total Sub Categories">0</span>
+														</span>
+														</td>
+														<td style="width: 20%;">
+															<div class="btn-group">
+																<button type="button" class="btn btn-outline-success">Chi tiết</button>
+																<button type="button"
+																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+																	data-bs-toggle="dropdown" aria-haspopup="true"
+																	aria-expanded="false" data-display="static">
+																	<span class="sr-only">Info</span>
+																</button>
+		
+																<div class="dropdown-menu">
+																	<a class="dropdown-item" th:href = "@{|/tco-admin/category/{{category.id}}|}">Chỉnh sửa</a> <a
+																		class="dropdown-item" th:href="@{|/tco-admin/category/delete/{{category.id}}|}">Xoá</a>
+																</div>
+															</div>
+														</td>
+													</tr>
+		
+												</tbody>
+											</table>
+										<div class="panel-footer text-center">
+											<button ng-click="pagination()" class="btn btn-danger">
+												<b>Trang đầu</b>
+											</button>
+											<button ng-disabled = "currentPage == 0" ng-click="currentPage = currentPage - 1" class="btn btn-primary">
+												<b>Trước</b>
+											</button>
+											<button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+											<button ng-disabled = "currentPage >= categories.length/pageSize-1" ng-click="currentPage = currentPage+1" class="btn btn-primary">
+												<b>Tới</b>
+											</button>
+											<button ng-click="currentPage = numberOfPages() -1" class="btn btn-danger">
+												<b>Trang cuối</b>
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
+						
 					</div>								
 				</div>
 			</div>

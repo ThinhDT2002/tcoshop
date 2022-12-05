@@ -248,7 +248,7 @@ public class ProductManagementController {
             @PathVariable("id") Integer productId) {
         String url = "http://localhost:8080/api/products/" + productId;
         restTemplate.delete(url);
-        redirectAttributes.addFlashAttribute("message", "Delete succesfully!");
+        redirectAttributes.addFlashAttribute("message", "Xóa sản phẩm thành công!");
         return "redirect:/tco-admin/product/add";
     }
 
