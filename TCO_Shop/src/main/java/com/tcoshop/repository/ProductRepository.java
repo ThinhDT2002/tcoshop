@@ -43,4 +43,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             + "group by Products.Id order by COUNT(Product_Id) desc\r\n"
             + ")", nativeQuery = true)
     List<Product> findProductBestSold();
+    @Query(value = "select top 8 * from Products order by Id desc", nativeQuery = true)
+    List<Product> find8NewProducts();
 }

@@ -70,5 +70,10 @@ public class ProductServiceImpl implements ProductService {
 	public Product create(Product product) {
 		return pdao.save(product);
 	}
+	
+	@Override
+	public List<Product> find8NewProducts() {
+	    return pdao.find8NewProducts();
+	}
 
 }

@@ -49,4 +49,9 @@ public class ProductAPI {
 	public void delete(@PathVariable("id") Integer id) {
 		productService.delete(id);
 	}
+	
+	@GetMapping("/newProducts")
+	public List<Product> get8NewProducts() {
+	    return productService.find8NewProducts();
+	}
 }

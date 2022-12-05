@@ -3,7 +3,12 @@ const app = angular.module("shopping-cart-app", []);
 app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.products = [];
 	$scope.reviews = [];
-
+	
+	$scope.newProducts = [];
+	$http.get("/api/products/newProducts").then(resp => {
+		$scope.newProducts = resp.data;
+		console.log($scope.newProducts);
+	})
 
 	// lấy giỏ hàng của người dùng abcxyz
 	$scope.items = [];
