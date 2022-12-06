@@ -18,58 +18,96 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 		<div class="row">
 			<div class="col-12">
 				<div class="card card-default">
+					<div class="card-header card-header-border-bottom d-flex justify-content-between">
+						<div class="card-bar">
+							<div class="col-lg-3 col-md-6">
+								<label for="pagerSize">Hiển thị: </label>
+								<select class="form-control" ng-change="pagination()" ng-model="pageSize">
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+								</select>
+							</div>
+
+							<div class="col-lg-9 col-md-12 sort">
+								<div class="col-lg-4 col-md-6 p-space">
+									<label >Tìm kiếm</label>
+									<input class="form-control" type="text" ng-model="reviewSearch"
+										placeholder="Tìm kiếm">
+								</div>
+								<div class="col-lg-4 col-md-6 p-space">
+									<label for="sortProduct">Bộ lọc</label>
+									<select class="form-control" ng-change="sort()"
+										ng-model="reviewProperty">
+										<option value="id">ID ↑</option>
+										<option value="-id">ID ↓</option>
+										<option value="user">Người bình luận ↑</option>
+										<option value="-user">Người bình luận ↓</option>
+										<option value="time">Ngày ↑</option>
+										<option value="-time">Ngày ↓</option>
+										<option value="product">Sản phẩm ↑</option>
+										<option value="-product">Sản phẩm ↓</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="card card-default">
 					<div class="card-body">
-						<div class="table-responsive">
-							<table id="responsive-data-table" class="table" style="width:100%">
+						
+							<table class="table" style="width:100%">
 								<thead>
 									<tr>
-										<th>Product</th>
-										<th>Name</th>
-										<th>Profile</th>
-										<th>Vendor</th>
-										<th>Ratings</th>
-										<th>Date</th>
-										<th>Action</th>
+										<th>Mã đánh giá</th>
+										<th>Mã sản phẩm</th>
+										<th>Tên sản phẩm</th>
+										<th>Người bình luận</th>
+										<th>Nội dung</th>
+										<th>Ngày đánh giá</th>
+										<th>Tùy chỉnh</th>
 									</tr>
 								</thead>
 
 								<tbody>
-									<tr ng-repeat = "rev in revs">
+									<tr ng-repeat = "rev in revs | filter: reviewSearch | orderBy: reviewProperty
+										| startFrom: currentPage * pageSize | limitTo: pageSize">
+										<td>{{rev.id}}</td>
 										<td>{{rev.product.id}}</td>
-										<td>{{rev.user.fullname}}</td>
 										<td>{{rev.product.name}}</td>
+										<td>{{rev.user.fullname}}</td>
 										<td>{{rev.content}}</td>
-										<td>
-											<div class="ec-t-rate">
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star"></i>
-											</div>
-										</td>
-										<td>{{rev.time | date:'dd-MM-yyyy'}}</td>
+										<td>{{rev.time | date:'dd-MM-yyyy'}} {{rev.timeDetail}}</td>
 										<td>
 											<div class="btn-group mb-1">
-												<button type="button"
-													class="btn btn-outline-success">Info</button>
-												<button type="button"
-													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-													data-bs-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false" data-display="static">
-													<span class="sr-only">Info</span>
-												</button>
-
-												<div class="dropdown-menu">
-													<a class="dropdown-item" href="#">Edit</a>
-													<a class="dropdown-item" href="#">Delete</a>
-												</div>
+												<button ng-click="delete(rev.id)"
+													class="btn btn-outline-success">Xóa</button>
+												
 											</div>
 										</td>
 									</tr>
 								</tbody>
 							</table>
-						</div>
+							<div class="panel-footer text-center">
+								<button ng-click="pagination()" class="btn btn-danger">
+									<b>Trang đầu</b>
+								</button>
+								<button ng-disabled = "currentPage == 0" ng-click="currentPage = currentPage - 1" class="btn btn-primary">
+									<b>Trước</b>
+								</button>
+								<button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+								<button ng-disabled = "currentPage >= revs.length/pageSize-1" ng-click="currentPage = currentPage+1" class="btn btn-primary">
+									<b>Tới</b>
+								</button>
+								<button ng-click="currentPage = numberOfPages() -1" class="btn btn-danger">
+									<b>Trang cuối</b>
+								</button>
+							</div>
+						
 					</div>
 				</div>
 			</div>
