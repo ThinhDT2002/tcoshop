@@ -223,7 +223,7 @@ values
 		('PHONE',N'Điện thoại','PHONE','phone.png'),
 
 		-- PURIFIER
-		('PURIFIER',N'Lọc nước','PURIFIER','purifier.png'),
+		('PURIFIER',N'Lọc nước','PURIFIER','purifier.png')
 
 		-- kitchen
 
