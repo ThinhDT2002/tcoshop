@@ -79,6 +79,11 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	}
 
 	$scope.initialize();
+	
+	$scope.items_4 = {
+		page: 0,
+		size: 4,
+	}
 
 	$scope.pager = {
 		page: 0,

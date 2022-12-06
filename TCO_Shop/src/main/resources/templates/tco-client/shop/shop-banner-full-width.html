@@ -102,11 +102,6 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     th:src="@{|/images/products/${p.image2}|}" alt="Product" />
                                             </a>
                                             <span class="percentage" th:text="${p.discount} + '%'"></span>
-                                            <a href="#" class="quickview" data-link-action="quickview"
-                                                title="Quick view" data-bs-toggle="modal"
-                                                data-bs-target="#ec_quickview_modal"><img
-                                                    th:src="@{|/assets/images/icons/quickview.svg|}" class="svg_img pro_svg"
-                                                    alt="" /></a>
                                             <div class="ec-pro-actions">
                                                 <a href="compare.html" class="ec-btn-group compare"
                                                     title="Compare"><img th:src="@{|/assets/images/icons/compare.svg|}"
@@ -121,10 +116,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             		<button title="Hết hàng" class=" add-to-cart"><img
                                                         th:src="@{|/assets/images/icons/clear-shopping-cart.png|}"  class="svg_img pro_svg"
                                                         alt="" /> Hết hàng</button>
-                                         		</th:block>    
-                                                        
-                                               
-                                                        
+                                         		</th:block>                                                                                                                                                                   
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         th:src="@{|/assets/images/icons/wishlist.svg|}"
                                                         class="svg_img pro_svg" alt="" /></a>
@@ -133,13 +125,6 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
-                                        <div class="ec-pro-rating">
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star fill"></i>
-                                            <i class="ecicon eci-star"></i>
-                                        </div>
                                         <div class="ec-pro-list-desc">[[*{p.description}]]</div>
                                         <span class="ec-price">
                                             <!-- <span class="old-price">$27.00</span> -->
