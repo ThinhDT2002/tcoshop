@@ -49,6 +49,16 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			}
 		}
 	})
+	
+	$scope.cheapProducts = [];
+	$http.get("/api/products/cheapProducts").then(resp => {
+		$scope.cheapProducts = resp.data;
+	}).then(function() {
+		$scope.cheapProduct1 = $scope.cheapProducts[1];
+		$scope.cheapProduct2 = $scope.cheapProducts[2];
+		$scope.cheapProduct3 = $scope.cheapProducts[3];
+		$scope.cheapProduct4 = $scope.cheapProducts[4];
+	})
 
 	// lấy giỏ hàng của người dùng abcxyz
 	$scope.items = [];

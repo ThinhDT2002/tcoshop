@@ -301,10 +301,10 @@
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" src="assets/images/special-product/3_1.jpg"
-                                                    alt="Product" />
-                                                <img class="hover-image" src="assets/images/special-product/3_2.jpg"
-                                                    alt="Product" />
+                                                <img class="main-image" th:src="@{|/images/products/{{cheapProduct1.image1}}|}"
+                                                    alt="{{cheapProduct1.name}}" />
+                                                <img class="hover-image" th:src="@{|/images/products/{{cheapProduct1.image2}}|}"
+                                                    alt="{{cheapProduct1.name}}" />
                                             </a>
                                         </div>
                                     </div>
@@ -314,58 +314,42 @@
                                                 <div class="ec-pro-color">
                                                     <ul class="ec-opt-swatch ec-change-img">
                                                         <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/special-product/3_1.jpg"
-                                                                data-src-hover="assets/images/special-product/3_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#dbdbdb;"></span></a></li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/special-product/3_2.jpg"
-                                                                data-src-hover="assets/images/special-product/3_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color:#76e7e7;"></span></a></li>
+                                                        		th:attr="data-src='@{|/images/products/{{cheapProduct1.image2}}|}',
+                                                        		 data-src-hover='@{|/images/products/{{cheapProduct1.image2}}|}',
+                                                        		 data-tooltip='{{cheapProduct1.name}}'"
+                                                                ></a></li>
+                                                        
                                                     </ul>
                                                 </div>
-                                                <div class="ec-pro-compare">
-                                                    <a href="compare.html" class="ec-btn-group compare"
-                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">JBLK wireless
-                                                speaker</a></h5>
-                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Multimedia</a>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{cheapProduct1.id}}|}">{{cheapProduct1.name}}</a></h5>
+                                        <h6 class="ec-pro-stitle"><a th:href="@{|/product/list?scid={{cheapProduct1.subcategory.id}}|}">{{cheapProduct1.subcategory.name}}</a>
                                         </h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
-                                                    <span class="new-price">$230.00</span>
-                                                    <span class="old-price">$360.00</span>
+                                                <span ng-if="cheapProduct1.discount != 0" class="ec-price">
+                                                    <span class="new-price">{{cheapProduct1.price * (100 - cheapProduct1.discount) / 100 | currency:'':0}} VND</span>
+                                                    <span class="old-price">{{cheapProduct1.price | currency:'':0}} VND</span>
                                                 </span>
-                                                <span class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star-o"></i>
-                                                    <i class="ecicon eci-star-o"></i>
+                                                <span ng-if="cheapProduct1.discount == 0" class="ec-price">
+                                                	<span class="new-price">{{cheapProduct1.price | currency:'':0}} VND</span>
                                                 </span>
+                                                
                                             </div>
                                         </div>
                                         <div class="pro-hidden-block">
 
-                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.
+                                            <div class="ec-pro-desc">{{cheapProduct1.description}}
                                             </div>
                                             <div class="ec-pro-actions">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
                                                         class="svg_img pro_svg" alt="" /></a>
-                                                <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                <button ng-click="cart.add(cheapProduct1.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
                                                     giỏ</button>
-                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><img
-                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></a>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -377,10 +361,10 @@
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" src="assets/images/special-product/4_1.jpg"
-                                                    alt="Product" />
-                                                <img class="hover-image" src="assets/images/special-product/4_2.jpg"
-                                                    alt="Product" />
+                                                <img class="main-image" th:src="@{|/images/products/{{cheapProduct2.image1}}|}"
+                                                    alt="{{cheapProduct2.name}}" />
+                                                <img class="hover-image" th:src="@{|/images/products/{{cheapProduct2.image2}}|}"
+                                                    alt="{{cheapProduct2.name}}" />
                                             </a>
                                         </div>
                                     </div>
@@ -390,52 +374,42 @@
                                                 <div class="ec-pro-color">
                                                     <ul class="ec-opt-swatch ec-change-img">
                                                         <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/special-product/4_1.jpg"
-                                                                data-src-hover="assets/images/special-product/4_2.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#202020;"></span></a></li>
+                                                        		th:attr="data-src='@{|/images/products/{{cheapProduct2.image2}}|}',
+                                                        		 data-src-hover='@{|/images/products/{{cheapProduct2.image2}}|}',
+                                                        		 data-tooltip='{{cheapProduct2.name}}'"
+                                                                ></a></li>
+                                                        
                                                     </ul>
                                                 </div>
-                                                <div class="ec-pro-compare">
-                                                    <a href="compare.html" class="ec-btn-group compare"
-                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Galacy 8 phone 4gb
-                                                | 64gb </a></h5>
-                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Phone</a></h6>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{cheapProduct2.id}}|}">{{cheapProduct2.name}}</a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">{{cheapProduct2.subcategory.name}}</a>
+                                        </h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
-                                                    <span class="new-price">$159.00</span>
-                                                    <span class="old-price">$200.00</span>
+                                                <span ng-if="cheapProduct2.discount != 0" class="ec-price">
+                                                    <span class="new-price">{{cheapProduct2.price * (100 - cheapProduct2.discount) / 100 | currency:'':0}} VND</span>
+                                                    <span class="old-price">{{cheapProduct2.price | currency:'':0}} VND</span>
                                                 </span>
-                                                <span class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star-o"></i>
-                                                    <i class="ecicon eci-star-o"></i>
+                                                <span ng-if="cheapProduct2.discount == 0" class="ec-price">
+                                                	<span class="new-price">{{cheapProduct2.price | currency:'':0}} VND</span>
                                                 </span>
+                                                
                                             </div>
                                         </div>
                                         <div class="pro-hidden-block">
 
-                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.
+                                            <div class="ec-pro-desc">{{cheapProduct2.description}}
                                             </div>
                                             <div class="ec-pro-actions">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
                                                         class="svg_img pro_svg" alt="" /></a>
-                                                <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                <button ng-click="cart.add(cheapProduct2.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
                                                     giỏ</button>
-                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><img
-                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></a>
+                                                
                                             </div>
                                         </div>
                                     </div>

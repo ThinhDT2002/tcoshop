@@ -34,4 +34,6 @@ public interface ProductService {
 	List<Product> find8HighDiscountProducts();
 	
 	List<Product> find8ProductsBestSold();
+	
+	List<Product> find4CheapProducts();
 }

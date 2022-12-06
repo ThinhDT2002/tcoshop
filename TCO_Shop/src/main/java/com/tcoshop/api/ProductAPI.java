@@ -64,4 +64,9 @@ public class ProductAPI {
 	public List<Product> get8BestSoldProduct() {
 	    return productService.find8ProductsBestSold();
 	}
+	
+	@GetMapping("/cheapProducts")
+	public List<Product> get4CheapProducts() {
+	    return productService.find4CheapProducts();
+	}
 }
