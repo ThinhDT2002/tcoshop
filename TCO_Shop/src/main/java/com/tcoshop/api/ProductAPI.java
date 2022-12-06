@@ -54,4 +54,14 @@ public class ProductAPI {
 	public List<Product> get8NewProducts() {
 	    return productService.find8NewProducts();
 	}
+	
+	@GetMapping("/highDiscountProducts")
+	public List<Product> get8HighDiscountProducts() {
+	    return productService.find8HighDiscountProducts();
+	}
+	
+	@GetMapping("/bestSoldProducts")
+	public List<Product> get8BestSoldProduct() {
+	    return productService.find8ProductsBestSold();
+	}
 }

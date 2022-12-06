@@ -93,9 +93,7 @@
                                 <h5 class="ec-quick-title"><a th:href="@{|/product/detail/{{display.items.id}}|}">{{display.items.name}}</a></h5>
                                
 
-                                <div class="ec-quickview-desc">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
-                                    since the 1500s,</div>
+                                <div class="ec-quickview-desc">{{display.items.description}}</div>
                                 <div class="ec-quickview-price">
                                     <span class="old-price">{{display.items.price | currency:'':0}} VNĐ</span> -
                                     <span class="new-price">{{display.items.price * (100 - display.items.discount)/100 | currency:'':0}} VNĐ</span>
