@@ -125,13 +125,7 @@
                                                         <span class="old-price">{{cart.formatNumber(item.price)}}
                                                             VNĐ</span>
                                                     </span>
-                                                    <span class="ec-pro-rating">
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star-o"></i>
-                                                        <i class="ecicon eci-star-o"></i>
-                                                    </span>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="pro-hidden-block">
@@ -580,10 +574,14 @@
                                         <h6 class="ec-pro-stitle">{{newProduct1.subcategory.name}}</h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
+                                                <span ng-if="newProduct1.discount != 0" class="ec-price">
                                                     
                                                     <span class="old-price">{{newProduct1.price | currency:'':0}} VND</span>
                                                     <span class="new-price">{{newProduct1.price * (100 - newProduct1.discount) / 100 | currency:'':0}} VND</span>
+                                                </span>
+                                                <span ng-if="newProduct1.discount == 0" class="ec-price">
+                                                    
+                                                    <span class="new-price">{{newProduct1.price | currency:'':0}} VND</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -607,11 +605,15 @@
                                         <h6 class="ec-pro-stitle">{{newProduct2.subcategory.name}}</h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
+                                                <span ng-if="newProduct2.discount != 0" class="ec-price">
                                                     
                                                     <span class="old-price">{{newProduct2.price | currency:'':0}} VND</span>
                                                     <span class="new-price">{{newProduct2.price * (100 - newProduct2.discount) / 100 | currency:'':0}} VND</span>
                                                 </span>
+                                                <span ng-if="newProduct2.discount == 0" class="ec-price">
+                                                    
+                                                    <span class="new-price">{{newProduct2.price | currency:'':0}} VND</span>
+                                               </span>
                                             </div>
                                         </div>
                                     </div>
@@ -629,24 +631,63 @@
                         </div>
                         <div class="ec-special-slider">
 
-                            <div class="col-sm-12 ec-all-product-block">
+                            <div class="col-sm-12 ec-all-product-block" ng-repeat="discountProduct1 in highDiscountProducts1">
                                 <div class="ec-all-product-inner">
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" src="assets/images/product-image/46_1.jpg"
-                                                    alt="Product" />
+                                                <img class="main-image" th:src="@{|/images/products/{{discountProduct1.image1}}|}"
+                                                    alt="{{discountProduct1.name}}" />
                                             </a>
                                         </div>
                                     </div>
                                     <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">LED torch</a></h5>
-                                        <h6 class="ec-pro-stitle">Electronics</h6>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{discountProduct1.id}}|}">{{discountProduct1.name}}</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">{{discountProduct1.subcategory.name}}</h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
-                                                    <span class="new-price">$20.00</span>
-                                                    <span class="old-price">$30.00</span>
+                                                <span ng-if="discountProduct1.disount != 0" class="ec-price">
+                                                    
+                                                    <span class="old-price">{{discountProduct1.price | currency:'':0}} VND</span> 
+                                                    <span class="new-price">{{discountProduct1.price * (100 - discountProduct1.discount) / 100 | currency:'':0}} VND</span> <span>   {{discountProduct1.discount}}%</span>
+                                                </span>
+                                                
+                                                <span ng-if="discountProduct1.disount == 0" class="ec-price">
+                                                    
+                                                    <span class="new-price">{{discountProduct1.price | currency:'':0}} VND</span> 
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12 ec-all-product-block" ng-repeat="discountProduct2 in highDiscountProducts2">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" th:src="@{|/images/products/{{discountProduct2.image1}}|}"
+                                                    alt="{{discountProduct2.name}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{discountProduct2.id}}|}">{{discountProduct2.name}}</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">{{discountProduct2.subcategory.name}}</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span ng-if="discountProduct2.discount != 0" class="ec-price">
+                                                    
+                                                    <span class="old-price">{{discountProduct2.price | currency:'':0}} VND</span> 
+                                                    <span class="new-price">{{discountProduct2.price * (100 - discountProduct2.discount) / 100 | currency:'':0}} VND</span> <span>   {{discountProduct2.discount}}%</span>
+                                                </span>
+                                                
+                                                <span ng-if="discountProduct2.discount == 0" class="ec-price">
+                                                    
+                                                    <span class="new-price">{{discountProduct2.price | currency:'':0}} VND</span> 
                                                 </span>
                                             </div>
                                         </div>
@@ -663,25 +704,62 @@
                             </div>
                         </div>
                         <div class="ec-best-slider">
-                            <div class="col-sm-12 ec-all-product-block">
+                            <div class="col-sm-12 ec-all-product-block" ng-repeat="bestSoldProduct1 in bestSoldProducts1">
                                 <div class="ec-all-product-inner">
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" src="assets/images/product-image/39_1.jpg"
-                                                    alt="Product" />
+                                                <img class="main-image" th:src="@{|/images/products/{{bestSoldProduct1.image1}}|}"
+                                                    alt="{{bestSoldProduct1.name}}" />
                                             </a>
                                         </div>
                                     </div>
                                     <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Camera instant
-                                                image</a></h5>
-                                        <h6 class="ec-pro-stitle">Camera</h6>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{bestSoldProduct1.id}}|}">{{bestSoldProduct1.name}}</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">{{bestSoldProduct1.subcategory.name}}</h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
-                                                    <span class="new-price">$589.00</span>
-                                                    <span class="old-price">$658.00</span>
+                                                <span ng-if="bestSoldProduct1.discount != 0" class="ec-price">
+                                                    
+                                                    <span class="old-price">{{bestSoldProduct1.price | currency:'':0}} VND</span>
+                                                    <span class="new-price">{{bestSoldProduct1.price * (100 - bestSoldProduct1.discount) / 100 | currency:'':0}} VND</span>
+                                                </span>
+                                                <span ng-if="bestSoldProduct1.discount == 0" class="ec-price">
+                                                    
+                                                    <span class="new-price">{{bestSoldProduct1.price | currency:'':0}} VND</span>
+                                                    
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12 ec-all-product-block" ng-repeat="bestSoldProduct2 in bestSoldProduct2">
+                                <div class="ec-all-product-inner">
+                                    <div class="ec-pro-image-outer">
+                                        <div class="ec-pro-image">
+                                            <a href="product-left-sidebar.html" class="image">
+                                                <img class="main-image" th:src="@{|/images/products/{{bestSoldProduct2.image1}}|}"
+                                                    alt="{{bestSoldProduct2.name}}" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="ec-pro-content">
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{bestSoldProduct2.id}}|}">{{newProduct2.name}}</a>
+                                        </h5>
+                                        <h6 class="ec-pro-stitle">{{bestSoldProduct2.subcategory.name}}</h6>
+                                        <div class="ec-pro-rat-price">
+                                            <div class="ec-pro-rat-pri-inner">
+                                                <span ng-if="bestSoldProduct2.discount != 0" class="ec-price">
+                                                    
+                                                    <span class="old-price">{{bestSoldProduct2.price | currency:'':0}} VND</span>
+                                                    <span class="new-price">{{bestSoldProduct2.price * (100 - bestSoldProduct2.discount) / 100 | currency:'':0}} VND</span>
+                                                </span>
+                                                <span ng-if="bestSoldProduct2.discount == 0" class="ec-price">
+                                                    
+                                                    <span class="new-price">{{bestSoldProduct2.price | currency:'':0}} VND</span>
                                                 </span>
                                             </div>
                                         </div>

@@ -76,4 +76,14 @@ public class ProductServiceImpl implements ProductService {
 	    return pdao.find8NewProducts();
 	}
 
+    @Override
+    public List<Product> find8HighDiscountProducts() {
+        return pdao.find8HighDiscountProducts();
+    }
+
+    @Override
+    public List<Product> find8ProductsBestSold() {
+        return pdao.find8ProductsBestSold();
+    }
+
 }

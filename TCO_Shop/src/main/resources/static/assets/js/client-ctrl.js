@@ -19,6 +19,36 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			}
 		}
 	})
+	
+	$scope.highDiscountProducts = [];
+	$scope.highDiscountProducts1 = [];
+	$scope.highDiscountProducts2 = [];
+	$http.get("/api/products/highDiscountProducts").then(resp => {
+		$scope.highDiscountProducts = resp.data;
+	}).then(function() {
+		for(let i = 0; i < $scope.highDiscountProducts.length; i++) {
+			if(i <= 3) {
+				$scope.highDiscountProducts1.push($scope.highDiscountProducts[i]);
+			} else {
+				$scope.highDiscountProducts2.push($scope.highDiscountProducts[i]);
+			}
+		}
+	})
+	
+	$scope.bestSoldProducts = [];
+	$scope.bestSoldProducts1 = [];
+	$scope.bestSoldProducts2 = [];
+	$http.get("/api/products/bestSoldProducts").then(resp => {
+		$scope.bestSoldProducts = resp.data;
+	}).then(function() {
+		for(let i = 0; i < $scope.bestSoldProducts.length; i++) {
+			if(i <= 3) {
+				$scope.bestSoldProducts1.push($scope.bestSoldProducts[i]);
+			} else {
+				$scope.bestSoldProducts2.push($scope.bestSoldProducts[i]);
+			}
+		}
+	})
 
 	// lấy giỏ hàng của người dùng abcxyz
 	$scope.items = [];

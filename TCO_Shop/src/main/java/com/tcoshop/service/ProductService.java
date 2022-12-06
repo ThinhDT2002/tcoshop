@@ -30,4 +30,8 @@ public interface ProductService {
 	void delete(Integer id);
 	
 	List<Product> find8NewProducts();
+	
+	List<Product> find8HighDiscountProducts();
+	
+	List<Product> find8ProductsBestSold();
 }
