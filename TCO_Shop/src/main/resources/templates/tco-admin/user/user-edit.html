@@ -41,7 +41,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 								aria-labelledby="settings-tab">
 								<div class="tab-pane-content mt-5">
 								
-									<label class="error-mess">[[${message}]]</label>
+									<label class="error-mess" th:if="${updateUserMessage} != null">[[${updateUserMessage}]]</label>
 									<form th:action="@{/tco-admin/userEdit}" enctype="multipart/form-data" method="post" th:object="${user}">
 										<div class="form-group row mb-6">
 											<div class="row ec-vendor-uploads">
@@ -93,7 +93,8 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 										<div class="row mb-2">
 											<div class="col-lg-6">
 												<div class="form-group">
-													<label for="phone">Số điện thoại</label>
+													<label for="phone">Số điện thoại</label><br>
+													<label class="error-mess" th:if = "${phoneError} != null">[[${phoneError}]]</label>
 													<input th:field="*{phone}" type="text" class="form-control" id="phone"
 														placeholder="Số điện thoại">
 												</div>

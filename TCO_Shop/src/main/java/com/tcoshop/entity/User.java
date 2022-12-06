@@ -31,7 +31,7 @@ public class User implements Serializable{
 	private String email;
 	private String fullname;
 	private String address;
-	private Integer phone;
+	private String phone;
 	private String introduce;
 	private Date createDate;
 	@NotNull(message = "Vui lòng chọn trạng thái")
@@ -51,7 +51,7 @@ public class User implements Serializable{
 		super();
 	}
 	
-	public User(String username, String password, String email, String fullname, String address, Integer phone, String introduce, Boolean status, String activateCode,
+	public User(String username, String password, String email, String fullname, String address, String phone, String introduce, Boolean status, String activateCode,
             String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews, Date createDate) {
         super();
         this.username = username;
@@ -142,11 +142,11 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

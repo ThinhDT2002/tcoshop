@@ -132,9 +132,24 @@ public class UserManagementController {
   }
 
   @RequestMapping("/tco-admin/userUpdate/{username}")
-  public String updateUser(RedirectAttributes redirectAttributes,
+  public String updateUser(@Valid RedirectAttributes redirectAttributes,
 		 @RequestParam("userAvatar") Optional<MultipartFile> multipartFile,
-		 @ModelAttribute("user") User user, Model model) {
+		 @ModelAttribute("user") User user, Errors errors, Model model) {
+	  
+	  boolean updateUserError = false;
+	  if(errors.hasErrors()) {
+		  model.addAttribute("updateUserMessage","Cập nhật thông tin người dùng thất bại!");
+		  return "tco-admin/user/user-edit.html";
+	  }
+	  if(!user.getPhone().matches("(84|0[3|5|7|8|9])+([0-9]{8})\\b")) {
+		  updateUserError = true;
+		  model.addAttribute("phoneError","Không đúng định dạng số điện thoại VN");
+	  }
+	  if(updateUserError == true ) {
+		  model.addAttribute("updateUserMessage", "Cập nhật thông tin người dùng thất bại!");
+		  return "tco-admin/user/user-edit.html";
+	  }
+	  
 	  String getUrl = "http://localhost:8080/api/user/" + user.getUsername();
 	  ResponseEntity<User> responseEntity = restTemplate.getForEntity(getUrl, User.class);
 	  User userIcon = responseEntity.getBody();
@@ -144,15 +159,17 @@ public class UserManagementController {
 	  setAvatar(user, multipartFile);
 	  HttpEntity<User> httpEntity = new HttpEntity<User>(user);
 	  restTemplate.put(putUrl, httpEntity);
-	  redirectAttributes.addFlashAttribute("message","Cập nhật tài khỏan " + user.getUsername() + " thành công!");
+	  redirectAttributes.addFlashAttribute("updateUserMessage","Cập nhật thông tin người dùng thành công!");
 	  redirectAttributes.addFlashAttribute("user", user);
 	  return "redirect:/tco-admin/userEdit/" + user.getUsername();
   }
   
   @RequestMapping("/tco-admin/userProfileUpdate/{username}")
-  public String updateUserProfile(RedirectAttributes redirectAttributes,
+  public String updateUserProfile( RedirectAttributes redirectAttributes,
 		 @RequestParam("userAvatar") Optional<MultipartFile> multipartFile,
 		 @ModelAttribute("user") User user, Model model) {
+	  
+	  
 	  String getUrl = "http://localhost:8080/api/user/" + user.getUsername();
 	  ResponseEntity<User> responseEntity = restTemplate.getForEntity(getUrl, User.class);
 	  User userIcon = responseEntity.getBody();
@@ -162,7 +179,7 @@ public class UserManagementController {
 	  setAvatar(user, multipartFile);
 	  HttpEntity<User> httpEntity = new HttpEntity<User>(user);
 	  restTemplate.put(putUrl, httpEntity);
-	  redirectAttributes.addFlashAttribute("message","Cập nhật tài khỏan " + user.getUsername() + " thành công!");
+	  redirectAttributes.addFlashAttribute("message","Cập nhật thông tin người dùng thành công!");
 	  redirectAttributes.addFlashAttribute("user", user);
 	  return "redirect:/tco-admin/user/" + user.getUsername();
   }

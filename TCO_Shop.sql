@@ -25,7 +25,7 @@ create table Users(
 	Email varchar(40) not null,
 	Fullname nvarchar(40),
 	Address nvarchar(200),
-	Phone int,
+	Phone nvarchar(10),
 	Introduce nvarchar(300),
 	Status bit,
 	Activate_Code varchar(40),
@@ -159,14 +159,14 @@ values('ADMIN','Administrators'),
 	  ('SHIPPER','Shipper')
 	
 insert into Users(username, password, email, fullname, address, phone,introduce, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
-values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',N'Đường Đông Bắc, Quận 12',0337429180,N'Thịnh tha thiết',1,'0123456789','0123456789','avatar1.png', 'SADMIN'),
-	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',N'Đường Đông Bắc, Quận 12',0337429182,N'Văn vụng về',1,'0123456789','0123456789','avatar2.png', 'SADMIN'),
-	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',N'Đường Đông Bắc, Quận 12',0337429183,N'An x3',1,'0123456789','0123456789','avatar3.png', 'SADMIN'),
-	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',N'Đường Đông Bắc, Quận 12',0337429181,N'Nick name của tôi là Cris Khang.
+values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',N'Đường Đông Bắc, Quận 12','0337429180',N'Thịnh tha thiết',1,'0123456789','0123456789','avatar1.png', 'SADMIN'),
+	  ('vannd15047','123456','vanndtps15048@fpt.edu.vn',N'Nguyễn Đạt Văn',N'Đường Đông Bắc, Quận 12','0337429182',N'Văn vụng về',1,'0123456789','0123456789','avatar2.png', 'SADMIN'),
+	  ('anndd14885','123456','annddps14885@fpt.edu.vn',N'Nguyễn Đỗ Duy An',N'Đường Đông Bắc, Quận 12','0337429183',N'An x3',1,'0123456789','0123456789','avatar3.png', 'SADMIN'),
+	  ('khangtg15054','123456','khangtgps15054@fpt.edu.vn',N'Trần Gia Khang',N'Đường Đông Bắc, Quận 12','0337429181',N'Nick name của tôi là Cris Khang.
 	   Tôi đến từ Bình Thuận. Hiện tại đang học lập trình viên Java tại trường cao đẳng FPT Polytechnic. Sở thích của tôi là nghe nhạc, chơi game, đá bóng. Tôi đang độc thân.'
 	  ,1,'0123456789','0123456789','avatar4.png', 'SADMIN'),
-	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12',0337429184,N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'SADMIN'),
-	  ('Guest','123456','Guest@tcoshom.com','Khách','None', 0123456789, 'hello' , 1, 0123456789, 0123456789, 'avatar1.png', 'USER')
+	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12','0337429184',N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'SADMIN'),
+	  ('Guest','123456','Guest@tcoshom.com',N'Khách','None', 0123456789, 'hello' , 1, 0123456789, 0123456789, 'avatar1.png', 'USER')
 
 insert into Categories(id, name, icon)
 values
