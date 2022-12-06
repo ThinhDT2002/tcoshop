@@ -448,9 +448,8 @@
                                 th:src="@{|/images/products/{{item.image1}}|}" alt="product"></a>
                         <div class="ec-pro-content">
                             <a th:href="@{|/product/detail/{{item.id}}|}" class="cart_pro_title">{{item.name}}</a>
-                            <span class="cart-price"><span>{{cart.formatNumber(item.price)}} VNĐ</span> x {{item.qty}}</span>
+                            <span class="cart-price"><span>{{item.price * (100 - item.discount)/100  | currency:'':0}} VNĐ</span> x {{item.qty}}</span>
                             <div class="qty-plus-minus">
-                                <!-- <input class="qty-input" type="text" name="ec_qtybtn" value="1" /> -->
                                 <input class="qty-input" ng-change="cart.saveToSessionStorage()" ng-model="item.qty" type="number" min="1">
                             </div>
                             <a href="javascript:void(0)" class="remove" th:attr="ng-click=@{|cart.remove(item.id)|}">❌</a>
@@ -464,16 +463,16 @@
                         <tbody >
                             <tr ng-show="true">
                                 <td class="text-left">Tổng giá sản phẩm :</td>
-                                <td class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</td>
+                                <td class="text-right">{{cart.amount | currency:'':0}} VNĐ</td>
                             </tr>
                             <tr>
                                 <td class="text-left">Phí ship :</td>
-                                <td class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</td>
+                                <td class="text-right">{{cart.ship | currency:'':0}} VNĐ</td>
 
                             </tr>
                             <tr>
                                 <td class="text-left">Tổng hoá đơn :</td>
-                                <td class="text-right primary-color">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</td>
+                                <td class="text-right primary-color">{{cart.amount+cart.ship | currency:'':0}} VNĐ</td>
                             </tr>
                         </tbody>
                     </table>

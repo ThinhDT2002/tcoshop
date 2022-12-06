@@ -106,11 +106,11 @@
                                     <div class="ec-checkout-summary">
                                         <div>
                                             <span class="text-left">Giá Sản Phẩm</span>
-                                            <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
+                                            <span class="text-right">{{cart.amount | currency:'':0}} VNĐ</span>
                                         </div>
                                         <div>
                                             <span class="text-left">Phí Vận Chuyển</span>
-                                            <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
+                                            <span class="text-right">{{cart.ship | currency:'':0}} VNĐ</span>
                                         </div>
                                         <!-- <div>
                                             <span class="text-left">Mã Giảm Giá</span>
@@ -128,8 +128,7 @@
                                         </div>
                                         <div class="ec-checkout-summary-total">
                                             <span class="text-left">Thành Tiền</span>
-                                            <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}}
-                                                VNĐ</span>
+                                            <span class="text-right">{{cart.amount+cart.ship | currency:'':0}} VNĐ</span>
                                         </div>
                                     </div>
                                     <div class="ec-checkout-pro" ng-repeat="item in cart.items">
@@ -149,22 +148,12 @@
                                                 </div>
                                                 <div class="ec-pro-content">
                                                     <h5 class="ec-pro-title"><a
-                                                            th:href="@{|/product/detail/{{item.id}}|}">{{item.name}} x
-                                                            {{item.qty}}</a></h5>
-                                                    <div class="ec-pro-rating">
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star fill"></i>
-                                                        <i class="ecicon eci-star"></i>
-                                                    </div>
+                                                            th:href="@{|/product/detail/{{item.id}}|}">{{item.name}} x {{item.qty}}</a></h5>
                                                     <span class="ec-price">
-                                                        <span class="old-price">{{cart.formatNumber(item.price)}}
-                                                            VNĐ</span>
+                                                        <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>
                                                     </span>
                                                     <span class="ec-price">
-                                                        <span class="new-price">{{cart.formatNumber(item.price* (100 -
-                                                            item.discount) / 100)}} VNĐ</span>
+                                                        <span class="new-price">{{item.price * (100 - item.discount) / 100 | currency:'':0}} VNĐ</span>
                                                     </span>
                                                 </div>
                                             </div>
@@ -198,40 +187,6 @@
                             </div>
                             <!-- Sidebar Payment Block -->
                         </div>
-                        <!-- <div class="ec-sidebar-wrap ec-check-pay-img-wrap"> -->
-                            <!-- Sidebar Payment Block -->
-                            <!-- <div class="ec-sidebar-block">
-                                <div class="ec-sb-title">
-                                    <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
-                                </div>
-                                <div class="ec-sb-block-content">
-                                    <div class="ec-check-pay-img-inner">
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment1.png" alt="">
-                                        </div>
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment2.png" alt="">
-                                        </div>
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment3.png" alt="">
-                                        </div>
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment4.png" alt="">
-                                        </div>
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment5.png" alt="">
-                                        </div>
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment6.png" alt="">
-                                        </div>
-                                        <div class="ec-check-pay-img">
-                                            <img src="assets/images/icons/payment7.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- Sidebar Payment Block -->
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -281,13 +236,7 @@
                             </div>
                             <div class="ec-pro-content">
                                 <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Round Neck T-Shirt</a></h5>
-                                <div class="ec-pro-rating">
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star fill"></i>
-                                    <i class="ecicon eci-star"></i>
-                                </div>
+                                
                                 <div class="ec-pro-list-desc">Lorem Ipsum is simply dummy text of the printing and
                                     typesetting industry. Lorem Ipsum is simply dutmmy text ever since the 1500s, when
                                     an unknown printer took a galley.</div>

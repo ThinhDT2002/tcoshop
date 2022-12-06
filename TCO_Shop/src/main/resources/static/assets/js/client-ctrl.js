@@ -171,7 +171,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 		get amount() {
 			return this.items
-				.map(item => item.qty * item.price)
+				.map(item => item.qty * item.price * (100 - item.discount)/100)
 				.reduce((total, qty) => total += qty, 0);
 		},
 
@@ -185,25 +185,10 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			this.items = json ? JSON.parse(json) : [];
 		},
 
-		// format giá tiền
-		formatNumber(value) {
-			return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-		},
-
-		// tính phí ship
-		vat() {
-			return 30000;
-		},
-
 		get ship() {
-			if (this.count == 0) {
-				return 0;
-			} else if (this.count > 2) {
-				return 15000;
-			} else if (this.amount > 10000000) {
-				return 0;
-			}
-
+			if (this.count == 0) return 0;
+			else if(this.count >= 1) return 12000;
+			else if (this.count > 5) return 0;
 		},
 
 	}

@@ -32,7 +32,7 @@ public class OrderController {
 	    ResponseEntity<User> entity = restTemplate.getForEntity(url, User.class);
 	    User currentUser = entity.getBody();
 	    model.addAttribute("currentUser", currentUser);	 
-		return "tco-client/shop/checkout";
+		return "tco-client/cart/checkout";
 	}
 		
 	@RequestMapping("/order/history")
@@ -49,7 +49,7 @@ public class OrderController {
 		for(OrderDetail orderDetail : ordersDetail) {
 			double giaSanPham = (orderDetail.getProduct().getPrice() * ((100.0 - orderDetail.getProduct().getDiscount()) / 100)) * orderDetail.getQuantity();
 			tongTien += giaSanPham;
-		}
+		}		
 		model.addAttribute("sum", tongTien);
 		return "tco-client/order/track-order";
 	}

@@ -55,7 +55,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                             th:src="@{|/images/products/{{item.image1}}|}"
                                                             alt="" />{{item.name}}</a></td>
                                                 <td data-label="Price" class="ec-cart-pro-price"><span
-                                                        class="amount">{{cart.formatNumber(item.price)}} VNĐ</span></td>
+                                                        class="amount">{{item.price * (100 - item.discount)/100 | currency:'':0}} VNĐ</span></td>
                                                 <td data-label="Quantity" class="ec-cart-pro-qty"
                                                     style="text-align: center;">
                                                     <div class="cart-qty-plus-minus-new">
@@ -63,7 +63,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                             name="cartqtybutton" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"/>
                                                     </div>
                                                 </td>
-                                                <td data-label="Total" class="ec-cart-pro-subtotal">{{cart.formatNumber(item.price*item.qty)}} VNĐ</td>
+                                                <td data-label="Total" class="ec-cart-pro-subtotal">{{item.qty * item.price * (100 - item.discount)/100 | currency:'':0}} VNĐ</td>
                                                 <td data-label="Remove" class="ec-cart-pro-remove" th:attr="ng-click=@{|cart.remove(item.id)|}">
                                                     <a href="#"><i class="ecicon eci-trash-o"></i></a>
                                                 </td>
@@ -140,11 +140,11 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <div class="ec-cart-summary">
                                     <div>
                                         <span class="text-left">Tổng số</span>
-                                        <span class="text-right">{{cart.formatNumber(cart.amount)}} VNĐ</span>
+                                        <span class="text-right">{{cart.amount | currency:'':0}} VNĐ</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Phí vận chuyển</span>
-                                        <span class="text-right">{{cart.formatNumber(cart.ship)}} VNĐ</span>
+                                        <span class="text-right">{{cart.ship | currency:'':0}} VNĐ</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Giảm giá</span>
@@ -161,7 +161,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div class="ec-cart-summary-total">
                                         <span class="text-left">Tổng cộng</span>
-                                        <span class="text-right">{{cart.formatNumber(cart.amount+cart.ship)}} VNĐ</span>
+                                        <span class="text-right">{{cart.amount+cart.ship | currency:'':0}} VNĐ</span>
                                     </div>
                                 </div>
 

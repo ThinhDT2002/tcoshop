@@ -120,10 +120,8 @@
                                             <div class="ec-pro-rat-price">
                                                 <div class="ec-pro-rat-pri-inner">
                                                     <span class="ec-price">
-                                                        <span class="new-price">{{cart.formatNumber(item.price * (100 -
-                                                            item.discount)/100)}} VNĐ</span>
-                                                        <span class="old-price">{{cart.formatNumber(item.price)}}
-                                                            VNĐ</span>
+                                                        <span class="new-price">{{item.price * (100 - item.discount)/100 | currency:'':0}} VNĐ</span>
+                                                        <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>
                                                     </span>
                                                     
                                                 </div>
