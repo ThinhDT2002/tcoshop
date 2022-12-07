@@ -1,300 +1,308 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+	th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
-<main th:object="${item}">
-<!-- Ec breadcrumb start -->
-<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="row ec_breadcrumb_inner">
-                    <div class="col-md-6 col-sm-12">
-                        <h2 class="ec-breadcrumb-title">Single Products</h2>
-                    </div>
-                    <div class="col-md-6 col-sm-12">
-                        <!-- ec-breadcrumb-list start -->
-                        <ul class="ec-breadcrumb-list">
-                            <li class="ec-breadcrumb-item"><a th:href="@{/home}">Trang chủ</a></li>
-                            <li class="ec-breadcrumb-item active">Sản phẩm</li>
-                        </ul>
-                        <!-- ec-breadcrumb-list end -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Ec breadcrumb end -->
+	<main th:object="${item}">
+		<!-- Ec breadcrumb start -->
+		<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="row ec_breadcrumb_inner">
+							<div class="col-md-6 col-sm-12">
+								<h2 class="ec-breadcrumb-title">Single Products</h2>
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<!-- ec-breadcrumb-list start -->
+								<ul class="ec-breadcrumb-list">
+									<li class="ec-breadcrumb-item"><a th:href="@{/home}">Trang
+											chủ</a></li>
+									<li class="ec-breadcrumb-item active">Sản phẩm</li>
+								</ul>
+								<!-- ec-breadcrumb-list end -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Ec breadcrumb end -->
 
-<!-- Sart Single product -->
-<section class="ec-page-content section-space-p">
-    <div class="container">
-        <div class="row">
-            <div class="ec-pro-rightside ec-common-rightside col-lg-12 col-md-12">
+		<!-- Sart Single product -->
+		<section class="ec-page-content section-space-p">
+			<div class="container">
+				<div class="row">
+					<div
+						class="ec-pro-rightside ec-common-rightside col-lg-12 col-md-12">
 
-                <!-- Single product content Start -->
-                <div class="single-pro-block" >
-                    <div class="single-pro-inner">
-                        <div class="row">
-                            <div class="single-pro-img single-pro-img-no-sidebar">
-                                <div class="single-product-scroll">
-                                    <div class="row space-6">
-                                        <div class="col-md-6 col-sm-6">
-                                            <a class="popup-gallery" th:href="@{|/images/products/${item.image1}|}"
-                                                title="Blue women purse">
-                                                <img class="example-image"
-                                                    th:src="@{|/images/products/${item.image1}|}" alt="portfolio img">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <a class="popup-gallery" th:href="@{|/images/products/${item.image2}|}"
-                                                title="Contrast color Purse">
-                                                <img class="example-image"
-                                                    th:src="@{|/images/products/${item.image2}|}" alt="portfolio img">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <a class="popup-gallery" th:href="@{|/images/products/${item.image3}|}"
-                                                title="Green Purse">
-                                                <img class="example-image"
-                                                    th:src="@{|/images/products/${item.image3}|}" alt="portfolio img">
-                                            </a>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6">
-                                            <a class="popup-gallery" th:href="@{|/images/products/${item.image4}|}"
-                                                title="Wooden color purse">
-                                                <img class="example-image"
-                                                    th:src="@{|/images/products/${item.image4}|}" alt="portfolio img">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-pro-desc single-pro-desc-no-sidebar">
-                                <div class="single-pro-content">
-                                    <h5 class="ec-single-title">[[*{name}]]</h5>
-                                    <div class="ec-single-rating-wrap">                                        
-                                        <span class="ec-read-review"><a href="#ec-spt-nav-review">Xem thêm các sản phẩm khác</a></span>
-                                    </div>
-                                    <div class="ec-single-desc">[[*{description}]]</div>
-                                    <div class="ec-single-price-stoke">
-                                        <div class="ec-single-price">
-                                            <span class="ec-single-ps-title">Giá chỉ</span>
-                                                 
-                                            <span th:if="discount == 0" class="new-price">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-                                            <div th:if="discount != 0">
-                                                <span class="old-price" style="color : red;">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-                                                - 
-                                                <span class="new-price">[[*{#numbers.formatDecimal(price * (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-                                            </div>
-                                        </div>
-                                        <div class="ec-single-stoke">
-                                            <span th:if="*{stock} > 0" class="ec-single-ps-title">CÒN HÀNG</span>
-                                            <span th:if="*{stock} == 0" class="ec-single-ps-title">HẾT HÀNG</span>
-                                            <span class="ec-single-sku">ID: [[*{id}]]</span>
-                                        </div>
-                                    </div>
+						<!-- Single product content Start -->
+						<div class="single-pro-block">
+							<div class="single-pro-inner">
+								<div class="row">
+									<div class="single-pro-img single-pro-img-no-sidebar">
+										<div class="single-product-scroll">
+											<div class="row space-6">
+												<div class="col-md-6 col-sm-6">
+													<a class="popup-gallery"
+														th:href="@{|/images/products/${item.image1}|}"
+														title="Blue women purse"> <img class="example-image"
+														th:src="@{|/images/products/${item.image1}|}"
+														alt="portfolio img">
+													</a>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<a class="popup-gallery"
+														th:href="@{|/images/products/${item.image2}|}"
+														title="Contrast color Purse"> <img
+														class="example-image"
+														th:src="@{|/images/products/${item.image2}|}"
+														alt="portfolio img">
+													</a>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<a class="popup-gallery"
+														th:href="@{|/images/products/${item.image3}|}"
+														title="Green Purse"> <img class="example-image"
+														th:src="@{|/images/products/${item.image3}|}"
+														alt="portfolio img">
+													</a>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<a class="popup-gallery"
+														th:href="@{|/images/products/${item.image4}|}"
+														title="Wooden color purse"> <img class="example-image"
+														th:src="@{|/images/products/${item.image4}|}"
+														alt="portfolio img">
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="single-pro-desc single-pro-desc-no-sidebar">
+										<div class="single-pro-content">
+											<h5 class="ec-single-title">[[*{name}]]</h5>
+											<div class="ec-single-rating-wrap">
+												<span class="ec-read-review"><a
+													href="#ec-spt-nav-review">Xem thêm các sản phẩm
+														khác</a></span>
+											</div>
+											<div class="ec-single-desc">[[*{description}]]</div>
+											<div class="ec-single-price-stoke">
+												<div class="ec-single-price">
+													<span class="ec-single-ps-title">Giá chỉ</span> <span
+														th:if="${item.discount} == 0" class="new-price">[[*{#numbers.formatDecimal(price,
+														0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+													<div th:if="${item.discount} != 0">
+														<span class="old-price" style="color: red;">[[*{#numbers.formatDecimal(price,
+															0, 'COMMA', 0, 'POINT')}]] VNĐ</span> - <span class="new-price">[[*{#numbers.formatDecimal(price
+															* (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+													</div>
+												</div>
+												<div class="ec-single-stoke">
+													<span th:if="*{stock} > 0" class="ec-single-ps-title">CÒN
+														HÀNG</span> <span th:if="*{stock} == 0"
+														class="ec-single-ps-title">HẾT HÀNG</span> <span
+														class="ec-single-sku">ID: [[*{id}]]</span>
+												</div>
+											</div>
 
-                                    
-                                    <div class="ec-single-qty">
-                                        <div class="ec-single-cart ">
-                                        	<th:block th:if="*{stock} gt 0">
-                                            	<a class="btn btn-primary" th:attr="ng-click=@{|cart.add(${item.id})|}">Add To Cart</a>
-                                         	</th:block>
-                                         	    <th:block th:if="*{stock} eq 0">
-                                            	<button class="btn btn-primary" disabled>Hết hàng</button>
-                                         	</th:block>
-                                        </div>
-                                        <div class="ec-single-wishlist">
-                                            <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                                    th:src="@{/assets/images/icons/wishlist.svg}" class="svg_img pro_svg"
-                                                    alt="" /></a>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="ec-single-social">
-                                        <ul class="mb-0">
-                                            <li class="list-inline-item facebook"><a href="https://www.facebook.com/tcoshopp"><i
-                                                        class="ecicon eci-facebook"></i></a></li>
-                                            <li class="list-inline-item twitter"><a href="#"><i
-                                                        class="ecicon eci-twitter"></i></a></li>
-                                            <li class="list-inline-item instagram"><a href="#"><i
-                                                        class="ecicon eci-instagram"></i></a></li>
-                                            <li class="list-inline-item youtube-play"><a href="#"><i
-                                                        class="ecicon eci-youtube-play"></i></a></li>
-                                            <li class="list-inline-item behance"><a href="#"><i
-                                                        class="ecicon eci-behance"></i></a></li>
-                                            <li class="list-inline-item whatsapp"><a href="#"><i
-                                                        class="ecicon eci-whatsapp"></i></a></li>
-                                            <li class="list-inline-item plus"><a href="#"><i
-                                                        class="ecicon eci-plus"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Single product content End -->
-                <!-- Single product tab start -->
-                <div class="ec-single-pro-tab">
-                    <div class="ec-single-pro-tab-wrapper">
-                        <div class="ec-single-pro-tab-nav">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab"
-                                        data-bs-target="#ec-spt-nav-details" role="tablist">Detail</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#ec-spt-nav-info"
-                                        role="tablist">More Information</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#ec-spt-nav-review"
-                                        role="tablist">Reviews</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content  ec-single-pro-tab-content">
-                            <div id="ec-spt-nav-details" class="tab-pane fade show active">
-                                <div class="ec-single-pro-tab-desc">
-                                    [[*{description}]]
-                                </div>
-                            </div>
-                            <div id="ec-spt-nav-info" class="tab-pane fade">
-                                <div class="ec-single-pro-tab-moreinfo">
-                                    <ul>
-                                        <li th:each="productVariation : *{productVariations}"><span>[[${productVariation.name}]]</span> [[${productVariation.value}]]</li>                                    
-                                    </ul>
-                                </div>
-                            </div>
 
-                            <div id="ec-spt-nav-review" class="tab-pane fade" ng-controller="review-ctrl">
-                                <div class="row">
-                                    <div class="ec-t-review-wrapper">                                  
-                                        <div class="ec-t-review-item" ng-repeat = "review in reviews">
-                                            <div class="ec-t-review-avtar">
-                                                <img th:src="@{|/images/user/{{review.user.avatar}}|}" alt="" />
-                                            </div>
-                                           
-                                            <div class="ec-t-review-content">
-                                                <div class="ec-t-review-top">
-                                                    <div class="ec-t-review-name" >
-                                                    <span ng-if="review.edited == 0">{{review.user.username}}</span>
-                                                    <span ng-if="review.edited == 1">{{review.user.username}} (đã chỉnh sửa)</span>
-                                                    </div>                                                                                                    
-                                                </div>
-                                                <div class="ec-t-review-bottom">
-                                                    <span id="contentReview{{review.id}}">{{review.content}}</span>
-                                                    <div style="display: none;" class="ec-ratting-input form-submit" id="editReview{{review.id}}">
-	                                                    <textarea ng-model = "editReviewForm.content" name="your-commemt"></textarea>  
-	                                                    <button class="btn btn-primary" ng-click="undo(review)">Huỷ</button>   
-	                                                    <button class="btn btn-primary" ng-click="updateReview(editReviewForm)">Gửi</button>                                                    	                                                   
-                                                	</div>                                                      
-                                                    <div ng-if="review.user.username == currentAuthenticationUsername">
-                                                    	<button ng-click="edit(review)">Sửa</button>
-                                                   	 	<button ng-click="delete(review.id)">Xoá</button>
-                                                    </div>                                           
-                                                </div>                                                
-                                                <span class="date-comment">{{review.time | date:"dd/MM/yyyy"}} at {{review.timeDetail}}</span>                                           
-                                            </div>
-                                        </div>
+											<div class="ec-single-qty">
+												<div class="ec-single-cart ">
+													<th:block th:if="*{stock} gt 0">
+														<a class="btn btn-primary"
+															th:attr="ng-click=@{|cart.add(${item.id})|}">Add To
+															Cart</a>
+													</th:block>
+													<th:block th:if="*{stock} eq 0">
+														<button class="btn btn-primary" disabled>Hết hàng</button>
+													</th:block>
+												</div>
+												<div class="ec-single-wishlist">
+													<a class="ec-btn-group wishlist" title="Wishlist"><img
+														th:src="@{/assets/images/icons/wishlist.svg}"
+														class="svg_img pro_svg" alt="" /></a>
+												</div>
 
-                                    </div>
-                                    <div class="ec-ratting-content" >
-                                        <h3>Add a Review</h3>
-                                        <div class="ec-ratting-form">
-                                            <form method = "post">                                                                                             
-                                                <div class="ec-ratting-input form-submit">
-                                                    <textarea ng-model = "reviewForm.content" name="your-commemt"
-                                                        placeholder="Để lại bình luận của bạn về sản phẩm này" ></textarea>                                                   
-                                                    <button
-                                                    class="btn btn-primary" ng-click="createReview()" 
-                                                        >Gửi</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- product details description area end -->
-            </div>
-            
-        </div>
-    </div>
-</section>
-<!-- End Single product -->
+											</div>
+											<div class="ec-single-social">
+												<ul class="mb-0">
+													<li class="list-inline-item facebook"><a
+														href="https://www.facebook.com/tcoshopp"><i
+															class="ecicon eci-facebook"></i></a></li>
+													<li class="list-inline-item twitter"><a href="#"><i
+															class="ecicon eci-twitter"></i></a></li>
+													<li class="list-inline-item instagram"><a href="#"><i
+															class="ecicon eci-instagram"></i></a></li>
+													<li class="list-inline-item youtube-play"><a href="#"><i
+															class="ecicon eci-youtube-play"></i></a></li>
+													<li class="list-inline-item behance"><a href="#"><i
+															class="ecicon eci-behance"></i></a></li>
+													<li class="list-inline-item whatsapp"><a href="#"><i
+															class="ecicon eci-whatsapp"></i></a></li>
+													<li class="list-inline-item plus"><a href="#"><i
+															class="ecicon eci-plus"></i></a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Single product content End -->
+						<!-- Single product tab start -->
+						<div class="ec-single-pro-tab">
+							<div class="ec-single-pro-tab-wrapper">
+								<div class="ec-single-pro-tab-nav">
+									<ul class="nav nav-tabs">
+										<li class="nav-item"><a class="nav-link active"
+											data-bs-toggle="tab" data-bs-target="#ec-spt-nav-details"
+											role="tablist">Detail</a></li>
+										<li class="nav-item"><a class="nav-link"
+											data-bs-toggle="tab" data-bs-target="#ec-spt-nav-info"
+											role="tablist">More Information</a></li>
+										<li class="nav-item"><a class="nav-link"
+											data-bs-toggle="tab" data-bs-target="#ec-spt-nav-review"
+											role="tablist">Reviews</a></li>
+									</ul>
+								</div>
+								<div class="tab-content  ec-single-pro-tab-content">
+									<div id="ec-spt-nav-details" class="tab-pane fade show active">
+										<div class="ec-single-pro-tab-desc">[[*{description}]]</div>
+									</div>
+									<div id="ec-spt-nav-info" class="tab-pane fade">
+										<div class="ec-single-pro-tab-moreinfo">
+											<ul>
+												<li th:each="productVariation : *{productVariations}"><span>[[${productVariation.name}]]</span>
+													[[${productVariation.value}]]</li>
+											</ul>
+										</div>
+									</div>
 
-<!-- Related Product Start -->
-<section class="section ec-releted-product section-space-p">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="section-title">
-                    <h2 class="ec-bg-title">Sản phẩm liên quan</h2>
-                    <h2 class="ec-title">Sản phẩm liên quan</h2>
-                    <p class="sub-title">Các sản phẩm có cùng danh mục</p>
-                </div>
-            </div>
-        </div>
-        <div class="row margin-minus-b-30">
-            <!-- Related Product Content -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" th:each="p:*{subcategory.products}" th:if="${p.id} != ${item.id}">
-                <div class="ec-product-inner">
-                    <div class="ec-pro-image-outer">
-                        <div class="ec-pro-image">
-                            <a href="product-left-sidebar.html" class="image">
-                                <img class="main-image"
-                                    th:src="@{|/images/products/${p.image1}|}" alt="Product"/>
-                                <img class="hover-image"
-                                    th:src="@{|/images/products/${p.image2}|}" alt="Product" />
-                            </a>
-                            <span class="percentage">[[*{discount}]]%</span>
-                            <a href="#" class="quickview" data-link-action="quickview"
-                                title="Quick view" data-bs-toggle="modal"
-                                data-bs-target="#ec_quickview_modal"><img
-                                    th:src="@{/assets/images/icons/quickview.svg}" class="svg_img pro_svg"
-                                    alt="" /></a>
-                            <div class="ec-pro-actions">
-                                <a href="compare.html" class="ec-btn-group compare"
-                                    title="Compare"><img th:src="@{/assets/images/icons/compare.svg}"
-                                        class="svg_img pro_svg" alt="" /></a>
-                                <button title="Add To Cart" class=" add-to-cart"><img
-                                        th:src="@{/assets/images/icons/cart.svg}" class="svg_img pro_svg"
-                                        alt="" /> Add To Cart</button>
-                                <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                        th:src="@{/assets/images/icons/wishlist.svg}"
-                                        class="svg_img pro_svg" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ec-pro-content">
-                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
-                        <div class="ec-pro-rating">
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star fill"></i>
-                            <i class="ecicon eci-star"></i>
-                        </div>
-                        <div class="ec-pro-list-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dutmmy text ever since the 1500s, when an unknown printer took a galley.</div>
-                        <span class="ec-price">
-                            <span class="old-price">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-                            <span class="new-price">[[*{#numbers.formatDecimal(price * (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
-    </div>
-</section>
-<!-- Related Product end -->
-</main>   
+									<div id="ec-spt-nav-review" class="tab-pane fade"
+										ng-controller="review-ctrl">
+										<div class="row">
+											<div class="ec-t-review-wrapper">
+												<div class="ec-t-review-item" ng-repeat="review in reviews">
+													<div class="ec-t-review-avtar">
+														<img th:src="@{|/images/user/{{review.user.avatar}}|}"
+															alt="" />
+													</div>
+
+													<div class="ec-t-review-content">
+														<div class="ec-t-review-top">
+															<div class="ec-t-review-name">
+																<span ng-if="review.edited == 0">{{review.user.username}}</span>
+																<span ng-if="review.edited == 1">{{review.user.username}}
+																	(đã chỉnh sửa)</span>
+															</div>
+														</div>
+														<div class="ec-t-review-bottom">
+															<span id="contentReview{{review.id}}">{{review.content}}</span>
+															<div style="display: none;"
+																class="ec-ratting-input form-submit"
+																id="editReview{{review.id}}">
+																<textarea ng-model="editReviewForm.content"
+																	name="your-commemt"></textarea>
+																<button class="btn btn-primary" ng-click="undo(review)">Huỷ</button>
+																<button class="btn btn-primary"
+																	ng-click="updateReview(editReviewForm)">Gửi</button>
+															</div>
+															<div
+																ng-if="review.user.username == currentAuthenticationUsername">
+																<button ng-click="edit(review)">Sửa</button>
+																<button ng-click="delete(review.id)">Xoá</button>
+															</div>
+														</div>
+														<span class="date-comment">{{review.time |
+															date:"dd/MM/yyyy"}} at {{review.timeDetail}}</span>
+													</div>
+												</div>
+
+											</div>
+											<div class="ec-ratting-content">
+												<h3>Add a Review</h3>
+												<div class="ec-ratting-form">
+													<form method="post">
+														<div class="ec-ratting-input form-submit">
+															<textarea ng-model="reviewForm.content"
+																name="your-commemt"
+																placeholder="Để lại bình luận của bạn về sản phẩm này"></textarea>
+															<button class="btn btn-primary" ng-click="createReview()">Gửi</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- product details description area end -->
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- End Single product -->
+
+		<!-- Related Product Start -->
+		<section class="section ec-releted-product section-space-p">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="section-title">
+							<h2 class="ec-bg-title">Sản phẩm liên quan</h2>
+							<h2 class="ec-title">Sản phẩm liên quan</h2>
+							<p class="sub-title">Các sản phẩm có cùng danh mục</p>
+						</div>
+					</div>
+				</div>
+				<div class="row margin-minus-b-30">
+					<!-- Related Product Content -->
+					<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" th:each="p:*{subcategory.products}" th:if="${p.id} != ${item.id}">
+						<div class="ec-product-inner">
+							<div class="ec-pro-image-outer">
+								<div class="ec-pro-image">
+									<a href="product-left-sidebar.html" class="image"> <img
+										class="main-image" th:src="@{|/images/products/${p.image1}|}"
+										alt="Product" /> <img class="hover-image"
+										th:src="@{|/images/products/${p.image2}|}" alt="Product" />
+									</a> <span class="percentage" th:if="${p.discount} > 0"
+										th:text="${p.discount} + '%'"></span>
+									<div class="ec-pro-actions">
+										<button title="Add To Cart" class=" add-to-cart">
+											<img th:src="@{/assets/images/icons/cart.svg}"
+												class="svg_img pro_svg" alt=""
+												th:attr="ng-click=@{|cart.add(${p.id})|}" /> Add To Cart
+										</button>
+										<a class="ec-btn-group wishlist" title="Wishlist"><img
+											th:src="@{/assets/images/icons/wishlist.svg}"
+											class="svg_img pro_svg" alt="" /></a>
+									</div>
+								</div>
+							</div>
+							<div class="ec-pro-content">
+								<h5 class="ec-pro-title">
+									<a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+								</h5>
+								<span th:if="${p.discount} == 0" class="new-price" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}">VNĐ</span>
+								<div th:if="${p.discount} != 0">
+									<span class="old-price" style="color: red;" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}">VNĐ</span> 
+									- 
+									<span class="new-price" th:text="${#numbers.formatDecimal(p.price * (100 - p.discount) / 100, 0, 'COMMA', 0, 'POINT')}">VNĐ</span>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+		</section>
+		<!-- Related Product end -->
+	</main>
 </body>
 </html>

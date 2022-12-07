@@ -169,7 +169,7 @@
 								<img src="assets/images/icons/cart_5.svg"
 									class="svg_img header_svg" alt="" />
 							</div> <span class="ec-btn-title"><span class="ec-cart-count">{{cart.count}}</span>
-								sản phẩm - {{cart.formatNumber(cart.amount)}} VNĐ</span>
+								sản phẩm - {{cart.amount | currency:'':0}} VNĐ</span>
 
 						</a>
 						<!-- Header Cart End -->

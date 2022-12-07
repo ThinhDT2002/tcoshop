@@ -101,7 +101,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                 <img class="hover-image"
                                                     th:src="@{|/images/products/${p.image2}|}" alt="Product" />
                                             </a>
-                                            <span class="percentage" th:text="${p.discount} + '%'"></span>
+                                            <span class="percentage" th:if="${p.discount} > 0" th:text="${p.discount} + '%'"></span>
                                             <div class="ec-pro-actions">
                                                 <a href="compare.html" class="ec-btn-group compare"
                                                     title="Compare"><img th:src="@{|/assets/images/icons/compare.svg|}"
@@ -126,11 +126,16 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     <div class="ec-pro-content">
                                         <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
                                         <div class="ec-pro-list-desc">[[*{p.description}]]</div>
-                                        <span class="ec-price">
-                                            <!-- <span class="old-price">$27.00</span> -->
-                                            <!--                                            -->
-                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                        
+                                        
+                                        <span class="ec-price" th:if="${p.discount != 0}">
+                                            <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount)/100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
                                         </span>
+                                        <span class="ec-price" th:if="${p.discount == 0}">
+                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>                                    
+                                        </span>
+                                        
                                     </div>
                                 </div>
                             </div>

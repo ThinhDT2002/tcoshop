@@ -119,11 +119,13 @@
                                             </h6>
                                             <div class="ec-pro-rat-price">
                                                 <div class="ec-pro-rat-pri-inner">
-                                                    <span class="ec-price">
+                                                    <span class="ec-price" ng-if="item.discount != 0">
                                                         <span class="new-price">{{item.price * (100 - item.discount)/100 | currency:'':0}} VNĐ</span>
-                                                        <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>
+                                                        <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>                                                       
                                                     </span>
-                                                    
+                                                    <span class="ec-price" ng-if="item.discount == 0">
+	                                     				<span class="new-price">{{item.price | currency:'':0}} VNĐ</span>
+	                               					</span>  
                                                 </div>
                                             </div>
                                             <div class="pro-hidden-block">

@@ -58,6 +58,9 @@
                                                         <span style="margin: 5px; font-size: 15px; color: red;"
                                                             ng-show="formOrder.phone.$error.pattern">Vui lòng nhập đúng
                                                             định dạng số điện thoại</span>
+                                                            <span id="sdt" style="margin: 5px; font-size: 15px; color: red; display: none;"
+                                                            >Vui lòng nhập đúng
+                                                            định dạng số điện thoại</span>
 
                                                     </span>
                                                     <span class="ec-bill-wrap ec-bill-half">
@@ -206,28 +209,20 @@
                 </div>
                 <div class="row">
                     <!-- New Product Content -->
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" ng-repeat="item in pager.items | limitTo: 4">
                         <div class="ec-product-inner">
                             <div class="ec-pro-image-outer">
                                 <div class="ec-pro-image">
-                                    <a href="product-left-sidebar.html" class="image">
-                                        <img class="main-image" src="assets/images/product-image/6_1.jpg"
+                                    <a th:href="@{|/product/detail/{{item.id}}|}" class="image">
+                                        <img class="main-image" th:src="@{|/images/products/{{item.image1}}|}"
                                             alt="Product" />
-                                        <img class="hover-image" src="assets/images/product-image/6_2.jpg"
+                                        <img class="hover-image" th:src="@{|/images/products/{{item.image2}}|}"
                                             alt="Product" />
                                     </a>
-                                    <span class="percentage">20%</span>
-                                    <a href="#" class="quickview" data-link-action="quickview" title="Quick view"
-                                        data-bs-toggle="modal" data-bs-target="#ec_quickview_modal"><img
-                                            src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                            alt="" /></a>
+                                    <span class="percentage" ng-if="item.discount > 0">{{item.discount}}%</span>
                                     <div class="ec-pro-actions">
-                                        <a href="compare.html" class="ec-btn-group compare" title="Compare"><img
-                                                src="assets/images/icons/compare.svg" class="svg_img pro_svg"
-                                                alt="" /></a>
                                         <button title="Add To Cart" class=" add-to-cart"><img
-                                                src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" /> Add
-                                            To Cart</button>
+                                                src="assets/images/icons/cart.svg" class="svg_img pro_svg" alt="" ng-click="cart.add(item.id)"/> Add To Cart</button>
                                         <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                 src="assets/images/icons/wishlist.svg" class="svg_img pro_svg"
                                                 alt="" /></a>
@@ -235,18 +230,20 @@
                                 </div>
                             </div>
                             <div class="ec-pro-content">
-                                <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Round Neck T-Shirt</a></h5>
-                                
-                                <div class="ec-pro-list-desc">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry. Lorem Ipsum is simply dutmmy text ever since the 1500s, when
-                                    an unknown printer took a galley.</div>
+                                <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>
                                 <span class="ec-price">
-                                    <span class="old-price">$27.00</span>
-                                    <span class="new-price">$22.00</span>
+	                                <span ng-if="item.discount != 0">
+	                                    <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>
+	                                    <span class="new-price">{{item.price * (100 - item.discount)/100 | currency:'':0}} VNĐ</span>
+	                                </span>
+	                                <span ng-if="item.discount == 0">
+	                                     <span class="new-price">{{item.price | currency:'':0}} VNĐ</span>
+	                                </span>                                          
                                 </span>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-sm-12 shop-all-btn"><a th:href="@{/product/list}">Xem Thêm Sản Phẩm</a></div>
                 </div>
             </div>
