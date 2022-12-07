@@ -26,6 +26,8 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$http.get("/api/products/highDiscountProducts").then(resp => {
 		$scope.highDiscountProducts = resp.data;
 	}).then(function() {
+		$scope.discountProduct1 = $scope.highDiscountProducts[1];
+		$scope.discountProduct2 = $scope.highDiscountProducts[2];
 		for(let i = 0; i < $scope.highDiscountProducts.length; i++) {
 			if(i <= 3) {
 				$scope.highDiscountProducts1.push($scope.highDiscountProducts[i]);

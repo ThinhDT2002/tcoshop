@@ -207,7 +207,7 @@
                     <div class="ec-spe-section col-lg-6 col-md-12 col-sm-12 margin-b-30">
                         <div class="col-md-12 text-left">
                             <div class="section-title mb-6">
-                                <h2 class="ec-title">Ưu đãi trong ngày</h2>
+                                <h2 class="ec-title">Ưu đãi sốc</h2>
                             </div>
                         </div>
 
@@ -216,20 +216,24 @@
                                 <div class="ec-fs-pro-inner ec-product-inner">
                                     <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
                                         <div class="ec-fs-pro-image">
-                                            <a href="product-left-sidebar.html" class="image"><img class="main-image"
-                                                    src="assets/images/special-product/1_1.jpg" alt="Product" /></a>
+                                            <a th:href="@{|/product/detail/{{discountProduct1.id}}|}" class="image"><img class="main-image"
+                                                    th:src="@{|/images/products/{{discountProduct1.image1}}|}" alt="Product" /></a>
                                         </div>
                                     </div>
                                     <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Samsung gaming
-                                                console s8</a></h5>
-                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Gaming</a></h6>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{discountProduct1.id}}|}">{{discountProduct1.name}}</a></h5>
+                                        <h6 class="ec-pro-stitle"><a th:href="@{|/product/list?scid={{discountProduct1.subcategory.id}}|}">{{discountProduct1.subcategory.name}}</a></h6>
                                         <div class="ec-pro-rat-price">
-                                            <span class="ec-price">
-                                                <span class="new-price">$159.00</span>
-                                                <span class="old-price">$200.00</span>
+                                            <span ng-if="discountProduct1.discount != 0" class="ec-price">
+                                                <span class="new-price">{{discountProduct1.price * (100 - discountProduct1.discount) / 100 | currency:'':0}} VND</span>
+                                                <span class="old-price">{{discountProduct1.price | currency:'':0}} VND</span>
+                                                <span>{{discountProduct1.discount}} %</span>
+                                            </span>
+                                            <span ng-if="discountProduct1.discount == 0">
+                                            	<span class="new-price">{{discountProduct1.price | currencyy:'':0}} VND</span>
                                             </span>
                                         </div>
+                                        <!-- 
                                         <div class="ec-fs-pro-progress">
                                             <span class="ec-fs-pro-progress-desc"><span>Đã mua:
                                                     <b>0</b></span><span>Có sẵn: <b>350</b></span></span>
@@ -239,10 +243,12 @@
                                             <span class="ec-fs-count-desc"> Khẩn trương lên! ưu đãi kết thúc sau:</span>
                                             <span id="ec-fs-count-1"></span>
                                         </div>
+                                         -->
                                         <div class="ec-pro-actions">
-                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                            <button ng-click="card.add(discountProduct1.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
                                                 giỏ</button>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -250,34 +256,39 @@
                                 <div class="ec-fs-pro-inner ec-product-inner">
                                     <div class="ec-fs-pro-image-outer col-lg-6 col-md-6 col-sm-6">
                                         <div class="ec-fs-pro-image">
-                                            <a href="product-left-sidebar.html" class="image"><img class="main-image"
-                                                    src="assets/images/special-product/2_1.jpg" alt="Product" /></a>
+                                            <a th:href="@{|/product/detail/{{discountProduct2.id}}|}" class="image"><img class="main-image"
+                                                    th:src="@{|/images/products/{{discountProduct2.image1}}|}" alt="Product" /></a>
                                         </div>
                                     </div>
                                     <div class="ec-pro-content col-lg-6 col-md-6 col-sm-6">
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Tai nghe không dây
-                                                với mic neckband </a></h5>
-                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Đa phương
-                                                tiện</a></h6>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{discountProduct2.id}}|}">{{discountProduct2.name}}</a></h5>
+                                        <h6 class="ec-pro-stitle"><a th:href="@{|/product/list?scid={{discountProduct2.subcategory.id}}|}">{{discountProduct2.subcategory.name}}</a></h6>
                                         <div class="ec-pro-rat-price">
-                                            <span class="ec-price">
-                                                <span class="new-price">$480.00</span>
-                                                <span class="old-price">$700.00</span>
+                                            <span ng-if="discountProduct2.discount != 0" class="ec-price">
+                                                <span class="new-price">{{discountProduct2.price * (100 - discountProduct2.discount) / 100 | currency:'':0}} VND</span>
+                                                <span class="old-price">{{discountProduct2.price | currency:'':0}} VND</span>
+                                                <span>{{discountProduct2.discount}} %</span>
+                                            </span>
+                                            <span ng-if="discountProduct2.discount == 0">
+                                            	<span class="new-price">{{discountProduct2.price | currencyy:'':0}} VND</span>
                                             </span>
                                         </div>
+                                        <!-- 
                                         <div class="ec-fs-pro-progress">
                                             <span class="ec-fs-pro-progress-desc"><span>Đã mua:
-                                                    <b>0</b></span><span>Có sẵn: <b>200</b></span></span>
+                                                    <b>0</b></span><span>Có sẵn: <b>350</b></span></span>
                                             <span class="ec-fs-pro-progressbar"></span>
                                         </div>
                                         <div class="countdowntimer">
                                             <span class="ec-fs-count-desc"> Khẩn trương lên! ưu đãi kết thúc sau:</span>
-                                            <span id="ec-fs-count-2"></span>
+                                            <span id="ec-fs-count-1"></span>
                                         </div>
+                                        -->
                                         <div class="ec-pro-actions">
-                                            <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                            <button ng-click="card.add(discountProduct2.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
                                                 giỏ</button>
                                         </div>
+                                         
                                     </div>
                                 </div>
                             </div>
@@ -419,10 +430,10 @@
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
-                                                <img class="main-image" src="assets/images/special-product/6_1.jpg"
-                                                    alt="Product" />
-                                                <img class="hover-image" src="assets/images/special-product/6_2.jpg"
-                                                    alt="Product" />
+                                                <img class="main-image" th:src="@{|/images/products/{{cheapProduct3.image1}}|}"
+                                                    alt="{{cheapProduct3.name}}" />
+                                                <img class="hover-image" th:src="@{|/images/products/{{cheapProduct3.image2}}|}"
+                                                    alt="{{cheapProduct3.name}}" />
                                             </a>
                                         </div>
                                     </div>
@@ -432,63 +443,47 @@
                                                 <div class="ec-pro-color">
                                                     <ul class="ec-opt-swatch ec-change-img">
                                                         <li class="active"><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/special-product/6_1.jpg"
-                                                                data-src-hover="assets/images/special-product/6_1.jpg"
-                                                                data-tooltip="Gray"><span
-                                                                    style="background-color:#dfdfdf;"></span></a></li>
-                                                        <li><a href="#" class="ec-opt-clr-img"
-                                                                data-src="assets/images/special-product/6_2.jpg"
-                                                                data-src-hover="assets/images/special-product/6_2.jpg"
-                                                                data-tooltip="Orange"><span
-                                                                    style="background-color:#91b6ff;"></span></a></li>
+                                                        		th:attr="data-src='@{|/images/products/{{cheapProduct3.image2}}|}',
+                                                        		 data-src-hover='@{|/images/products/{{cheapProduct3.image2}}|}',
+                                                        		 data-tooltip='{{cheapProduct3.name}}'"
+                                                                ></a></li>
+                                                        
                                                     </ul>
                                                 </div>
-                                                <div class="ec-pro-compare">
-                                                    <a href="compare.html" class="ec-btn-group compare"
-                                                        title="Compare"><img src="assets/images/icons/compare_5.svg"
-                                                            class="svg_img pro_svg" alt="" /></a>
-                                                </div>
+                                                
                                             </div>
                                         </div>
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html">Ultra sound smart
-                                                speaker</a></h5>
-                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">Multimedia</a>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{cheapProduct3.id}}|}">{{cheapProduct3.name}}</a></h5>
+                                        <h6 class="ec-pro-stitle"><a href="shop-left-sidebar-col-3.html">{{cheapProduct3.subcategory.name}}</a>
                                         </h6>
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
-                                                <span class="ec-price">
-                                                    <span class="new-price">$768.00</span>
-                                                    <span class="old-price">$845.00</span>
+                                                <span ng-if="cheapProduct3.discount != 0" class="ec-price">
+                                                    <span class="new-price">{{cheapProduct3.price * (100 - cheapProduct3.discount) / 100 | currency:'':0}} VND</span>
+                                                    <span class="old-price">{{cheapProduct3.price | currency:'':0}} VND</span>
                                                 </span>
-                                                <span class="ec-pro-rating">
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star fill"></i>
-                                                    <i class="ecicon eci-star-o"></i>
-                                                    <i class="ecicon eci-star-o"></i>
+                                                <span ng-if="cheapProduct3.discount == 0" class="ec-price">
+                                                	<span class="new-price">{{cheapProduct3.price | currency:'':0}} VND</span>
                                                 </span>
+                                                
                                             </div>
                                         </div>
                                         <div class="pro-hidden-block">
 
-                                            <div class="ec-pro-desc">Lorem Ipsum is simply dummy text of the printing.
+                                            <div class="ec-pro-desc">{{cheapProduct3.description}}
                                             </div>
                                             <div class="ec-pro-actions">
                                                 <a class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
                                                         class="svg_img pro_svg" alt="" /></a>
-                                                <button title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
+                                                <button ng-click="cart.add(cheapProduct3.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
                                                     giỏ</button>
-                                                <a href="#" class="ec-btn-group quickview" data-link-action="quickview"
-                                                    title="Quick view" data-bs-toggle="modal"
-                                                    data-bs-target="#ec_quickview_modal"><img
-                                                        src="assets/images/icons/quickview.svg" class="svg_img pro_svg"
-                                                        alt="" /></a>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                         
                         </div>
                     </div>
                     <!--  Feature Section End -->
@@ -622,7 +617,8 @@
                                                 <span ng-if="discountProduct1.disount != 0" class="ec-price">
                                                     
                                                     <span class="old-price">{{discountProduct1.price | currency:'':0}} VND</span> 
-                                                    <span class="new-price">{{discountProduct1.price * (100 - discountProduct1.discount) / 100 | currency:'':0}} VND</span> <span>   {{discountProduct1.discount}}%</span>
+                                                    <span class="new-price">{{discountProduct1.price * (100 - discountProduct1.discount) / 100 | currency:'':0}} VND</span> 
+                                                    <span>{{discountProduct1.discount}} %</span>
                                                 </span>
                                                 
                                                 <span ng-if="discountProduct1.disount == 0" class="ec-price">
@@ -652,9 +648,10 @@
                                         <div class="ec-pro-rat-price">
                                             <div class="ec-pro-rat-pri-inner">
                                                 <span ng-if="discountProduct2.discount != 0" class="ec-price">
-                                                    
+                                                    	
                                                     <span class="old-price">{{discountProduct2.price | currency:'':0}} VND</span> 
-                                                    <span class="new-price">{{discountProduct2.price * (100 - discountProduct2.discount) / 100 | currency:'':0}} VND</span> <span>   {{discountProduct2.discount}}%</span>
+                                                    <span class="new-price">{{discountProduct2.price * (100 - discountProduct2.discount) / 100 | currency:'':0}} VND</span> 
+                                                    <span>{{discountProduct2.discount}} %</span>
                                                 </span>
                                                 
                                                 <span ng-if="discountProduct2.discount == 0" class="ec-price">
