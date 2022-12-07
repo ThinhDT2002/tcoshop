@@ -70,20 +70,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <button class="btn btn-list-50">
                             	<img th:src="@{|/assets/images/icons/list.svg|}" class="svg_img gl_svg" alt="list" /></button>
                         </div>
-                    </div>
-                    <div class="col-md-6 ec-sort-select">
-                        <span class="sort-by">Sắp xếp theo</span>
-                        <div class="ec-select-inner">
-                            <select name="ec-select" id="ec-select">
-                                <option selected disabled>Position</option>
-                                <option value="1">Relevance</option>
-                                <option value="name">Tên, A to Z</option>
-                                <option value="name-descending">Tên, Z to A</option>
-                                <option value="price">Giá, thấp đến cao</option>
-                                <option value="price-descending">Giá, cao đến thấp</option>
-                            </select>
-                        </div>
-                    </div>
+                    </div>                  
                 </div>
                 <!-- Shop Top End -->
 
@@ -159,7 +146,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
             <div class="filter-sidebar-overlay"></div>
             <div class="ec-shop-leftside filter-sidebar">
                 <div class="ec-sidebar-heading">
-                    <h1>Lọc sản phẩm theo</h1>
+                    <h1>Lọc sản phẩm</h1>
                     <a class="filter-cls-btn" href="javascript:void(0)">×</a>
                 </div>
                 <div class="ec-sidebar-wrap">
@@ -170,52 +157,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         </div>
                         <div class="ec-sb-block-content">
                             <ul>
-                                <li>
+                                <li th:each="category : ${categories}">
                                     <div class="ec-sidebar-block-item">
-                                        <input type="checkbox" checked /> <a href="#">Quần áo</a>
+                                     <input type="checkbox" checked th:value="${category.id}" /> <a href="#">[[${category.name}]]</a><span
+                                            class="checked"></span>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="ec-sidebar-block-item">
-                                         <a href="#">Cặp</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ec-sidebar-block-item">
-                                         <a href="#">Giày</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ec-sidebar-block-item">
-                                         <a href="#">Mỹ phẩm</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ec-sidebar-block-item">
-                                         <a href="#">Điện tử</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="ec-sidebar-block-item">
-                                         <a href="#">Điện thoại</a>
-                                    </div>
-                                </li>
-                                <li id="ec-more-toggle-content" style="padding: 0; display: none;">
-                                    <ul>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                 <a href="#">Đồng hồ</a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="ec-sidebar-block-item">
-                                                 <a href="#">Nón</a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                
-
+                                </li>                                                                                                                                                                                                              
                             </ul>
                         </div>
                     </div>
@@ -228,9 +175,9 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <div id="ec-sliderPrice" class="filter__slider-price" data-min="0" data-max="250"
                                     data-step="10"></div>
                                 <div class="ec-price-input">
-                                    <label class="filter__label"><input type="text" class="filter__input"></label>
+                                    <label class="filter__label"><input type="number" th:value="fromPrice" class="filter__input"></label>
                                     <span class="ec-price-divider"></span>
-                                    <label class="filter__label"><input type="text" class="filter__input"></label>
+                                    <label class="filter__label"><input type="number" th:value="toPrice" class="filter__input"></label>
                                 </div>
                             </div>
                         </div>
