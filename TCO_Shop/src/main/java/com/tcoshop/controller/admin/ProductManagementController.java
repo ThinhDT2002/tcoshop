@@ -73,7 +73,7 @@ public class ProductManagementController {
         List<ProductVariation> productVariations = new ArrayList<>();
         for (int i = 0; i < variations.length; i++) {
             ProductVariation productVariation = new ProductVariation();
-            productVariation.setName(variations[i].getId());
+            productVariation.setName(variations[i].getName());
             productVariation.setValue(" ");
             productVariations.add(productVariation);
         }
@@ -88,11 +88,11 @@ public class ProductManagementController {
         Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
                 Variation[].class);
         Product product = productService.findById(id);
-
         List<ProductVariation> productVariations = new ArrayList<>();
         for (int i = 0; i < variations.length; i++) {
             ProductVariation productVariation = new ProductVariation();
-            productVariation.setName(variations[i].getId());
+            productVariation.setName(variations[i].getName());
+            productVariation.setProduct(product);
             productVariations.add(productVariation);
         }
         if (product.getProductVariations().isEmpty()) {
@@ -121,15 +121,8 @@ public class ProductManagementController {
             @RequestParam("img1") Optional<MultipartFile> imageFile1,
             @RequestParam("img2") Optional<MultipartFile> imageFile2,
             @RequestParam("img3") Optional<MultipartFile> imageFile3,
-            @RequestParam("img4") Optional<MultipartFile> imageFile4) {
-        Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
-                Variation[].class);
-        List<ProductVariation> productVariations = product.getProductVariations();
-        for (int i = 0; i < variations.length; i++) {
-            productVariations.get(i).setName(variations[i].getId());
-        }
+            @RequestParam("img4") Optional<MultipartFile> imageFile4) {        
         if (errors.hasErrors()) {
-
             model.addAttribute("errorMessage", "Thêm sản phẩm thất bại!");
             return "tco-admin/product/product-add";
         }
@@ -138,33 +131,30 @@ public class ProductManagementController {
         product.setCategory(category);
         Subcategory subcategory = subcategoryService.findById(product.getSubcategory().getId());
         product.setSubcategory(subcategory);
-
         List<Subcategory> subcategories = subcategoryService.findByCategoryId(product.getCategory().getId());
         redirectAttributes.addFlashAttribute("sub", subcategories);
-
         setImage(product, 1, imageFile1);
         setImage(product, 2, imageFile2);
         setImage(product, 3, imageFile3);
         setImage(product, 4, imageFile4);
-
         String url = "http://localhost:8080/api/products/";
         HttpEntity<Product> httpEntity = new HttpEntity<>(product);
-
         ResponseEntity<Product> productEntity = restTemplate.postForEntity(url, httpEntity, Product.class);
+        List<ProductVariation> productVariations = product.getProductVariations();
         product = productEntity.getBody();
-        if (!productVariations.isEmpty()) {
-            for (ProductVariation productVariation : productVariations) {
-                productVariation.setProduct(product);
-                // System.out.println(productVariation.getName() + ":" +
-                // productVariation.getValue());
+        Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
+                Variation[].class);        
+        if(productVariations != null) {
+            for (int i = 0; i < variations.length; i++) {
+                productVariations.get(i).setName(variations[i].getId());
+                productVariations.get(i).setProduct(product);
             }
+            HttpEntity<List<ProductVariation>> productVariationsEntity = new HttpEntity<>(productVariations);
+            String apiProductVariationsUrl = "http://localhost:8080/api/productVariation/all";
+            restTemplate.postForObject(apiProductVariationsUrl, productVariationsEntity, ProductVariation[].class);
         }
-        HttpEntity<List<ProductVariation>> productVariationsEntity = new HttpEntity<>(productVariations);
-        String apiProductVariationsUrl = "http://localhost:8080/api/productVariation/all";
-        restTemplate.postForObject(apiProductVariationsUrl, productVariationsEntity, ProductVariation[].class);
         redirectAttributes.addFlashAttribute("message", "Thêm sản phẩm thành công!");
         redirectAttributes.addFlashAttribute("item", product);
-
         return "redirect:/tco-admin/product/" + product.getId();
     }
 
@@ -175,34 +165,7 @@ public class ProductManagementController {
             @RequestParam("img1") Optional<MultipartFile> imageFile1,
             @RequestParam("img2") Optional<MultipartFile> imageFile2,
             @RequestParam("img3") Optional<MultipartFile> imageFile3,
-            @RequestParam("img4") Optional<MultipartFile> imageFile4) {
-        Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
-                Variation[].class);
-        List<ProductVariation> productVariations = new ArrayList<>();
-        ProductVariation[] productVariationsInDB = restTemplate.getForObject(
-                "http://localhost:8080/api/productVariation/" + product.getId(), ProductVariation[].class);
-        List<ProductVariation> productVariationsUpdate = product.getProductVariations();
-
-        for (int i = 0; i < variations.length; i++) {
-            productVariationsUpdate.get(i).setName(variations[i].getId());
-        }
-
-        if (productVariationsInDB.length == 0) {
-            for(ProductVariation productVariation : productVariationsUpdate) {
-                productVariation.setProduct(product);
-            }
-            productVariations = productVariationsUpdate;
-        } else {
-            for (int i = 0; i < productVariationsUpdate.size(); i++) {
-                if (productVariationsUpdate.get(i).getName().equals(productVariationsInDB[i].getName())) {
-                    productVariationsInDB[i].setValue(productVariationsUpdate.get(i).getValue());
-                } else {
-                    productVariationsInDB[i].setValue(" ");
-                }
-            }
-            productVariations = Arrays.asList(productVariationsInDB);
-        }
-
+            @RequestParam("img4") Optional<MultipartFile> imageFile4) {       
         Product productImages = productService.findById(product.getId());
         product.setImage1(productImages.getImage1());
         product.setImage2(productImages.getImage2());
@@ -228,16 +191,23 @@ public class ProductManagementController {
         String url = "http://localhost:8080/api/products/" + product.getId();
         HttpEntity<Product> httpEntity = new HttpEntity<Product>(product);
         restTemplate.put(url, httpEntity);
-//		if(!productVariations.isEmpty()) {
-//            for(ProductVariation productVariation : productVariations) {
-//                productVariation.setProduct(product);
-//                //System.out.println(productVariation.getName() + ":" + productVariation.getValue());
-//            }
-//        }
-
-        HttpEntity<List<ProductVariation>> productVariationsEntity = new HttpEntity<>(productVariations);
-        String apiProductVariationsUrl = "http://localhost:8080/api/productVariation/all";
-        restTemplate.postForObject(apiProductVariationsUrl, productVariationsEntity, ProductVariation[].class);
+        Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
+                Variation[].class);
+        ProductVariation[] productVariationsInDB = restTemplate.getForObject(
+                "http://localhost:8080/api/productVariation/" + product.getId(), ProductVariation[].class);
+        List<ProductVariation> productVariationsUpdate = product.getProductVariations();     
+        if(productVariationsUpdate != null) {
+            for (int i = 0; i < variations.length; i++) {
+                productVariationsUpdate.get(i).setName(variations[i].getName());
+                productVariationsUpdate.get(i).setProduct(product);
+            }
+            if(productVariationsInDB.length != 0) {     
+                restTemplate.delete("http://localhost:8080/api/productVariation/" + product.getId());                               
+            }
+            HttpEntity<List<ProductVariation>> productVariationsEntity = new HttpEntity<>(productVariationsUpdate);
+            String apiProductVariationsUrl = "http://localhost:8080/api/productVariation/all";
+            restTemplate.postForObject(apiProductVariationsUrl, productVariationsEntity, ProductVariation[].class);
+        }                          
         redirectAttributes.addFlashAttribute("message", "Cập nhật sản phẩm thành công!");
         redirectAttributes.addFlashAttribute("item", product);
         return "redirect:/tco-admin/product/" + product.getId();

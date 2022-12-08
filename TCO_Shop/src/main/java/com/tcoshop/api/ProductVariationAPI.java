@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,5 +29,10 @@ public class ProductVariationAPI {
     @GetMapping("/api/productVariation/{productId}")
     public ResponseEntity<List<ProductVariation>> findByProductId(@PathVariable("productId") Integer productId) {
         return ResponseEntity.ok(productVariationService.findByProductId(productId));
+    }
+    
+    @DeleteMapping("/api/productVariation/{productId}")
+    public void deleteByProductId(@PathVariable("productId") Integer productId) {
+        productVariationService.deleteByProductId(productId);
     }
 }

@@ -21,5 +21,10 @@ public class ProductVariationServiceImpl implements ProductVariationService{
     public List<ProductVariation> findByProductId(Integer productId) {
         return productVariationRepository.findByProductId(productId);
     }
+    @Override
+    public void deleteByProductId(Integer productId) {
+        productVariationRepository.deleteByProductId(productId);
+        
+    }
 
 }
