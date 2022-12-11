@@ -19365,19 +19365,19 @@ select::-ms-expand {
   height: 70vh;
 }
 .ec-main-slider .slide-1 {
-  background-image: url(../images/main-slider-banner/13.jpg);
+  background-image: url(/images/main-slider-banner/13.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .ec-main-slider .slide-2 {
-  background-image: url(../images/main-slider-banner/14.jpg);
+  background-image: url(/images/main-slider-banner/14.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .ec-main-slider .slide-3 {
-  background-image: url(../images/main-slider-banner/15.jpg);
+  background-image: url(/images/main-slider-banner/15.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
