@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
-<main>
+<main ng-controller="product-ctrl">
 
 <!-- Ec breadcrumb start -->
 <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
@@ -78,47 +78,51 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" th:each=" p: ${items}">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" ng-repeat="product in products | startFrom: currentPage*pageSize | limitTo: pageSize">
                                 <div class="ec-product-inner">
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
                                             <a href="product-left-sidebar.html" class="image">
                                                 <img class="main-image"
-                                                    th:src="@{|/images/products/${p.image1}|}" alt="Product" />
+                                                    th:src="@{|/images/products/{{product.image1}}|}" alt="Product" />
                                                 <img class="hover-image"
-                                                    th:src="@{|/images/products/${p.image2}|}" alt="Product" />
+                                                    th:src="@{|/images/products/{{product.image2}}|}" alt="Product" />
                                             </a>
-                                            <span class="percentage" th:if="${p.discount} > 0" th:text="${p.discount} + '%'"></span>
+                                            <span class="percentage" ng-if="product.discount > 0">{{product.discount}} %<</span>
                                             <div class="ec-pro-actions">
-                                                <th:block th:if="${p.stock} gt 0">
-                                            		 <a title="Add To Cart" class=" add-to-cart" th:attr="ng-click=@{|cart.add(${p.id})|}"><img
+                                                <div ng-if="product.stock > 0">
+                                            		 <a title="Add To Cart" class=" add-to-cart" th:attr="ng-click=@{|cart.add(product.id)|}"><img
                                                         th:src="@{|/assets/images/icons/cart.svg|}"  class="svg_img pro_svg"
                                                         alt="" /> Add To Cart</a>
-                                         		</th:block>
-                                         	    	<th:block th:if="${p.stock} eq 0">
+                                         		</div>
+                                         	    	<div ng-if="product.stock == 0">
                                             		<button title="Hết hàng" class=" add-to-cart"><img
                                                         th:src="@{|/assets/images/icons/clear-shopping-cart.png|}"  class="svg_img pro_svg"
                                                         alt="" /> Hết hàng</button>
-                                         		</th:block>   
-                                         		<th:block th:if="${#request.remoteUser}">                                     		                                                                                                                                                                
-	                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
-	                                                        th:src="@{|/assets/images/icons/wishlist.svg|}"
-	                                                        class="svg_img pro_svg" alt="" /></a>	                                                 
+                                         		</div>   
+                                         		<th:block th:if="${#request.remoteUser}">
+                                                		<a ng-if="product.isFavorite == undefined"  ng-click="addFavorite(product.id)" class="ec-btn-group wishlist" title="Wishlist"><img
+                                                            th:src="@{/assets/images/icons/pro_wishlist.svg}"
+                                                            class="svg_img pro_svg" alt="" /></a>
+                                                        <a ng-if="product.isFavorite == true" ng-click="removeFavorite(product.favoriteId)" class="ec-btn-group wishlist" title="Wishlist">
+                                                        <img
+                                                            th:src="@{/assets/images/icons/remove-from-wishlist-icon.svg}"
+                                                            class="svg_img pro_svg" alt="" /></a>
                                                 </th:block>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="ec-pro-content">
-                                        <h5 class="ec-pro-title"><a href="product-left-sidebar.html" th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a></h5>
-                                        <div class="ec-pro-list-desc">[[*{p.description}]]</div>
+                                        <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{product.id}}|}">{{product.name}}</a></h5>
+                                        <div class="ec-pro-list-desc">{{product.description}}</div>
                                         
                                         
-                                        <span class="ec-price" th:if="${p.discount != 0}">
-                                            <span class="old-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price * (100 - p.discount)/100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+                                        <span class="ec-price" ng-if="product.discount != 0">
+                                            <span class="old-price">{{product.price | currency:'':0}} VNĐ</span>
+                                            <span class="new-price">{{product.price * (100 - product.discount) / 100 | currency:'':0}} VNĐ</span>
                                         </span>
-                                        <span class="ec-price" th:if="${p.discount == 0}">
-                                            <span class="new-price">[[*{#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>                                    
+                                        <span class="ec-price" ng-if="product.discount == 0">
+                                            <span class="new-price">{{product.price | currency:'':0}} VNĐ</span>                                    
                                         </span>
                                         
                                     </div>
@@ -128,14 +132,23 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                     </div>
                     <!-- Ec Pagination Start -->
                      <div class="ec-pro-pagination" style="display:block ; margin: 0 auto; width: 30%;">
-                        <ul th:if="${items.totalPages > 1}" class="ec-pro-pagination-inner">
-                        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-					        	<li><a th:if="${cid} != null and ${scid} == null" class="next" th:href="@{|/product/list/page/${i}?cid=${cid}|}">[[${i}]]</a></li>
-					        	<li><a th:if="${scid} != null and ${cid} == null" class="next"  th:href="@{|/product/list/page/${i}?scid=${scid}|}">[[${i}]]</a></li>
-					        	<li><a th:unless="${cid} != null or ${scid} != null" class="next"  th:href="@{|/product/list/page/${i}|}">[[${i}]]</a></li>  	
-					    </span>
-                        </ul>
-                    </div> 
+                        <button ng-click = "pagination()" class="btn btn-danger">
+								<b> | &lt</b>
+							</button>
+							<button ng-disabled="currentPage == 0"
+								ng-click="currentPage=currentPage - 1" class="btn btn-primary">
+								<b>&lt &lt</b>
+							</button>
+							<button
+								class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+							<button ng-disabled="currentPage >= favoriteProducts.length/pageSize - 1"
+								ng-click="currentPage=currentPage+1" class="btn btn-primary">
+								<b>> ></b>
+							</button>
+							<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
+								<b>> |</b>
+							</button>
+                    </div>
                     <!-- Ec Pagination End -->
                 </div>
                 <!--Shop content End -->

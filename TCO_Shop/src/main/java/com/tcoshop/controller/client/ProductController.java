@@ -22,72 +22,37 @@ import com.tcoshop.service.SubcategoryService;
 
 @Controller
 public class ProductController {
-    @Autowired
-    ProductService productService;
-    
-    @Autowired
-    SubcategoryService subcategoryService;
-    
-    @Autowired
-    ReviewService reviewService;
-    
-    private RestTemplate restTemplatet = new RestTemplate();
+	@Autowired
+	ProductService productService;
 
-    void page(Model model, Page<Product> list, @PathVariable("pageNumber") int currentPage) {
-        int totalPages = list.getTotalPages();
-        long totalItems = list.getTotalElements();
-        List<Product> products = list.getContent();
+	@Autowired
+	SubcategoryService subcategoryService;
 
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPages", totalPages);
-        model.addAttribute("totalItems", totalItems);
-        model.addAttribute("countries", products);
-    }
-    
-    @GetMapping("/product/list")
-    public String getAllPages(Model model, @RequestParam("cid") Optional<String> cid,
-            @RequestParam("scid") Optional<String> scid) {
-        return list(model, cid, scid, 1);
-    }
+	@Autowired
+	ReviewService reviewService;
 
-    // phân trang cho product list
-    @RequestMapping("/product/list/page/{pageNumber}")
-    public String list(Model model, @RequestParam("cid") Optional<String> cid,
-            @RequestParam("scid") Optional<String> scid, @PathVariable("pageNumber") int currentPage) {
-        if (cid.isPresent()) {
-            Page<Product> list = productService.findByCategoryId(cid.get(), currentPage);
-            model.addAttribute("items", list);
-            model.addAttribute("cid", cid.get());
-            page(model, list, currentPage);
-        } else if (scid.isPresent()) {
-            Page<Product> list = productService.findBySubcategoryId(scid.get(), currentPage);
-            model.addAttribute("items", list);
-            model.addAttribute("scid", scid.get());
-            page(model, list, currentPage); 
-        } else {
-            Page<Product> list = productService.findAll(currentPage);
-            model.addAttribute("items", list);
-            page(model, list, currentPage);
-        }
-        return "tco-client/shop/shop-banner-full-width";
-    }
+	private RestTemplate restTemplatet = new RestTemplate();
 
-    // trang product detail
-    @RequestMapping("/product/detail/{id}")
-    public String detail(Model model, @PathVariable("id") Integer id,
-    		@RequestParam("pid") Optional<Integer> pid) {
-    			Product item = productService.findById(id);
-    			String url = "http://localhost:8080/api/productVariation/" + item.getId();
-    			ProductVariation[] productVariations = restTemplatet.getForObject(url, ProductVariation[].class);
-    			List<ProductVariation> productVariationsList = Arrays.asList(productVariations);
-    			item.setProductVariations(productVariationsList);
-    			model.addAttribute("item", item);
-    			
-        return "tco-client/shop/product-gallery-full-width";
-    }
-    
-    @RequestMapping("/product/favorites")
-    public String getFavoriteProducts() {
-        return "tco-client/shop/favorite-product";
-    }
+	@RequestMapping("/product/list")
+	public String list() {
+		return "tco-client/shop/product-list";
+	}
+
+	// trang product detail
+	@RequestMapping("/product/detail/{id}")
+	public String detail(Model model, @PathVariable("id") Integer id, @RequestParam("pid") Optional<Integer> pid) {
+		Product item = productService.findById(id);
+		String url = "http://localhost:8080/api/productVariation/" + item.getId();
+		ProductVariation[] productVariations = restTemplatet.getForObject(url, ProductVariation[].class);
+		List<ProductVariation> productVariationsList = Arrays.asList(productVariations);
+		item.setProductVariations(productVariationsList);
+		model.addAttribute("item", item);
+
+		return "tco-client/shop/product-gallery-full-width";
+	}
+
+	@RequestMapping("/product/favorites")
+	public String getFavoriteProducts() {
+		return "tco-client/shop/favorite-product";
+	}
 }

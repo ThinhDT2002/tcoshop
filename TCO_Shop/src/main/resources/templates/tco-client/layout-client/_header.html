@@ -54,7 +54,7 @@
                             <a href="wishlist.html" class="ec-header-btn ec-header-wishlist">
                                 <div class="header-icon"><img th:src="@{/assets/images/icons/wishlist.svg}"
                                         class="svg_img header_svg" alt="" /></div>
-                                <span class="ec-header-count">4</span>
+                                <span class="ec-header-count"></span>
                             </a>
                             <!-- Header Cart End -->
                             <!-- Header Cart Start -->
@@ -149,7 +149,6 @@
                                 <a th:if="${#request.remoteUser}" th:href="@{/product/favorites}" class="ec-header-btn ec-header-wishlist">
                                     <div class="header-icon"><img th:src="@{/assets/images/icons/wishlist.svg}"
                                             class="svg_img header_svg" alt="" /></div>
-                                    <span class="ec-header-count">{{favorites.length}}</span>
                                 </a>
                                 <!-- Header wishlist End -->
                                 <!-- Header Cart Start -->

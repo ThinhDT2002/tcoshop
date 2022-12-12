@@ -26,11 +26,23 @@ import com.tcoshop.service.ProductService;
 public class ProductAPI {
 	@Autowired
 	ProductService productService;
+	
 	@Autowired
 	FavoriteService favoriteService;
+	
 	@GetMapping()
 	public List<Product> getAll() {
 		return productService.findAll();
+	}
+	
+	@GetMapping("/category/{cid}")
+	public List<Product> getCategory(@PathVariable("cid") String cid) {
+		return productService.findByCategoryId(cid);
+	}
+	
+	@GetMapping("/subcategory/{scid}")
+	public List<Product> getSubCategory(@PathVariable("scid") String scid) {
+		return productService.findBySubCategoryId(scid);
 	}
 	
 	
