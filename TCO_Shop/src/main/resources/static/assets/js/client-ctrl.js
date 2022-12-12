@@ -74,7 +74,25 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 		});
 		$http.get("/api/products").then(resp => {
 			$scope.products = resp.data;
-		});
+		}).then(function(){
+			let username = document.getElementById("currentUsername").innerText;
+			if(username != "404") {
+			$http({
+				url: "/api/products/favorites",
+				method: "GET",
+				params: {
+					username: username
+				}
+			}).then(resp => {
+				$scope.favorites = resp.data;
+				$scope.favorites.forEach(favorite => {
+					let index = $scope.products.findIndex(product => favorite.product.id == product.id);
+					$scope.products[index].isFavorite = true;
+				})
+				console.log($scope.products);
+			})
+		}
+		});			
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
 		});
@@ -89,7 +107,22 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			})
 		}
 	}
-
+	
+	$scope.favorites = [];
+	$scope.addFavorite = function(productId) {
+		let username = document.getElementById("currentUsername").innerText;
+		let favorite = {
+			product: {
+				id: productId
+			},
+			user: {
+				username: username
+			}
+		}
+		$http.post("/api/products/favorite/add", favorite).then(resp=> {
+			$scope.favorites.push(resp.data);
+		})
+	}	
 	$scope.initialize();
 
 	$scope.pager = {

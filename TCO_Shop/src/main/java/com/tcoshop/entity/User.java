@@ -47,12 +47,14 @@ public class User implements Serializable{
 	private List<Order> orders;
 	@OneToMany(mappedBy = "user")
 	private List<Review> reviews;
+	@OneToMany(mappedBy = "user")
+	private List<Favorite> favorites;
 	public User() {
 		super();
 	}
 	
 	public User(String username, String password, String email, String fullname, String address, String phone, String introduce, Boolean status, String activateCode,
-            String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews, Date createDate) {
+            String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews, Date createDate, List<Favorite> favorites) {
         super();
         this.username = username;
         this.password = password;
@@ -69,6 +71,7 @@ public class User implements Serializable{
         this.orders = orders;
         this.reviews = reviews;
         this.createDate = createDate;
+        this.favorites = favorites;
     }
 
     public String getUsername() {
@@ -172,6 +175,15 @@ public class User implements Serializable{
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    @JsonIgnore
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
     }
 	
 	

@@ -132,9 +132,13 @@
 
                                                 <div class="ec-pro-desc">{{item.description}}</div>
                                                 <div class="ec-pro-actions">
-                                                    <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                	<th:block th:if="${#request.remoteUser}">
+                                                		<a ng-if="item.isFavorite == undefined" id="sanphamchuathich"  ng-click="addFavorite(item.id)" class="ec-btn-group wishlist" title="Wishlist"><img
                                                             src="assets/images/icons/pro_wishlist.svg"
                                                             class="svg_img pro_svg" alt="" /></a>
+                                                        <a ng-if="item.isFavorite == true" id="sanphamdathich">Bo yeu thich</a>
+                                                	</th:block>
+                                                    
                                                     <span ng-if="item.stock > 0">
                                                         <button title="Add To Cart" class="add-to-cart btn btn-primary"
                                                             ng-click="cart.add(item.id)">Thêm vào giỏ</button>
@@ -355,7 +359,7 @@
                                             <div class="ec-pro-desc">{{cheapProduct1.description}}
                                             </div>
                                             <div class="ec-pro-actions">
-                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                <a th:if="${#request.remoteUser}" class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
                                                         class="svg_img pro_svg" alt="" /></a>
                                                 <button ng-click="cart.add(cheapProduct1.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào
@@ -415,7 +419,7 @@
                                             <div class="ec-pro-desc">{{cheapProduct2.description}}
                                             </div>
                                             <div class="ec-pro-actions">
-                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                <a th:if="${#request.remoteUser}" class="ec-btn-group wishlist" title="Wishlist"><img
                                                         src="assets/images/icons/pro_wishlist.svg"
                                                         class="svg_img pro_svg" alt="" /></a>
                                                 <button ng-click="cart.add(cheapProduct2.id)" title="Add To Cart" class="add-to-cart btn btn-primary">Thêm vào

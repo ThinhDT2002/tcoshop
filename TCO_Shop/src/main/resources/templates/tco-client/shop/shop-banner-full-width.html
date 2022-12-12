@@ -90,11 +90,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             </a>
                                             <span class="percentage" th:if="${p.discount} > 0" th:text="${p.discount} + '%'"></span>
                                             <div class="ec-pro-actions">
-                                                <a href="compare.html" class="ec-btn-group compare"
-                                                    title="Compare"><img th:src="@{|/assets/images/icons/compare.svg|}"
-                                                        class="svg_img pro_svg" alt="" /></a>
-                                                        
-                                              <th:block th:if="${p.stock} gt 0">
+                                                <th:block th:if="${p.stock} gt 0">
                                             		 <a title="Add To Cart" class=" add-to-cart" th:attr="ng-click=@{|cart.add(${p.id})|}"><img
                                                         th:src="@{|/assets/images/icons/cart.svg|}"  class="svg_img pro_svg"
                                                         alt="" /> Add To Cart</a>
@@ -104,7 +100,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                         th:src="@{|/assets/images/icons/clear-shopping-cart.png|}"  class="svg_img pro_svg"
                                                         alt="" /> Hết hàng</button>
                                          		</th:block>                                                                                                                                                                   
-                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+                                                <a th:if="${#request.remoteUser}" class="ec-btn-group wishlist" title="Wishlist"><img
                                                         th:src="@{|/assets/images/icons/wishlist.svg|}"
                                                         class="svg_img pro_svg" alt="" /></a>
                                             </div>
@@ -159,7 +155,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <ul>
                                 <li th:each="category : ${categories}">
                                     <div class="ec-sidebar-block-item">
-                                     <input type="checkbox" checked th:value="${category.id}" /> <a href="#">[[${category.name}]]</a><span
+                                     <input type="checkbox" checked th:value="${category.id}" th:checked = "${category.id} == ${cid}"/> <a href="#">[[${category.name}]]</a><span
                                             class="checked"></span>
                                     </div>
                                 </li>                                                                                                                                                                                                              

@@ -150,6 +150,17 @@ create table Orders_Detail(
 	primary key (Id)
 )
 
+create table Favorites(
+	Id int identity(1,1),
+	Username varchar(30),
+	constraint FK_Favorties_Users
+	foreign key (Username) references Users(Username) on delete cascade,
+	Product_Id int,
+	constraint FK_Favorites_Products
+	foreign key (Product_id) references Products(Id) on delete cascade,
+	primary key(Id)
+)
+
 
 
 insert into Roles(id, name)

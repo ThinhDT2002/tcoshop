@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tcoshop.entity.Favorite;
 import com.tcoshop.entity.Product;
+import com.tcoshop.service.FavoriteService;
 import com.tcoshop.service.ProductService;
 
 
@@ -23,7 +26,8 @@ import com.tcoshop.service.ProductService;
 public class ProductAPI {
 	@Autowired
 	ProductService productService;
-	
+	@Autowired
+	FavoriteService favoriteService;
 	@GetMapping()
 	public List<Product> getAll() {
 		return productService.findAll();
@@ -68,5 +72,14 @@ public class ProductAPI {
 	@GetMapping("/cheapProducts")
 	public List<Product> get4CheapProducts() {
 	    return productService.find4CheapProducts();
+	}
+	
+	@PostMapping("/favorite/add")
+	public Favorite addFavoriteProduct(@RequestBody Favorite favorite) {
+	    return favoriteService.create(favorite);
+	}
+	@GetMapping("/favorites")
+	public List<Favorite> findFavoritesByUsername(@RequestParam("username") String username) {
+	    return favoriteService.findByUsername(username);
 	}
 }

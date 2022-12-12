@@ -71,13 +71,15 @@ public class Product implements Serializable{
 	private List<ProductVariation> productVariations;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy =  "product", fetch=FetchType.EAGER)
 	private List<Review> reviews;
+	@OneToMany(mappedBy = "product")
+	private List<Favorite> favorites;
 	public Product() {
 		super();
 	}
 	
 	public Product(Integer id, String name, String image1, String image2, String image3, String image4, Double price,
 			String description, Integer stock, Integer discount, Category category, Subcategory subcategory,
-			List<ProductVariation> productVariations, List<Review> reviews) {
+			List<ProductVariation> productVariations, List<Review> reviews, List<Favorite> favorites) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -190,6 +192,14 @@ public class Product implements Serializable{
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+    @JsonIgnore
+    public List<Favorite> getFavorites() {
+        return favorites;
+    }
+
+    public void setFavorites(List<Favorite> favorites) {
+        this.favorites = favorites;
     }
 	
 	
