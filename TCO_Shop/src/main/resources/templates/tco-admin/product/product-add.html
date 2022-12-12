@@ -29,7 +29,7 @@
 							<div class="card-body">
 							<form th:action="@{|/category/subcategory/*{id}|}" enctype="multipart/form-data" method="post" class="row g-3">
 								<div class="row ec-vendor-uploads">
-									<div class="col-lg-4">
+									<div class="col-lg-5">
 										<div class="ec-vendor-img-upload">
 											<div class="ec-vendor-main-img">
 												<div class="avatar-upload">
@@ -110,40 +110,40 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-8">
+									<div class="col-lg-6">
 									<div th:text="${errorMessage}"></div>
 										<div class="ec-vendor-upload-detail">
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<label class="form-label">Tên sản phẩm</label>
 													<input th:field="*{name}" type="text" class="form-control slug-title">
 													<h6 th:errors="*{name}"></h6>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<label class="form-label">Chọn danh mục</label>
 													<select th:onChange="this.form.submit()" th:field = "*{category.id}" name="categories" id="Categories" class="form-select">
 															<option th:each = "category: ${categories}" th:value = "${category.id}">[[${category.name}]]</option>
 													</select>
 													<h6 th:errors = "*{category}"></h6>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<label class="form-label">Chọn thương hiệu</label>
 													<select th:field = "*{subcategory.id}" name="subcategories" id="Subcategories" class="form-select">
 															<option th:each = "s: ${sub}" th:value = "${s.id}">[[${s.name}]]</option>			
 													</select>
 													<h6 th:errors = "*{subcategory}"></h6>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<label class="form-label">Giá <span>( VNĐ
 															)</span></label>
 													<input th:field = "*{price}" type="number" class="form-control" id="price1">
 													<h6 th:errors="*{price}"></h6>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<label class="form-label">Số lượng</label>
 													<input th:field = "*{stock}" type="number" class="form-control" id="quantity1">
 													<h6 th:errors="*{stock}"></h6>
 												</div>
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<label class="form-label">Giảm giá</label>
 													<input th:field = "*{discount}" type="number" class="form-control" id="quantity1">
 													<h6 th:errors="*{discount}"></h6>

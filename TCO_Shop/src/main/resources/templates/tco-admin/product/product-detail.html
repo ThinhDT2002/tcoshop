@@ -11,12 +11,12 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 		<div class="breadcrumb-wrapper d-flex align-items-center justify-content-between">
 			<div>
 				<h1>Product Detail</h1>
-				<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
+				<p class="breadcrumbs"><span><a th:href="@{/tco-admin}">Dashboard</a></span>
 					<span><i class="mdi mdi-chevron-right"></i></span>Product
 				</p>
 			</div>
 			<div>
-				<a href="product-list.html" class="btn btn-primary"> Edit
+				<a th:href="@{|/tco-admin/product/*{id}|}" class="btn btn-primary"> Edit
 				</a>
 			</div>
 		</div>
@@ -38,51 +38,35 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 													<img class="img-responsive"
 														th:src="@{|/images/products/*{image1}|}" alt="">
 												</div>
-												<!--  
-												<div class="single-slide zoom-image-hover">
+									
+												 <div class="single-slide zoom-image-hover">
 													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image1}|}" alt="">
+														th:src="@{|/assets-admin/img/products/*{image2}|}" alt="">
 												</div>
 												
 												<div class="single-slide zoom-image-hover">
 													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image1}|}" alt="">
+														th:src="@{|/assets-admin/img/products/*{image3}|}" alt="">
 												</div>
 												<div class="single-slide zoom-image-hover">
 													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image1}|}" alt="">
+														th:src="@{|/assets-admin/img/products/*{image4}|}" alt="">
 												</div>
-												<div class="single-slide zoom-image-hover">
-													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image1}|}" alt="">
-												</div>
-												-->
 											</div>
 											  
-											<div class="single-nav-thumb">
+											<div class="single-nav-thumb" >
 												<div class="single-slide">
 													<img class="img-responsive"
 														th:src="@{|/images/products/*{image2}|}" alt="">
 												</div>
-												
 												<div class="single-slide">
 													<img class="img-responsive"
 														th:src="@{|/images/products/*{image3}|}" alt="">
 												</div>
-												<!-- 
 												<div class="single-slide">
 													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image2}|}" alt="">
+														th:src="@{|/images/products/*{image4}|}" alt="">
 												</div>
-												<div class="single-slide">
-													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image2}|}" alt="">
-												</div>
-												<div class="single-slide">
-													<img class="img-responsive"
-														th:src="@{|/assets-admin/img/products/*{image2}|}" alt="">
-												</div>
-												 -->
 											</div>
 											
 										</div>
@@ -93,13 +77,6 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 								<div class="row product-overview">
 									<div class="col-12">
 										<h5 class="product-title" th:text = "*{name}"></h5>
-										<p class="product-rate">
-											<i class="mdi mdi-star is-rated"></i>
-											<i class="mdi mdi-star is-rated"></i>
-											<i class="mdi mdi-star is-rated"></i>
-											<i class="mdi mdi-star is-rated"></i>
-											<i class="mdi mdi-star"></i>
-										</p>
 										<!--  
 										<p class="product-desc">Lorem Ipsum is simply dummy text of the
 											printing and typesetting industry. Lorem Ipsum has been the
@@ -111,22 +88,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 										</p>
 										-->
 										<p class="product-desc" th:text = "*{description}"></p>
-										<div class="ec-ofr">
-										<!--  
-											<h6>Available offers</h6>
-											<ul>
-												<li><b>Special Price :</b> Get extra 16% off (price
-													inclusive of discount) <a href="#">T&C</a> </li>
-												<li><b>Bank Offer :</b> 10% off on XYZ Bank Cards, up to
-													$12. On orders of $200 and above <a href="#">T&C</a>
-												</li>
-												<li><b>Bank Offer :</b> 5% Unlimited Cashback on tco XYZ
-													Bank Credit Card <a href="#">T&C</a></li>
-												<li><b>Bank Offer :</b> Flat $50 off on first tco Pay Later
-													order of $200 and above <a href="#">T&C</a></li>
-											</ul>
-											-->
-										</div>
+										
 										<span class="new-price" th:if="discount == 0">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
 										<div th:if="discount != 0">
 											<span class="old-price" style="color: red;">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
@@ -134,31 +96,15 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 											<span class="new-price">[[*{#numbers.formatDecimal(price * (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
 											
 										</div>
-										<p class="product-sku" th:text="*{id}"></p>
-										<ul class="product-size">
-											<li class="size"><span>S</span></li>
-											<li class="size"><span>M</span></li>
-											<li class="size"><span>L</span></li>
-											<li class="size"><span>XL</span></li>
-										</ul>
-										<ul class="product-color">
-											<li class="color"><span
-													style="background-color:#90cdf7;"></span></li>
-											<li class="color"><span
-													style="background-color:#ff3b66;"></span></li>
-											<li class="color"><span
-													style="background-color:#ffc476;"></span></li>
-											<li class="color"><span
-													style="background-color:#1af0ba;"></span></li>
-											<li class="color"><span
-													style="background-color:#f887d6;"></span></li>
-										</ul>
-
+										<label> Mã sản phẩm: </label>
+										<span class="product-sku" th:text="*{id}"></span>
+										<br>
 										<div class="product-stock">
 											<div class="stock">
-												<p class="title">Available</p>
+												<p class="title">Số lượng</p>
 												<p class="text" th:text="*{stock}"></p>
 											</div>
+											<!--
 											<div class="stock">
 												<p class="title">Pending</p>
 												<p class="text">50</p>
@@ -167,46 +113,12 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 												<p class="title">InOrder</p>
 												<p class="text">20</p>
 											</div>
+											-->
 										</div>
 									</div>
 								</div>
 							</div>
-							<div class="col-xl-3 col-lg-12 u-card">
-								<div class="card card-default seller-card">
-									<div class="card-body text-center">
-										<a href="javascript:0" class="text-secondary d-inline-block">
-											<div class="image mb-3">
-												<img src="assets/img/user/u-xl-4.jpg"
-													class="img-fluid rounded-circle" alt="Avatar Image">
-											</div>
-
-											<h5 class="text-dark">John Karter</h5>
-											<p class="product-rate">
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star is-rated"></i>
-												<i class="mdi mdi-star"></i>
-											</p>
-
-											<ul class="list-unstyled">
-												<li class="d-flex mb-1">
-													<i class="mdi mdi-map mr-1"></i>
-													<span>321/2, rio street, usa.</span>
-												</li>
-												<li class="d-flex mb-1">
-													<i class="mdi mdi-email mr-1"></i>
-													<span><span class="__cf_email__" data-cfemail="caafb2aba7baa6af8aafa7aba3a6e4a9a5a7">[email&#160;protected]</span></span>
-												</li>
-												<li class="d-flex">
-													<i class="mdi mdi-whatsapp mr-1"></i>
-													<span>+00 987-654-3210</span>
-												</li>
-											</ul>
-										</a>
-									</div>
-								</div>
-							</div>
+							
 						</div>
 
 						<div class="row review-rating mt-4">
@@ -257,12 +169,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 												<a th:href = "@{|/tco-admin/product/detail/${c.id}|}" th:text = "${c.name}"></a>
 											</li>
 										</ul>
-										<ul class="features">
-											<li>Any Product types that You want - Simple, Configurable</li>
-											<li>Downloadable/Digital Products, Virtual Products</li>
-											<li>Inventory Management with Backordered items</li>
-											<li>Flatlock seams throughout.</li>
-										</ul>
+										
 									</div>
 
 									<div class="tab-pane pt-3 fade" id="productinformation" role="tabpanel">
