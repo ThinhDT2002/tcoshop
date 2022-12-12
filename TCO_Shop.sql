@@ -141,7 +141,7 @@ create table Orders_Detail(
 	Id int identity(1,1),
 	Order_Id int not null,
 	constraint FK_OrdersDetail_Orders
-	foreign key (Order_Id) references Orders (Id),
+	foreign key (Order_Id) references Orders (Id) on delete cascade,
 	Product_Id int not null,
 	constraint FK_OrdersDetail_Products
 	foreign key (Product_Id) references Products (Id),

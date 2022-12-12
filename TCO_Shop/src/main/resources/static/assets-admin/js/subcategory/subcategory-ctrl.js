@@ -105,7 +105,7 @@ adminApp.controller("subcategory-ctrl", function($scope, $http){
 			$scope.subs.splice(index, 1);
 			alert("Xóa thương hiệu thành công!");
 		}).catch(error =>{
-			alert("Lỗi xóa thương hiệu!");
+			alert("Thương hiệu này có chứa sản phẩm không thể xóa !");
 			console.log("Errror", error);
 		});
 	}

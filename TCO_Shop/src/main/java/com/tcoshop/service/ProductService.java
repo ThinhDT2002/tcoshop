@@ -9,15 +9,11 @@ import com.tcoshop.entity.Product;
 public interface ProductService {
 	List<Product> findAll();
 
+	List<Product> findByCategoryId(String cid);
+
 	List<Product> findBySubCategoryId(String cid);
 
-	Page<Product> findBySubcategoryId(String scid, int pageNumber);
-
 	Product findById(Integer id);
-
-	Page<Product> findByCategoryId(String cid, int pageNumber);
-
-	Page<Product> findProductPage(int pageNumber);
 
 	Product create(Product product);
 
@@ -32,7 +28,5 @@ public interface ProductService {
 	List<Product> find8ProductsBestSold();
 
 	List<Product> find4CheapProducts();
-
-	List<Product> findByCategoryId(String cid);
 
 }

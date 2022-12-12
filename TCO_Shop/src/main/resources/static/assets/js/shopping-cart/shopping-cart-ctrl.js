@@ -1,23 +1,23 @@
 clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.products = [];
 	$scope.reviews = [];
-	
+
 	$scope.newProducts = [];
 	$scope.newProducts1 = [];
 	$scope.newProducts2 = [];
 	$http.get("/api/products/newProducts").then(resp => {
 		$scope.newProducts = resp.data;
 	}).then(function() {
-		for(let i = 0; i < $scope.newProducts.length; i++) {
-			if(i <= 3) {
+		for (let i = 0; i < $scope.newProducts.length; i++) {
+			if (i <= 3) {
 				$scope.newProducts1.push($scope.newProducts[i]);
 
-			}  else {
+			} else {
 				$scope.newProducts2.push($scope.newProducts[i]);
 			}
 		}
 	})
-	
+
 	$scope.highDiscountProducts = [];
 	$scope.highDiscountProducts1 = [];
 	$scope.highDiscountProducts2 = [];
@@ -26,30 +26,30 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 	}).then(function() {
 		$scope.discountProduct1 = $scope.highDiscountProducts[1];
 		$scope.discountProduct2 = $scope.highDiscountProducts[2];
-		for(let i = 0; i < $scope.highDiscountProducts.length; i++) {
-			if(i <= 3) {
+		for (let i = 0; i < $scope.highDiscountProducts.length; i++) {
+			if (i <= 3) {
 				$scope.highDiscountProducts1.push($scope.highDiscountProducts[i]);
 			} else {
 				$scope.highDiscountProducts2.push($scope.highDiscountProducts[i]);
 			}
 		}
 	})
-	
+
 	$scope.bestSoldProducts = [];
 	$scope.bestSoldProducts1 = [];
 	$scope.bestSoldProducts2 = [];
 	$http.get("/api/products/bestSoldProducts").then(resp => {
 		$scope.bestSoldProducts = resp.data;
 	}).then(function() {
-		for(let i = 0; i < $scope.bestSoldProducts.length; i++) {
-			if(i <= 3) {
+		for (let i = 0; i < $scope.bestSoldProducts.length; i++) {
+			if (i <= 3) {
 				$scope.bestSoldProducts1.push($scope.bestSoldProducts[i]);
 			} else {
 				$scope.bestSoldProducts2.push($scope.bestSoldProducts[i]);
 			}
 		}
 	})
-	
+
 	$scope.cheapProducts = [];
 	$http.get("/api/products/cheapProducts").then(resp => {
 		$scope.cheapProducts = resp.data;
@@ -72,28 +72,39 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 		});
 		$http.get("/api/products").then(resp => {
 			$scope.products = resp.data;
-		}).then(function(){
+		}).then(function() {
 			let username = document.getElementById("currentUsername").innerText;
-			if(username != "404") {
-			$http({
-				url: "/api/products/favorites",
-				method: "GET",
-				params: {
-					username: username
-				}
-			}).then(resp => {
-				$scope.favorites = resp.data;
-				$scope.favorites.forEach(favorite => {
-					let index = $scope.products.findIndex(product => favorite.product.id == product.id);
-					$scope.products[index].isFavorite = true;
-					$scope.products[index].favoriteId = favorite.id;
+			if (username != "404") {
+				$http({
+					url: "/api/products/favorites",
+					method: "GET",
+					params: {
+						username: username
+					}
+				}).then(resp => {
+					$scope.favorites = resp.data;
+					$scope.favorites.forEach(favorite => {
+						let index = $scope.products.findIndex(product => favorite.product.id == product.id);
+						$scope.products[index].isFavorite = true;
+						$scope.products[index].favoriteId = favorite.id;
+					})
 				})
-			})
-		}
-		});			
+			}
+		});
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
 		});
+	}
+
+	$scope.removeOrder = function(orderId) {
+		$http.delete(`/api/orders/${orderId}`).then(resp => {
+			let index = $scope.items.findIndex(item => item.id == orderId);
+			$scope.items.slice(index, 1);
+			alert("Xóa đơn hàng thành công !")
+			location.reload();
+		}).catch(error => {
+			console.log(error)
+		})
 	}
 
 	// con mắt ở trang index home
@@ -105,7 +116,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 			})
 		}
 	}
-	
+
 	$scope.favorites = [];
 	$scope.addFavorite = function(productId) {
 		let username = document.getElementById("currentUsername").innerText;
@@ -117,13 +128,13 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 				username: username
 			}
 		}
-		$http.post("/api/products/favorite/add", favorite).then(resp=> {
+		$http.post("/api/products/favorite/add", favorite).then(resp => {
 			let index = $scope.products.findIndex(product => productId == product.id);
 			$scope.products[index].isFavorite = true;
 			$scope.products[index].favoriteId = resp.data.id;
 			$scope.favorites.push(resp.data);
 		})
-	}	
+	}
 	$scope.removeFavorite = function(favoriteId) {
 		$http.delete(`/api/products/favorite/remove/${favoriteId}`).then(resp => {
 			let index = $scope.products.findIndex(product => product.favoriteId == favoriteId);
@@ -211,7 +222,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 
 		get amount() {
 			return this.items
-				.map(item => item.qty * item.price * (100 - item.discount)/100)
+				.map(item => item.qty * item.price * (100 - item.discount) / 100)
 				.reduce((total, qty) => total += qty, 0);
 		},
 
@@ -227,7 +238,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 
 		get ship() {
 			if (this.count == 0) return 0;
-			else if(this.count >= 1) return 12000;
+			else if (this.count >= 1) return 12000;
 			else if (this.count > 5) return 0;
 		},
 
@@ -236,7 +247,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.cart.loadFromSessionStorage();
 
 	$scope.order = {
-		createDate: new Date(),		
+		createDate: new Date(),
 		address: "",
 		user: { username: split[2] },
 		description: "",
@@ -252,11 +263,11 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 				}
 			});
 		},
-		
+
 
 		purchase() {
-			if($scope.order.phoneNumber.match("^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$")){
-				
+			if ($scope.order.phoneNumber.match("^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$")) {
+
 
 				if ($scope.cart.count > 0) {
 					var order = angular.copy(this);
@@ -271,9 +282,9 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 				} else {
 					alert("Bạn chưa có sản phẩm trong giỏ hàng")
 				}
-			}else{
+			} else {
 				document.getElementById("sdt").style.display = "flex";
-				
+
 			}
 		},
 

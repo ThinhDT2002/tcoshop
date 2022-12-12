@@ -21,18 +21,6 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> findAll() {
 		return pdao.findAll();
 	}
-
-	@Override
-	public Page<Product> findByCategoryId(String cid, int pageNumber) {
-		Pageable pageable = PageRequest.of(pageNumber -1,8);
-		return pdao.findAllByCategoryIdLike(cid, pageable);
-	}
-	
-    @Override
-    public Page<Product> findBySubcategoryId(String scid, int pageNumber) {
-        Pageable pageable = PageRequest.of(pageNumber -1,8);
-        return pdao.findBySubcategoryId(scid, pageable);
-    }
 	
 	@Override
 	public List<Product> findByCategoryId(String cid) {
@@ -42,12 +30,6 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> findBySubCategoryId(String scid) {
 		return pdao.findBySubcategoryId2(scid);
-	}
-
-	@Override
-	public Page<Product> findProductPage(int pageNumber) {
-		Pageable pageable = PageRequest.of(pageNumber - 1, 8);
-		return pdao.findAll(pageable);
 	}
 
 	@Override

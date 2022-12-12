@@ -70,19 +70,45 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <th scope="col">Tên</th>
                                             <th scope="col">Ngày đặt</th>
                                             <th scope="col">Trạng thái</th>
-                                            <th scope="col">Hành động</th>
+                                            <th scope="col">Xem đơn</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="item in items">
                                             <th scope="row"><span>{{item.id}}</span></th>
-<!--                                             <td><img class="prod-img" th:src="@{|/images/products/{{order.image1}}|}"
-                                                    alt="product image"></td> -->
                                             <td><span>[[${currentUser.fullname}]]</span></td>
                                             <td><span>{{item.createDate | date:"dd/MM/yyyy"}}</span></td>
-                                            <td><span>{{item.status}}</span></td>
+                                            <td ng-if="item.status === 'ChoXacNhan'">
+                                            	<span >Chờ xác nhận</span>
+                                            </td>
+                                            <td ng-if="item.status === 'ChuanBi'">
+                                            	<span>Đang chuẩn bị hàng</span>
+                                            </td>
+                                            <td ng-if="item.status === 'XuatKho'">
+                                            	<span>Đã xuất kho</span>
+                                            </td>
+                                            <td ng-if="item.status === 'VanChuyen'">
+                                            	<span>'Đang vận chuyển</span>
+                                            </td>
+                                            <td ng-if="item.status === 'DaGiaoHang'">
+                                            	<span>Đã giao hàng</span>
+                                            </td>
+                                            <td ng-if="item.status === 'HuyBo'">
+                                            	<span>Hủy bỏ</span>
+                                            </td>
                                             <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                        th:href="@{|/order/track/{{item.id}}|}">Xem</a></span></td>
+                                                        th:href="@{|/order/track/{{item.id}}|}">Xem</a></span></td>                                                        
+                                            <td ng-if="item.status === 'ChoXacNhan' || item.status === 'ChuanBi'">
+	                                            <span class="tbl-btn" >
+	                                            	<button class="btn btn-lg btn-warning" ng-click="removeOrder(item.id)">Hủy đơn</button>	                                            	
+	                                            </span>
+                                            </td>   
+                                            <td ng-if="item.status !== 'ChoXacNhan' && !item.status !== 'ChuanBi'">
+                                            	<span class="tbl-btn">
+	                                            	<button class="btn btn-lg btn-warning" ng-click="removeOrder(item.id)" disabled>Hủy đơn</button>	                                            	
+	                                            </span>
+                                            </td>                                                 
                                         </tr>
                                     </tbody>
                                 </table>

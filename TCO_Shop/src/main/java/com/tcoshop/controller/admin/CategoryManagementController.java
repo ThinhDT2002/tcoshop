@@ -105,9 +105,14 @@ public class CategoryManagementController {
 
 	@RequestMapping("/tco-admin/category/delete/{id}")
 	public String deleteCategory(RedirectAttributes redirectAttributes, @PathVariable("id") String id) {
-		String url = "http://localhost:8080/api/categories/" + id;
-		restTemplate.delete(url);
-		redirectAttributes.addFlashAttribute("message", "Delete succesfully!");
+		try {
+			String url = "http://localhost:8080/api/categories/" + id;
+			restTemplate.delete(url);
+			redirectAttributes.addFlashAttribute("message", "Delete succesfully!");
+		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("message", "Danh mục này chứa các dữ liệu liên quan như thương hiệu hoặc sản phẩm. Không thể xóa!");
+		}
+		
 		return "redirect:/tco-admin/category";
 	}
 
