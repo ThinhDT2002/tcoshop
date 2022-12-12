@@ -99,10 +99,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             		<button title="Hết hàng" class=" add-to-cart"><img
                                                         th:src="@{|/assets/images/icons/clear-shopping-cart.png|}"  class="svg_img pro_svg"
                                                         alt="" /> Hết hàng</button>
-                                         		</th:block>                                                                                                                                                                   
-                                                <a th:if="${#request.remoteUser}" class="ec-btn-group wishlist" title="Wishlist"><img
-                                                        th:src="@{|/assets/images/icons/wishlist.svg|}"
-                                                        class="svg_img pro_svg" alt="" /></a>
+                                         		</th:block>   
+                                         		<th:block th:if="${#request.remoteUser}">                                     		                                                                                                                                                                
+	                                                <a class="ec-btn-group wishlist" title="Wishlist"><img
+	                                                        th:src="@{|/assets/images/icons/wishlist.svg|}"
+	                                                        class="svg_img pro_svg" alt="" /></a>	                                                 
+                                                </th:block>
                                             </div>
                                         </div>
                                     </div>

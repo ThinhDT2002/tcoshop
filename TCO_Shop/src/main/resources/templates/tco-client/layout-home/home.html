@@ -148,10 +148,13 @@
                                                 <div class="ec-pro-desc">{{item.description}}</div>
                                                 <div class="ec-pro-actions">
                                                 	<th:block th:if="${#request.remoteUser}">
-                                                		<a ng-if="item.isFavorite == undefined" id="sanphamchuathich"  ng-click="addFavorite(item.id)" class="ec-btn-group wishlist" title="Wishlist"><img
+                                                		<a ng-if="item.isFavorite == undefined"  ng-click="addFavorite(item.id)" class="ec-btn-group wishlist" title="Wishlist"><img
                                                             src="assets/images/icons/pro_wishlist.svg"
                                                             class="svg_img pro_svg" alt="" /></a>
-                                                        <a ng-if="item.isFavorite == true" id="sanphamdathich">Bo yeu thich</a>
+                                                        <a ng-if="item.isFavorite == true" ng-click="removeFavorite(item.favoriteId)" class="ec-btn-group wishlist" title="Wishlist">
+                                                        <img
+                                                            src="assets/images/icons/remove-from-wishlist-icon.svg"
+                                                            class="svg_img pro_svg" alt="" /></a>
                                                 	</th:block>
                                                     
                                                     <span ng-if="item.stock > 0">

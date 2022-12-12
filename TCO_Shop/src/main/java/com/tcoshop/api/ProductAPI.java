@@ -82,4 +82,8 @@ public class ProductAPI {
 	public List<Favorite> findFavoritesByUsername(@RequestParam("username") String username) {
 	    return favoriteService.findByUsername(username);
 	}
+	@DeleteMapping("/favorite/remove/{favoriteId}")
+	public void deleteFavoriteById(@PathVariable("favoriteId") Integer favoriteId) {
+	    favoriteService.delete(favoriteId);
+	}
 }

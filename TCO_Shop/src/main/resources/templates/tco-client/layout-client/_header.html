@@ -114,6 +114,7 @@
 								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
 									alt="" /><span class="ec-btn-title" id="nguoidunghientai">Xin chào, [[${#request.remoteUser}]]</span>
 							</button>
+							<p id="currentUsername" style="display:none;">[[${#request.remoteUser}]]</p>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a class="dropdown-item" th:href="@{/user/profile}">Thông tin tài khoản</a></li>
 								<!-- 
@@ -130,6 +131,7 @@
 								<img src="assets/images/icons/user_5.svg" class="svg_img top_svg"
 									alt="" /><span class="ec-btn-title" id="nguoidunghientai">Tài khoản</span>
 							</button>
+							<p id="currentUsername" style="display:none;">404</p>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a class="dropdown-item" th:href="@{/register}">Đăng ký</a></li>
 								<!-- 
@@ -144,10 +146,10 @@
                                 
                                 <!-- Header User End -->
                                 <!-- Header wishlist Start -->
-                                <a th:if="${#request.remoteUser}" href="wishlist.html" class="ec-header-btn ec-header-wishlist">
+                                <a th:if="${#request.remoteUser}" th:href="@{/product/favorites}" class="ec-header-btn ec-header-wishlist">
                                     <div class="header-icon"><img th:src="@{/assets/images/icons/wishlist.svg}"
                                             class="svg_img header_svg" alt="" /></div>
-                                    <span class="ec-header-count">4</span>
+                                    <span class="ec-header-count">{{favorites.length}}</span>
                                 </a>
                                 <!-- Header wishlist End -->
                                 <!-- Header Cart Start -->

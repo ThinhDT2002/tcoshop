@@ -85,4 +85,9 @@ public class ProductController {
     			
         return "tco-client/shop/product-gallery-full-width";
     }
+    
+    @RequestMapping("/product/favorites")
+    public String getFavoriteProducts() {
+        return "tco-client/shop/favorite-product";
+    }
 }

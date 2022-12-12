@@ -64,7 +64,7 @@
 					<!-- Header User End -->
 					<!-- Header wishlist Start -->
 					<div th:if="${#request.remoteUser}" class="ec-header-wishlist">
-						<a href="#">
+						<a th:href="@{/product/favorites}">
 							<div class="top-icon">
 								<img src="assets/images/icons/pro_wishlist.svg"
 									class="svg_img top_svg" alt="" />
