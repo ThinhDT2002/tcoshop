@@ -1,9 +1,15 @@
 clientApp.controller("product-ctrl", function($http, $scope) {
 	let url = window.location.search;
-
+	$scope.categories = [];
 	$scope.products = [];
 	$scope.favorites = [];
-
+	$scope.filterTypes = [];
+	$scope.fullProducts = [];
+	$http.get("/api/categories").then(resp => {
+		$scope.categories = resp.data;
+	}).then(function() {
+		$scope.categories = $scope.categories;
+	})
 	let arrUrl = url.split('=');
 	let arrUrl2 = arrUrl[0].split('?');
 
@@ -14,6 +20,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		}).then(resp => {
 			$scope.products = resp.data;
 		}).then(resp => {
+			$scope.fullProducts = $scope.products;
 			let username = document.getElementById("currentUsername").innerText;
 			if (username != "404") {
 				$http({
@@ -26,7 +33,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 					$scope.favorites = resp.data;
 					$scope.favorites.forEach(favorite => {
 						let index = $scope.products.findIndex(product => favorite.product.id == product.id);
-						if(index != -1) {
+						if (index != -1) {
 							$scope.products[index].isFavorite = true;
 							$scope.products[index].favoriteId = favorite.id;
 						}
@@ -41,6 +48,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		}).then(resp => {
 			$scope.products = resp.data;
 		}).then(resp => {
+			$scope.fullProducts = $scope.products;
 			let username = document.getElementById("currentUsername").innerText;
 			if (username != "404") {
 				$http({
@@ -53,7 +61,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 					$scope.favorites = resp.data;
 					$scope.favorites.forEach(favorite => {
 						let index = $scope.products.findIndex(product => favorite.product.id == product.id);
-						if(index != -1) {
+						if (index != -1) {
 							$scope.products[index].isFavorite = true;
 							$scope.products[index].favoriteId = favorite.id;
 						}
@@ -68,6 +76,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		}).then(resp => {
 			$scope.products = resp.data;
 		}).then(resp => {
+			$scope.fullProducts = $scope.products;
 			let username = document.getElementById("currentUsername").innerText;
 			if (username != "404") {
 				$http({
@@ -80,7 +89,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 					$scope.favorites = resp.data;
 					$scope.favorites.forEach(favorite => {
 						let index = $scope.products.findIndex(product => favorite.product.id == product.id);
-						if(index != -1) {
+						if (index != -1) {
 							$scope.products[index].isFavorite = true;
 							$scope.products[index].favoriteId = favorite.id;
 						}
@@ -89,9 +98,6 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 			}
 		})
 	}
-
-
-
 
 	$scope.addFavorite = function(productId) {
 		let username = document.getElementById("currentUsername").innerText;
@@ -120,7 +126,6 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		})
 	}
 
-
 	$scope.currentPage = 0;
 	$scope.pageSize = "8";
 	$scope.totalQuantity = function() {
@@ -132,4 +137,30 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 	$scope.pagination = function() {
 		$scope.currentPage = 0;
 	}
+
+	$scope.selectCategory = function(cid) {
+		let index = $scope.filterTypes.findIndex(filterType => filterType == cid);
+		if (index != -1) {
+			$scope.filterTypes.splice(index, 1);
+		} else {
+			$scope.filterTypes.push(cid);
+		}
+	}
+	$scope.submitFilter = function() {
+		$scope.products = [];
+		if ($scope.filterTypes.length == 0 || $scope.filterTypes.length == $scope.categories.length) {
+			$scope.products = [...$scope.fullProducts];
+		} else {
+			$scope.filterTypes.forEach(filterType => {
+				$scope.fullProducts.forEach(p => {
+					if (p.category.id == filterType) {
+						$scope.products.push(p);
+					}
+				})
+			})
+		}
+
+		console.log($scope.products);
+	}
+
 })

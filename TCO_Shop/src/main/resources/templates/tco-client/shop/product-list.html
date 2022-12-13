@@ -168,9 +168,9 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                         </div>
                         <div class="ec-sb-block-content">
                             <ul>
-                                <li th:each="category : ${categories}">
+                                <li ng-repeat="category in categories">
                                     <div class="ec-sidebar-block-item">
-                                     <input type="checkbox" checked th:value="${category.id}" th:checked = "${category.id} == ${cid}"/> <a href="#">[[${category.name}]]</a><span
+                                     <input type="checkbox" ng-click="selectCategory(category.id)" ng-value="category.id"/> <a href="#">{{category.name}}</a><span
                                             class="checked"></span>
                                     </div>
                                 </li>                                                                                                                                                                                                              
@@ -193,7 +193,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             </div>
                         </div>
                         <div class="ec-sidebar-title" style="margin: 10px 40%;">
-                            <button class="button-popup">Gửi</button>
+                            <button class="button-popup" ng-click="submitFilter()">Gửi</button>
                         </div>
                     </div>
                 </div>

@@ -89,11 +89,11 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 										-->
 										<p class="product-desc" th:text = "*{description}"></p>
 										
-										<span class="new-price" th:if="discount == 0">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
-										<div th:if="discount != 0">
+										<span class="new-price" th:if="*{discount} == 0">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span><br>
+										<div th:if="*{discount} != 0">
 											<span class="old-price" style="color: red;">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
 											-
-											<span class="new-price">[[*{#numbers.formatDecimal(price * (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+											<span class="new-price">[[*{#numbers.formatDecimal(price * (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span><br>
 											
 										</div>
 										<label> Mã sản phẩm: </label>
@@ -129,7 +129,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 											id="product-detail-tab" data-bs-toggle="tab"
 											data-bs-target="#productdetail" href="#productdetail" role="tab"
 											aria-selected="true">
-											<i class="mdi mdi-library-books mr-1"></i> Detail</a>
+											<i class="mdi mdi-library-books mr-1"></i> Cùng danh mục</a>
 									</li>
 
 									<li class="nav-item">
@@ -137,7 +137,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 											id="product-information-tab" data-bs-toggle="tab"
 											data-bs-target="#productinformation" href="#productinformation"
 											role="tab" aria-selected="false">
-											<i class="mdi mdi-information mr-1"></i>Info</a>
+											<i class="mdi mdi-information mr-1"></i>Chi tiết</a>
 									</li>
 
 									<li class="nav-item">
@@ -145,7 +145,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 											id="product-reviews-tab" data-bs-toggle="tab"
 											data-bs-target="#productreviews" href="#productreviews"
 											role="tab" aria-selected="false">
-											<i class="mdi mdi-star-half mr-1"></i> Reviews</a>
+											<i class="mdi mdi-star-half mr-1"></i> Đánh giá</a>
 									</li>
 								</ul>
 								<div class="tab-content" id="myTabContent2">
@@ -165,7 +165,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 										</p>
 										-->
 										<ul>
-											<li th:each = "c:*{category.products}">
+											<li th:each = "c:*{category.products}" th:if="${c.id} != *{id}">
 												<a th:href = "@{|/tco-admin/product/detail/${c.id}|}" th:text = "${c.name}"></a>
 											</li>
 										</ul>
@@ -174,60 +174,30 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 
 									<div class="tab-pane pt-3 fade" id="productinformation" role="tabpanel">
 										<ul>
-											<li><span>Weight</span> 1000 g</li>
-											<li><span>Dimensions</span> 35 × 30 × 7 cm</li>
-											<li><span>Color</span> Black, Pink, Red, White</li>
+											<li th:each="productVariation : *{productVariations}" th:if="${productVariation.value} != ''"> 
+												<span>[[${productVariation.name}]]: </span> [[${productVariation.value}]]
+											</li>
+											
 										</ul>
 									</div>
 
 									<div class="tab-pane pt-3 fade" id="productreviews" role="tabpanel">
 										<div class="ec-t-review-wrapper">
-											<div class="ec-t-review-item">
+											<div class="ec-t-review-item" th:each="review : ${reviews}">
 												<div class="ec-t-review-avtar">
-													<img src="assets/img/review-image/1.jpg" alt="">
+													<img th:src="@{|/images/user/${review.user.avatar}|}" alt="">
 												</div>
 												<div class="ec-t-review-content">
 													<div class="ec-t-review-top">
-														<p class="ec-t-review-name">Jeny Doe</p>
-														<div class="ec-t-rate">
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star"></i>
-														</div>
+														<p class="ec-t-review-name">[[${review.user.username}]]</p>											
 													</div>
 													<div class="ec-t-review-bottom">
-														<p>Lorem Ipsum is simply dummy text of the printing
-															and
-															typesetting industry.
+														<p>[[${review.content}]]
 														</p>
 													</div>
 												</div>
 											</div>
-											<div class="ec-t-review-item">
-												<div class="ec-t-review-avtar">
-													<img src="assets/img/review-image/2.jpg" alt="">
-												</div>
-												<div class="ec-t-review-content">
-													<div class="ec-t-review-top">
-														<p class="ec-t-review-name">Linda Morgus</p>
-														<div class="ec-t-rate">
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star is-rated"></i>
-															<i class="mdi mdi-star"></i>
-														</div>
-													</div>
-													<div class="ec-t-review-bottom">
-														<p>Lorem Ipsum is simply dummy text of the printing
-															and
-															typesetting industry.
-														</p>
-													</div>
-												</div>
-											</div>
+											
 
 										</div>
 									</div>
