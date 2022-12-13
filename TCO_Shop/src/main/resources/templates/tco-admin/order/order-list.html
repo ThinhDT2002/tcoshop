@@ -92,7 +92,10 @@
 														<td>{{order.description}}</td>
 														<td>
 															<div class="btn-group mb-1">
-																<a type="button" ng-click="findOrderDetails(order.id)" class="btn btn-outline-success">Xem chi
+																<a type="button" ng-click="findOrderDetails(order.id)"
+																	class="btn btn-outline-success"
+																	data-bs-toggle="modal"
+																	data-bs-target="#exampleModal">Xem chi
 																	tiết</a>
 																<button type="button"
 																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
@@ -111,7 +114,7 @@
 												</tbody>
 											</table>
 											<div class="panel-footer text-center">
-												<button ng-click = "pagination()" class="btn btn-danger">
+												<button ng-click="pagination()" class="btn btn-danger">
 													<b>Trang đầu</b>
 												</button>
 												<button ng-disabled="currentPage == 0"
@@ -124,7 +127,8 @@
 													ng-click="currentPage=currentPage+1" class="btn btn-primary">
 													<b>Tới</b>
 												</button>
-												<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
+												<button ng-click="currentPage = numberOfPages() -1"
+													class="btn btn-danger">
 													<b>Trang cuối</b>
 												</button>
 											</div>
@@ -135,28 +139,54 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<table class="table" style="width: 100%">
-						<thead>
-							<tr>
-								<th>Sản phẩm</th>
-								<th>Giá gốc</th>
-								<th>Giảm giá</th>
-								<th>Số lượng</th>
-								<th>Thành tiền</th>
-							</tr>
-						</thead>						
-						<tbody>
-							<tr ng-repeat="orderDetail in orderDetails">
-								<td>{{orderDetail.product.name}}</td>
-								<td>{{orderDetail.product.price | currency:'':0}} VNĐ</td>
-								<td>{{orderDetail.product.discount}} %</td>
-								<td>{{orderDetail.quantity}}</td>
-								<td>{{orderDetail.price| currency:'':0}} VNĐ</td>								
-							</tr>
-						</tbody>
-					</table>
-				</div>
+				<!-- MODAL -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" style="margin: 5% 20%; display: block;">
+                            <div class="modal-content" style="width: 200%;">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Chi tiết hoá đơn</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+										<div class="col-12">
+											<div class="card card-default">
+												<div class="card-body">
+													<table class="table" style="width: 100%">
+														<thead>
+															<tr>
+																<th>Sản phẩm</th>
+																<th>Giá gốc</th>
+																<th>Giảm giá</th>
+																<th>Số lượng</th>
+																<th>Thành tiền</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr ng-repeat="orderDetail in orderDetails">
+																<td>{{orderDetail.product.name}}</td>
+																<td>{{orderDetail.product.price | currency:'':0}} VNĐ</td>
+																<td>{{orderDetail.product.discount}} %</td>
+																<td>{{orderDetail.quantity}}</td>
+																<td>{{orderDetail.price| currency:'':0}} VNĐ</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				
 			</div>
 			<!-- End Content -->
 		</div>
