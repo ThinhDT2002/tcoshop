@@ -173,7 +173,7 @@
 									<div id="ec-spt-nav-info" class="tab-pane fade">
 										<div class="ec-single-pro-tab-moreinfo">
 											<ul>
-												<li th:each="productVariation : *{productVariations}"><span>[[${productVariation.name}]]</span>
+												<li th:each="productVariation : *{productVariations}" th:if="${productVariation.value} != ''"><span>[[${productVariation.name}]]</span>
 													[[${productVariation.value}]]</li>
 											</ul>
 										</div>

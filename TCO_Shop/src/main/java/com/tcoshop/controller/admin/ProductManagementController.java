@@ -1,7 +1,6 @@
 package com.tcoshop.controller.admin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,14 +20,15 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.tcoshop.entity.Category;
 import com.tcoshop.entity.Product;
 import com.tcoshop.entity.ProductVariation;
+import com.tcoshop.entity.Review;
 import com.tcoshop.entity.Subcategory;
 import com.tcoshop.entity.Variation;
 import com.tcoshop.service.CategoryService;
 import com.tcoshop.service.ProductService;
+import com.tcoshop.service.ReviewService;
 import com.tcoshop.service.SubcategoryService;
 
 @Controller
@@ -40,6 +39,8 @@ public class ProductManagementController {
     SubcategoryService subcategoryService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    ReviewService reviewService;
 
     RestTemplate restTemplate = new RestTemplate();
 
@@ -112,6 +113,8 @@ public class ProductManagementController {
     public String detailProduct(Model model, @PathVariable("id") Integer id) {
         Product product = productService.findById(id);
         model.addAttribute("item", product);
+        List<Review> review = reviewService.findByProductId(id);
+        model.addAttribute("reviews", review);
         return "tco-admin/product/product-detail";
     }
 
