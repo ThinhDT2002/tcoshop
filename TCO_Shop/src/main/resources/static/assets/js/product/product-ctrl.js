@@ -5,6 +5,8 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 	$scope.favorites = [];
 	$scope.filterTypes = [];
 	$scope.fullProducts = [];
+	$scope.fromPrice = 0;
+	$scope.toPrice = 0;
 	$http.get("/api/categories").then(resp => {
 		$scope.categories = resp.data;
 	}).then(function() {
@@ -12,7 +14,19 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 	})
 	let arrUrl = url.split('=');
 	let arrUrl2 = arrUrl[0].split('?');
+	$http.get("/api/products").then(resp => {
+		$scope.fullProducts = resp.data;
+	}).then(function() {
+		$scope.fullProducts = $scope.fullProducts;
+		$scope.toPrice = Math.max(...$scope.fullProducts.map(p => p.price));
+		$scope.minPriceFilter = function(product) {
+			return product.price >= $scope.fromPrice;
+		};
 
+		$scope.maxPriceFilter = function(product) {
+			return product.price <= $scope.toPrice;
+		}
+	})
 	if (arrUrl2[1] == "cid") {
 		$http({
 			url: "/api/products/category/" + arrUrl[1],
@@ -20,7 +34,6 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		}).then(resp => {
 			$scope.products = resp.data;
 		}).then(resp => {
-			$scope.fullProducts = $scope.products;
 			let username = document.getElementById("currentUsername").innerText;
 			if (username != "404") {
 				$http({
@@ -48,7 +61,6 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		}).then(resp => {
 			$scope.products = resp.data;
 		}).then(resp => {
-			$scope.fullProducts = $scope.products;
 			let username = document.getElementById("currentUsername").innerText;
 			if (username != "404") {
 				$http({
@@ -76,7 +88,6 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		}).then(resp => {
 			$scope.products = resp.data;
 		}).then(resp => {
-			$scope.fullProducts = $scope.products;
 			let username = document.getElementById("currentUsername").innerText;
 			if (username != "404") {
 				$http({
@@ -137,7 +148,6 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 	$scope.pagination = function() {
 		$scope.currentPage = 0;
 	}
-
 	$scope.selectCategory = function(cid) {
 		let index = $scope.filterTypes.findIndex(filterType => filterType == cid);
 		if (index != -1) {
@@ -145,6 +155,7 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 		} else {
 			$scope.filterTypes.push(cid);
 		}
+		$scope.submitFilter();
 	}
 	$scope.submitFilter = function() {
 		$scope.products = [];
@@ -159,8 +170,15 @@ clientApp.controller("product-ctrl", function($http, $scope) {
 				})
 			})
 		}
-
-		console.log($scope.products);
 	}
-
+	$scope.deleteFilter = function() {
+		$scope.filterTypes = [];
+		$scope.products = [...$scope.fullProducts];
+		$scope.fromPrice = 0;
+		$scope.toPrice = Math.max(...$scope.fullProducts.map(p => p.price));
+		let arrayCheckbox = document.getElementsByName("categoryFilterCheckboxes");
+		for(let i = 0; i < arrayCheckbox.length; i++) {
+			arrayCheckbox[i].checked = false;
+		}
+	}
 })

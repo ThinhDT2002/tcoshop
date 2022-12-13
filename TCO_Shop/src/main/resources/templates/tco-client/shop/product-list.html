@@ -78,7 +78,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                 <div class="shop-pro-content">
                     <div class="shop-pro-inner">
                         <div class="row">
-                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" ng-repeat="product in products | startFrom: currentPage*pageSize | limitTo: pageSize">
+                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 mb-6 pro-gl-content" ng-repeat="product in products | filter: minPriceFilter | filter: maxPriceFilter | startFrom: currentPage*pageSize | limitTo: pageSize">
                                 <div class="ec-product-inner">
                                     <div class="ec-pro-image-outer">
                                         <div class="ec-pro-image">
@@ -172,7 +172,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                             <ul>
                                 <li ng-repeat="category in categories">
                                     <div class="ec-sidebar-block-item">
-                                     <input type="checkbox" ng-click="selectCategory(category.id)" ng-value="category.id"/> <a href="#">{{category.name}}</a><span
+                                     <input name="categoryFilterCheckboxes" type="checkbox" ng-click="selectCategory(category.id)" ng-value="category.id"/> <a href="#">{{category.name}}</a><span
                                             class="checked"></span>
                                     </div>
                                 </li>                                                                                                                                                                                                              
@@ -188,14 +188,14 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <div id="ec-sliderPrice" class="filter__slider-price" data-min="0" data-max="250"
                                     data-step="10"></div>
                                 <div class="ec-price-input">
-                                    <label class="filter__label"><input type="number" th:value="fromPrice" class="filter__input"></label>
+                                    <label class="filter__label"><input type="number" ng-model="fromPrice" class="filter__input"></label>
                                     <span class="ec-price-divider"></span>
-                                    <label class="filter__label"><input type="number" th:value="toPrice" class="filter__input"></label>
+                                    <label class="filter__label"><input type="number" ng-model="toPrice" class="filter__input"></label>
                                 </div>
                             </div>
                         </div>
                         <div class="ec-sidebar-title" style="margin: 10px 40%;">
-                            <button class="button-popup" ng-click="submitFilter()">Gửi</button>
+                            <button class="button-popup" ng-click="deleteFilter()">Huỷ bỏ</button>
                         </div>
                     </div>
                 </div>
