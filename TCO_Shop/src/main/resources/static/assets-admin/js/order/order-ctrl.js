@@ -6,20 +6,26 @@ adminApp.controller("order-ctrl", function($http, $scope) {
 		let url = "http://localhost:8080/api/orders";
 		$http.get(url).then(resp => {
 			$scope.orders = resp.data;
+			$scope.orders.forEach(order => {
+				if(order.user.fullname !== null && order.user.fullname !== undefined) {
+					order.fullname = order.user.fullname;
+				}
+			})
+			console.log($scope.orders);
 		}).catch(error => {
-			console.log(error);
+
 		});
 		let urlOrderStatus = "http://localhost:8080/api/orderStatus";
 		$http.get(urlOrderStatus).then(resp => {
 			$scope.orderStatus = resp.data;
 		}).catch(error => {
-			console.log(error);
+
 		})
 	}
 	
 	$scope.getOrders();
 	
-	$scope.orderProperty = 'id';
+	$scope.orderProperty = '-id';
 	
 	$scope.sort = function() {
 		
@@ -36,10 +42,6 @@ adminApp.controller("order-ctrl", function($http, $scope) {
 	$scope.numberOfPages = function() {
 		return Math.ceil($scope.orders.length / $scope.pageSize);
 	}
-	// cái này t k biết để làm gì, kệ nó cứ ghi đi
-	for(let i =0; i < 45; i++) {
-		$scope.orders.push("Item " + i);
-	}
 
 	$scope.pagination = function() {
 		$scope.currentPage = 0;
@@ -52,6 +54,27 @@ adminApp.controller("order-ctrl", function($http, $scope) {
 			alert("Đã cập nhật trạng thái!");
 		}).catch(error => {
 			console.log(error);
+		})
+	}
+	$scope.orderDetails = [];
+	$scope.findOrderDetails = function(orderId) {
+		$http({
+			url: "/api/ordersDetail/findByOrderId",
+			method: "GET",
+			params: {
+				orderId: orderId
+			}
+		}).then(resp => {
+			$scope.orderDetails = resp.data;
+		}).then(function() {
+			for(let i = 0; i < $scope.orderDetails.length - 1; i++) {
+				if(JSON.stringify($scope.orderDetails[i].product) === JSON.stringify($scope.orderDetails[i+1].product)) {
+					$scope.orderDetails[i].product.price += $scope.orderDetails[i+1].product.price;
+					$scope.orderDetails[i].quantity += $scope.orderDetails[i+1].quantity;
+					$scope.orderDetails[i].price += $scope.orderDetails[i+1].price;
+					$scope.orderDetails.splice(i+1,1);
+				}
+			}
 		})
 	}
 	

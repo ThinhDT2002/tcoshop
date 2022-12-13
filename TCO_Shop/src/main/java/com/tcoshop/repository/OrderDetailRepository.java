@@ -13,4 +13,7 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail, Intege
             + "(select top 5 Orders.Id from Orders \r\n"
             + "order by Create_Date DESC)", nativeQuery = true)
     List<OrderDetail> findTop5OrderDetail();
+    
+    @Query("select od From OrderDetail od where od.order.id=?1")
+    List<OrderDetail> findByOrderId(Integer orderId);
 }

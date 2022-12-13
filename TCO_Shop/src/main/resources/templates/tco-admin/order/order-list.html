@@ -43,6 +43,10 @@
 											<select class="form-control" ng-change="sort()" ng-model="orderProperty">
 												<option value="id">Mã đơn hàng ↑</option>
 												<option value="-id">Mã đơn hàng ↓</option>
+												<option value="createDate">Ngày đặt ↑</option>
+												<option value="-createDate">Ngày đặt ↓</option>
+												<option value="status">Trạng thái ↑</option>
+												<option value="-status">Trạng thái ↓</option>
 											</select>
 										</div>
 									</div>
@@ -74,12 +78,7 @@
 													<tr
 														ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
 														<td>{{order.id}}</td>
-														<td>
-															<span
-																ng-if="order.user.fullname !== null && order.user.fullname !== undefined">{{order.user.fullname}}</span>
-															<span
-																ng-if="order.user.fullname === null || order.user.fullname === undefined">{{order.user.username}}</span>
-														</td>
+														<td>{{order.user.username}}</td>
 														<td>{{order.createDate | date:'dd/MM/yyyy'}}</td>
 														<td>{{order.phoneNumber}}</td>
 														<td>{{order.address}}</td>
@@ -93,7 +92,7 @@
 														<td>{{order.description}}</td>
 														<td>
 															<div class="btn-group mb-1">
-																<a type="button" class="btn btn-outline-success">Xem chi
+																<a type="button" ng-click="findOrderDetails(order.id)" class="btn btn-outline-success">Xem chi
 																	tiết</a>
 																<button type="button"
 																	class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
@@ -135,6 +134,28 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<table class="table" style="width: 100%">
+						<thead>
+							<tr>
+								<th>Sản phẩm</th>
+								<th>Giá gốc</th>
+								<th>Giảm giá</th>
+								<th>Số lượng</th>
+								<th>Thành tiền</th>
+							</tr>
+						</thead>						
+						<tbody>
+							<tr ng-repeat="orderDetail in orderDetails">
+								<td>{{orderDetail.product.name}}</td>
+								<td>{{orderDetail.product.price | currency:'':0}} VNĐ</td>
+								<td>{{orderDetail.product.discount}} %</td>
+								<td>{{orderDetail.quantity}}</td>
+								<td>{{orderDetail.price| currency:'':0}} VNĐ</td>								
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<!-- End Content -->
