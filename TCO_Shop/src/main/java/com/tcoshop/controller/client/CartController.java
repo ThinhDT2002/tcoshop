@@ -19,6 +19,7 @@ import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -46,38 +47,39 @@ public class CartController {
     OrderDetailService orderDetailService;
     @Autowired
     ProductService productService;
-	@RequestMapping("/cart")
-	public String cart() {
-		return "tco-client/cart/cart";
-	}
-	
-	@RequestMapping("/vnpay_payment")
-	public String vnpayPayment(HttpServletRequest req, HttpServletResponse resp,
-	        Authentication authentication,
+
+    @RequestMapping("/cart")
+    public String cart() {
+        return "tco-client/cart/cart";
+    }
+
+    @RequestMapping("/vnpay_payment")
+    public String vnpayPayment(HttpServletRequest req, HttpServletResponse resp,
+            Authentication authentication,
             @RequestParam("phone") String phoneNumber,
             @RequestParam("address") String address,
             @RequestParam("your-comment") Optional<String> description,
             @RequestParam("pId") String[] productId,
             @RequestParam("pQuantity") String[] productQuantity) throws IOException {
-	    
-	    Order order = new Order();
+
+        Order order = new Order();
         String username = authentication.getName();
         User user = userService.findByUsername(username);
         order.setUser(user);
         order.setPhoneNumber(phoneNumber);
         order.setAddress(address);
-        if(description.isPresent()) {
+        if (description.isPresent()) {
             order.setDescription(description.get());
         }
+        order.setShippingCost(0.0);
         order.setCreateDate(new Date());
         order.setIsPaid(1);
-        Date dt = new Date();
-        LocalDateTime.from(dt.toInstant()).plusDays(7);
+        Date dt = DateUtils.addDays(new Date(), 7);
         order.setExpectedDate(dt);
         order.setStatus("ChoXacNhan");
         Order createOrder = orderService.create(order);
         List<OrderDetail> orderDetails = new ArrayList<>();
-        for(int i = 0; i < productId.length; i++) {
+        for (int i = 0; i < productId.length; i++) {
             OrderDetail orderDetail = new OrderDetail();
             Integer id = Integer.parseInt(productId[i]);
             Product product = productService.findById(id);
@@ -90,8 +92,8 @@ public class CartController {
             orderDetails.add(orderDetail);
         }
         orderDetailService.saveAll(orderDetails);
-	    
-	    String vnp_Version = "2.1.0";
+
+        String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String vnp_OrderInfo = "Thanh toán vnpay test";
         String orderType = "250000";
@@ -101,12 +103,12 @@ public class CartController {
         String vnp_IpAddr = Config.getIpAddress(req);
         String vnp_TmnCode = Config.vnp_TmnCode;
         List<OrderDetail> orderDetailsInDB = orderDetailService.findByOrderId(orderId);
-        Double price = 0.0;
-        for(OrderDetail orderDetail : orderDetailsInDB) {
+        double price = 0.0;
+        for (OrderDetail orderDetail : orderDetailsInDB) {
             price += (orderDetail.getPrice() * orderDetail.getQuantity());
         }
-        
-        int amount = price.intValue()   * 100;
+        price += order.getShippingCost();
+        int amount = (int) price * 100;
         Map vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
         vnp_Params.put("vnp_Command", vnp_Command);
@@ -139,23 +141,23 @@ public class CartController {
         String email = user.getEmail();
         vnp_Params.put("vnp_Bill_Email", email);
         String fullName = "";
-        if(user.getFullname() == null) {
+        if (user.getFullname() == null) {
             fullName = user.getUsername();
         } else {
             fullName = user.getFullname();
         }
         if (fullName != null && !fullName.isEmpty()) {
             int idx = fullName.indexOf(' ');
-            if(idx != -1) {
+            if (idx != -1) {
                 String firstName = fullName.substring(0, idx);
                 String lastName = fullName.substring(fullName.lastIndexOf(' ') + 1);
                 vnp_Params.put("vnp_Bill_FirstName", firstName);
                 vnp_Params.put("vnp_Bill_LastName", lastName);
-            }       
+            }
         }
         String addressVNPAY = createOrder.getAddress();
         vnp_Params.put("vnp_Bill_Address", addressVNPAY);
-        //Build data to hash and querystring
+        // Build data to hash and querystring
         List fieldNames = new ArrayList(vnp_Params.keySet());
         Collections.sort(fieldNames);
         StringBuilder hashData = new StringBuilder();
@@ -165,11 +167,11 @@ public class CartController {
             String fieldName = (String) itr.next();
             String fieldValue = (String) vnp_Params.get(fieldName);
             if ((fieldValue != null) && (fieldValue.length() > 0)) {
-                //Build hash data
+                // Build hash data
                 hashData.append(fieldName);
                 hashData.append('=');
                 hashData.append(URLEncoder.encode(fieldValue, StandardCharsets.US_ASCII.toString()));
-                //Build query
+                // Build query
                 query.append(URLEncoder.encode(fieldName, StandardCharsets.US_ASCII.toString()));
                 query.append('=');
                 query.append(URLEncoder.encode(fieldValue, StandardCharsets.US_ASCII.toString()));
@@ -191,6 +193,5 @@ public class CartController {
         resp.getWriter().write(gson.toJson(job));
         return "redirect:" + paymentUrl;
     }
-    
-}
 
+}
