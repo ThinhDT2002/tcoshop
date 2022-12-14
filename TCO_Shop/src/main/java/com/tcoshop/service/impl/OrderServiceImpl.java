@@ -74,4 +74,9 @@ public class OrderServiceImpl implements OrderService{
 	public void delete(Integer id) {
 		orderDAO.deleteById(id);
 	}
+	
+	@Override
+	public Order create(Order order) {
+	    return orderDAO.save(order);
+	}
 }

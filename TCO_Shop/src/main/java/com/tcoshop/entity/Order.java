@@ -3,6 +3,7 @@ package com.tcoshop.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -46,49 +47,40 @@ public class Order implements Serializable {
 	private String phoneNumber;
 	@OneToMany(mappedBy = "order")
 	private List<OrderDetail> orderDetails;
-//	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-//	@JsonIgnoreProperties({"order"})
-//	private Set<OrderDetail> orderDetails = new HashSet<>();
+	private Boolean isPaid;
 
 	public Order() {
 		super();
 	}
 
-	public Order(Integer id, User user, Date createDate, String status, String address, String phoneNumber, String description,
-			List<OrderDetail> orderDetails) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.createDate = createDate;
-		this.status = status;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.description = description;
-		this.orderDetails = orderDetails;
-	}
-	
-	
-	
+	public Boolean getIsPaid() {
+        return isPaid;
+    }
 
-	public String getDescription() {
+    public void setIsPaid(Boolean isPaid) {
+        this.isPaid = isPaid;
+    }
+
+    public Order(Integer id, User user, Date createDate, String status,
+            @NotBlank(message = "Vui lòng nhập địa chỉ") @Size(max = 100, message = "Địa chỉ tối đa 100 kí tự") String address,
+            String description,
+            @NotBlank(message = "Vui lòng nhập số điện thoại") @Size(max = 10, message = "Số điện thoại tối đa 10 số") String phoneNumber,
+            List<OrderDetail> orderDetails, Boolean isPaid) {
+        super();
+        this.id = id;
+        this.user = user;
+        this.createDate = createDate;
+        this.status = status;
+        this.address = address;
+        this.description = description;
+        this.phoneNumber = phoneNumber;
+        this.orderDetails = orderDetails;
+        this.isPaid = isPaid;
+    }
+
+    public String getDescription() {
 		return description;
 	}
-
-//	public Order(Integer id, User user, Date createDate, String status,
-//        @NotBlank(message = "Vui lòng nhập địa chỉ") @Size(max = 100, message = "Địa chỉ tối đa 100 kí tự") String address,
-//        String description,
-//        @NotBlank(message = "Vui lòng nhập số điện thoại") @Size(max = 10, message = "Số điện thoại tối đa 10 số") String phoneNumber,
-//        Set<OrderDetail> orderDetails) {
-//    super();
-//    this.id = id;
-//    this.user = user;
-//    this.createDate = createDate;
-//    this.status = status;
-//    this.address = address;
-//    this.description = description;
-//    this.phoneNumber = phoneNumber;
-//    this.orderDetails = orderDetails;
-//	}
 
     public void setDescription(String description) {
 		this.description = description;

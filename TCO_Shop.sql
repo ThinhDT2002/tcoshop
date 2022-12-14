@@ -103,6 +103,7 @@ create table Orders(
 	Address nvarchar(100),
 	Phone_Number varchar(10),
 	description nvarchar(300),
+	is_Paid bit
 	primary key (Id)
 )
 

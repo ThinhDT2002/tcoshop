@@ -28,6 +28,7 @@
         <!-- Ec breadcrumb end -->
 
         <!-- Ec checkout page -->
+    <form action="#" method="post" name="formOrder">    
         <section class="ec-page-content section-space-p">
             <div class="container">
                 <div class="row">
@@ -40,7 +41,7 @@
                                         <h3 class="ec-checkout-title">Chi Tiết Hóa Đơn</h3>
                                         <div class="ec-bl-block-content">
                                             <div class="ec-check-bill-form">
-                                                <form action="#" method="post" name="formOrder">
+                                                
                                                     <span class="ec-bill-wrap ec-bill">
                                                         <label>Họ và tên</label>
                                                         <input type="text" name="firstname" placeholder="Nhập họ..."
@@ -54,13 +55,13 @@
                                                             ng-model="order.phoneNumber" />
                                                         <span style="margin: 5px; font-size: 15px; color: red;"
                                                             ng-show="formOrder.phone.$error.required">Nhập số điện
-                                                            thoại</span>
+                                                            thoại</span><br>
                                                         <span style="margin: 5px; font-size: 15px; color: red;"
                                                             ng-show="formOrder.phone.$error.pattern">Vui lòng nhập đúng
-                                                            định dạng số điện thoại</span>
+                                                            định dạng số điện thoại</span><br>
                                                             <span id="sdt" style="margin: 5px; font-size: 15px; color: red; display: none;"
                                                             >Vui lòng nhập đúng
-                                                            định dạng số điện thoại</span>
+                                                            định dạng số điện thoại</span><br>
 
                                                     </span>
                                                     <span class="ec-bill-wrap ec-bill-half">
@@ -71,10 +72,10 @@
                                                             ng-show="formOrder.address.$invalid || formOrder.address.$dirty">
                                                             <span style="margin: 5px; font-size: 15px; color: red;"
                                                                 ng-show="formOrder.address.$error.required">Vui lòng
-                                                                nhập địa chỉ</span>
+                                                                nhập địa chỉ</span><br>
                                                             <span style="margin: 5px; font-size: 15px; color: red;"
                                                                 ng-show="formOrder.address.$error.maxlength">Địa chỉ
-                                                                giới hạn 100 từ</span>
+                                                                giới hạn 100 từ</span><br>
                                                         </span>
                                                     </span>
                                                     <span class="ec-bill-wrap">
@@ -83,7 +84,6 @@
                                                             placeholder="Lưu ý cho người bán..."
                                                             ng-model="order.description"></textarea>
                                                     </span>
-                                                </form>
                                             </div>
 
                                         </div>
@@ -115,20 +115,7 @@
                                             <span class="text-left">Phí Vận Chuyển</span>
                                             <span class="text-right">{{cart.ship | currency:'':0}} VNĐ</span>
                                         </div>
-                                        <!-- <div>
-                                            <span class="text-left">Mã Giảm Giá</span>
-                                            <span class="text-right"><a class="ec-checkout-coupan">Áp Dụng Mã Giảm
-                                                    Giá</a></span>
-                                        </div> -->
-                                        <div class="ec-checkout-coupan-content">
-                                            <form class="ec-checkout-coupan-form" name="ec-checkout-coupan-form"
-                                                method="post" action="#">
-                                                <input class="ec-coupan" type="text" required=""
-                                                    placeholder="Nhập mã giảm giá..." name="ec-coupan" value="">
-                                                <button class="ec-coupan-btn button btn-primary" type="submit"
-                                                    name="subscribe" value="">Áp Dụng</button>
-                                            </form>
-                                        </div>
+                                        
                                         <div class="ec-checkout-summary-total">
                                             <span class="text-left">Thành Tiền</span>
                                             <span class="text-right">{{cart.amount+cart.ship | currency:'':0}} VNĐ</span>
@@ -152,6 +139,8 @@
                                                 <div class="ec-pro-content">
                                                     <h5 class="ec-pro-title"><a
                                                             th:href="@{|/product/detail/{{item.id}}|}">{{item.name}} x {{item.qty}}</a></h5>
+                                                    <input type="text" name="pQuantity" ng-value="item.qty" style="display:none">  
+                                                    <input type="text" name="pId" ng-value="item.id" style="display:none">       
                                                     <span class="ec-price">
                                                         <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>
                                                     </span>
@@ -177,12 +166,15 @@
                                     <div class="ec-checkout-pay">
                                         <div class="ec-pay-desc">Vui lòng chọn phương thức thanh toán ưa thích để sử
                                             dụng cho đơn hàng này.</div>
-                                        <form action="#">
+
                                             <span class="ec-pay-option">
                                                     <input type="radio" id="pay1" name="radio-group" style="height: 20px; width: 6%;" checked>
                                                     <label for="pay1">Thanh Toán Khi Nhận Hàng</label>
-                                            </span>
-                                        </form>
+                                            </span> <br>
+                                        	<span class="ec-pay-option">
+                                        		<button th:formaction="@{/vnpay_payment}" type="submit">Thanh toán VNPAY</button>
+                                        	</span>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +184,7 @@
                 </div>
             </div>
         </section>
-
+		</form>
         <!-- New Product Start -->
         <section class="section ec-new-product section-space-p">
             <div class="container">
@@ -228,7 +220,7 @@
                                 </div>
                             </div>
                             <div class="ec-pro-content">
-                                <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>
+                                <h5 class="ec-pro-title"><a th:href="@{|/product/detail/{{item.id}}|}">{{item.name}}</a></h5>                                                             
                                 <span class="ec-price">
 	                                <span ng-if="item.discount != 0">
 	                                    <span class="old-price">{{item.price | currency:'':0}} VNĐ</span>

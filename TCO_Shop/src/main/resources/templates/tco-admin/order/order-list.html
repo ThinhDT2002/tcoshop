@@ -69,6 +69,7 @@
 														<th>Số điện thoại</th>
 														<th>Địa chỉ</th>
 														<th>Trạng thái</th>
+														<th>Thanh toán</th>
 														<th>Ghi chú</th>
 														<th>Tuỳ chỉnh</th>
 													</tr>
@@ -87,6 +88,12 @@
 																ng-change="updateOrderStatus(order)">
 																<option ng-repeat="os in orderStatus" ng-value="os.id">
 																	{{os.statusName}}</option>
+															</select>
+														</td>
+														<td>
+															<select style="border: 0px" ng-model="order.isPaid">
+																<option ng-value="true">Đã thanh toán</option>
+																<option ng-value="false">Chưa thanh toán</option>
 															</select>
 														</td>
 														<td>{{order.description}}</td>

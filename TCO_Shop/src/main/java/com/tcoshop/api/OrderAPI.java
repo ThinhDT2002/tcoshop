@@ -49,6 +49,7 @@ public class OrderAPI {
 	public void updateOrderStatus(@RequestBody Order order, @PathVariable("id") Integer orderId) {
 	    Order orderInDtb = orderService.findById(orderId);
 	    orderInDtb.setStatus(order.getStatus());
+	    orderInDtb.setIsPaid(order.getIsPaid());
 	    orderService.update(orderInDtb);
 	}
 	

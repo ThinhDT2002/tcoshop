@@ -17,4 +17,6 @@ public interface OrderService {
 	List<Order> findAll();
 	
 	void delete(Integer id);
+	
+	Order create(Order order);
 }
