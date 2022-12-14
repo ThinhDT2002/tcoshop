@@ -96,11 +96,8 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 		});
 	}
 
-	$scope.removeOrder = function(orderId) {
-		$http.delete(`/api/orders/${orderId}`).then(resp => {
-			let index = $scope.items.findIndex(item => item.id == orderId);
-			$scope.items.slice(index, 1);
-			alert("Xóa đơn hàng thành công !")
+	$scope.cancelOrder = function(orderId) {
+		$http.put(`/api/orders/cancel/${orderId}`).then(resp => {			
 			location.reload();
 		}).catch(error => {
 			console.log(error)
@@ -253,7 +250,18 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 		description: "",
 		phoneNumber: "",
 		status: "ChoXacNhan",
-		isPaid: false,
+		isPaid: 1,
+		get expectedDate() {
+			let date = new Date();
+			let numberOfDayToAdds = 7;
+			return date.setDate(date.getDate() + numberOfDayToAdds);
+		},
+		get orderTimeDetail(){
+			let date = new Date();
+			let currentHour = date.toLocaleTimeString();
+			return currentHour;
+		},
+		shippingCost: $scope.cart.ship,
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
 				return {

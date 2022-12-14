@@ -1,4 +1,4 @@
-	package com.tcoshop.controller.client;
+package com.tcoshop.controller.client;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class OrderController {
 		
 	@RequestMapping("/order/history")
 	public String detail(Model model) {
-		return "tco-client/order/user-history";
+		return "tco-client/order/order-history";
 	}
 	
 	@RequestMapping("/order/track/{id}")
@@ -49,7 +49,8 @@ public class OrderController {
 		for(OrderDetail orderDetail : ordersDetail) {
 			double giaSanPham = (orderDetail.getProduct().getPrice() * ((100.0 - orderDetail.getProduct().getDiscount()) / 100)) * orderDetail.getQuantity();
 			tongTien += giaSanPham;
-		}		
+		}	
+		tongTien += order.getShippingCost();
 		model.addAttribute("sum", tongTien);
 		return "tco-client/order/track-order";
 	}

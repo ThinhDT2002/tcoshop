@@ -48,7 +48,7 @@ public class ProductController {
 		item.setProductVariations(productVariationsList);
 		model.addAttribute("item", item);
 
-		return "tco-client/shop/product-gallery-full-width";
+		return "tco-client/shop/product-detail";
 	}
 
 	@RequestMapping("/product/favorites")

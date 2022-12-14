@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -21,11 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -72,7 +70,10 @@ public class CartController {
             order.setDescription(description.get());
         }
         order.setCreateDate(new Date());
-        order.setIsPaid(false);
+        order.setIsPaid(1);
+        Date dt = new Date();
+        LocalDateTime.from(dt.toInstant()).plusDays(7);
+        order.setExpectedDate(dt);
         order.setStatus("ChoXacNhan");
         Order createOrder = orderService.create(order);
         List<OrderDetail> orderDetails = new ArrayList<>();

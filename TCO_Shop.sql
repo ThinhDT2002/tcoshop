@@ -103,7 +103,10 @@ create table Orders(
 	Address nvarchar(100),
 	Phone_Number varchar(10),
 	description nvarchar(300),
-	is_Paid bit
+	expected_date date,
+	order_Time_Detail varchar(50),
+	is_Paid int,
+	Shipping_cost decimal(10,2),
 	primary key (Id)
 )
 
@@ -257,59 +260,6 @@ values
 insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id,subcategory_id)
 values
 	-- laptop gaming 
-		-- acer
-		(N'Acer Aspire 7 A715 42G R4XX','r4xx_1.jpg','r4xx_2.jpg','r4xx_3.jpg','r4xx_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,0,'LAPTOP','AC'),
-		(N'Acer Aspire 7 A715 42G R05G','R05G_1.jpg','R05G_2.jpg','R05G_3.jpg','R05G_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Aspire 7 A715 43G R8GA','R8GA_1.jpg','R8GA_2.jpg','R8GA_3.jpg','R8GA_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Aspire 7 A715 75G 58U4','58U4_1.jpg','58U4_2.jpg','58U4_3.jpg','58U4_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 AN515 45 R6EV','R6EV_1.jpg','R6EV_2.jpg','R6EV_3.jpg','R6EV_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 Eagle AN515 57 5669','5669_1.jpg','5669_2.jpg','5669_3.jpg','5669_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 Eagle AN515 57 54MV','54MV_1.jpg','54MV_2.jpg','54MV_3.jpg','54MV_4.jpg',20990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 AN515 57 71VV','71VV_1.jpg','71VV_2.jpg','71VV_3.jpg','71VV_4.jpg',23490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 AN515 58 52SP','52SP_1.jpg','52SP_2.jpg','52SP_3.jpg','52SP_4.jpg',24390000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 Eagle AN515 57 57MX','57MX_1.jpg','57MX_2.jpg','57MX_3.jpg','57MX_4.jpg',24990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 Tiger AN515 58 773Y','773Y_1.jpg','773Y_2.jpg','773Y_3.jpg','773Y_4.jpg',28490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 AN515 45 R86D','R86D_1.jpg','R86D_2.jpg','R86D_3.jpg','R86D_4.jpg',28490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Nitro 5 Tiger AN515 58 79UJ','79UJ_1.jpg','79UJ_2.jpg','79UJ_3.jpg','79UJ_4.jpg',36490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Predator Helios 300 PH315 54 99S6','99S6_1.jpg','99S6_2.jpg','99S6_3.jpg','99S6_4.jpg',37490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Predator Helios 300 PH315 55 76KG','76KG_1.jpg','76KG_2.jpg','76KG_3.jpg','76KG_4.jpg',41490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Predator Helios 300 PH315 55 751D','751D_1.jpg','751D_2.jpg','751D_3.jpg','751D_4.jpg',52490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Predator Triton 500 SE PT516 52S 75E3','75E3_1.jpg','75E3_2.jpg','75E3_3.jpg','75E3_4.jpg',64990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-		(N'Acer Predator Triton 500 SE PT516 52S 91XH','91XH_1.jpg','91XH_2.jpg','91XH_3.jpg','91XH_4.jpg',105990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
-
-		-- asus
-		(N'Asus TUF FA506IHRB HN019W','HN019W_1.jpg','HN019W_2.jpg','HN019W_3.jpg','HN019W_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus TUF Gaming F15 FX506LH HN188W','HN188W_1.jpg','HN188W_2.jpg','HN188W_3.jpg','HN188W_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus TUF Gaming F15 FX506LHB HN188W','HN188W2_1.jpg','HN188W_2.jpg','HN188W_3.jpg','HN188W_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus ROG Strix G15 G513IH HN015W','HN015W_1.jpg','HN015W_2.jpg','HN015W_3.jpg','HN015W_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),		
-		(N'Asus TUF Dash F15 FX516PC HN558W','HN558W_1.jpg','HN558W_2.jpg','HN558W_3.jpg','HN558W_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus TUF Gaming F15 FX506HC HN144W','HN144W_1.jpg','HN144W_2.jpg','HN144W_3.jpg','HN144W_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus TUF Gaming FX706HC HX105W','HX105W_1.jpg','HX105W_2.jpg','HX105W_3.jpg','HX105W_4.jpg',20990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus TUF Gaming FX706HCB HX105W','HX105WB_1.jpg','HX105WB_2.jpg','HX105WB_3.jpg','HX105WB_4.jpg',23490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus ROG Strix G15 G513IE HN246W','HN246W_1.jpg','HN246W_2.jpg','HN246W_3.jpg','HN246W_4.jpg',24390000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-		(N'Asus ROG Strix G15 G513IE HN192W','HN192W_1.jpg','HN192W_2.jpg','HN192W_3.jpg','HN192W_4.jpg',24990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
-
-		-- msi
-		(N'MSI Bravo 15 B5DD 276VN','276VN_1.jpg','276VN_2.jpg','276VN_3.jpg','276VN_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
-		(N'MSI GF63 Thin 11SC 664VN','664VN_1.jpg','664VN_2.jpg','664VN_3.jpg','664VN_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
-		(N'MSI Bravo 15 B5DD 275VN','275VN_1.jpg','275VN_2.jpg','275VN_3.jpg','275VN_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
-		(N'MSI GF63 Thin 11SC 662VN','662VN_1.jpg','662VN_2.jpg','662VN_3.jpg','662VN_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
-		(N'MSI Katana GF66 11UC 676VN','676VN_1.jpg','676VN_2.jpg','676VN_3.jpg','676VN_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
-		(N'MSI GF63 Thin 11UD 628VN','628VN_1.jpg','628VN_2.jpg','628VN_3.jpg','628VN_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
-
-
-		-- tivi
-		-- samsung
-		(N'Smart Tivi Samsung 4K UHD 55 Inch UA55AU8000','AU8000_1.jpg','AU8000_2.jpg','AU8000_3.jpg','AU8000_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU7002','AU7002_1.jpg','AU7002_2.jpg','AU7002_3.jpg','AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung QLED 4K 55 Inch QA55Q60B','QA55Q60B_1.jpg','QA55Q60B_2.jpg','QA55Q60B_3.jpg','QA55Q60B_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung QLED 4K 43 Inch QA43Q60B','QA43Q60B_1.jpg','QA43Q60B_2.jpg','QA43Q60B_3.jpg','QA43Q60B_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung 4K UHD 65 Inch UA65AU8000','UA65AU8000_1.jpg','UA65AU8000_2.jpg','UA65AU8000_3.jpg','UA65AU8000_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU7002','UA43AU7002_1.jpg','UA43AU7002_2.jpg','UA43AU7002_3.jpg','UA43AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU8000','UA43AU8000_1.jpg','UA43AU8000_2.jpg','UA43AU8000_3.jpg','UA43AU8000_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung QLED 4K 50 Inch QA50Q60B','QA50Q60B_1.jpg','QA50Q60B_2.jpg','QA50Q60B_3.jpg','QA50Q60B_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung UHD 4K 43 Inch UA43AU7700','UA43AU7700_1.jpg','UA43AU7700_2.jpg','UA43AU7700_3.jpg','UA43AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung 32 Inch UA32T4500A','UA32T4500A_1.jpg','UA32T4500A_2.jpg','UA32T4500A_3.jpg','UA32T4500A_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung UHD 4K  55 Inch UA55AU7700','UA55AU7700_1.jpg','UA55AU7700_2.jpg','UA55AU7700_3.jpg','UA55AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung 4K UHD 50 Inch UA50AU7002','UA50AU7002_1.jpg','UA50AU7002_2.jpg','UA50AU7002_3.jpg','UA50AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung QLED 4K 65 Inch QA65Q60B','QA65Q60B_1.jpg','QA65Q60B_2.jpg','QA65Q60B_3.jpg','QA65Q60B_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
@@ -393,7 +343,61 @@ values
 		--FRIDGE
 		(N'Tủ Lạnh Samsung Inverter 234 Lít RT22FARBDSA/SV','RT22FARBDSA_1.jpg','RT22FARBDSA_2.jpg','RT22FARBDSA_3.jpg','RT22FARBDSA_4.jpg',5650000,N'Dung tích thực: 234 Lít',5,10,'FRIDGE','FRIDGE'),
 		--WASHER
-		(N'Máy giặt sấy Panasonic Inverter 10.5 kg NA-V105FR1BV','NA-V105FR1BV_1.jpg','NA-V105FR1BV_2.jpg','NA-V105FR1BV_3.jpg','NA-V105FR1BV_4.jpg',16750000,N'Hybrid Dry Lite tính năng sấy tiện ích',5,10,'WASHER','WASHER')
+		(N'Máy giặt sấy Panasonic Inverter 10.5 kg NA-V105FR1BV','NA-V105FR1BV_1.jpg','NA-V105FR1BV_2.jpg','NA-V105FR1BV_3.jpg','NA-V105FR1BV_4.jpg',16750000,N'Hybrid Dry Lite tính năng sấy tiện ích',5,10,'WASHER','WASHER'),
+		-- acer
+		(N'Acer Aspire 7 A715 42G R4XX','r4xx_1.jpg','r4xx_2.jpg','r4xx_3.jpg','r4xx_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,0,'LAPTOP','AC'),
+		(N'Acer Aspire 7 A715 42G R05G','R05G_1.jpg','R05G_2.jpg','R05G_3.jpg','R05G_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Aspire 7 A715 43G R8GA','R8GA_1.jpg','R8GA_2.jpg','R8GA_3.jpg','R8GA_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Aspire 7 A715 75G 58U4','58U4_1.jpg','58U4_2.jpg','58U4_3.jpg','58U4_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 AN515 45 R6EV','R6EV_1.jpg','R6EV_2.jpg','R6EV_3.jpg','R6EV_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 Eagle AN515 57 5669','5669_1.jpg','5669_2.jpg','5669_3.jpg','5669_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 Eagle AN515 57 54MV','54MV_1.jpg','54MV_2.jpg','54MV_3.jpg','54MV_4.jpg',20990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 AN515 57 71VV','71VV_1.jpg','71VV_2.jpg','71VV_3.jpg','71VV_4.jpg',23490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 AN515 58 52SP','52SP_1.jpg','52SP_2.jpg','52SP_3.jpg','52SP_4.jpg',24390000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 Eagle AN515 57 57MX','57MX_1.jpg','57MX_2.jpg','57MX_3.jpg','57MX_4.jpg',24990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 Tiger AN515 58 773Y','773Y_1.jpg','773Y_2.jpg','773Y_3.jpg','773Y_4.jpg',28490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 AN515 45 R86D','R86D_1.jpg','R86D_2.jpg','R86D_3.jpg','R86D_4.jpg',28490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Nitro 5 Tiger AN515 58 79UJ','79UJ_1.jpg','79UJ_2.jpg','79UJ_3.jpg','79UJ_4.jpg',36490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Predator Helios 300 PH315 54 99S6','99S6_1.jpg','99S6_2.jpg','99S6_3.jpg','99S6_4.jpg',37490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Predator Helios 300 PH315 55 76KG','76KG_1.jpg','76KG_2.jpg','76KG_3.jpg','76KG_4.jpg',41490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Predator Helios 300 PH315 55 751D','751D_1.jpg','751D_2.jpg','751D_3.jpg','751D_4.jpg',52490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Predator Triton 500 SE PT516 52S 75E3','75E3_1.jpg','75E3_2.jpg','75E3_3.jpg','75E3_4.jpg',64990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+		(N'Acer Predator Triton 500 SE PT516 52S 91XH','91XH_1.jpg','91XH_2.jpg','91XH_3.jpg','91XH_4.jpg',105990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
+
+		-- asus
+		(N'Asus TUF FA506IHRB HN019W','HN019W_1.jpg','HN019W_2.jpg','HN019W_3.jpg','HN019W_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus TUF Gaming F15 FX506LH HN188W','HN188W_1.jpg','HN188W_2.jpg','HN188W_3.jpg','HN188W_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus TUF Gaming F15 FX506LHB HN188W','HN188W2_1.jpg','HN188W_2.jpg','HN188W_3.jpg','HN188W_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus ROG Strix G15 G513IH HN015W','HN015W_1.jpg','HN015W_2.jpg','HN015W_3.jpg','HN015W_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),		
+		(N'Asus TUF Dash F15 FX516PC HN558W','HN558W_1.jpg','HN558W_2.jpg','HN558W_3.jpg','HN558W_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus TUF Gaming F15 FX506HC HN144W','HN144W_1.jpg','HN144W_2.jpg','HN144W_3.jpg','HN144W_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus TUF Gaming FX706HC HX105W','HX105W_1.jpg','HX105W_2.jpg','HX105W_3.jpg','HX105W_4.jpg',20990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus TUF Gaming FX706HCB HX105W','HX105WB_1.jpg','HX105WB_2.jpg','HX105WB_3.jpg','HX105WB_4.jpg',23490000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus ROG Strix G15 G513IE HN246W','HN246W_1.jpg','HN246W_2.jpg','HN246W_3.jpg','HN246W_4.jpg',24390000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+		(N'Asus ROG Strix G15 G513IE HN192W','HN192W_1.jpg','HN192W_2.jpg','HN192W_3.jpg','HN192W_4.jpg',24990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AS'),
+
+		-- msi
+		(N'MSI Bravo 15 B5DD 276VN','276VN_1.jpg','276VN_2.jpg','276VN_3.jpg','276VN_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
+		(N'MSI GF63 Thin 11SC 664VN','664VN_1.jpg','664VN_2.jpg','664VN_3.jpg','664VN_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
+		(N'MSI Bravo 15 B5DD 275VN','275VN_1.jpg','275VN_2.jpg','275VN_3.jpg','275VN_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
+		(N'MSI GF63 Thin 11SC 662VN','662VN_1.jpg','662VN_2.jpg','662VN_3.jpg','662VN_4.jpg',17990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
+		(N'MSI Katana GF66 11UC 676VN','676VN_1.jpg','676VN_2.jpg','676VN_3.jpg','676VN_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
+		(N'MSI GF63 Thin 11UD 628VN','628VN_1.jpg','628VN_2.jpg','628VN_3.jpg','628VN_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','MS'),
+
+
+		-- tivi
+		-- samsung
+		(N'Smart Tivi Samsung 4K UHD 55 Inch UA55AU8000','AU8000_1.jpg','AU8000_2.jpg','AU8000_3.jpg','AU8000_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU7002','AU7002_1.jpg','AU7002_2.jpg','AU7002_3.jpg','AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung QLED 4K 55 Inch QA55Q60B','QA55Q60B_1.jpg','QA55Q60B_2.jpg','QA55Q60B_3.jpg','QA55Q60B_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung QLED 4K 43 Inch QA43Q60B','QA43Q60B_1.jpg','QA43Q60B_2.jpg','QA43Q60B_3.jpg','QA43Q60B_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung 4K UHD 65 Inch UA65AU8000','UA65AU8000_1.jpg','UA65AU8000_2.jpg','UA65AU8000_3.jpg','UA65AU8000_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU7002','UA43AU7002_1.jpg','UA43AU7002_2.jpg','UA43AU7002_3.jpg','UA43AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU8000','UA43AU8000_1.jpg','UA43AU8000_2.jpg','UA43AU8000_3.jpg','UA43AU8000_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung QLED 4K 50 Inch QA50Q60B','QA50Q60B_1.jpg','QA50Q60B_2.jpg','QA50Q60B_3.jpg','QA50Q60B_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung UHD 4K 43 Inch UA43AU7700','UA43AU7700_1.jpg','UA43AU7700_2.jpg','UA43AU7700_3.jpg','UA43AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung 32 Inch UA32T4500A','UA32T4500A_1.jpg','UA32T4500A_2.jpg','UA32T4500A_3.jpg','UA32T4500A_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA')
+
 
 insert into Reviews (Username, Product_Id, Content, Review_Time)
 			values('khangtg15054',1,N'Tuyệt Vời','2022-01-01')

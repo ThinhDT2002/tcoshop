@@ -69,6 +69,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <th scope="col">Hóa đơn</th>
                                             <th scope="col">Tên</th>
                                             <th scope="col">Ngày đặt</th>
+                                            <th scope="col">Thanh toán trước</th>
                                             <th scope="col">Trạng thái</th>
                                             <th scope="col">Xem đơn</th>
                                             <th scope="col"></th>
@@ -78,7 +79,16 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         <tr ng-repeat="item in items">
                                             <th scope="row"><span>{{item.id}}</span></th>
                                             <td><span>[[${currentUser.fullname}]]</span></td>
-                                            <td><span>{{item.createDate | date:"dd/MM/yyyy"}}</span></td>
+                                            <td><span>{{item.createDate | date:"dd/MM/yyyy"}} at {{item.orderTimeDetail}}</span></td>
+                                            <td ng-if="item.isPaid === 1">
+                                            	<span>Chưa thanh toán</span>
+                                            </td>
+                                            <td ng-if="item.isPaid === 2">
+                                            	<span>Đã thanh toán</span>
+                                            </td>
+                                            <td ng-if="item.isPaid === 3">
+                                            	<span>Đã hoàn tiền</span>
+                                            </td>
                                             <td ng-if="item.status === 'ChoXacNhan'">
                                             	<span >Chờ xác nhận</span>
                                             </td>
@@ -101,12 +111,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                         th:href="@{|/order/track/{{item.id}}|}">Xem</a></span></td>                                                        
                                             <td ng-if="item.status === 'ChoXacNhan' || item.status === 'ChuanBi'">
 	                                            <span class="tbl-btn" >
-	                                            	<button class="btn btn-lg btn-warning" ng-click="removeOrder(item.id)">Hủy đơn</button>	                                            	
+	                                            	<button class="btn btn-lg btn-warning" ng-click="cancelOrder(item.id)">Hủy đơn</button>	                                            	
 	                                            </span>
                                             </td>   
                                             <td ng-if="item.status !== 'ChoXacNhan' && !item.status !== 'ChuanBi'">
                                             	<span class="tbl-btn">
-	                                            	<button class="btn btn-lg btn-warning" ng-click="removeOrder(item.id)" disabled>Hủy đơn</button>	                                            	
+	                                            	<button class="btn btn-lg btn-primary" ng-click="cancelOrder(item.id)" disabled>Hủy đơn</button>	                                            	
 	                                            </span>
                                             </td>                                                 
                                         </tr>

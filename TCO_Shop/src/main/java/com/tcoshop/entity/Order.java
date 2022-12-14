@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,50 +40,81 @@ public class Order implements Serializable {
 	@NotBlank(message = "Vui lòng nhập địa chỉ")
 	@Size(max = 100, message = "Địa chỉ tối đa 100 kí tự")
 	private String address;
-	
+
 	private String description;
-	
+
 	@NotBlank(message = "Vui lòng nhập số điện thoại")
 	@Size(max = 10, message = "Số điện thoại tối đa 10 số")
 	private String phoneNumber;
 	@OneToMany(mappedBy = "order")
 	private List<OrderDetail> orderDetails;
-	private Boolean isPaid;
+	private Integer isPaid;
+	private Date expectedDate;
+	private String orderTimeDetail;
+	private Double shippingCost;
 
 	public Order() {
 		super();
 	}
 
-	public Boolean getIsPaid() {
-        return isPaid;
-    }
+	public Order(Integer id, User user, Date createDate, String status,
+			@NotBlank(message = "Vui lòng nhập địa chỉ") @Size(max = 100, message = "Địa chỉ tối đa 100 kí tự") String address,
+			String description,
+			@NotBlank(message = "Vui lòng nhập số điện thoại") @Size(max = 10, message = "Số điện thoại tối đa 10 số") String phoneNumber,
+			List<OrderDetail> orderDetails, Integer isPaid, Date expectedDate, String orderTimeDetail,
+			Double shippingCost) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.createDate = createDate;
+		this.status = status;
+		this.address = address;
+		this.description = description;
+		this.phoneNumber = phoneNumber;
+		this.orderDetails = orderDetails;
+		this.isPaid = isPaid;
+		this.expectedDate = expectedDate;
+		this.orderTimeDetail = orderTimeDetail;
+		this.shippingCost = shippingCost;
+	}
 
-    public void setIsPaid(Boolean isPaid) {
-        this.isPaid = isPaid;
-    }
+	public String getOrderTimeDetail() {
+		return orderTimeDetail;
+	}
 
-    public Order(Integer id, User user, Date createDate, String status,
-            @NotBlank(message = "Vui lòng nhập địa chỉ") @Size(max = 100, message = "Địa chỉ tối đa 100 kí tự") String address,
-            String description,
-            @NotBlank(message = "Vui lòng nhập số điện thoại") @Size(max = 10, message = "Số điện thoại tối đa 10 số") String phoneNumber,
-            List<OrderDetail> orderDetails, Boolean isPaid) {
-        super();
-        this.id = id;
-        this.user = user;
-        this.createDate = createDate;
-        this.status = status;
-        this.address = address;
-        this.description = description;
-        this.phoneNumber = phoneNumber;
-        this.orderDetails = orderDetails;
-        this.isPaid = isPaid;
-    }
+	public void setOrderTimeDetail(String orderTimeDetail) {
+		this.orderTimeDetail = orderTimeDetail;
+	}
 
-    public String getDescription() {
+	public Integer getIsPaid() {
+		return isPaid;
+	}
+
+	public void setIsPaid(Integer isPaid) {
+		this.isPaid = isPaid;
+	}
+
+	public Date getExpectedDate() {
+		return expectedDate;
+	}
+
+	public void setExpectedDate(Date expectedDate) {
+		this.expectedDate = expectedDate;
+	}
+
+	public Double getShippingCost() {
+		return shippingCost;
+	}
+
+	public void setShippingCost(Double shippingCost) {
+		this.shippingCost = shippingCost;
+	}
+
+	public String getDescription() {
 		return description;
 	}
 
-    public void setDescription(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

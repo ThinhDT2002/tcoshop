@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tcoshop.entity.Order;
+import com.tcoshop.entity.OrderDetail;
+import com.tcoshop.entity.Product;
+import com.tcoshop.repository.ProductRepository;
 import com.tcoshop.service.OrderService;
 
 @CrossOrigin("*")
@@ -24,6 +27,9 @@ import com.tcoshop.service.OrderService;
 public class OrderAPI {
 	@Autowired
 	OrderService orderService;
+	
+	@Autowired
+	ProductRepository productRepository;
 	
 	@PostMapping()
 	public Order create(@RequestBody JsonNode orderData) {
@@ -50,6 +56,24 @@ public class OrderAPI {
 	    Order orderInDtb = orderService.findById(orderId);
 	    orderInDtb.setStatus(order.getStatus());
 	    orderInDtb.setIsPaid(order.getIsPaid());
+	    orderService.update(orderInDtb);
+	}
+	
+	@PutMapping("/cancel/{id}")
+	public void cancelOrder(@PathVariable("id") Integer orderId) {
+	    Order orderInDtb = orderService.findById(orderId);
+	    orderInDtb.setStatus("HuyBo");
+	    if(orderInDtb.getIsPaid() == 2) orderInDtb.setIsPaid(3);
+	    
+	    List<OrderDetail> orderDetails = orderInDtb.getOrderDetails();
+	    for (OrderDetail orderDetail : orderDetails) {
+			int productId = orderDetail.getProduct().getId();
+			Product product = productRepository.findById(productId).get();
+			int remainStock = product.getStock() + orderDetail.getQuantity();
+		    product.setStock(remainStock);
+		    productRepository.save(product);
+		}
+	    
 	    orderService.update(orderInDtb);
 	}
 	

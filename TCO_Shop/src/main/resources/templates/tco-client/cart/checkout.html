@@ -93,6 +93,10 @@
                                 <span class="ec-check-order-btn">
                                     <a class="btn btn-primary" ng-click="order.purchase()" type="submit">Đặt Hàng</a>
                                 </span>
+                                <span class="ec-check-order-btn">
+                                    <button th:formaction="@{/vnpay_payment}" type="submit">Thanh toán VNPAY</button>
+                                </span>
+                                
                             </div>
                         </div>
                         <!--cart content End -->
@@ -154,32 +158,7 @@
                                 </div>
                             </div>
                             <!-- Sidebar Summary Block -->
-                        </div>
-                        
-                        <div class="ec-sidebar-wrap ec-checkout-pay-wrap">
-                            <!-- Sidebar Payment Block -->
-                            <div class="ec-sidebar-block">
-                                <div class="ec-sb-title">
-                                    <h3 class="ec-sidebar-title">Phương Thức Thanh Toán</h3>
-                                </div>
-                                <div class="ec-sb-block-content">
-                                    <div class="ec-checkout-pay">
-                                        <div class="ec-pay-desc">Vui lòng chọn phương thức thanh toán ưa thích để sử
-                                            dụng cho đơn hàng này.</div>
-
-                                            <span class="ec-pay-option">
-                                                    <input type="radio" id="pay1" name="radio-group" style="height: 20px; width: 6%;" checked>
-                                                    <label for="pay1">Thanh Toán Khi Nhận Hàng</label>
-                                            </span> <br>
-                                        	<span class="ec-pay-option">
-                                        		<button th:formaction="@{/vnpay_payment}" type="submit">Thanh toán VNPAY</button>
-                                        	</span>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Sidebar Payment Block -->
-                        </div>
+                        </div>                      
                     </div>
                 </div>
             </div>

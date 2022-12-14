@@ -39,7 +39,7 @@
 						<div class="ec-trackorder-top">
 							<h2 class="ec-order-id">đơn hàng #[[*{id}]]</h2>
 							<div class="ec-order-detail">
-								<div>Dự kiến sẽ đến 19/09/2022</div>
+								<div>Dự kiến sẽ đến <span th:text="${#dates.format(order.expectedDate, 'dd/MM/yyyy')}"></span></div>
 								<div>
 									Mã đơn hàng <span>#[[*{id}]]</span>
 								</div>
@@ -180,8 +180,7 @@
 							<th scope="col">Tên</th>
 							<th scope="col">Giá</th>
 							<th scope="col">Số lượng</th>
-							<th scope="col">Giảm giá</th>
-							<th scope="col">Tổng</th>
+							<th scope="col">Tổng cộng</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -190,12 +189,12 @@
 							<td>[[*{product.name}]]</td>
 							<td>[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 							<td>[[*{quantity}]]</td>
-							<td>[[*{product.discount}]]%</td>
-							<td>[[*{#numbers.formatDecimal( price * quantity, 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
+							<td>[[*{#numbers.formatDecimal((price * quantity), 0, 'COMMA', 0, 'POINT')}]] VNĐ</td>
 						</tr>
 					</tbody>
 
 				</table>
+				<div style="margin-left: 75%;"><h4 th:text="'Phí ship: ' + ${#numbers.formatDecimal(order.ShippingCost, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h4></div>
 				<div style="margin-left: 75%;"><h4 th:text="'Thành tiền: ' + ${#numbers.formatDecimal(sum, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h4></div>
 				<!-- Track Order Content end -->
 			</div>

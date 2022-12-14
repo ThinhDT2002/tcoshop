@@ -520,7 +520,8 @@
                 </div>
                 <div class="cart_btn">
                     <a th:href="@{|/cart|}" class="btn btn-primary">Xem giỏ hàng</a>
-                    <a th:href="@{|/checkout|}" class="btn btn-secondary">Thanh toán</a>
+                    <button ng-if="cart.count == 0" class="btn btn-secondary" disabled>Thanh toán</button>
+                    <a ng-if="cart.count > 0" th:href="@{|/checkout|}" class="btn btn-secondary">Thanh toán</a>
                 </div>
             </div>
         </div>
