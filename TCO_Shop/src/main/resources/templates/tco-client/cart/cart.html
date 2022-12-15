@@ -64,7 +64,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     style="text-align: center;">
                                                     <div class="cart-qty-plus-minus-new">
                                                         <input class="cart-plus-minus"
-                                                            name="cartqtybutton" ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1"/>
+                                                            name="cartqtybutton" ng-change="cart.saveToSessionStorage()" ng-model="item.qty" type="number" min="1"/>
                                                     </div>
                                                 </td>
                                                 <td data-label="Total" class="ec-cart-pro-subtotal">{{item.qty * item.price * (100 - item.discount)/100 | currency:'':0}} VNĐ</td>
@@ -107,7 +107,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div>
                                         <span class="text-left">Phí vận chuyển</span>
-                                        <span class="text-right">{{cart.ship | currency:'':0}} VNĐ</span>
+                                        <span class="text-right" ng-if="cart.ship == 0">Miễn phí vận chuyển</span>
+                                        <span class="text-right" ng-if="cart.ship > 0">{{cart.ship | currency:'':0}} VNĐ</span>
                                     </div>
                                     <div>
                                         <span class="text-left">Giảm giá</span>
@@ -166,9 +167,6 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <button title="Add To Cart" class=" add-to-cart"><img
                                         src="assets/images/icons/cart.svg" class="svg_img pro_svg"
                                         alt="" ng-click="cart.add(item.id)"/> Add To Cart</button>
-                                <a class="ec-btn-group wishlist" title="Wishlist"><img
-                                        src="assets/images/icons/wishlist.svg"
-                                        class="svg_img pro_svg" alt="" /></a>
                             </div>
                         </div>
                     </div>

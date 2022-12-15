@@ -259,7 +259,6 @@ values
 
 insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,discount,category_id,subcategory_id)
 values
-	-- laptop gaming 
 		(N'Smart Tivi Samsung UHD 4K  55 Inch UA55AU7700','UA55AU7700_1.jpg','UA55AU7700_2.jpg','UA55AU7700_3.jpg','UA55AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung 4K UHD 50 Inch UA50AU7002','UA50AU7002_1.jpg','UA50AU7002_2.jpg','UA50AU7002_3.jpg','UA50AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung QLED 4K 65 Inch QA65Q60B','QA65Q60B_1.jpg','QA65Q60B_2.jpg','QA65Q60B_3.jpg','QA65Q60B_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
@@ -344,6 +343,8 @@ values
 		(N'Tủ Lạnh Samsung Inverter 234 Lít RT22FARBDSA/SV','RT22FARBDSA_1.jpg','RT22FARBDSA_2.jpg','RT22FARBDSA_3.jpg','RT22FARBDSA_4.jpg',5650000,N'Dung tích thực: 234 Lít',5,10,'FRIDGE','FRIDGE'),
 		--WASHER
 		(N'Máy giặt sấy Panasonic Inverter 10.5 kg NA-V105FR1BV','NA-V105FR1BV_1.jpg','NA-V105FR1BV_2.jpg','NA-V105FR1BV_3.jpg','NA-V105FR1BV_4.jpg',16750000,N'Hybrid Dry Lite tính năng sấy tiện ích',5,10,'WASHER','WASHER'),
+
+
 		-- acer
 		(N'Acer Aspire 7 A715 42G R4XX','r4xx_1.jpg','r4xx_2.jpg','r4xx_3.jpg','r4xx_4.jpg',14990000,N'Laptop gaming tốt nhất phân khúc',5,0,'LAPTOP','AC'),
 		(N'Acer Aspire 7 A715 42G R05G','R05G_1.jpg','R05G_2.jpg','R05G_3.jpg','R05G_4.jpg',15990000,N'Laptop gaming tốt nhất phân khúc',5,10,'LAPTOP','AC'),
@@ -401,5 +402,14 @@ values
 
 insert into Reviews (Username, Product_Id, Content, Review_Time)
 			values('khangtg15054',1,N'Tuyệt Vời','2022-01-01')
+
+insert into Orders(Username, Create_Date, Status, Address, Phone_Number, description, expected_date, order_Time_Detail, is_Paid, Shipping_cost)
+		values('antht15011','2022-12-15','ChuanBi','thien an dep trai','0908987777',null,'2022-12-22','18:23:28','1',12000.00)
+
+insert into Orders_Detail(Order_Id, Product_Id, Quantity, Price)
+		values(1, 2, 1, 17091000),
+			  (1, 3, 4, 17091000)
+
+
 
 
