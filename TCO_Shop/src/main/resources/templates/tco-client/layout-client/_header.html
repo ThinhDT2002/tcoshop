@@ -475,7 +475,8 @@
                             </tr>
                             <tr>
                                 <td class="text-left">Phí ship :</td>
-                                <td class="text-right" ng-if="cart.ship == 0">Miễn phí</td>
+                                <td class="text-right" ng-if="cart.ship == 0 && cart.count > 0">Miễn phí</td>
+                                <td class="text-right" ng-if="cart.ship == 0 && cart.count == 0">{{cart.ship | currency:'':0}} VNĐ</td>
                                 <td class="text-right" ng-if="cart.ship > 0">{{cart.ship | currency:'':0}} VNĐ</td>
 
                             </tr>

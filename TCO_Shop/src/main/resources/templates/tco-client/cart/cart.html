@@ -107,7 +107,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     </div>
                                     <div>
                                         <span class="text-left">Phí vận chuyển</span>
-                                        <span class="text-right" ng-if="cart.ship == 0">Miễn phí vận chuyển</span>
+                                        <span class="text-right" ng-if="cart.ship == 0 && cart.count > 0">Miễn phí vận chuyển</span>
+                                        <span class="text-right" ng-if="cart.ship == 0 && cart.count == 0">{{cart.ship | currency:'':0}} VNĐ</span>
                                         <span class="text-right" ng-if="cart.ship > 0">{{cart.ship | currency:'':0}} VNĐ</span>
                                     </div>
                                     <div>
