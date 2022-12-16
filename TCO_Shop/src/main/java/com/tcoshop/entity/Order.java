@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -52,33 +53,39 @@ public class Order implements Serializable {
 	private Date expectedDate;
 	private String orderTimeDetail;
 	private Double shippingCost;
-
+	@OneToOne(mappedBy = "order")
+	private Transaction transaction;
 	public Order() {
 		super();
 	}
 
-	public Order(Integer id, User user, Date createDate, String status,
-			@NotBlank(message = "Vui lòng nhập địa chỉ") @Size(max = 100, message = "Địa chỉ tối đa 100 kí tự") String address,
-			String description,
-			@NotBlank(message = "Vui lòng nhập số điện thoại") @Size(max = 10, message = "Số điện thoại tối đa 10 số") String phoneNumber,
-			List<OrderDetail> orderDetails, Integer isPaid, Date expectedDate, String orderTimeDetail,
-			Double shippingCost) {
-		super();
-		this.id = id;
-		this.user = user;
-		this.createDate = createDate;
-		this.status = status;
-		this.address = address;
-		this.description = description;
-		this.phoneNumber = phoneNumber;
-		this.orderDetails = orderDetails;
-		this.isPaid = isPaid;
-		this.expectedDate = expectedDate;
-		this.orderTimeDetail = orderTimeDetail;
-		this.shippingCost = shippingCost;
-	}
+	
 
-	public String getOrderTimeDetail() {
+	public Order(Integer id, User user, Date createDate, String status,
+            @NotBlank(message = "Vui lòng nhập địa chỉ") @Size(max = 100, message = "Địa chỉ tối đa 100 kí tự") String address,
+            String description,
+            @NotBlank(message = "Vui lòng nhập số điện thoại") @Size(max = 10, message = "Số điện thoại tối đa 10 số") String phoneNumber,
+            List<OrderDetail> orderDetails, Integer isPaid, Date expectedDate, String orderTimeDetail,
+            Double shippingCost, Transaction transaction) {
+        super();
+        this.id = id;
+        this.user = user;
+        this.createDate = createDate;
+        this.status = status;
+        this.address = address;
+        this.description = description;
+        this.phoneNumber = phoneNumber;
+        this.orderDetails = orderDetails;
+        this.isPaid = isPaid;
+        this.expectedDate = expectedDate;
+        this.orderTimeDetail = orderTimeDetail;
+        this.shippingCost = shippingCost;
+        this.transaction = transaction;
+    }
+
+
+
+    public String getOrderTimeDetail() {
 		return orderTimeDetail;
 	}
 
@@ -183,4 +190,13 @@ public class Order implements Serializable {
 		this.orderDetails = orderDetails;
 	}
 
+    public Transaction getTransaction() {
+        return transaction;
+    }
+
+    public void setTransaction(Transaction transaction) {
+        this.transaction = transaction;
+    }
+
+	
 }

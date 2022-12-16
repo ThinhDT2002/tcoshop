@@ -41,7 +41,7 @@
                                         <h3 class="ec-checkout-title">Chi Tiết Hóa Đơn</h3>
                                         <div class="ec-bl-block-content">
                                             <div class="ec-check-bill-form">
-                                                
+                                                	<label th:if="${errorCheckoutMessage} != null" th:text="${errorCheckoutMessage}"><br></label>
                                                     <span class="ec-bill-wrap ec-bill">
                                                         <label>Họ và tên</label>
                                                         <input type="text" name="firstname" placeholder="Nhập họ..."
@@ -94,7 +94,7 @@
                                     <a class="btn btn-primary" ng-click="order.purchase()" type="submit">Đặt Hàng</a>
                                 </span>
                                 <span class="ec-check-order-btn">
-                                    <button th:formaction="@{/vnpay_payment}" type="submit">Thanh toán VNPAY</button>
+                                    <button class="btn btn-primary" th:formaction="@{/vnpay_payment}" type="submit">Thanh toán VNPAY</button>
                                 </span>
                                 
                             </div>
@@ -118,6 +118,7 @@
                                         <div>
                                             <span class="text-left">Phí Vận Chuyển</span>
                                             <span class="text-right">{{cart.ship | currency:'':0}} VNĐ</span>
+                                            <input name="orderShippingCost" ng-value="cart.ship" style="display:none">
                                         </div>
                                         
                                         <div class="ec-checkout-summary-total">

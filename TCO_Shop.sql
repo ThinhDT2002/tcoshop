@@ -165,7 +165,23 @@ create table Favorites(
 	primary key(Id)
 )
 
-
+create table Transactions(
+	Id int identity(1,1),
+	Amount decimal(12,2),
+	Bank_Code varchar(30),
+	Card_Type varchar(30),
+	Transaction_Info varchar(50),
+	Pay_Date date,
+	Pay_Time varchar(20),
+	Pay_Status nvarchar(100),
+	Transaction_Status nvarchar(30),
+	Transaction_No varchar(30),
+	Order_Id int,
+	constraint FK_Transactions_Orders
+	foreign key (Order_Id) references Orders(Id),
+	primary key (Id),
+	Bank_Tran_No varchar(30)
+)
 
 insert into Roles(id, name)
 values('ADMIN','Administrators'),

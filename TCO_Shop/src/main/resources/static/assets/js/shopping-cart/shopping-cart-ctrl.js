@@ -1,4 +1,4 @@
-clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
+clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 	$scope.products = [];
 	$scope.reviews = [];
 
@@ -183,7 +183,9 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http) {
 			enctype: 'multipart/form-data'
 		})
 	}
-	
+	$rootScope.$on("ClearCart", function() {
+		$scope.cart.clear();
+	})
 	$scope.cart = {
 		items: [],
 		add(id) {

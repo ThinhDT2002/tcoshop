@@ -9,6 +9,10 @@ clientApp.config(function($routeProvider) {
 			templateUrl: " ",
 			controller: "product-ctrl"
 		})
+		.when("/afterCheckout", {
+			templateUrl: " ",
+			controller: "after-checkout-ctrl"
+		})
 })
 clientApp.filter('startFrom', function() {
 	return function(input, start) {

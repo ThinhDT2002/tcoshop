@@ -56,4 +56,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	@Query(value = "select top 5 * from Orders \r\n"
 	        + "order by Create_Date DESC", nativeQuery = true)
 	List<Order> findTop5OrderByCreateDate();
+	@Query("select o from Order o where o.transaction.id=?1")
+	Order findByTransactionId(Integer transactionId);
 }

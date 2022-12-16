@@ -19,4 +19,6 @@ public interface OrderService {
 	void delete(Integer id);
 	
 	Order create(Order order);
+	
+	Order findByTransacationId(Integer transactionId);
 }

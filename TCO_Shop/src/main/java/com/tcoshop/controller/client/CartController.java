@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -18,11 +17,13 @@ import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,10 +32,12 @@ import com.google.gson.JsonObject;
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderDetail;
 import com.tcoshop.entity.Product;
+import com.tcoshop.entity.Transaction;
 import com.tcoshop.entity.User;
 import com.tcoshop.service.OrderDetailService;
 import com.tcoshop.service.OrderService;
 import com.tcoshop.service.ProductService;
+import com.tcoshop.service.TransactionService;
 import com.tcoshop.service.UserService;
 
 @Controller
@@ -47,7 +50,8 @@ public class CartController {
     OrderDetailService orderDetailService;
     @Autowired
     ProductService productService;
-
+    @Autowired
+    TransactionService transactionService;
     @RequestMapping("/cart")
     public String cart() {
         return "tco-client/cart/cart";
@@ -56,28 +60,45 @@ public class CartController {
     @RequestMapping("/vnpay_payment")
     public String vnpayPayment(HttpServletRequest req, HttpServletResponse resp,
             Authentication authentication,
-            @RequestParam("phone") String phoneNumber,
-            @RequestParam("address") String address,
+            @RequestParam("phone") Optional<String> phoneNumber,
+            @RequestParam("address") Optional<String> address,
             @RequestParam("your-comment") Optional<String> description,
             @RequestParam("pId") String[] productId,
-            @RequestParam("pQuantity") String[] productQuantity) throws IOException {
-
+            @RequestParam("pQuantity") String[] productQuantity,
+            @RequestParam("orderShippingCost") Optional<String> orderShippingCost,
+            HttpSession session,
+            Model model) throws IOException {
+        if(!phoneNumber.isPresent() || !address.isPresent()) {
+            model.addAttribute("errorCheckoutMessage", "Hãy nhập địa chỉ và số điện thoại!");
+            return "tco-client/cart/checkout";
+        }
         Order order = new Order();
         String username = authentication.getName();
         User user = userService.findByUsername(username);
         order.setUser(user);
-        order.setPhoneNumber(phoneNumber);
-        order.setAddress(address);
+        order.setPhoneNumber(phoneNumber.get());
+        order.setAddress(address.get());
         if (description.isPresent()) {
             order.setDescription(description.get());
         }
-        order.setShippingCost(0.0);
-        order.setCreateDate(new Date());
+        if(orderShippingCost.isPresent()) {
+            double shippingCost = Double.parseDouble(orderShippingCost.get());
+            order.setShippingCost(shippingCost);
+        } else {
+            order.setShippingCost(0.0);
+        }        
+        Date createDate = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+        Calendar calendar = Calendar.getInstance();
+        String createTime = simpleDateFormat.format(calendar.getTime());
+        order.setCreateDate(createDate);
+        order.setOrderTimeDetail(createTime);
         order.setIsPaid(1);
         Date dt = DateUtils.addDays(new Date(), 7);
         order.setExpectedDate(dt);
         order.setStatus("ChoXacNhan");
         Order createOrder = orderService.create(order);
+        session.setAttribute("orderIdPay", createOrder.getId());
         List<OrderDetail> orderDetails = new ArrayList<>();
         for (int i = 0; i < productId.length; i++) {
             OrderDetail orderDetail = new OrderDetail();
@@ -95,7 +116,7 @@ public class CartController {
 
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
-        String vnp_OrderInfo = "Thanh toán vnpay test";
+        String vnp_OrderInfo = "Thanh toan hoa don vnpay";
         String orderType = "250000";
         Integer orderId = createOrder.getId();
         String oId = orderId + "";
@@ -105,10 +126,10 @@ public class CartController {
         List<OrderDetail> orderDetailsInDB = orderDetailService.findByOrderId(orderId);
         double price = 0.0;
         for (OrderDetail orderDetail : orderDetailsInDB) {
-            price += (orderDetail.getPrice() * orderDetail.getQuantity());
+            price += (orderDetail.getPrice() * (orderDetail.getQuantity() + 0.0));
         }
         price += order.getShippingCost();
-        int amount = (int) price * 100;
+        int amount = (int) (price * 100.0);
         Map vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
         vnp_Params.put("vnp_Command", vnp_Command);
@@ -193,5 +214,64 @@ public class CartController {
         resp.getWriter().write(gson.toJson(job));
         return "redirect:" + paymentUrl;
     }
-
+    @RequestMapping("/afterCheckout")
+    public String afterCheckout(
+            @RequestParam("vnp_Amount") String amount,
+            @RequestParam("vnp_BankCode") String bankCode,
+            @RequestParam("vnp_BankTranNo") Optional<String> bankTranNo,
+            @RequestParam("vnp_CardType") String cardType,
+            @RequestParam("vnp_OrderInfo") String orderInfo,
+            @RequestParam("vnp_ResponseCode") String responCode,
+            @RequestParam("vnp_TransactionNo") String transactionNo,
+            @RequestParam("vnp_TransactionStatus") String transactionStatus,
+            HttpSession session,
+            Authentication authentication,
+            Model model) {
+        try {
+            Date payDate = new Date();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+            Calendar calendar = Calendar.getInstance();
+            String payTime = simpleDateFormat.format(calendar.getTime());
+            Integer orderId = (Integer) session.getAttribute("orderIdPay");
+            Order order = orderService.findById(orderId);
+            User user = userService.findByUsername(authentication.getName());
+            Transaction transaction = new Transaction();
+            transaction.setAmount(Double.parseDouble(amount));
+            transaction.setBankCode(bankCode);
+            if(bankTranNo.isPresent()) {
+                transaction.setBankTranNo(bankTranNo.get());
+            } else {
+                transaction.setBankTranNo("Cancel payment");
+            }
+            transaction.setCardType(cardType);
+            transaction.setTransactionInfo(orderInfo);
+            transaction.setPayDate(payDate);
+            transaction.setPayTime(payTime);
+            transaction.setOrder(order);
+            if(responCode.equals("00")) {
+                transaction.setPayStatus("Giao dịch thành công");
+            } else {
+                transaction.setPayStatus("Giao dịch bị huỷ");
+            }
+            if(transactionStatus.equals("00")) {
+                transaction.setTransactionStatus("Giao dịch thành công");
+            } else {
+                transaction.setTransactionStatus("Giao dịch bị huỷ");
+            }
+            transaction.setTransactionNo(transactionNo);
+            Transaction returnTransaction = transactionService.create(transaction);
+            model.addAttribute("transaction", returnTransaction);
+            Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
+            model.addAttribute("order", returnOrder);
+            return "tco-client/cart/after-checkout";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "tco-client/other/error-page";
+        }
+    }
+    
+    @RequestMapping("/testCheckoutResult")
+    public String test() {
+        return "tco-client/cart/after-checkout";
+    }
 }

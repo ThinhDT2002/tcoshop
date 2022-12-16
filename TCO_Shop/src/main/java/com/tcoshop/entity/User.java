@@ -53,8 +53,14 @@ public class User implements Serializable{
 		super();
 	}
 	
-	public User(String username, String password, String email, String fullname, String address, String phone, String introduce, Boolean status, String activateCode,
-            String forgotPasswordCode, String avatar, Role role, List<Order> orders, List<Review> reviews, Date createDate, List<Favorite> favorites) {
+	
+
+    public User(@Size(min = 6, max = 30, message = "Vui lòng nhập tài khoản từ 6 - 30 kí tự") String username,
+            @Size(min = 6, max = 30, message = "Vui lòng nhập mật khẩu từ 6 - 30 kí tự") String password,
+            String email, String fullname, String address, String phone, String introduce, Date createDate,
+            @NotNull(message = "Vui lòng chọn trạng thái") Boolean status, String activateCode,
+            String forgotPasswordCode, String avatar, @NotNull(message = "Vui lòng chọn vai trò") Role role,
+            List<Order> orders, List<Review> reviews, List<Favorite> favorites) {
         super();
         this.username = username;
         this.password = password;
@@ -63,6 +69,7 @@ public class User implements Serializable{
         this.address = address;
         this.phone = phone;
         this.introduce = introduce;
+        this.createDate = createDate;
         this.status = status;
         this.activateCode = activateCode;
         this.forgotPasswordCode = forgotPasswordCode;
@@ -70,9 +77,10 @@ public class User implements Serializable{
         this.role = role;
         this.orders = orders;
         this.reviews = reviews;
-        this.createDate = createDate;
         this.favorites = favorites;
     }
+
+
 
     public String getUsername() {
 		return username;

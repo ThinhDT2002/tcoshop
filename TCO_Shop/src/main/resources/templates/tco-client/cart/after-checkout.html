@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<body>
+<main ng-controller="after-checkout-ctrl">
+
+	<div th:if="${transaction.payStatus} == 'Giao dịch thành công'">
+		<p>Kết quả giao dịch: <span th:text="${transaction.payStatus}"></span></p>
+		<p>Icon biểu hiện trạng thái thành công</p>
+		<p>Số tiền thanh toán: <span th:text="${transaction.amount}"></span></p>
+		<p>Ngân hàng: <span th:text="${transaction.bankCode}"></span></p>
+		<p>Loại thẻ: <span th:text="${transaction.cardType}"></span></p>
+		<p>Mã giao dịch tại ngân hàng: <span th:text="${transaction.bankTranNo}"></span></p>
+		<p>Mã giao dịch tại VNPAY: <span th:text="${transaction.transactionNo}"></span></p>
+		<p>Mã giao dịch tại Cửa hàng: <span th:text="${transaction.id}"></span></p>
+		<p>Mã hoá đơn: <span th:text="${order.id}"></span></p>
+	</div>
+	<div th:if="${transaction.payStatus} == 'Giao dịch bị huỷ'">
+		<p>Giao dịch bị huỷ bỏ</p>
+		<p>Icon huỷ bỏ giao dịch</p>
+	</div>
+
+	<a th:href="@{/home}">Quay về trang chủ</a>
+</main>
+</body>
+</html>

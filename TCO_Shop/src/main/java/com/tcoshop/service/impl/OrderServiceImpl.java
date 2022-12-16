@@ -79,4 +79,9 @@ public class OrderServiceImpl implements OrderService{
 	public Order create(Order order) {
 	    return orderDAO.save(order);
 	}
+
+    @Override
+    public Order findByTransacationId(Integer transactionId) {
+        return orderDAO.findByTransactionId(transactionId);
+    }
 }
