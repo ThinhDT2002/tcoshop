@@ -52,6 +52,7 @@ adminApp.controller("order-ctrl", function($http, $scope) {
 		let url  = "http://localhost:8080/api/orders/" + $scope.order.id;
 		$http.put(url, $scope.order).then(resp => {
 			alert("Đã cập nhật trạng thái!");
+			location.reload();
 		}).catch(error => {
 			console.log(error);
 		})

@@ -420,7 +420,9 @@ insert into Reviews (Username, Product_Id, Content, Review_Time)
 			values('khangtg15054',1,N'Tuyệt Vời','2022-01-01')
 
 insert into Orders(Username, Create_Date, Status, Address, Phone_Number, description, expected_date, order_Time_Detail, is_Paid, Shipping_cost)
-		values('antht15011','2022-12-15','ChuanBi','thien an dep trai','0908987777',null,'2022-12-22','18:23:28','1',12000.00)
+		values(N'antht15011','2022-12-15','ChuanBi',N'thien an dep trai',N'0908987777',null,'2022-12-22','18:23:28','1',12000.00)
+
+			   
 
 insert into Orders_Detail(Order_Id, Product_Id, Quantity, Price)
 		values(1, 2, 1, 17091000),

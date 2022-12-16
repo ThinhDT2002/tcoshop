@@ -56,6 +56,8 @@ public class OrderAPI {
 	    Order orderInDtb = orderService.findById(orderId);
 	    orderInDtb.setStatus(order.getStatus());
 	    orderInDtb.setIsPaid(order.getIsPaid());
+	    if (orderInDtb.getStatus().equalsIgnoreCase("DaGiaoHang")) orderInDtb.setIsPaid(2);
+	    else if(orderInDtb.getStatus().equalsIgnoreCase("HuyBo") && orderInDtb.getIsPaid() == 2) orderInDtb.setIsPaid(3);
 	    orderService.update(orderInDtb);
 	}
 	
@@ -63,7 +65,7 @@ public class OrderAPI {
 	public void cancelOrder(@PathVariable("id") Integer orderId) {
 	    Order orderInDtb = orderService.findById(orderId);
 	    orderInDtb.setStatus("HuyBo");
-	    if(orderInDtb.getIsPaid() == 2) orderInDtb.setIsPaid(3);
+	    if(orderInDtb.getIsPaid() == 2) orderInDtb.setIsPaid(3);	    
 	    
 	    List<OrderDetail> orderDetails = orderInDtb.getOrderDetails();
 	    for (OrderDetail orderDetail : orderDetails) {
