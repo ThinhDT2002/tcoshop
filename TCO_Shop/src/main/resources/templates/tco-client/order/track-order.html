@@ -194,8 +194,9 @@
 					</tbody>
 
 				</table>
-				<div style="margin-left: 75%;"><h4 th:text="'Phí ship: ' + ${#numbers.formatDecimal(order.ShippingCost, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h4></div>
-				<div style="margin-left: 75%;"><h4 th:text="'Thành tiền: ' + ${#numbers.formatDecimal(sum, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h4></div>
+				<div style="margin-left: 75%;"><h5 th:if="*{ShippingCost} gt 0" th:text="'Phí ship: ' + ${#numbers.formatDecimal(order.ShippingCost, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h5></div>
+				<div style="margin-left: 75%;"><h5 th:if="*{ShippingCost} eq 0">Phí ship : Miễn phí vận chuyển</h5></div>
+				<div style="margin-left: 75%;"><h5 th:text="'Thành tiền: ' + ${#numbers.formatDecimal(sum, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h5></div>
 				<!-- Track Order Content end -->
 			</div>
 		</section>

@@ -117,8 +117,13 @@
                                         </div>
                                         <div>
                                             <span class="text-left">Phí Vận Chuyển</span>
-                                            <span class="text-right">{{cart.ship | currency:'':0}} VNĐ</span>
+<<<<<<< HEAD											
+                                	        <span class="text-right" ng-if="cart.ship == 0">Miễn phí vận chuyển</span>
+	                                        <span class="text-right" ng-if="cart.ship > 0">{{cart.ship | currency:'':0}} VNĐ</span>
                                             <input name="orderShippingCost" ng-value="cart.ship" style="display:none">
+=======
+
+>>>>>>> 20145bbe800907deb07cb4d8833cd0d0cb322ad2
                                         </div>
                                         
                                         <div class="ec-checkout-summary-total">

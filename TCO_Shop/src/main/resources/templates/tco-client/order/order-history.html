@@ -42,11 +42,9 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     <ul>
                                         <li><a th:href="@{/user/profile}">Thông tin người dùng</a></li>
                                         <li><a th:href="@{/order/history}">Lịch sử đặt hàng</a></li>
-                                        <li><a href="wishlist.html">Danh sách</a></li>
+                                        <li><a th:href="@{/product/favorites}">Danh sách sản phẩm yêu thích</a></li>
                                         <li><a th:href="@{/cart}">Giỏ hàng</a></li>
                                         <li><a th:href="@{/checkout}">Thanh toán</a></li>
-                                        <li><a href="track-order.html">Theo dõi đơn hàng</a></li>
-                                        <li><a href="user-invoice.html">Hóa đơn</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -114,9 +112,9 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 	                                            	<button class="btn btn-lg btn-warning" ng-click="cancelOrder(item.id)">Hủy đơn</button>	                                            	
 	                                            </span>
                                             </td>   
-                                            <td ng-if="item.status !== 'ChoXacNhan' && !item.status !== 'ChuanBi'">
+                                            <td ng-if="item.status !== 'ChoXacNhan' && item.status !== 'ChuanBi'">
                                             	<span class="tbl-btn">
-	                                            	<button class="btn btn-lg btn-primary" ng-click="cancelOrder(item.id)" disabled>Hủy đơn</button>	                                            	
+	                                            	<button class="btn btn-lg btn-primary" disabled>Hủy đơn</button>	                                            	
 	                                            </span>
                                             </td>                                                 
                                         </tr>

@@ -237,8 +237,8 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 
 		get ship() {
 			if (this.count == 0) return 0;
-			else if (this.count >= 1) return 12000;
-			else if (this.count > 5) return 0;
+			else if (this.count <= 3) return 12000;
+			else if (this.count >= 4) return 0;
 		},
 
 	}

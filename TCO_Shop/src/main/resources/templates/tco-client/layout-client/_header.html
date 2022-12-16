@@ -443,9 +443,9 @@
                     <span class="cart_title">Giỏ hàng của tôi</span>
                     <button class="ec-close">❌</button>
                 </div>
-                <ul class="eccart-pro-items" ng-repeat="item in cart.items">
+                <ul class="eccart-pro-items" ng-if="cart.count > 0" ng-repeat="item in cart.items">
                     <li>
-                        <a href="product-left-sidebar.html" class="sidtco_pro_img"><img
+                        <a th:href="@{|/product/detail/{{item.id}}|}" class="sidtco_pro_img"><img
                                 th:src="@{|/images/products/{{item.image1}}|}" alt="product"></a>
                         <div class="ec-pro-content">
                             <a th:href="@{|/product/detail/{{item.id}}|}" class="cart_pro_title">{{item.name}}</a>
@@ -454,6 +454,13 @@
                                 <input class="qty-input" ng-change="cart.saveToSessionStorage()" ng-model="item.qty" type="number" min="1">
                             </div>
                             <a href="javascript:void(0)" class="remove" th:attr="ng-click=@{|cart.remove(item.id)|}">❌</a>
+                        </div>
+                    </li>
+                </ul>
+               <ul class="eccart-pro-items" ng-if="cart.count == 0">
+                    <li>
+                        <div class="ec-pro-content">
+							Bạn chưa có sản phẩm
                         </div>
                     </li>
                 </ul>
@@ -468,7 +475,9 @@
                             </tr>
                             <tr>
                                 <td class="text-left">Phí ship :</td>
-                                <td class="text-right">{{cart.ship | currency:'':0}} VNĐ</td>
+                                <td class="text-right" ng-if="cart.ship == 0 && cart.count > 0">Miễn phí</td>
+                                <td class="text-right" ng-if="cart.ship == 0 && cart.count == 0">{{cart.ship | currency:'':0}} VNĐ</td>
+                                <td class="text-right" ng-if="cart.ship > 0">{{cart.ship | currency:'':0}} VNĐ</td>
 
                             </tr>
                             <tr>
