@@ -1,25 +1,185 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 <body>
-<main ng-controller="after-checkout-ctrl">
-
-	<div th:if="${transaction.payStatus} == 'Giao dịch thành công'">
-		<p>Kết quả giao dịch: <span th:text="${transaction.payStatus}"></span></p>
-		<p>Icon biểu hiện trạng thái thành công</p>
-		<p>Số tiền thanh toán: <span th:text="${transaction.amount}"></span></p>
-		<p>Ngân hàng: <span th:text="${transaction.bankCode}"></span></p>
-		<p>Loại thẻ: <span th:text="${transaction.cardType}"></span></p>
-		<p>Mã giao dịch tại ngân hàng: <span th:text="${transaction.bankTranNo}"></span></p>
-		<p>Mã giao dịch tại VNPAY: <span th:text="${transaction.transactionNo}"></span></p>
-		<p>Mã giao dịch tại Cửa hàng: <span th:text="${transaction.id}"></span></p>
-		<p>Mã hoá đơn: <span th:text="${order.id}"></span></p>
-	</div>
-	<div th:if="${transaction.payStatus} == 'Giao dịch bị huỷ'">
-		<p>Giao dịch bị huỷ bỏ</p>
-		<p>Icon huỷ bỏ giao dịch</p>
-	</div>
-
-	<a th:href="@{/home}">Quay về trang chủ</a>
-</main>
+	<main ng-controller="after-checkout-ctrl">
+		<div th:if="${transaction.payStatus} == 'Giao dịch thành công'">
+			<table class="body-wrap">
+				<tbody>
+					<tr>
+						<td></td>
+						<td class="container" width="600">
+							<div class="content">
+								<table class="main" width="100%" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td class="content-wrap aligncenter">
+												<table width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td class="content-block">
+																<h2>Kết quả giao dịch: <span
+																		th:text="${transaction.payStatus}"></span></h2>
+															</td>
+															<img style="width: 5%;" th:src="@{assets/images/148767.png}"
+																alt="">
+														</tr>
+														<tr>
+															<td class="content-block">
+																<table class="invoice">
+																	<tbody>
+																		<tr>
+																			<td>
+																				<table class="invoice-items"
+																					cellpadding="0" cellspacing="0">
+																					<tbody>
+																						<tr>
+																							<td>Số tiền thanh toán:
+																							</td>
+																							<td class="alignright"><span th:text="${transaction.amount}"></span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td>Ngân hàng:</td>
+																							<td class="alignright"><span
+																									th:text="${transaction.bankCode}"></span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td>Loại thẻ:</td>
+																							<td class="alignright"><span th:text="${transaction.cardType}"></span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td>Mã giao dịch tại ngân
+																								hàng:</td>
+																							<td class="alignright">
+																								<span th:text="${transaction.bankTranNo}"></span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td>Mã giao dịch tại
+																								VNPAY:</td>
+																							<td class="alignright"><span th:text="${transaction.transactionNo}"></span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td>Mã giao dịch tại Cửa
+																								hàng:</td>
+																							<td class="alignright"><span th:text="${transaction.id}"></span>
+																							</td>
+																						</tr>
+																						<tr>
+																							<td>Mã hoá đơn:</td>
+																							<td class="alignright"><span th:text="${order.id}"></span>
+																							</td>
+																						</tr>
+																						<tr class="total">
+																							<td width="100%"
+																								style="text-align: center;">
+																								Cảm ơn đã sử dụng
+																								dịch vụ của chúng
+																								tôi</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</td>
+														</tr>
+														<tr>
+															<td class="content-block">
+																<a th:href="@{/home}">Quay về trang chủ</a>
+															</td>
+														</tr>
+														<tr>
+															<td class="content-block">
+																© 2022 <a class="site-name" href="#">TCO SHOP</a>. Đã
+																đăng ký
+																Bản quyền
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="footer">
+									<table width="100%">
+										<tbody>
+											<tr>
+												<td class="aligncenter content-block">Questions? Email <a
+														href="mailto:">sevennguyen34@gmail.com</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div th:if="${transaction.payStatus} == 'Giao dịch bị huỷ'">
+			<table class="body-wrap">
+				<tbody>
+					<tr>
+						<td></td>
+						<td class="container" width="600">
+							<div class="content">
+								<table class="main" width="100%" cellpadding="0" cellspacing="0">
+									<tbody>
+										<tr>
+											<td class="content-wrap aligncenter">
+												<table width="100%" cellpadding="0" cellspacing="0">
+													<tbody>
+														<tr>
+															<td class="content-block">
+																<h2>Giao dịch bị huỷ bỏ
+																</h2>
+															</td>
+															<img style="width: 5%;"
+																th:src="@{assets/images/failed-icon-7.jpg}" alt="">
+														</tr>
+														<tr>
+															<td class="content-block">
+																<a th:href="@{/home}">Quay về trang chủ</a>
+															</td>
+														</tr>
+														<tr>
+															<td class="content-block">
+																© 2022 <a class="site-name" href="#">TCO SHOP</a>. Đã
+																đăng ký
+																Bản quyền
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="footer">
+									<table width="100%">
+										<tbody>
+											<tr>
+												<td class="aligncenter content-block">Questions? Email <a
+														href="mailto:">sevennguyen34@gmail.com</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
 </body>
+
 </html>
