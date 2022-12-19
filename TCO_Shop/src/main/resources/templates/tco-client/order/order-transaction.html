@@ -67,29 +67,30 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         <tr>
                                             <th scope="col">Id</th>
                                             <th scope="col">Tên</th>
-                                            <th scope="col">Bank</th>
-                                            <th scope="col">Card</th>
+                                            <th scope="col">Ngân hàng</th>
+                                            <th scope="col">Loại thẻ</th>
+                                            <th scope="col">Mã giao dịch tại ngân hàng</th>
+                                            <th scope="col">Mã giao dịch tại VNPAY</th>
                                             <th scope="col">Ngày đặt</th>
-                                            <th scope="col">Thanh toán trước</th>
+                                            <th scope="col">Trạng thái giao dịch</th>
+                                            <th scope="col">Mã thanh toán</th>
                                             <th scope="col">Xem đơn</th>
-                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="trans in transaction">
                                             <th scope="row"><span>{{trans.id}}</span></th>
-                                            <td><span>[[${currentUser.fullname}]]</span></td>
+                                            <td><span>{{trans.order.user.fullname}}</span></td>
                                             <td><span>{{trans.bankCode}}</span></td>
                                             <td><span>{{trans.cardType}}</span></td>
+                                            <td><span>{{trans.transactionNo}}</span></td>
+                                            <td><span>{{trans.bankTranNo}}</span></td>
                                             <td><span>{{trans.payDate | date:"dd/MM/yyyy"}} at {{trans.payTime}}</span></td>
+                                            <td><span>{{trans.transactionStatus}}</span></td>
+                                            <td><span>{{trans.order.id}}</span></td>
                                             <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                        th:href="@{|/order/track/{{item.id}}|}">Xem</a></span>
-                                            </td>                                                        
-                                            <td>
-	                                            <span class="tbl-btn" >
-	                                            	<button class="btn btn-lg btn-warning" ng-click="cancelOrder(item.id)">Hủy đơn</button>	                                            	
-	                                            </span>
-                                            </td>                                                   
+                                                        th:href="@{|/order/track/{{trans.order.id}}|}">Xem</a></span>
+                                            </td>                                                                                                          
                                         </tr>
                                     </tbody>
                                 </table>

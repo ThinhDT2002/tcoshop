@@ -24,4 +24,9 @@ public class TransactionServiceImpl implements TransactionService {
 		return transactionRepository.findAll();
 	}
 
+	@Override
+	public List<Transaction> findByUsername(String username) {
+		return transactionRepository.findByUser(username);
+	}
+
 }

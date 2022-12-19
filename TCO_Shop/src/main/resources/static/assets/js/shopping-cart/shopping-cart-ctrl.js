@@ -95,7 +95,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
 		});
-		$http.get(`/api/transaction`).then(resp => {
+		$http.get(`/api/transaction/${split[2]}`).then(resp => {
 			$scope.transaction = resp.data;
 		});
 	}

@@ -117,11 +117,8 @@
 							<p id="currentUsername" style="display:none;">[[${#request.remoteUser}]]</p>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<li><a class="dropdown-item" th:href="@{/user/profile}">Thông tin tài khoản</a></li>
-								<!-- 
-								<li><a class="dropdown-item" href="checkout.html">Thanh
-										toán</a></li>
-								 -->
 								<li><a class="dropdown-item" th:href="@{/order/history}">Lịch sử giao dịch</a></li>
+								<li><a class="dropdown-item" th:href="@{/order/transaction}">Lịch sử thanh toán</a></li>
 								<li><a class="dropdown-item" th:href="@{/user/change-password}">Đổi mật khẩu</a></li>
 								<li><a class="dropdown-item" th:href="@{/user_logout}">Đăng xuất</a></li>
 							</ul>
