@@ -91,11 +91,9 @@
 															</select>
 														</td>
 														<td>
-															<select style="border: 0px" ng-model="order.isPaid" ng-change="updateOrderStatus(order)">
-																<option ng-value="2">Đã thanh toán</option>
-																<option ng-value="1">Chưa thanh toán</option>
-																<option ng-value="3">Đã hoàn tiền</option>
-															</select>
+															<span ng-if="order.isPaid == 1">Chưa thanh toán</span>
+															<span ng-if="order.isPaid == 2">Đã thanh toán</span>
+															<span ng-if="order.isPaid == 3">Đã hoàn tiền</span>
 														</td>
 														<td>{{order.description}}</td>
 														<td>

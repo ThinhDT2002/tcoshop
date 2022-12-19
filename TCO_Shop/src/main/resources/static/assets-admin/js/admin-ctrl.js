@@ -37,4 +37,8 @@ adminApp.config(function($routeProvider) {
 		templateUrl: " ",
 		controller: "review-ctrl"
 	})
+	.when("/tco-admin/transaction", {
+		templateUrl: " ",
+		controller: "transaction-ctrl"
+	})
 })

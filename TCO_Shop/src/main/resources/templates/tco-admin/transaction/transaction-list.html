@@ -3,14 +3,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
 th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 <body>
-<main ng-controller= "review-ctrl">
+<main ng-controller= "transaction-ctrl">
 
 <!-- CONTENT WRAPPER -->
 <div class="ec-content-wrapper">
 	<div class="content">
 		<div
 			class="breadcrumb-wrapper breadcrumb-wrapper-2 d-flex align-items-center justify-content-between">
-			<h1>Danh sách bình luận</h1>
+			<h1>Danh sách Thanh toán</h1>
 			<p class="breadcrumbs"><span><a href="index.html">Home</a></span>
 				<span><i class="mdi mdi-chevron-right"></i></span>Review
 			</p>
@@ -23,30 +23,28 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 							<div class="col-lg-3 col-md-6">
 								<label for="pagerSize">Hiển thị: </label>
 								<select class="form-control" ng-change="pagination()" ng-model="pageSize">
-									<option value="5">5</option>
+									<option value="3">3</option>
+									<option value="6">6</option>
 									<option value="10">10</option>
-									<option value="15">15</option>
 								</select>
 							</div>
 
 							<div class="col-lg-9 col-md-12 sort">
 								<div class="col-lg-4 col-md-6 p-space">
 									<label >Tìm kiếm</label>
-									<input class="form-control" type="text" ng-model="reviewSearch"
+									<input class="form-control" type="text" ng-model="transSearch"
 										placeholder="Tìm kiếm">
 								</div>
 								<div class="col-lg-4 col-md-6 p-space">
 									<label for="sortProduct">Bộ lọc</label>
 									<select class="form-control" ng-change="sort()"
-										ng-model="reviewProperty">
+										ng-model="transProperty">
 										<option value="id">ID ↑</option>
 										<option value="-id">ID ↓</option>
-										<option value="user">Người bình luận ↑</option>
-										<option value="-user">Người bình luận ↓</option>
-										<option value="time">Ngày ↑</option>
-										<option value="-time">Ngày ↓</option>
-										<option value="product">Sản phẩm ↑</option>
-										<option value="-product">Sản phẩm ↓</option>
+										<option value="amount">Số tiền ↑</option>
+										<option value="-amount">Số tiền ↓</option>
+										<option value="bankCode">Ngân hàng ↑</option>
+										<option value="-bankCode">Ngân hàng ↓</option>
 									</select>
 								</div>
 							</div>
@@ -63,32 +61,28 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 							<table class="table" style="width:100%">
 								<thead>
 									<tr>
-										<th>Mã đánh giá</th>
-										<th>Mã sản phẩm</th>
-										<th>Tên sản phẩm</th>
-										<th>Người bình luận</th>
-										<th>Nội dung</th>
-										<th>Ngày đánh giá</th>
-										<th>Tùy chỉnh</th>
+										<th>ID</th>
+										<th>Ngân hàng</th>
+										<th>Loại Thẻ</th>
+										<th>Số tiền</th>
+										<th>Ngày giao dịch</th>
+										<th>Trạng thái</th>
+										<th>MTT VNPay</th>
+										<th>MTT Ngân hàng</th>									
 									</tr>
 								</thead>
 
 								<tbody>
-									<tr ng-repeat = "rev in revs | filter: reviewSearch | orderBy: reviewProperty
+									<tr ng-repeat = "trans in transaction | filter: transSearch | orderBy: transProperty
 										| startFrom: currentPage * pageSize | limitTo: pageSize">
-										<td>{{rev.id}}</td>
-										<td>{{rev.product.id}}</td>
-										<td>{{rev.product.name}}</td>
-										<td>{{rev.user.fullname}}</td>
-										<td>{{rev.content}}</td>
-										<td>{{rev.time | date:'dd-MM-yyyy'}} at {{rev.timeDetail}}</td>
-										<td>
-											<div class="btn-group mb-1">
-												<button ng-click="delete(rev.id)"
-													class="btn btn-outline-success">Xóa</button>
-												
-											</div>
-										</td>
+										<td>{{trans.id}}</td>
+										<td>{{trans.bankCode}}</td>
+										<td>{{trans.cardType}}</td>
+										<td>{{trans.amount | currency:'':0}} VND</td>
+										<td>{{trans.payDate | date:'dd/MM/yyyy'}} at {{trans.payTime}} </td>
+										<td>{{trans.transactionStatus}}</td>
+										<td>{{trans.transactionNo}}</td>
+										<td>{{trans.bankTranNo}}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -100,7 +94,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 									<b>Trước</b>
 								</button>
 								<button class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
-								<button ng-disabled = "currentPage >= revs.length/pageSize-1" ng-click="currentPage = currentPage+1" class="btn btn-primary">
+								<button ng-disabled = "currentPage >= transaction.length/pageSize-1" ng-click="currentPage = currentPage+1" class="btn btn-primary">
 									<b>Tới</b>
 								</button>
 								<button ng-click="currentPage = numberOfPages() -1" class="btn btn-danger">
