@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+
 <body>
 	<main ng-controller="after-checkout-ctrl">
 		<div th:if="${transaction.payStatus} == 'Giao dịch thành công'">
@@ -18,7 +19,8 @@
 														<tr>
 															<td class="content-block">
 																<h2>Kết quả giao dịch: <span
-																		th:text="${transaction.transactionStatus}"></span></h2>
+																		th:text="${transaction.transactionStatus}"></span>
+																</h2>
 															</td>
 															<img style="width: 5%;" th:src="@{assets/images/148767.png}"
 																alt="">
@@ -33,9 +35,13 @@
 																					cellpadding="0" cellspacing="0">
 																					<tbody>
 																						<tr>
-																							<td>Số tiền thanh toán:
+																							<td>Số tiền thanh toán
+																								(VNĐ):
 																							</td>
-																							<td class="alignright"><span th:text="${transaction.amount}"></span>
+																							<td class="alignright">
+																								<span>[[*{#numbers.formatDecimal(transaction.amount,
+																									0, 'COMMA', 0,
+																									'POINT')}]]</span>
 																							</td>
 																						</tr>
 																						<tr>
@@ -46,31 +52,36 @@
 																						</tr>
 																						<tr>
 																							<td>Loại thẻ:</td>
-																							<td class="alignright"><span th:text="${transaction.cardType}"></span>
+																							<td class="alignright"><span
+																									th:text="${transaction.cardType}"></span>
 																							</td>
 																						</tr>
 																						<tr>
 																							<td>Mã giao dịch tại ngân
 																								hàng:</td>
 																							<td class="alignright">
-																								<span th:text="${transaction.bankTranNo}"></span>
+																								<span
+																									th:text="${transaction.bankTranNo}"></span>
 																							</td>
 																						</tr>
 																						<tr>
 																							<td>Mã giao dịch tại
 																								VNPAY:</td>
-																							<td class="alignright"><span th:text="${transaction.transactionNo}"></span>
+																							<td class="alignright"><span
+																									th:text="${transaction.transactionNo}"></span>
 																							</td>
 																						</tr>
 																						<tr>
 																							<td>Mã giao dịch tại Cửa
 																								hàng:</td>
-																							<td class="alignright"><span th:text="${transaction.id}"></span>
+																							<td class="alignright"><span
+																									th:text="${transaction.id}"></span>
 																							</td>
 																						</tr>
 																						<tr>
 																							<td>Mã hoá đơn:</td>
-																							<td class="alignright"><span th:text="${order.id}"></span>
+																							<td class="alignright"><span
+																									th:text="${order.id}"></span>
 																							</td>
 																						</tr>
 																						<tr class="total">
@@ -139,7 +150,8 @@
 														<tr>
 															<td class="content-block">
 																<h2>Kết quả giao dịch: <span
-																		th:text="${transaction.transactionStatus}"></span></h2>
+																		th:text="${transaction.transactionStatus}"></span>
+																</h2>
 															</td>
 															<img style="width: 5%;"
 																th:src="@{assets/images/failed-icon-7.jpg}" alt="">
@@ -151,7 +163,12 @@
 														</tr>
 														<tr>
 															<td class="content-block">
-																© 2022 <a class="site-name" href="#">TCO SHOP</a>. Đã
+																<a th:href="@{/order/transaction}">Quay về trang lịch sử thanh toán</a>
+															</td>
+														</tr>
+														<tr>
+															<td class="content-block">
+																© 2022 <a class="site-name" th:href="@{/home}">TCO SHOP</a>. Đã
 																đăng ký
 																Bản quyền
 															</td>

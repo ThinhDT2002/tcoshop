@@ -11,7 +11,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                 <div class="col-12">
                     <div class="row ec_breadcrumb_inner">
                         <div class="col-md-6 col-sm-12">
-                            <h2 class="ec-breadcrumb-title">Lịch sử giao dịch</h2>
+                            <h2 class="ec-breadcrumb-title">Lịch sử thanh toán</h2>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <!-- ec-breadcrumb-list start -->
@@ -55,7 +55,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                 <div class="ec-shop-rightside col-lg-9 col-md-12">
                     <div class="ec-vendor-dashboard-card">
                         <div class="ec-vendor-card-header">
-                            <h5>Lịch sử đặt hàng</h5>
+                            <h5>Lịch sử thanh toán</h5>
                             <div class="ec-header-btn">
                                 <a class="btn btn-lg btn-primary" th:href="@{/product/list}">Shop Now</a>
                             </div>
@@ -65,59 +65,31 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 <table class="table ec-table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Hóa đơn</th>
+                                            <th scope="col">Id</th>
                                             <th scope="col">Tên</th>
+                                            <th scope="col">Bank</th>
+                                            <th scope="col">Card</th>
                                             <th scope="col">Ngày đặt</th>
                                             <th scope="col">Thanh toán trước</th>
-                                            <th scope="col">Trạng thái</th>
                                             <th scope="col">Xem đơn</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="item in items">
-                                            <th scope="row"><span>{{item.id}}</span></th>
+                                        <tr ng-repeat="trans in transaction">
+                                            <th scope="row"><span>{{trans.id}}</span></th>
                                             <td><span>[[${currentUser.fullname}]]</span></td>
-                                            <td><span>{{item.createDate | date:"dd/MM/yyyy"}} at {{item.orderTimeDetail}}</span></td>
-                                            <td ng-if="item.isPaid === 1">
-                                            	<span>Chưa thanh toán</span>
-                                            </td>
-                                            <td ng-if="item.isPaid === 2">
-                                            	<span>Đã thanh toán</span>
-                                            </td>
-                                            <td ng-if="item.isPaid === 3">
-                                            	<span>Đã hoàn tiền</span>
-                                            </td>
-                                            <td ng-if="item.status === 'ChoXacNhan'">
-                                            	<span >Chờ xác nhận</span>
-                                            </td>
-                                            <td ng-if="item.status === 'ChuanBi'">
-                                            	<span>Đang chuẩn bị hàng</span>
-                                            </td>
-                                            <td ng-if="item.status === 'XuatKho'">
-                                            	<span>Đã xuất kho</span>
-                                            </td>
-                                            <td ng-if="item.status === 'VanChuyen'">
-                                            	<span>'Đang vận chuyển</span>
-                                            </td>
-                                            <td ng-if="item.status === 'DaGiaoHang'">
-                                            	<span>Đã giao hàng</span>
-                                            </td>
-                                            <td ng-if="item.status === 'HuyBo'">
-                                            	<span>Hủy bỏ</span>
-                                            </td>
+                                            <td><span>{{trans.bankCode}}</span></td>
+                                            <td><span>{{trans.cardType}}</span></td>
+                                            <td><span>{{trans.payDate | date:"dd/MM/yyyy"}} at {{trans.payTime}}</span></td>
                                             <td><span class="tbl-btn"><a class="btn btn-lg btn-primary"
-                                                        th:href="@{|/order/track/{{item.id}}|}">Xem</a></span></td>                                                        
-                                            <td ng-if="item.status === 'ChoXacNhan' || item.status === 'ChuanBi'">
+                                                        th:href="@{|/order/track/{{item.id}}|}">Xem</a></span>
+                                            </td>                                                        
+                                            <td>
 	                                            <span class="tbl-btn" >
 	                                            	<button class="btn btn-lg btn-warning" ng-click="cancelOrder(item.id)">Hủy đơn</button>	                                            	
 	                                            </span>
-                                            </td>   
-                                            <td ng-if="item.status !== 'ChoXacNhan' && item.status !== 'ChuanBi'">
-                                            	<span class="tbl-btn">
-	                                            	<button class="btn btn-lg btn-primary" disabled>Hủy đơn</button>	                                            	
-	                                            </span>
-                                            </td>                                                 
+                                            </td>                                                   
                                         </tr>
                                     </tbody>
                                 </table>

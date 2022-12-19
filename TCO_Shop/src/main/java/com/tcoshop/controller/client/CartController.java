@@ -120,7 +120,8 @@ public class CartController {
         String orderType = "250000";
         Integer orderId = createOrder.getId();
         String oId = orderId + "";
-        String vnp_TxnRef = oId;
+//        String vnp_TxnRef = oId;
+        String vnp_TxnRef = Config.getRandomNumber(8);
         String vnp_IpAddr = Config.getIpAddress(req);
         String vnp_TmnCode = Config.vnp_TmnCode;
         List<OrderDetail> orderDetailsInDB = orderDetailService.findByOrderId(orderId);
@@ -235,7 +236,8 @@ public class CartController {
             Integer orderId = (Integer) session.getAttribute("orderIdPay");
             Order order = orderService.findById(orderId);
             Transaction transaction = new Transaction();
-            transaction.setAmount(Double.parseDouble(amount));
+            Double transactionAmount = Double.parseDouble(amount) / 100.0;
+            transaction.setAmount(transactionAmount);
             transaction.setBankCode(bankCode);
             if(bankTranNo.isPresent()) {
                 transaction.setBankTranNo(bankTranNo.get());

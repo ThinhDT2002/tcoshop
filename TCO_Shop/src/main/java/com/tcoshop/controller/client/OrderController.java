@@ -40,6 +40,11 @@ public class OrderController {
 		return "tco-client/order/order-history";
 	}
 	
+	@RequestMapping("/order/transaction")
+	public String transaction(Model model) {
+		return "tco-client/order/order-transaction";
+	}
+	
 	@RequestMapping("/order/track/{id}")
 	public String track(Model model, @PathVariable("id") Integer id) {
 		Order order = orderService.findById(id);

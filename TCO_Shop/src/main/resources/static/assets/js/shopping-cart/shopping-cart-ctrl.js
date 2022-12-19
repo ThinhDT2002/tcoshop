@@ -62,6 +62,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 
 	// lấy giỏ hàng của người dùng abcxyz
 	$scope.items = [];
+	$scope.transaction = [];
 	// lấy tên của người dùng
 	var name = $("#nguoidunghientai").text();
 	var split = name.split(" ");
@@ -94,10 +95,13 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 		$http.get(`/api/orders/${split[2]}`).then(resp => {
 			$scope.items = resp.data;
 		});
+		$http.get(`/api/transaction`).then(resp => {
+			$scope.transaction = resp.data;
+		});
 	}
 
 	$scope.cancelOrder = function(orderId) {
-		$http.put(`/api/orders/cancel/${orderId}`).then(resp => {			
+		$http.put(`/api/orders/cancel/${orderId}`).then(resp => {
 			location.reload();
 		}).catch(error => {
 			console.log(error)
@@ -258,7 +262,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 			let numberOfDayToAdds = 7;
 			return date.setDate(date.getDate() + numberOfDayToAdds);
 		},
-		get orderTimeDetail(){
+		get orderTimeDetail() {
 			let date = new Date();
 			let currentHour = date.toLocaleTimeString();
 			return currentHour;
@@ -295,6 +299,6 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 				document.getElementById("sdt").style.display = "flex";
 			}
 		},
-		
+
 	};
 })

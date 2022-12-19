@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,7 +54,7 @@ public class Order implements Serializable {
 	private Date expectedDate;
 	private String orderTimeDetail;
 	private Double shippingCost;
-	@OneToOne(mappedBy = "order")
+	@OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
 	private Transaction transaction;
 	public Order() {
 		super();
@@ -189,7 +190,7 @@ public class Order implements Serializable {
 	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
-
+	@JsonIgnore
     public Transaction getTransaction() {
         return transaction;
     }

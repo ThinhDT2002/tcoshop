@@ -5,20 +5,25 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Transactions")
 public class Transaction implements Serializable{
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Double amount;
@@ -31,8 +36,9 @@ public class Transaction implements Serializable{
     private String transactionStatus;
     private String transactionNo;
     private String bankTranNo;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "Order_Id", referencedColumnName = "id")
+    @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Order order;
     public Transaction() {
         super();
@@ -108,7 +114,7 @@ public class Transaction implements Serializable{
     public void setTransactionNo(String transactionNo) {
         this.transactionNo = transactionNo;
     }
-    @JsonIgnore
+    
     public Order getOrder() {
         return order;
     }

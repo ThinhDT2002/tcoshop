@@ -88,9 +88,8 @@
 														th:if="${item.discount} == 0" class="new-price">[[*{#numbers.formatDecimal(price,
 														0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
 													<div th:if="${item.discount} != 0">
-														<span class="old-price" style="color: red;">[[*{#numbers.formatDecimal(price,
-															0, 'COMMA', 0, 'POINT')}]] VNĐ</span> - <span class="new-price">[[*{#numbers.formatDecimal(price
-															* (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
+														<span class="old-price" style="color: red;">[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span> 
+														- <span class="new-price">[[*{#numbers.formatDecimal(price * (100 - discount) / 100, 0, 'COMMA', 0, 'POINT')}]] VNĐ</span>
 													</div>
 												</div>
 												<div class="ec-single-stoke">
