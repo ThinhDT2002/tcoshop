@@ -80,7 +80,7 @@
 														ng-repeat="order in orders | filter: orderSearch | orderBy: orderProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
 														<td>{{order.id}}</td>
 														<td>{{order.user.username}}</td>
-														<td>{{order.createDate | date:'dd/MM/yyyy'}}</td>
+														<td>{{order.createDate | date:'dd/MM/yyyy'}} at {{order.orderTimeDetail}}</td>
 														<td>{{order.phoneNumber}}</td>
 														<td>{{order.address}}</td>
 														<td>

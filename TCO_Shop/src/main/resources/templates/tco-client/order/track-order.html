@@ -39,7 +39,9 @@
 						<div class="ec-trackorder-top">
 							<h2 class="ec-order-id">đơn hàng #[[*{id}]]</h2>
 							<div class="ec-order-detail">
-								<div>Dự kiến sẽ đến <span th:text="${#dates.format(order.expectedDate, 'dd/MM/yyyy')}"></span></div>
+								<th:block th:if="*{status} != 'HuyBo'">
+									<div>Dự kiến sẽ đến <span th:text="${#dates.format(order.expectedDate, 'dd/MM/yyyy')}"></span></div>
+								</th:block>
 								<div>
 									Mã đơn hàng <span>#[[*{id}]]</span>
 								</div>
@@ -167,6 +169,13 @@
 											<img th:src="@{/assets/images/icons/track_5.png}" alt="track_order">
 									</span><span class="ec-progressbar-track"></span><span
 										class="ec-track-title">Đã giao</span></li>
+								</th:block>
+								
+								<th:block th:if="*{status} == 'HuyBo'">
+									<li class="step0 active"><span class="ec-track-icon">
+											<img th:src="@{/assets/images/icons/order_cancel.png}" alt="track_order">
+									</span><span class="ec-progressbar-track"></span><span
+										class="ec-track-title">Đã hủy đơn</span></li>
 								</th:block>
 								</ul>
 							</div>
