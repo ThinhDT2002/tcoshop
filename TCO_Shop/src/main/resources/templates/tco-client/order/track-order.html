@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
+
 <body>
 	<main>
 
@@ -17,7 +17,8 @@
 								<!-- ec-breadcrumb-list start -->
 								<ul class="ec-breadcrumb-list">
 									<li class="ec-breadcrumb-item"><a th:href="@{/home}">Trang chủ</a></li>
-									<li class="ec-breadcrumb-item"><a th:href="@{/order/history}">Lịch sử đặt hàng</a></li>
+									<li class="ec-breadcrumb-item"><a th:href="@{/order/history}">Lịch sử đặt hàng</a>
+									</li>
 									<li class="ec-breadcrumb-item active">Đơn Hàng</li>
 								</ul>
 								<!-- ec-breadcrumb-list end -->
@@ -40,7 +41,8 @@
 							<h2 class="ec-order-id">đơn hàng #[[*{id}]]</h2>
 							<div class="ec-order-detail">
 								<th:block th:if="*{status} != 'HuyBo'">
-									<div>Dự kiến sẽ đến <span th:text="${#dates.format(order.expectedDate, 'dd/MM/yyyy')}"></span></div>
+									<div>Dự kiến sẽ đến <span
+											th:text="${#dates.format(order.expectedDate, 'dd/MM/yyyy')}"></span></div>
 								</th:block>
 								<div>
 									Mã đơn hàng <span>#[[*{id}]]</span>
@@ -50,133 +52,153 @@
 						<div class="ec-trackorder-bottom">
 							<div class="ec-progress-track">
 								<ul id="ec-progressbar">
-								
-								<th:block th:if="*{status} == 'ChoXacNhan'">
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Chờ xác nhận</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_2.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được chuẩn bị</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_3.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã xuất kho</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được <br> vận chuyển
-									</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã giao</span></li>
-								</th:block>
-								
-								<th:block th:if="*{status} == 'ChuanBi'">
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Chờ xác nhận</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được chuẩn bị</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_3.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã xuất kho</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được <br> vận chuyển
-									</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã giao</span></li>
-								</th:block>
-								
-								<th:block th:if="*{status} == 'XuatKho'">
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Chờ xác nhận</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được chuẩn bị</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã xuất kho</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_4.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được <br> vận chuyển
-									</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã giao</span></li>
-								</th:block>
-								
-								<th:block th:if="*{status} == 'VanChuyen'">
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Chờ xác nhận</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">đang được chuẩn bị</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title"> đã xuất kho</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đang được <br> vận chuyển
-									</span></li>
-									<li class="step0"><span class="ec-track-icon"> <img
-											th:src="@{/assets/images/icons/track_5.png}" alt="track_order"></span><span
-										class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã giao</span></li>
-								</th:block>
-								
-								<th:block th:if="*{status} == 'DaGiaoHang'">
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Chờ xác nhận</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_2.png}"alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">đang được chuẩn bị</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title"> đã xuất kho</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title"> Đang được <br> vận chuyển
-									</span></li>
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/track_5.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã giao</span></li>
-								</th:block>
-								
-								<th:block th:if="*{status} == 'HuyBo'">
-									<li class="step0 active"><span class="ec-track-icon">
-											<img th:src="@{/assets/images/icons/order_cancel.png}" alt="track_order">
-									</span><span class="ec-progressbar-track"></span><span
-										class="ec-track-title">Đã hủy đơn</span></li>
-								</th:block>
+
+									<th:block th:if="*{status} == 'ChoXacNhan'">
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Chờ xác nhận</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_2.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đang
+												được chuẩn bị</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_3.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đã xuất
+												kho</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_4.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đang
+												được <br> vận chuyển
+											</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_5.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đã
+												giao</span></li>
+									</th:block>
+
+									<th:block th:if="*{status} == 'ChuanBi'">
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Chờ xác nhận</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Đang được chuẩn bị</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_3.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đã xuất
+												kho</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_4.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đang
+												được <br> vận chuyển
+											</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_5.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đã
+												giao</span></li>
+									</th:block>
+
+									<th:block th:if="*{status} == 'XuatKho'">
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Chờ xác nhận</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Đang được chuẩn bị</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Đã xuất kho</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_4.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đang
+												được <br> vận chuyển
+											</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_5.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đã
+												giao</span></li>
+									</th:block>
+
+									<th:block th:if="*{status} == 'VanChuyen'">
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Chờ xác nhận</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">đang được chuẩn bị</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title"> đã xuất kho</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Đang được <br> vận chuyển
+											</span></li>
+										<li class="step0"><span class="ec-track-icon"> <img
+													th:src="@{/assets/images/icons/track_5.png}"
+													alt="track_order"></span><span
+												class="ec-progressbar-track"></span><span class="ec-track-title">Đã
+												giao</span></li>
+									</th:block>
+
+									<th:block th:if="*{status} == 'DaGiaoHang'">
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_1.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Chờ xác nhận</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_2.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">đang được chuẩn bị</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_3.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title"> đã xuất kho</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_4.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title"> Đang được <br> vận chuyển
+											</span></li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img th:src="@{/assets/images/icons/track_5.png}" alt="track_order">
+											</span><span class="ec-progressbar-track"></span><span
+												class="ec-track-title">Đã giao</span></li>
+									</th:block>
+
+									<th:block th:if="*{status} == 'HuyBo'">
+										<li class="step0 active"><span class="ec-track-icon">
+										</li>
+										<li class="step0 active"><span class="ec-track-icon">
+										</li>
+										<li class="step0 active"><span class="ec-track-icon">
+												<img style="width: 40%;"
+													th:src="@{/assets/images/icons/order_cancel.png}" alt="track_order">
+												<p style="font-size: 150%;">Đã hủy đơn</p>
+										</li>
+										<li class="step0 active"><span class="ec-track-icon">
+												
+										</li>
+										<li class="step0 active"><span class="ec-track-icon">
+										</li>
+									</th:block>
 								</ul>
 							</div>
 						</div>
@@ -185,7 +207,7 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th scope="col">Mã sản phẩm	</th>
+							<th scope="col">Mã sản phẩm </th>
 							<th scope="col">Tên</th>
 							<th scope="col">Giá</th>
 							<th scope="col">Số lượng</th>
@@ -203,9 +225,17 @@
 					</tbody>
 
 				</table>
-				<div style="margin-left: 75%;"><h5 th:if="*{ShippingCost} gt 0" th:text="'Phí ship: ' + ${#numbers.formatDecimal(order.ShippingCost, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h5></div>
-				<div style="margin-left: 75%;"><h5 th:if="*{ShippingCost} eq 0">Phí ship : Miễn phí vận chuyển</h5></div>
-				<div style="margin-left: 75%;"><h5 th:text="'Thành tiền: ' + ${#numbers.formatDecimal(sum, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h5></div>
+				<div style="margin-left: 75%;">
+					<h5 th:if="*{ShippingCost} gt 0"
+						th:text="'Phí ship: ' + ${#numbers.formatDecimal(order.ShippingCost, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'">
+					</h5>
+				</div>
+				<div style="margin-left: 75%;">
+					<h5 th:if="*{ShippingCost} eq 0">Phí ship : Miễn phí vận chuyển</h5>
+				</div>
+				<div style="margin-left: 75%;">
+					<h5 th:text="'Thành tiền: ' + ${#numbers.formatDecimal(sum, 0, 'COMMA', 0, 'POINT')} + ' VNĐ'"></h5>
+				</div>
 				<!-- Track Order Content end -->
 			</div>
 		</section>
@@ -214,4 +244,5 @@
 
 	</main>
 </body>
+
 </html>

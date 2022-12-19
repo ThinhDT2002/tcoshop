@@ -52,6 +52,7 @@ public class CartController {
     ProductService productService;
     @Autowired
     TransactionService transactionService;
+
     @RequestMapping("/cart")
     public String cart() {
         return "tco-client/cart/cart";
@@ -68,7 +69,7 @@ public class CartController {
             @RequestParam("orderShippingCost") Optional<String> orderShippingCost,
             HttpSession session,
             Model model) throws IOException {
-        if(!phoneNumber.isPresent() || !address.isPresent()) {
+        if (!phoneNumber.isPresent() || !address.isPresent()) {
             model.addAttribute("errorCheckoutMessage", "Hãy nhập địa chỉ và số điện thoại!");
             return "tco-client/cart/checkout";
         }
@@ -81,12 +82,12 @@ public class CartController {
         if (description.isPresent()) {
             order.setDescription(description.get());
         }
-        if(orderShippingCost.isPresent()) {
+        if (orderShippingCost.isPresent()) {
             double shippingCost = Double.parseDouble(orderShippingCost.get());
             order.setShippingCost(shippingCost);
         } else {
             order.setShippingCost(0.0);
-        }        
+        }
         Date createDate = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
         Calendar calendar = Calendar.getInstance();
@@ -120,7 +121,7 @@ public class CartController {
         String orderType = "250000";
         Integer orderId = createOrder.getId();
         String oId = orderId + "";
-//        String vnp_TxnRef = oId;
+        // String vnp_TxnRef = oId;
         String vnp_TxnRef = Config.getRandomNumber(8);
         String vnp_IpAddr = Config.getIpAddress(req);
         String vnp_TmnCode = Config.vnp_TmnCode;
@@ -215,6 +216,7 @@ public class CartController {
         resp.getWriter().write(gson.toJson(job));
         return "redirect:" + paymentUrl;
     }
+
     @RequestMapping("/afterCheckout")
     public String afterCheckout(
             @RequestParam("vnp_Amount") String amount,
@@ -239,7 +241,7 @@ public class CartController {
             Double transactionAmount = Double.parseDouble(amount) / 100.0;
             transaction.setAmount(transactionAmount);
             transaction.setBankCode(bankCode);
-            if(bankTranNo.isPresent()) {
+            if (bankTranNo.isPresent()) {
                 transaction.setBankTranNo(bankTranNo.get());
             } else {
                 transaction.setBankTranNo("Cancel payment");
@@ -255,11 +257,13 @@ public class CartController {
                     break;
                 }
                 case "07": {
-                    transaction.setTransactionStatus("Trừ tiền thành công. Giao dịch bị nghi ngờ (liên quan tới lừa đảo, giao dịch bất thường).");
+                    transaction.setTransactionStatus(
+                            "Trừ tiền thành công. Giao dịch bị nghi ngờ (liên quan tới lừa đảo, giao dịch bất thường).");
                     break;
                 }
                 case "09": {
-                    transaction.setTransactionStatus("Thẻ/Tài khoản của quý khách chưa đăng ký dịch vụ InternetBanking tại ngân hàng.");
+                    transaction.setTransactionStatus(
+                            "Thẻ/Tài khoản của quý khách chưa đăng ký dịch vụ InternetBanking tại ngân hàng.");
                     break;
                 }
                 case "10": {
@@ -267,7 +271,8 @@ public class CartController {
                     break;
                 }
                 case "11": {
-                    transaction.setTransactionStatus("Đã hết hạn chờ thanh toán. Xin quý khách vui lòng thực hiện lại giao dịch.");
+                    transaction.setTransactionStatus(
+                            "Đã hết hạn chờ thanh toán. Xin quý khách vui lòng thực hiện lại giao dịch.");
                     break;
                 }
                 case "12": {
@@ -287,7 +292,8 @@ public class CartController {
                     break;
                 }
                 case "65": {
-                    transaction.setTransactionStatus("Tài khoản của Quý khách đã vượt quá hạn mức giao dịch trong ngày.");
+                    transaction
+                            .setTransactionStatus("Tài khoản của Quý khách đã vượt quá hạn mức giao dịch trong ngày.");
                     break;
                 }
                 case "75": {
@@ -295,19 +301,21 @@ public class CartController {
                     break;
                 }
                 case "79": {
-                    transaction.setTransactionStatus("Quý khách nhập sai mật khẩu thanh toán quá số lần quy định. Vui lòng thử lại");
+                    transaction.setTransactionStatus(
+                            "Quý khách nhập sai mật khẩu thanh toán quá số lần quy định. Vui lòng thử lại");
                     break;
                 }
                 case "99": {
                     transaction.setTransactionStatus("Lỗi không xác định");
                     break;
                 }
-                default : {
+                default: {
                     transaction.setTransactionStatus("Lỗi không xác định");
                     break;
                 }
-            };
-            if(responCode.equals("00")) {
+            }
+            ;
+            if (responCode.equals("00")) {
                 transaction.setPayStatus("Giao dịch thành công");
             } else {
                 transaction.setPayStatus("Giao dịch bị huỷ");
@@ -315,19 +323,19 @@ public class CartController {
             transaction.setTransactionNo(transactionNo);
             Transaction returnTransaction = transactionService.create(transaction);
             model.addAttribute("transaction", returnTransaction);
-            if(returnTransaction.getPayStatus().equals("Giao dịch thành công")) {
+            if (returnTransaction.getPayStatus().equals("Giao dịch thành công")) {
                 Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
                 returnOrder.setIsPaid(2);
                 orderService.update(returnOrder);
                 model.addAttribute("order", returnOrder);
-            }          
+            }
             return "tco-client/cart/after-checkout";
         } catch (Exception e) {
             e.printStackTrace();
             return "tco-client/other/error-page";
         }
     }
-    
+
     @RequestMapping("/testCheckoutResult")
     public String test() {
         return "tco-client/cart/after-checkout";
