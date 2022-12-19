@@ -18,7 +18,7 @@
 														<tr>
 															<td class="content-block">
 																<h2>Kết quả giao dịch: <span
-																		th:text="${transaction.payStatus}"></span></h2>
+																		th:text="${transaction.transactionStatus}"></span></h2>
 															</td>
 															<img style="width: 5%;" th:src="@{assets/images/148767.png}"
 																alt="">
@@ -138,8 +138,8 @@
 													<tbody>
 														<tr>
 															<td class="content-block">
-																<h2>Giao dịch bị huỷ bỏ
-																</h2>
+																<h2>Kết quả giao dịch: <span
+																		th:text="${transaction.transactionStatus}"></span></h2>
 															</td>
 															<img style="width: 5%;"
 																th:src="@{assets/images/failed-icon-7.jpg}" alt="">

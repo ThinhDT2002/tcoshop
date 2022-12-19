@@ -174,11 +174,11 @@ create table Transactions(
 	Pay_Date date,
 	Pay_Time varchar(20),
 	Pay_Status nvarchar(100),
-	Transaction_Status nvarchar(30),
+	Transaction_Status nvarchar(250),
 	Transaction_No varchar(30),
 	Order_Id int,
 	constraint FK_Transactions_Orders
-	foreign key (Order_Id) references Orders(Id),
+	foreign key (Order_Id) references Orders(Id) on delete set null,
 	primary key (Id),
 	Bank_Tran_No varchar(30)
 )
@@ -186,8 +186,7 @@ create table Transactions(
 insert into Roles(id, name)
 values('ADMIN','Administrators'),
 	  ('USER','Users'),
-	  ('SADMIN','Super Administrators'),
-	  ('SHIPPER','Shipper')
+	  ('SADMIN','Super Administrators')
 	
 insert into Users(username, password, email, fullname, address, phone,introduce, status, Activate_Code, Forgot_Password_Code, Avatar, Role_Id)
 values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịnh',N'Đường Đông Bắc, Quận 12','0337429180',N'Thịnh tha thiết',1,'0123456789','0123456789','avatar1.png', 'SADMIN'),

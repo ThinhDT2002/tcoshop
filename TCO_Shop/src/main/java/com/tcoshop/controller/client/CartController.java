@@ -247,23 +247,78 @@ public class CartController {
             transaction.setPayDate(payDate);
             transaction.setPayTime(payTime);
             transaction.setOrder(order);
+            switch (responCode) {
+                case "00": {
+                    transaction.setTransactionStatus("Giao dịch thành công");
+                    break;
+                }
+                case "07": {
+                    transaction.setTransactionStatus("Trừ tiền thành công. Giao dịch bị nghi ngờ (liên quan tới lừa đảo, giao dịch bất thường).");
+                    break;
+                }
+                case "09": {
+                    transaction.setTransactionStatus("Thẻ/Tài khoản của quý khách chưa đăng ký dịch vụ InternetBanking tại ngân hàng.");
+                    break;
+                }
+                case "10": {
+                    transaction.setTransactionStatus("Xác thực thông tin thẻ/tài khoản không đúng quá 3 lần");
+                    break;
+                }
+                case "11": {
+                    transaction.setTransactionStatus("Đã hết hạn chờ thanh toán. Xin quý khách vui lòng thực hiện lại giao dịch.");
+                    break;
+                }
+                case "12": {
+                    transaction.setTransactionStatus("Thẻ/Tài khoản của khách hàng bị khóa.");
+                    break;
+                }
+                case "13": {
+                    transaction.setTransactionStatus("Mã OTP không hợp lệ. Vui lòng thực hiện lại giao dịch");
+                    break;
+                }
+                case "24": {
+                    transaction.setTransactionStatus("Giao dịch đã bị huỷ");
+                    break;
+                }
+                case "51": {
+                    transaction.setTransactionStatus("Tài khoản của quý khách không đủ số dư để thực hiện giao dịch.");
+                    break;
+                }
+                case "65": {
+                    transaction.setTransactionStatus("Tài khoản của Quý khách đã vượt quá hạn mức giao dịch trong ngày.");
+                    break;
+                }
+                case "75": {
+                    transaction.setTransactionStatus("Ngân hàng thanh toán đang bảo trì.");
+                    break;
+                }
+                case "79": {
+                    transaction.setTransactionStatus("Quý khách nhập sai mật khẩu thanh toán quá số lần quy định. Vui lòng thử lại");
+                    break;
+                }
+                case "99": {
+                    transaction.setTransactionStatus("Lỗi không xác định");
+                    break;
+                }
+                default : {
+                    transaction.setTransactionStatus("Lỗi không xác định");
+                    break;
+                }
+            };
             if(responCode.equals("00")) {
                 transaction.setPayStatus("Giao dịch thành công");
             } else {
                 transaction.setPayStatus("Giao dịch bị huỷ");
             }
-            if(transactionStatus.equals("00")) {
-                transaction.setTransactionStatus("Giao dịch thành công");
-            } else {
-                transaction.setTransactionStatus("Giao dịch bị huỷ");
-            }
             transaction.setTransactionNo(transactionNo);
             Transaction returnTransaction = transactionService.create(transaction);
             model.addAttribute("transaction", returnTransaction);
-            Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
-            returnOrder.setIsPaid(2);
-            orderService.update(returnOrder);
-            model.addAttribute("order", returnOrder);
+            if(returnTransaction.getPayStatus().equals("Giao dịch thành công")) {
+                Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
+                returnOrder.setIsPaid(2);
+                orderService.update(returnOrder);
+                model.addAttribute("order", returnOrder);
+            }          
             return "tco-client/cart/after-checkout";
         } catch (Exception e) {
             e.printStackTrace();
