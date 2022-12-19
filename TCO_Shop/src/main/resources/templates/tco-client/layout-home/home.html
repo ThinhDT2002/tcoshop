@@ -261,7 +261,7 @@
                                                     discountProduct1.discount) / 100 | currency:'':0}} VND</span>
                                                 <span class="old-price">{{discountProduct1.price | currency:'':0}}
                                                     VND</span>
-                                                <span>{{discountProduct1.discount}} %</span>
+                                                <span style="font-size: 15px; color: red; margin-left: 10px;">{{discountProduct1.discount}} %</span>
                                             </span>
                                             <span ng-if="discountProduct1.discount == 0">
                                                 <span class="new-price">{{discountProduct1.price | currencyy:'':0}}
@@ -691,7 +691,7 @@
                                                         VND</span>
                                                     <span class="new-price">{{discountProduct1.price * (100 -
                                                         discountProduct1.discount) / 100 | currency:'':0}} VND</span>
-                                                    <span>{{discountProduct1.discount}} %</span>
+                                                    <span style="font-size: 15px; color: red; margin-left: 10px;">{{discountProduct1.discount}} %</span>
                                                 </span>
 
                                                 <span ng-if="discountProduct1.disount == 0" class="ec-price">

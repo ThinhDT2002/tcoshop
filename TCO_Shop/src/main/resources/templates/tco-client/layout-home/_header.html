@@ -147,8 +147,13 @@
 									</li>
 								</ul>
 							</div>
-							<input class="form-control" placeholder="Tìm kiếm sản phẩm"
+							<input onfocusout="offSearch()" onkeyup="showsearch()" id="searchP" class="form-control menusp" placeholder="Tìm kiếm sản phẩm" ng-model="searchProduct"
 								type="text">
+								<ul class="ec-search-cat-block2">
+									<li ng-repeat="product in products | filter: searchProduct | limitTo: 4">
+										<a th:href="@{|/product/detail/{{product.id}}|}"><img th:src="@{|/images/products/{{product.image1}}|}" style="width: 50px;">{{product.name}}</a>
+									</li>
+								</ul>
 							<button class="search_submit" type="submit">
 								<i class="ecicon eci-search"></i>
 							</button>
@@ -206,8 +211,13 @@
 								</li>
 							</ul>
 						</div>
-						<input class="form-control" placeholder="Tìm kiếm mặt hàng"
-							type="text">
+						<input onfocusout="offSearch2()" onkeyup="showsearch2()" id="searchP2" class="form-control menusp" placeholder="Tìm kiếm sản phẩm" ng-model="searchProduct"
+								type="text">
+								<ul class="ec-search-cat-block3">
+									<li ng-repeat="product in products | filter: searchProduct | limitTo: 4">
+										<a th:href="@{|/product/detail/{{product.id}}|}"><img th:src="@{|/images/products/{{product.image1}}|}" style="width: 50px;">{{product.name}}</a>
+									</li>
+								</ul>
 						<button class="search_submit" type="submit">
 							<i class="ecicon eci-search"></i>
 						</button>

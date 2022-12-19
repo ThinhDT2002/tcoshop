@@ -111,10 +111,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                         <span class="text-right" ng-if="cart.ship == 0 && cart.count == 0">{{cart.ship | currency:'':0}} VNĐ</span>
                                         <span class="text-right" ng-if="cart.ship > 0">{{cart.ship | currency:'':0}} VNĐ</span>
                                     </div>
-                                    <div>
-                                        <span class="text-left">Giảm giá</span>
-                                        <span class="text-right"><a class="ec-cart-coupan">Áp dụng phiếu giảm giá</a></span>
-                                    </div>
+                                   
                                     <div class="ec-cart-coupan-content">
                                         <form class="ec-cart-coupan-form" name="ec-cart-coupan-form" method="post"
                                             action="#">

@@ -17069,6 +17069,73 @@ div#ec-main-menu-desk {
   background: #0d4fcf;
 }
 
+
+.ec-search-cat-block2 {
+  width: 100%;
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #eeeeee;
+  border-top: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0px;
+  position: absolute;
+  z-index: 91;
+  left: 0;
+  right: 0;
+  top: 100%;
+  display: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ec-search-cat-block2 li:not(:last-child) {
+  border-bottom: 1px solid #eeeeee;
+}
+.ec-search-cat-block2 li a {
+  display: block;
+  width: 100%;
+  padding: 7px 15px;
+  position: relative;
+  font-weight: 600;
+  color: #202020;
+}
+.ec-search-cat-block2 li a:hover {
+  color: #ffffff;
+  background: #0d4fcf;
+}
+
+.ec-search-cat-block3 {
+  width: 100%;
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #eeeeee;
+  border-top: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0px;
+  position: absolute;
+  z-index: 91;
+  left: 0;
+  right: 0;
+  top: 100%;
+  display: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ec-search-cat-block3 li:not(:last-child) {
+  border-bottom: 1px solid #eeeeee;
+}
+.ec-search-cat-block3 li a {
+  display: block;
+  width: 100%;
+  padding: 7px 15px;
+  position: relative;
+  font-weight: 600;
+  color: #202020;
+}
+.ec-search-cat-block3 li a:hover {
+  color: #ffffff;
+  background: #0d4fcf;
+}
+
 .search_submit {
   position: relative;
   display: -webkit-box;
@@ -17334,7 +17401,7 @@ body.ec-open:before {
   color: #777;
 }
 .ec-side-cart
-  .ec-menu-inner
+  .ec-menu-innerli
   .ec-menu-content
   ul
   li

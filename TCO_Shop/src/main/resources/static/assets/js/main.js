@@ -23,6 +23,29 @@ function ecDeleteCookie(a, b) {
     var c = new Date(0).toGMTString();
     document.cookie = a + "=" + b + "; expires=" + c;
 }
+showsearch = () => {
+   
+    if (document.getElementById("searchClient").value.length != 0) {
+        document.querySelector(".ec-search-cat-block2").style.display = "block";
+    } else {
+        document.querySelector(".ec-search-cat-block2").style.display = "none";
+    }
+}
+offSearch = () => {
+    document.querySelector(".ec-search-cat-block2").style.display = "none";
+}
+
+showsearch2 = () => {
+   
+    if (document.getElementById("searchClient2").value.length != 0) {
+        document.querySelector(".ec-search-cat-block3").style.display = "block";
+    } else {
+        document.querySelector(".ec-search-cat-block3").style.display = "none";
+    }
+}
+offSearch2 = () => {
+    document.querySelector(".ec-search-cat-block3").style.display = "none";
+}
 function ecAccessCookie(e) {
     for (
         var c = e + "=", d = document.cookie.split(";"), a = 0;
@@ -428,8 +451,8 @@ function ecCheckCookie() {
         }),
         $(".zoom-image-hover").zoom();
     var d = $(".qty-plus-minus");
-    d.prepend('<div class="dec ec_qtybtn">-</div>'),
-        d.append('<div class="inc ec_qtybtn">+</div>'),
+    // d.prepend('<div class="dec ec_qtybtn">-</div>'),
+        // d.append('<div class="inc ec_qtybtn">+</div>'),
         $("body").on("click", ".ec_qtybtn", function () {
             var a = $(this),
                 b = a.parent().find("input").val();
@@ -949,9 +972,9 @@ function ecCheckCookie() {
             ),
             ecCreateCookie("bgImageModeCookie", a + "||" + b, 1);
     }
-    $(".cart-qty-plus-minus").append(
-        '<div class="ec_cart_qtybtn"><div class="inc ec_qtybtn">+</div><div class="dec ec_qtybtn">-</div></div>'
-    ),
+    // $(".cart-qty-plus-minus").append(
+    //     '<div class="ec_cart_qtybtn"><div class="inc ec_qtybtn">+</div><div class="dec ec_qtybtn">-</div></div>'
+    // ),
         $(".cart-qty-plus-minus .ec_cart_qtybtn .ec_qtybtn").on(
             "click",
             function () {
@@ -1166,3 +1189,4 @@ function ecCheckCookie() {
             });
         });
 })(jQuery);
+
