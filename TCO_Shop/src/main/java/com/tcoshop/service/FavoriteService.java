@@ -8,4 +8,5 @@ public interface FavoriteService {
     Favorite create(Favorite favorite);
     List<Favorite> findByUsername(String username);
     void delete(Integer favoriteId);
+    Favorite findByUsernameAndProductId(String username, Integer productId);
 }

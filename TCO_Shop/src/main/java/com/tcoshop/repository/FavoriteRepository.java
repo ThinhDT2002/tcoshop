@@ -11,4 +11,6 @@ import com.tcoshop.entity.Favorite;
 public interface FavoriteRepository extends JpaRepository<Favorite, Integer>{
     @Query("select f from Favorite f where f.user.username=?1")
     List<Favorite> findByUsername(String username);
+    @Query("select f from Favorite f where f.user.username=?1 and f.product.id=?2")
+    Favorite findByUsernameAndProductId(String username, Integer productId);
 }

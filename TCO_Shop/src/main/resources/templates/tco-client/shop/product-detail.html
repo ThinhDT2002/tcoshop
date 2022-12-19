@@ -10,7 +10,7 @@
 					<div class="col-12">
 						<div class="row ec_breadcrumb_inner">
 							<div class="col-md-6 col-sm-12">
-								<h2 class="ec-breadcrumb-title">Single Products</h2>
+								<h2 class="ec-breadcrumb-title">Chi tiết sản phẩm</h2>
 							</div>
 							<div class="col-md-6 col-sm-12">
 								<!-- ec-breadcrumb-list start -->
@@ -106,16 +106,18 @@
 												<div class="ec-single-cart ">
 													<th:block th:if="*{stock} gt 0">
 														<a class="btn btn-primary"
-															th:attr="ng-click=@{|cart.add(${item.id})|}">Add To
-															Cart</a>
+															th:attr="ng-click=@{|cart.add(${item.id})|}">Thêm vào giỏ hàng</a>
 													</th:block>
 													<th:block th:if="*{stock} eq 0">
 														<button class="btn btn-primary" disabled>Hết hàng</button>
 													</th:block>
 												</div>
-												<div class="ec-single-wishlist">
-													<a class="ec-btn-group wishlist" title="Wishlist"><img
+												<div th:if="${#request.remoteUser}" class="ec-single-wishlist">
+													<a type="submit" th:href="@{|/product/favorite/add/${item.id}|}" th:if="${favorite} == null" class="ec-btn-group wishlist" title="Wishlist"><img
 														th:src="@{/assets/images/icons/wishlist.svg}"
+														class="svg_img pro_svg" alt="" /></a>
+													<a type="submit" th:href="@{|/product/favorite/remove/${item.id}/${favorite.id}|}" th:if="${favorite} != null" class="ec-btn-group wishlist" title="Wishlist"><img
+														th:src="@{/assets/images/icons/remove-from-wishlist-icon.svg}"
 														class="svg_img pro_svg" alt="" /></a>
 												</div>
 
