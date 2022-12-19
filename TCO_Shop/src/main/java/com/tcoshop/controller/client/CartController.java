@@ -88,7 +88,7 @@ public class CartController {
             order.setShippingCost(0.0);
         }        
         Date createDate = new Date();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
         Calendar calendar = Calendar.getInstance();
         String createTime = simpleDateFormat.format(calendar.getTime());
         order.setCreateDate(createDate);
@@ -229,12 +229,11 @@ public class CartController {
             Model model) {
         try {
             Date payDate = new Date();
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
             Calendar calendar = Calendar.getInstance();
             String payTime = simpleDateFormat.format(calendar.getTime());
             Integer orderId = (Integer) session.getAttribute("orderIdPay");
             Order order = orderService.findById(orderId);
-            User user = userService.findByUsername(authentication.getName());
             Transaction transaction = new Transaction();
             transaction.setAmount(Double.parseDouble(amount));
             transaction.setBankCode(bankCode);
@@ -262,6 +261,8 @@ public class CartController {
             Transaction returnTransaction = transactionService.create(transaction);
             model.addAttribute("transaction", returnTransaction);
             Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
+            returnOrder.setIsPaid(2);
+            orderService.update(returnOrder);
             model.addAttribute("order", returnOrder);
             return "tco-client/cart/after-checkout";
         } catch (Exception e) {
