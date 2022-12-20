@@ -291,8 +291,7 @@ values
 		(N'Google Tivi Sony 4K 50 Inch KD-50X80K','KD-50X80K_1.jpg','KD-50X80K_2.jpg','KD-50X80K_3.jpg','KD-50X80K_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Google Tivi Sony 4K 43 Inch KD-43X80K','KD-43X80K_1.jpg','KD-43X80K_2.jpg','KD-43X80K_3.jpg','KD-43X80K_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 
-		--TCL
-		(N'TCL AI Tivi 40 Inch L40S6500','L40S6500_1.jpg','L40S6500_2.jpg','L40S6500_3.jpg','L40S6500_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		--TCL		
 		(N'TCL Android Tivi 32 Inch L32S5200','L32S5200_1.jpg','L32S5200_2.jpg','L32S5200_3.jpg','L32S5200_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 
 		--Mini led
@@ -310,7 +309,6 @@ values
 		(N'Amply Denon AVR-X2500HBKE2','X2500HBKE2_1.jpg','X2500HBKE2_2.jpg','X2500HBKE2_3.jpg','X2500HBKE2_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 
 		-- dan karaoke
-		(N'Dàn Âm Thanh Hifi Sony MHC-V13 M1 SP6','v13_1.jpg','v13_2.jpg','v13_3.jpg','v13_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Dàn Âm Thanh Hifi Sony MHC-V43D/M1 SP6','V43D_1.jpg','V43D_2.jpg','V43D_3.jpg','V43D_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 
 		--Loa bluetooth
@@ -318,9 +316,7 @@ values
 		(N'Loa Bluetooth OLIKE S1 Đen','OLIKE_1.jpg','OLIKE_2.jpg','OLIKE_3.jpg','OLIKE_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 
 		-- loa vi tinh
-		(N'Loa Vi Tính A600','a600_1.jpg','a600_2.jpg','a600_3.jpg','a600_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Loa Bluetooth OLIKE S1 Đen','OLIKE_1.jpg','OLIKE_2.jpg','OLIKE_3.jpg','OLIKE_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-
 
 		-- air
 		--REFRIGE
