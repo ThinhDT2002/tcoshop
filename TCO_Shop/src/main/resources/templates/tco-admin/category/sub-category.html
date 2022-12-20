@@ -84,9 +84,9 @@
 											</div>
 											<div class="row">
 												<div class="col-12">
-													<button ng-if = "form.id == -999"  ng-click="create()"
+													<button id="createButton" ng-click="create()"
 														class="btn btn-primary">Thêm</button>
-													<button ng-if = "form.id != -999" ng-click="update()"
+													<button style="display: none" id="updateButton" ng-click="update()"
 														class="btn btn-primary">Cập nhật</button>
 													<button ng-click="reset()" class="btn btn-primary">Làm mới</button>
 												</div>

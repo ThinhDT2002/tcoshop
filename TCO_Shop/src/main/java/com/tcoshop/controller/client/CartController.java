@@ -250,7 +250,6 @@ public class CartController {
             transaction.setTransactionInfo(orderInfo);
             transaction.setPayDate(payDate);
             transaction.setPayTime(payTime);
-            transaction.setOrder(order);
             switch (responCode) {
                 case "00": {
                     transaction.setTransactionStatus("Giao dịch thành công");
@@ -317,17 +316,22 @@ public class CartController {
             ;
             if (responCode.equals("00")) {
                 transaction.setPayStatus("Giao dịch thành công");
+                transaction.setOrder(order);
             } else {
                 transaction.setPayStatus("Giao dịch bị huỷ");
+                transaction.setOrder(null);
             }
             transaction.setTransactionNo(transactionNo);
             Transaction returnTransaction = transactionService.create(transaction);
-            model.addAttribute("transaction", returnTransaction);
-            if (returnTransaction.getPayStatus().equals("Giao dịch thành công")) {
-                Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
+            model.addAttribute("transaction", returnTransaction);        
+            if (returnTransaction.getPayStatus().equals("Giao dịch thành công")) { 
+            	Order returnOrder = orderService.findByTransacationId(returnTransaction.getId());
                 returnOrder.setIsPaid(2);
                 orderService.update(returnOrder);
                 model.addAttribute("order", returnOrder);
+            } else {
+            	orderService.delete(order.getId());
+            	System.out.println("Delete thanh cong");
             }
             return "tco-client/cart/after-checkout";
         } catch (Exception e) {

@@ -42,7 +42,9 @@ adminApp.controller("subcategory-ctrl", function($scope, $http){
 	
 	$scope.edit = function(sub){
 		$scope.form = angular.copy(sub);
-		document.getElementById('text').readOnly = true;
+		document.getElementById('textId').readOnly = true;
+		document.getElementById('createButton').style.display="none";
+		document.getElementById('updateButton').style.display="inline-block";
 	}
 	
 	$scope.create = function(){
@@ -114,7 +116,9 @@ adminApp.controller("subcategory-ctrl", function($scope, $http){
 		$scope.form = {
 			icon: 'default-subcategory.png'
 		};
-		document.getElementById('text').readOnly = false;
+		document.getElementById('textId').readOnly = false;
+		document.getElementById('createButton').style.display="inline-block";
+		document.getElementById('updateButton').style.display="none";
 	}
 	
 	$scope.subProperty = 'id';

@@ -1,10 +1,12 @@
 adminApp.controller("product-ctrl", function($scope, $http) {
 
 	$scope.items = [];
-
+	$scope.allProducts = [];
 	$scope.initialize = function() {
 		$http.get("/api/products").then(resp => {
 			$scope.items = resp.data;
+		}).then(function() {
+			$scope.allProducts = [...$scope.items];
 		});
 	}
 
@@ -79,6 +81,20 @@ adminApp.controller("product-ctrl", function($scope, $http) {
 		$scope.productVariations = $scope.productVariations;
 		$scope.productVariationValues = new Array($scope.productVariations.length);
 	})
+	
+	$scope.categoryFilter = "all";
+	$scope.changeCategory = function() {
+		$scope.items = [];
+		if($scope.categoryFilter == 'all') {
+			$scope.items = [...$scope.allProducts];
+		} else {
+			$scope.allProducts.forEach(product => {
+				if(product.category.id == $scope.categoryFilter) {
+					$scope.items.push(product);
+				}
+			})
+		}
+	}
 })
 adminApp.filter('startFrom', function() {
 	return function(input, start) {

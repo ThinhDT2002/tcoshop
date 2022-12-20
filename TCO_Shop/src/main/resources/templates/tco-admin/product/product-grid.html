@@ -27,18 +27,17 @@
 										</div>
 										<div class="col-lg-6 col-md-12 sort">
 											<div class="col-lg-4 col-md-6 p-space">
-												<select class="form-control" id="dropdownCategory">
+												<select class="form-control" ng-model="categoryFilter" ng-change="changeCategory()" id="dropdownCategory">
 													<option value="all" selected>Tất cả</option>
 													<option th:each = "category: ${categories}" th:value = "${category.id}">[[${category.name}]]</option>
 												</select>
 											</div>
 											<div class="col-lg-4 col-md-6 p-space">
-												<select class="form-control" id="dropdownOrderBy">
-													<option value="ALL">ORDER BY</option>
-													<option value="MEN">Letest</option>
-													<option value="WOMAN">Price Low - High</option>
-													<option value="KID">Price High - Low</option>
-													<option value="OTHER">OTHER</option>
+												<select class="form-control" id="dropdownOrderBy" ng-change= "sort()" ng-model="sortProperty">
+													<option value="name">Name ↑</option>
+													<option value="-name">Name ↓</option>
+													<option value="price">Price ↑</option>
+													<option value="-price">Price ↓</option>
 												</select>
 											</div>
 										</div>
@@ -47,7 +46,7 @@
 								<div class="card-body" >
 									<div class="row" >
 										<div class="col-lg-3 col-md-4 col-sm-6" ng-repeat = "item in items | filter: productSearch | orderBy: sortProperty 
-														| startFrom: currentPage*pageSize | limitTo: pageSize">
+														| startFrom: currentPage*pageSize | limitTo: 8">
 											<div class="card-wrapper">
 												<div class="card-container" >
 													<div class="card-top">
@@ -66,13 +65,11 @@
 														<a th:href="@{|/tco-admin/product/detail/{{item.id}}|}" type="button">
 														<i  class="mdi mdi-eye-outline"></i></a>
 														</div>
-														<div class="card-remove">
-														<button ng-click="delete(item)"><i class="mdi mdi mdi-delete-outline"></i></button></div>
+														
 													</div>
 												</div>
 											</div>
 										</div>
-										
 										</div>
 									</div>
 									<div class="row">
