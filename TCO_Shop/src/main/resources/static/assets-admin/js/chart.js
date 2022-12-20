@@ -987,7 +987,9 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 				}
 			})
 		}
-		getOrderCountPerStatus(2022, 11, 11);
+		const date = new Date();
+		let month = date.getMonth();
+		getOrderCountPerStatus(2022, month + 1, month + 1);
 
 
 

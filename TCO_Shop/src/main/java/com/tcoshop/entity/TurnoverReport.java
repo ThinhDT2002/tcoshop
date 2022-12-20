@@ -11,7 +11,7 @@ import javax.persistence.NamedNativeQuery;
 query = "select MONTH(Orders.Create_Date) as 'Month',sum(Orders_Detail.price) as 'Turnover' \r\n"
         + "from Orders\r\n"
         + "join Orders_Detail on Orders.Id = Orders_Detail.Order_Id \r\n"
-        + "where Orders.Status = 'DaGiaoHang' \r\n"
+        + "where Orders.is_Paid = 2 \r\n"
         + "and Year(Orders.Create_Date) = :year \r\n"
         + "group by YEAR(Orders.Create_Date), MONTH(Orders.Create_Date)",
         resultClass = TurnoverReport.class)

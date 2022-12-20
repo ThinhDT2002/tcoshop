@@ -41,7 +41,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	
 	@Query(value = "select sum(Orders_Detail.price) from Orders\r\n"
 	        + "join Orders_Detail on Orders.Id = Orders_Detail.Order_Id \r\n"
-	        + "where Orders.Status = 'DaGiaoHang' \r\n"
+	        + "where Orders.is_Paid = 2 \r\n"
 	        + "and Year(Orders.Create_Date) = ?1 \r\n"
 	        + "and Month(Orders.Create_Date) between ?2 and ?3", nativeQuery = true)
 	Double getTurnoverPerYear(Integer year, Integer monthFrom, Integer monthTo);
