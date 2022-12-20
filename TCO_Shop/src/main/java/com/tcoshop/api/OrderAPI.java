@@ -54,10 +54,23 @@ public class OrderAPI {
 	@PutMapping("/{id}")
 	public void updateOrderStatus(@RequestBody Order order, @PathVariable("id") Integer orderId) {
 	    Order orderInDtb = orderService.findById(orderId);
-	    orderInDtb.setStatus(order.getStatus());
-	    orderInDtb.setIsPaid(order.getIsPaid());
-	    if (orderInDtb.getStatus().equalsIgnoreCase("DaGiaoHang")) orderInDtb.setIsPaid(2);
-	    else if(orderInDtb.getStatus().equalsIgnoreCase("HuyBo") && orderInDtb.getIsPaid() == 2) orderInDtb.setIsPaid(3);
+	    if (order.getStatus().equalsIgnoreCase("DaGiaoHang")) {
+	        orderInDtb.setIsPaid(2);
+	        orderInDtb.setStatus("DaGiaoHang");
+	    }  else {
+	        orderInDtb.setIsPaid(order.getIsPaid());
+            orderInDtb.setStatus(order.getStatus());
+	    }
+	    orderService.update(orderInDtb);
+	}
+	
+	@PutMapping("/adminCancel/{id}")
+	public void adminCancelOrder(@RequestBody Order order, @PathVariable("id") Integer orderId) {
+	    Order orderInDtb = orderService.findById(orderId);
+	    orderInDtb.setStatus("HuyBo");
+	    if(orderInDtb.getIsPaid() == 2) {
+	        orderInDtb.setIsPaid(3);
+	    }
 	    orderService.update(orderInDtb);
 	}
 	

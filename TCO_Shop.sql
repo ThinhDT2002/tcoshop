@@ -278,10 +278,11 @@ insert into Products(name,Image1,Image2,Image3,Image4,price,description,stock,di
 values
 		(N'Smart Tivi Samsung UHD 4K  55 Inch UA55AU7700','UA55AU7700_1.jpg','UA55AU7700_2.jpg','UA55AU7700_3.jpg','UA55AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung 4K UHD 50 Inch UA50AU7002','UA50AU7002_1.jpg','UA50AU7002_2.jpg','UA50AU7002_3.jpg','UA50AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		/*
 		(N'Smart Tivi Samsung QLED 4K 65 Inch QA65Q60B','QA65Q60B_1.jpg','QA65Q60B_2.jpg','QA65Q60B_3.jpg','QA65Q60B_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung 4K UHD 50 Inch UA50AU8000','UA50AU8000_1.jpg','UA50AU8000_2.jpg','UA50AU8000_3.jpg','UA50AU8000_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),		
 		(N'Smart Tivi Samsung 4K UHD 55 Inch UA55AU7002','UA55AU7002_1.jpg','UA55AU7002_2.jpg','UA55AU7002_3.jpg','UA55AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		
+		*/
 		--LG
 		(N'Smart Tivi LG 4K 55 Inch OLED 55A1PTA','55A1PTA_1.jpg','55A1PTA_2.jpg','55A1PTA_3.jpg','55A1PTA_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Nanocell 4K LG 43 Inch 43NANO77TPA','43NANO77TPA_1.jpg','43NANO77TPA_2.jpg','43NANO77TPA_3.jpg','43NANO77TPA_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
@@ -412,7 +413,8 @@ values
 		-- tivi
 		-- samsung
 		(N'Smart Tivi Samsung 4K UHD 55 Inch UA55AU8000','AU8000_1.jpg','AU8000_2.jpg','AU8000_3.jpg','AU8000_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
-		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU7002','AU7002_1.jpg','AU7002_2.jpg','AU7002_3.jpg','AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
+		(N'Smart Tivi Samsung 4K UHD 43 Inch UA43AU7002','AU7002_1.jpg','AU7002_2.jpg','AU7002_3.jpg','AU7002_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA')
+		/*
 		(N'Smart Tivi Samsung QLED 4K 55 Inch QA55Q60B','QA55Q60B_1.jpg','QA55Q60B_2.jpg','QA55Q60B_3.jpg','QA55Q60B_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung QLED 4K 43 Inch QA43Q60B','QA43Q60B_1.jpg','QA43Q60B_2.jpg','QA43Q60B_3.jpg','QA43Q60B_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung 4K UHD 65 Inch UA65AU8000','UA65AU8000_1.jpg','UA65AU8000_2.jpg','UA65AU8000_3.jpg','UA65AU8000_4.jpg',18590000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
@@ -421,7 +423,7 @@ values
 		(N'Smart Tivi Samsung QLED 4K 50 Inch QA50Q60B','QA50Q60B_1.jpg','QA50Q60B_2.jpg','QA50Q60B_3.jpg','QA50Q60B_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung UHD 4K 43 Inch UA43AU7700','UA43AU7700_1.jpg','UA43AU7700_2.jpg','UA43AU7700_3.jpg','UA43AU7700_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA'),
 		(N'Smart Tivi Samsung 32 Inch UA32T4500A','UA32T4500A_1.jpg','UA32T4500A_2.jpg','UA32T4500A_3.jpg','UA32T4500A_4.jpg',18990000,N'Laptop gaming tốt nhất phân khúc',5,10,'MEDIA','SSMEDIA')
-
+		*/
 
 insert into Orders(Username, Create_Date, Status, Address, Phone_Number, description, expected_date, order_Time_Detail, is_Paid, Shipping_cost)
 		values(N'antht15011','2022-12-15','ChuanBi',N'thien an dep trai',N'0908987777',null,'2022-12-22','18:23:28','1',12000.00)

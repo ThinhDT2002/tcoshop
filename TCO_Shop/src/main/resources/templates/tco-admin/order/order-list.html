@@ -70,7 +70,7 @@
 														<th>Địa chỉ</th>
 														<th>Trạng thái</th>
 														<th>Thanh toán</th>
-														<th>Ghi chú</th>
+														<th>Huỷ đơn</th>
 														<th>Tuỳ chỉnh</th>
 													</tr>
 												</thead>
@@ -84,9 +84,10 @@
 														<td>{{order.phoneNumber}}</td>
 														<td>{{order.address}}</td>
 														<td>
-															<select style="border: 0px;" ng-model="order.status"
+															<span ng-if="order.status == 'HuyBo'">Đã huỷ đơn</span>
+															<select ng-if="order.status != 'HuyBo'" style="border: 0px;" ng-model="order.status"
 																ng-change="updateOrderStatus(order)">
-																<option ng-repeat="os in orderStatus" ng-value="os.id">
+																<option ng-repeat="os in orderStatus" ng-value="os.id" ng-if="os.id != 'HuyBo'">
 																	{{os.statusName}}</option>
 															</select>
 														</td>
@@ -95,7 +96,14 @@
 															<span ng-if="order.isPaid == 2">Đã thanh toán</span>
 															<span ng-if="order.isPaid == 3">Đã hoàn tiền</span>
 														</td>
-														<td>{{order.description}}</td>
+														<td>
+															<div class="btn-group mb-1">
+																<a ng-if="order.status != 'HuyBo'" type="button" ng-click="adminCancelOrder(order)"
+																	class="btn btn-outline-success"
+																>Huỷ đơn</a>
+																<button class="btn btn-outline-success" ng-if="order.status == 'HuyBo'" disabled="disabled">Huỷ đơn</button>
+															</div>
+														</td>
 														<td>
 															<div class="btn-group mb-1">
 																<a type="button" ng-click="findOrderDetails(order.id)"
@@ -173,6 +181,7 @@
 											</div>
 										</div>
 									</div>
+									<p>Ghi chú: {{orderDetails[0].order.description}}</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
