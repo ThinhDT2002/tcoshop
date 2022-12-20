@@ -142,7 +142,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
 							</button>
 							<button
 								class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
-							<button ng-disabled="currentPage >= favoriteProducts.length/pageSize - 1"
+							<button ng-disabled="currentPage >= products.length/pageSize - 1"
 								ng-click="currentPage=currentPage+1" class="btn btn-primary">
 								<b>> ></b>
 							</button>

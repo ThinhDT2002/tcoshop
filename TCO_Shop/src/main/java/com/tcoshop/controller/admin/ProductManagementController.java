@@ -105,6 +105,7 @@ public class ProductManagementController {
         product.setImage3(product.getImage3());
         product.setImage4(product.getImage4());
         model.addAttribute("item", product);
+        model.addAttribute("variations", variations);
         model.addAttribute("sub", subcategories);
         return "tco-admin/product/product-add";
     }
@@ -148,8 +149,8 @@ public class ProductManagementController {
         Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
                 Variation[].class);        
         if(productVariations != null) {
-            for (int i = 0; i < variations.length; i++) {
-                productVariations.get(i).setName(variations[i].getId());
+            for (int i = 0; i < variations.length; i++) {      
+                productVariations.get(i).setName(variations[i].getName());
                 productVariations.get(i).setProduct(product);
             }
             HttpEntity<List<ProductVariation>> productVariationsEntity = new HttpEntity<>(productVariations);
@@ -200,9 +201,9 @@ public class ProductManagementController {
                 "http://localhost:8080/api/productVariation/" + product.getId(), ProductVariation[].class);
         List<ProductVariation> productVariationsUpdate = product.getProductVariations();     
         if(productVariationsUpdate != null) {
-            for (int i = 0; i < variations.length; i++) {
+            for (int i = 0; i < variations.length; ++i) {
                 productVariationsUpdate.get(i).setName(variations[i].getName());
-                productVariationsUpdate.get(i).setProduct(product);
+                productVariationsUpdate.get(i).setProduct(product);                
             }
             if(productVariationsInDB.length != 0) {     
                 restTemplate.delete("http://localhost:8080/api/productVariation/" + product.getId());                               

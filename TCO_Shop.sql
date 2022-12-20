@@ -46,6 +46,10 @@ create table Variations(
 	primary key (Id)
 )
 
+
+
+
+
 create table Categories(
 	Id varchar(10) not null,
 	Name nvarchar(40) not null,
@@ -92,6 +96,8 @@ create table Products_Variations(
 	Value nvarchar(50) not null,
 	primary key (Id)
 )
+
+
 
 create table Orders(
 	Id int identity(1,1),
@@ -464,6 +470,25 @@ values('120000000','VietcomBank', 'ATM', 'thanh toan hoa don', '2022-12-19', '19
 	('140000000','AgriBank', 'ATM', 'thanh toan hoa don', '2022-12-19', '21:00', N'Giao dịch thành công', N'Giao dịch thành công', '12345678','AGB12345678'),
 	('144000000','MbBank', 'ATM', 'thanh toan hoa don', '2022-12-19', '22:00', N'Giao dịch thành công', N'Giao dịch thành công', '12345678','MB12345678'),
 	('146000000','SacomBank', 'ATM', 'thanh toan hoa don', '2022-12-19', '23:00', N'Giao dịch thành công', N'Giao dịch thành công', '12345678','SA12345678')
+
+insert into Variations(id, name) values ('DT', N'Dung tích'),
+										('CS', N'Công xuất'),
+										('CL', N'Chất liệu'),
+										('CNHA', N'Công nghệ hình ảnh'),
+										('DPG', N'Độ phân giải'),
+										('HDH', N'Hệ điều hành'),
+										('TNK', N'Tính năng khác'),
+										('HSX', N'Hãng sản xuất'),
+										('BH', N'Bảo hành'),
+										('NRM', N'Năm ra mắt'),
+										('KT', N'Kích thước'),
+										('MS', N'Màu sắc'),
+										('LSP', N'Loại sản phẩm'),
+										('CTG', N'Chương trình giặt'),
+										('HG', N'Hẹn giờ'),
+										('CMN', N'Chọn mức nước'),
+										('CNG', N'Công nghệ giặt'),
+										('TDV', N'Tốc độ vắt')
 
 
 

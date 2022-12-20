@@ -270,7 +270,7 @@
                                         </div>
                                        
                                         <div class="ec-pro-actions">
-                                            <button ng-click="card.add(discountProduct1.id)" title="Add To Cart"
+                                            <button ng-click="cart.add(discountProduct1.id)" title="Add To Cart"
                                                 class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
                                         </div>
 
@@ -300,7 +300,7 @@
                                                     discountProduct2.discount) / 100 | currency:'':0}} VND</span>
                                                 <span class="old-price">{{discountProduct2.price | currency:'':0}}
                                                     VND</span>
-                                                <span>{{discountProduct2.discount}} %</span>
+                                                <span style="font-size: 15px; color: red; margin-left: 10px;">{{discountProduct2.discount}} %</span>
                                             </span>
                                             <span ng-if="discountProduct2.discount == 0">
                                                 <span class="new-price">{{discountProduct2.price | currencyy:'':0}}
@@ -308,7 +308,7 @@
                                             </span>
                                         </div>
                                         <div class="ec-pro-actions">
-                                            <button ng-click="card.add(discountProduct2.id)" title="Add To Cart"
+                                            <button ng-click="cart.add(discountProduct2.id)" title="Add To Cart"
                                                 class="add-to-cart btn btn-primary">Thêm vào giỏ</button>
                                         </div>
 
@@ -717,7 +717,7 @@
                                                         VND</span>
                                                     <span class="new-price">{{discountProduct2.price * (100 -
                                                         discountProduct2.discount) / 100 | currency:'':0}} VND</span>
-                                                    <span>{{discountProduct2.discount}} %</span>
+                                                    <span style="font-size: 15px; color: red; margin-left: 10px;">{{discountProduct1.discount}} %</span>                                           
                                                 </span>
 
                                                 <span ng-if="discountProduct2.discount == 0" class="ec-price">
