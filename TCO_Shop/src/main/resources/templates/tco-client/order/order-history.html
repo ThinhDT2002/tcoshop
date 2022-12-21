@@ -77,7 +77,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                     <tbody>
                                         <tr ng-repeat="item in items">
                                             <th scope="row"><span>{{item.id}}</span></th>
-                                            <td><span>[[${currentUser.fullname}]]</span></td>
+                                            <td ng-if="!item.user.fullname">
+                                            	<span>{{item.user.username}}</span>
+                                            </td>
+                                            <td ng-if="item.user.fullname">
+                                            	<span>[[${currentUser.fullname}]]</span>
+                                            </td>
                                             <td><span>{{item.createDate | date:"dd/MM/yyyy"}} at {{item.orderTimeDetail}}</span></td>
                                             <td ng-if="item.isPaid === 1">
                                             	<span>Chưa thanh toán</span>

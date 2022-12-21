@@ -1,144 +1,152 @@
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
-<body>
-<main ng-controller="user-list-ctrl">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
 
-<!-- CONTENT WRAPPER -->
-<div class="ec-content-wrapper">
-	<div class="content">
-		<div class="breadcrumb-wrapper breadcrumb-contacts">
-			<div>
-				<h1>Danh sách người dùng</h1>
-				<p class="breadcrumbs"><span><a th:href="@{/tco-admin}">Bảng điều khiển</a></span>
-					<span><i class="mdi mdi-chevron-right"></i></span>Danh sách người dùng
-				</p>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-12">
-				<div class="card card-default">
-					<div class="card-header card-header-border-bottom d-flex justify-content-between">
-					<div class="card-bar">
-						 <div class="col-lg-3 col-md-6">
-						 	<label>Hiển thị: </label>
-								<select class="form-control" ng-change="pagination()" ng-model="pageSize">
-									<option value="5">5</option>
-									<option value="10">10</option>
-									<option value="20">20</option>
-								</select>
-						 </div>
-						 <div class="col-lg-9 col-md-12 sort">
-						 	<div class="col-lg-4 col-md-6 p-space">
-						 		<form action="" class="search-bar">
-									<input type="search" name="search" pattern=".*\S.*" required ng-model="account">
-									<button class="search-btn" type="submit">
-										<span>Search</span>
-									</button>
-								</form>
-						 	</div>
-						 	<div class="col-lg-4 col-md-6 p-space">
-						 		<label for="sortUser">Bộ lọc</label>
-								<select class="form-control" ng-change="sort()" ng-model="userProperty">
-									<option value="username">Mã người dùng ↑</option>
-									<option value="-username">Mã người dùng ↓</option>
-									<option value="fullname">Tên người dùng ↑</option>
-									<option value="-fullname">Tên người dùng ↓</option>
-									<option value="email">Email ↑</option>
-									<option value="-email">Email ↓</option>
-									<option value="status">Trạng thái ↑</option>
-									<option value="status">Trạng thái ↓</option>
-								</select>
-						 	</div>
-						 </div>
+<body>
+	<main ng-controller="user-list-ctrl">
+
+		<!-- CONTENT WRAPPER -->
+		<div class="ec-content-wrapper">
+			<div class="content">
+				<div class="breadcrumb-wrapper breadcrumb-contacts">
+					<div>
+						<h1>Danh sách người dùng</h1>
+						<p class="breadcrumbs"><span><a th:href="@{/tco-admin}">Bảng điều khiển</a></span>
+							<span><i class="mdi mdi-chevron-right"></i></span>Danh sách người dùng
+						</p>
 					</div>
 				</div>
-				<div>
-					<h6>Tổng người dùng: {{totalQuantity()}}</h6>
-				</div>
-				<div class="ec-vendor-list card card-default">
-					<div class="card-body">
-						<div class="table-responsive">
-							<table  class="table">
-								<thead>
-									<tr>
-										<th>Ảnh</th>
-										<th>Tên</th>
-										<th>Email</th>
-										<th>Mật khẩu</th>
-										<th>Họ và tên</th>
-										<th>Số điện thoại</th>
-										<th>Trạng thái</th>
-										<th>Tuỳ chỉnh</th>
-									</tr>
-								</thead>
 
-								<tbody>
-									<tr ng-repeat="user in users | filter: account | orderBy: userProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
-										<td><img class="vendor-thumb" ng-src="/images/user/{{user.avatar}}" alt="user profile" /></td>
-										<td>{{user.username}}</td>
-										<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adc0ccdfc1c8c8dfc8c3ccedcac0ccc4c183cec2c0">{{user.email}}</a></td>
-										<td>{{user.password}}</td>
-										<td>{{user.fullname}}</td>
-										<td>{{user.phone}}</td>
-										<td>{{user.status ? 'Đã kích hoạt' : 'Chưa kích hoạt'}}</td>
-										<td>
-											<div class="btn-group mb-1">
-												
-												<!-- <button type="button"
-													class="btn btn-outline-success">Info</button> -->
-												<a type="button"
-													class="btn btn-outline-success" th:href="@{|/tco-admin/user/{{user.username}}|}">Thông tin</a>
-												
-												<button type="button"
-													class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
-													data-bs-toggle="dropdown" aria-haspopup="true"
-													aria-expanded="false" data-display="static">
-													<span class="sr-only">
-														Info
-													</span>
+				<div class="row">
+					<div class="col-12">
+						<div class="card card-default">
+							<div class="card-header card-header-border-bottom d-flex justify-content-between">
+								<div class="card-bar">
+									<div class="col-lg-3 col-md-6">
+										<label>Hiển thị: </label>
+										<select class="form-control" ng-change="pagination()" ng-model="pageSize">
+											<option value="5">5</option>
+											<option value="10">10</option>
+											<option value="20">20</option>
+										</select>
+									</div>
+									<div class="col-lg-9 col-md-12 sort">
+										<div class="col-lg-4 col-md-6 p-space">
+											<form action="" class="search-bar">
+												<input type="search" name="search" pattern=".*\S.*" required
+													ng-model="account">
+												<button class="search-btn" type="submit">
+													<span>Search</span>
 												</button>
+											</form>
+										</div>
+										<div class="col-lg-4 col-md-6 p-space">
+											<label for="sortUser">Bộ lọc</label>
+											<select class="form-control" ng-change="sort()" ng-model="userProperty">
+												<option value="username">Mã người dùng ↑</option>
+												<option value="-username">Mã người dùng ↓</option>
+												<option value="fullname">Tên người dùng ↑</option>
+												<option value="-fullname">Tên người dùng ↓</option>
+												<option value="email">Email ↑</option>
+												<option value="-email">Email ↓</option>
+												<option value="status">Trạng thái ↑</option>
+												<option value="status">Trạng thái ↓</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div>
+								<h6>Tổng người dùng: {{totalQuantity()}}</h6>
+							</div>
+							<div class="ec-vendor-list card card-default">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>Ảnh</th>
+													<th>Tên</th>
+													<th>Email</th>
+													<th>Mật khẩu</th>
+													<th>Họ và tên</th>
+													<th>Số điện thoại</th>
+													<th>Trạng thái</th>
+													<th>Tuỳ chỉnh</th>
+												</tr>
+											</thead>
 
-												<div class="dropdown-menu">
-													<a class="dropdown-item" th:href="@{|/tco-admin/userEdit/{{user.username}}|}">Sửa</a>
-													<a class="dropdown-item" ng-click="delete(user)">Xóa</a>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="panel-footer text-center">
-								<button ng-click = "pagination()" class="btn btn-danger">
-									<b>Trang đầu</b>
-								</button>
-								<button ng-disabled="currentPage == 0"
-									ng-click="currentPage=currentPage - 1" class="btn btn-primary">
-									<b>Trước</b>
-								</button>
-								<button
-									class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
-								<button ng-disabled="currentPage >= users.length/pageSize - 1"
-									ng-click="currentPage=currentPage+1" class="btn btn-primary">
-									<b>Tới</b>
-								</button>
-								<button ng-click = "currentPage = numberOfPages() -1" class="btn btn-danger">
-									<b>Trang cuối</b>
-								</button>
+											<tbody>
+												<tr
+													ng-repeat="user in users | filter: account | orderBy: userProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
+													<td><img class="vendor-thumb" ng-src="/images/user/{{user.avatar}}"
+															alt="user profile" /></td>
+													<td>{{user.username}}</td>
+													<td><a href="https://loopinfosol.in/cdn-cgi/l/email-protection"
+															class="__cf_email__"
+															data-cfemail="adc0ccdfc1c8c8dfc8c3ccedcac0ccc4c183cec2c0">{{user.email}}</a>
+													</td>
+													<td>{{user.password}}</td>
+													<td>{{user.fullname}}</td>
+													<td>{{user.phone}}</td>
+													<td>{{user.status ? 'Đã kích hoạt' : 'Chưa kích hoạt'}}</td>
+													<td>
+														<div class="btn-group mb-1">
+
+															<!-- <button type="button"
+													class="btn btn-outline-success">Info</button> -->
+															<a type="button" class="btn btn-outline-success"
+																th:href="@{|/tco-admin/user/{{user.username}}|}">Thông
+																tin</a>
+
+															<button type="button"
+																class="btn btn-outline-success dropdown-toggle dropdown-toggle-split"
+																data-bs-toggle="dropdown" aria-haspopup="true"
+																aria-expanded="false" data-display="static">
+																<span class="sr-only">
+																	Info
+																</span>
+															</button>
+
+															<div class="dropdown-menu">
+																<a class="dropdown-item"
+																	th:href="@{|/tco-admin/userEdit/{{user.username}}|}">Sửa</a>
+																<a class="dropdown-item" ng-click="delete(user)">Xóa</a>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="panel-footer text-center">
+											<button ng-click="pagination()" class="btn btn-danger">
+												<b>Trang đầu</b>
+											</button>
+											<button ng-disabled="currentPage == 0"
+												ng-click="currentPage=currentPage - 1" class="btn btn-primary">
+												<b>Trước</b>
+											</button>
+											<button
+												class="btn btn-success">{{currentPage+1}}/{{numberOfPages()}}</button>
+											<button ng-disabled="currentPage >= users.length/pageSize - 1"
+												ng-click="currentPage=currentPage+1" class="btn btn-primary">
+												<b>Tới</b>
+											</button>
+											<button ng-click="currentPage = numberOfPages() -1" class="btn btn-danger">
+												<b>Trang cuối</b>
+											</button>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				</div>
-			</div>
-		</div>
-		
-	</div> <!-- End Content -->
-</div> <!-- End Content Wrapper -->
+
+			</div> <!-- End Content -->
+		</div> <!-- End Content Wrapper -->
 
 
-</main>   
+	</main>
 </body>
+
 </html>
