@@ -8,9 +8,9 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$http.get("/api/products").then(resp => {
 		$scope.productsStock = resp.data;
 	})
-	
+
 	$scope.productStockProperty = 'name';
-	
+
 	$scope.productStockSort = function() {
 
 	}
@@ -21,7 +21,7 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$scope.numberOfPagesProductStock = function() {
 		return Math.ceil($scope.productsStock.length / $scope.pageSizeProductStock);
 	}
-	
+
 	$scope.paginationProductStock = function() {
 		$scope.currentPageProductStock = 0;
 	}
@@ -38,11 +38,11 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 			year: year,
 			month: month
 		}
-	}).then(resp=> {
+	}).then(resp => {
 		$scope.productsNotSold = resp.data;
 	})
 	$scope.productNotSoldProperty = 'name';
-	
+
 	$scope.productNotSoldSort = function() {
 
 	}
@@ -53,15 +53,20 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$scope.numberOfPagesProductNotSold = function() {
 		return Math.ceil($scope.productsNotSold.length / $scope.pageSizeProductNotSold);
 	}
-	
+
 	$scope.paginationProductNotSold = function() {
 		$scope.currentPageProductNotSold = 0;
 	}
 	//Not sold end
-	
+
 	$scope.turnoverPerYear = [];
 	$scope.turnoverDetailReport = [];
+
+	$scope.monthTurnoverDetail;
+	$scope.yearTurnoverDetail;
 	$scope.getTurnoverDetailReport = function(year, month) {
+		$scope.monthTurnoverDetail = month;
+		$scope.yearTurnoverDetail = year;
 		$http({
 			url: "/api/report/turnoverReport/detail",
 			method: "GET",
@@ -73,7 +78,7 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 			$scope.turnoverDetailReport = resp.data;
 		})
 	}
-	
+
 	$scope.turnoverDetailProperty = 'productName';
 
 	$scope.sort = function() {
@@ -86,7 +91,7 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	$scope.numberOfPages = function() {
 		return Math.ceil($scope.turnoverDetailReport.length / $scope.pageSize);
 	}
-	
+
 	$scope.pagination = function() {
 		$scope.currentPage = 0;
 	}

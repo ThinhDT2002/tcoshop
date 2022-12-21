@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
+import com.tcoshop.entity.TurnoverDetailReport;
+import com.tcoshop.entity.TurnoverReport;
 import com.tcoshop.service.ReportService;
 import com.tcoshop.util.FileExporter;
 
@@ -43,4 +45,17 @@ public class ExportController {
 		List<Order> orderStatusYearReports = reportService.findByYearAndStatus(year, status);
 		fileExporter.exportOrderStatusYearToPDF(orderStatusYearReports, resp, year, status);
 	}
+	
+	@GetMapping("/exportPDF/turnover/{year}")
+	public void exportTurnoverSoldToPDF(HttpServletResponse resp, @PathVariable("year") Integer year) throws IOException {
+		List<TurnoverReport> turnReports = reportService.getTurnoverReport(year);
+		fileExporter.exportTurnoverToPDF(turnReports, resp, year);
+	}
+	
+	@GetMapping("/exportPDF/turnoverMonth/{year}/{month}")
+	public void exportTurnoverMonthToPDF(HttpServletResponse resp, @PathVariable("month") Integer month, @PathVariable("year") Integer year) throws IOException {
+		List<TurnoverDetailReport> turnReports = reportService.getTurnoverDetailReport(year, month);
+		fileExporter.exportTurnoverMonthToPDF(turnReports, resp, month, year);
+	}
+
 }
