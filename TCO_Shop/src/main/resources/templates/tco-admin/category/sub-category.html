@@ -29,7 +29,7 @@
 														<div class="avatar-edit">
 															<input type='file' name="file" id="imageUpload"
 																class="ec-image-upload" accept=".png, .jpg, .jpeg"
-																onchange="angular.element(this).scope().imageChanged(this.files)" />
+																onchange="angular.element(this).scope().imageChanged(this.files)" />  <!--Nút sửa hình-->
 															<label for="imageUpload"><img
 																	th:src="@{/assets-admin/img/icons/edit.svg}"
 																	class="svg_img header_svg" alt="edit" /></label>
@@ -49,7 +49,7 @@
 												<div class="col-12">
 													<input ng-model="form.id" id="textId" name="id" class="form-control"
 														type="text" ng-maxlength="10" ng-required=true>
-													<span ng-show="frmSubcategory.id.$error.required">Vui lòng nhập mã
+													<span ng-show="frmSubcategory.id.$error.required">Vui lòng nhập mã	<!--Bắt lỗi khi thêm dữ liệu-->
 														thương hiệu</span>
 													<span ng-show="frmSubcategory.id.$error.maxlength">Vui lòng nhập ít
 														hơn 10 kí tự</span>
@@ -62,7 +62,7 @@
 													<input ng-model="form.name" id="slug" name="name"
 														class="form-control" type="text" ng-maxlength="40"
 														ng-required=true>
-													<span ng-show="frmSubcategory.name.$error.required">Vui lòng nhập
+													<span ng-show="frmSubcategory.name.$error.required">Vui lòng nhập	<!--Bắt lỗi khi thêm dữ liệu-->
 														tên thương hiệu</span>
 													<span ng-show="frmSubcategory.name.$error.maxlength">Vui lòng nhập
 														ít hơn 40 kí tự</span>
