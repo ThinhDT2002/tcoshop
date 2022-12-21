@@ -5,8 +5,11 @@ adminApp.controller("sale-report-ctrl", function($scope, $http) {
 	$http.get("/api/report/saleReport/allYearOrder").then(resp => {
 		$scope.allOrderYear = resp.data;
 	})
-
+	$scope.monthOrderDetail;
+	$scope.yearOrderDetail;
 	$scope.getSaleReportDetail = function(year, month) {
+		$scope.monthOrderDetail = month;
+		$scope.yearOrderDetail = year;
 		$http({
 			url: "/api/report/saleReportDetail",
 			method: "GET",
