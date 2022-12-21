@@ -29,6 +29,7 @@
                             <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                                 <div class="card-header justify-content-between">
                                     <h2>Thống kê người dùng</h2>
+                                    <a th:href="@{|/exportPDF/user/{{yearValue}}|}">In PDF</a>
                                     <select ng-change="showReport()" ng-model="yearValue">
                                         <option ng-repeat="year in allYearUserRegistry" ng-value="year">{{year}}
                                         </option>
@@ -107,6 +108,7 @@
                                                 </div>
                                                 <div class="card-header justify-content-between">
                                                     <h2>Người dùng đăng ký trong tháng</h2>
+                                                    <a th:href="@{|/exportPDF/user/{{yearUserDetail}}/{{monthUserDetail}}|}">In PDF</a>
                                                 </div>
                                                 <div class="card-body pt-0 pb-5">
                                                     <table class="table card-table table-responsive table-responsive-large"
@@ -215,6 +217,7 @@
                                 </div>
                                 <div class="card-header justify-content-between">
                                     <h2>Khách mua hàng</h2>
+                                    <a th:href="@{|/exportPDF/userShopping|}">In PDF</a>
                                 </div>
                                 <div class="card-body pt-0 pb-5">
                                     <table class="table card-table table-responsive table-responsive-large"
@@ -223,7 +226,7 @@
                                             <tr>
                                                 <th>Tên đăng ký</th>
                                                 <th>Số sản phẩm mua</th>
-                                                <th>Tổng số tiền đã chi</th>
+                                                <th>Tổng số tiền dự kiến</th>
                                             </tr>
                                         </thead>
                                         <tbody>

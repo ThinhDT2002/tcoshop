@@ -6,9 +6,13 @@ adminApp.controller("user-registry-ctrl", function($http, $scope) {
 	$http.get("/api/report/getYearUserRegistry").then(resp => {
 		$scope.allYearUserRegistry = resp.data;
 	})
-	
+
 	// User registry report start
+	$scope.monthUserDetail;
+	$scope.yearUserDetail;
 	$scope.getUserRegistryDetailReport = function(year, month) {
+		$scope.monthUserDetail = month;
+		$scope.yearUserDetail = year;
 		$http({
 			url: "/api/report/userRegistryDetailReport",
 			method: "GET",
@@ -17,10 +21,10 @@ adminApp.controller("user-registry-ctrl", function($http, $scope) {
 				month: month
 			}
 		}).then(resp => {
-			$scope.userRegistryDetailReport = resp.data;			
+			$scope.userRegistryDetailReport = resp.data;
 		})
 	}
-	
+
 	$scope.userProperty = 'username';
 
 	$scope.sort = function() {
@@ -38,7 +42,7 @@ adminApp.controller("user-registry-ctrl", function($http, $scope) {
 	$scope.numberOfPages = function() {
 		return Math.ceil($scope.userRegistryDetailReport.length / $scope.pageSize);
 	}
-	
+
 	$scope.pagination = function() {
 		$scope.currentPage = 0;
 	}
@@ -63,12 +67,12 @@ adminApp.controller("user-registry-ctrl", function($http, $scope) {
 	$scope.numberOfPagesUserShopping = function() {
 		return Math.ceil($scope.userShoppingReport.length / $scope.pageSizeUserShopping);
 	}
-	
+
 	$scope.paginationUserShopping = function() {
 		$scope.pageSizeUserShopping = 0;
 	}
 	//User Shopping end
-	
+
 	function getUserRegisterPerYear(year) {
 		$http({
 			url: "/api/report/userRegistryReport",

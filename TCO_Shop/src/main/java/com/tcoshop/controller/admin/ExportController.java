@@ -16,6 +16,9 @@ import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
+import com.tcoshop.entity.User;
+import com.tcoshop.entity.UserRegistryReport;
+import com.tcoshop.entity.UserShoppingReport;
 import com.tcoshop.service.ProductService;
 import com.tcoshop.service.ReportService;
 import com.tcoshop.util.FileExporter;
@@ -24,8 +27,10 @@ import com.tcoshop.util.FileExporter;
 public class ExportController {
 	@Autowired
 	FileExporter fileExporter;
+	
 	@Autowired
 	ReportService reportService;
+	
 	@Autowired
 	ProductService productService;
 	
@@ -72,5 +77,26 @@ public class ExportController {
 	public void exportProductNotSold(HttpServletResponse resp, @PathVariable("month") Integer month, @PathVariable("year") Integer year) throws IOException {
 		List<Product> productNotSold = reportService.findProductNotSoldInMonth(month, year);
 		fileExporter.exportProductNotSoldToPDF(productNotSold, resp, month, year);
+	}
+	
+	// user year
+	@GetMapping("/exportPDF/user/{year}")
+	public void exportUserToPDF(HttpServletResponse resp, @PathVariable("year") Integer year) throws IOException {
+		List<UserRegistryReport> UserRegistryReport = reportService.getUserRegistryReport(year);
+		fileExporter.exportUserToPDF(UserRegistryReport, resp, year);
+	}
+	
+	// user year and month
+	@GetMapping("/exportPDF/user/{year}/{month}")
+	public void exportUserMonthToPDF(HttpServletResponse resp, @PathVariable("month") Integer month, @PathVariable("year") Integer year) throws IOException {
+		List<User> user = reportService.getUserRegistryByMonthAndYear(year, month);
+		fileExporter.exportUserMonthToPDF(user, resp, month, year);
+	}
+	
+	// user shopping
+	@GetMapping("/exportPDF/userShopping")
+	public void exportUserShoppingToPDF(HttpServletResponse resp) throws IOException {
+		List<UserShoppingReport> userShoppingReports = reportService.findAllUserShoppingReport();
+		fileExporter.exportUserShoppingToPDF(userShoppingReports, resp);
 	}
 }
