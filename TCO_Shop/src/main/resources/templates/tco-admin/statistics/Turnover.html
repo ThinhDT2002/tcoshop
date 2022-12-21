@@ -39,6 +39,7 @@
                             <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                                 <div class="card-header justify-content-between">
                                     <h2>Doanh thu trong năm</h2>
+                                    <a th:href="@{|/exportPDF/turnover/{{yearValue}}|}">In PDF</a>
                                     <select ng-change="showReport()" ng-model="yearValue">
                                         <option ng-repeat="orderYear in allOrderYear" ng-value="orderYear">{{orderYear}}
                                         </option>
@@ -113,6 +114,7 @@
                                                 </div>
                                                 <div class="card-header justify-content-between">
                                                     <h2>Doanh thu trong tháng</h2>
+                                                    <a th:href="@{|/exportPDF/turnoverMonth/{{yearTurnoverDetail}}/{{monthTurnoverDetail}}|}">In PDF</a>
                                                 </div>
                                                 <div class="card-body pt-0 pb-5">
                                                     <table class="table card-table table-responsive table-responsive-large"
@@ -128,8 +130,7 @@
                                                             <tr
                                                                 ng-repeat="turnoverDetail in turnoverDetailReport | filter: turnoverDetailSearch | orderBy: turnoverDetailProperty | startFrom: currentPage*pageSize | limitTo: pageSize">
                                                                 <td>
-                                                                    <a
-                                                                        th:href="@{|/tco-admin/product/detail/{{turnoverDetail.id}}|}">{{turnoverDetail.productName}}</a>
+                                                                    <a th:href="@{|/tco-admin/product/detail/{{turnoverDetail.id}}|}">{{turnoverDetail.productName}}</a>
                                                                 </td>
                                                                 <td>{{turnoverDetail.quantity}}</td>
                                                                 <td>{{turnoverDetail.turnover | currency:'':0}} VND</td>

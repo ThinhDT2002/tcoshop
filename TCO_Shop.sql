@@ -204,6 +204,7 @@ values('thinhdt15048','123456','thinhdtps15048@fpt.edu.vn',N'Đỗ Tiến Thịn
 	   Tôi đến từ Bình Thuận. Hiện tại đang học lập trình viên Java tại trường cao đẳng FPT Polytechnic. Sở thích của tôi là nghe nhạc, chơi game, đá bóng. Tôi đang độc thân.'
 	  ,1,'0123456789','0123456789','avatar4.png', 'SADMIN'),
 	  ('antht15011','123456','anthtps15011@fpt.edu.vn',N'Trịnh Hữu Thiện Ân',N'Đường Đông Bắc, Quận 12','0337429184',N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'SADMIN'),
+	  ('andeptrai','123456','anps15011@fpt.edu.vn',N'',N'Đường Đông Bắc, Quận 12','0337429184',N'Ân lo?',1,'0123456789','0123456789','avatar5.png', 'USER'),
 	  ('Guest','123456','Guest@tcoshom.com',N'Khách','None', 0123456789, 'hello' , 1, 0123456789, 0123456789, 'avatar1.png', 'USER')
 	  
 

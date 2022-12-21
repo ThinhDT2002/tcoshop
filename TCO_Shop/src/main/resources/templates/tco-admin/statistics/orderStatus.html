@@ -17,6 +17,7 @@
                         <div class="card card-default">
                             <div class="card-header justify-content-center">
                                 <h2>Đơn Hàng Trong Năm</h2>
+                                
                             </div>
                             <div class="card-body">
                                 <canvas id="doChart"></canvas>
@@ -57,6 +58,7 @@
                             <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                                 <div class="card-header justify-content-between">
                                     <h2>Số đơn theo trạng thái</h2>
+                                    <a th:href="@{|/exportPDF/orderStatus/{{yearValue}}|}">In PDF</a>
                                     <select ng-change="showReport()" ng-model="yearValue">
                                         <option ng-repeat="orderYear in allOrderYear" ng-value="orderYear">{{orderYear}}
                                         </option>
@@ -147,6 +149,7 @@
                                                 </div>
                                                 <div class="card-header justify-content-between">
                                                     <h2>Chi tiết</h2>
+                                                   <a th:href="@{|/exportPDF/orderStatusYear/{{yearOrderStatus}}/{{statusOrder}}|}">In PDF</a>
                                                 </div>
                                                 <div class="card-body pt-0 pb-5">
                                                     <table class="table card-table table-responsive table-responsive-large"
