@@ -37,13 +37,13 @@ public class SubcategoryAPI {
 		return subcategoryService.create(subcategory);
 	}
 	
-	@PutMapping("/api/subcategory/{id}")
+	@PutMapping("/api/subcategory/{id}") //Put trả về resp nhưng không dùng
 	public Subcategory update(@PathVariable("id") String id,
 			@RequestBody Subcategory subcategory) {
 		return subcategoryService.update(subcategory);
 	}
 	
-	@DeleteMapping("/api/subcategory/{id}")
+	@DeleteMapping("/api/subcategory/{id}") // Void không trả về dữ liệu
 	public void delete(@PathVariable("id") String id) {
 		subcategoryService.delete(id);
 	}
