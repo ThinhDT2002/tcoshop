@@ -15,10 +15,10 @@
                                                 style="width: 20px; margin-right: 10px;">[[${category.name}]]<i
                                                 class="ecicon eci-angle-right"></i></a>
                                         <ul class="sub-menu sub-menu-child">
-                                            <li th:each="subcategory : ${category.subcategories}"><img
+                                            <li th:each="subcategory : ${category.subcategories}"><a
+                                                    th:href="@{|/product/list?scid=${subcategory.id}|}"><img
                                                     th:src="@{|/images/subcategory/${subcategory.icon}|}"
-                                                    style="width: 20px"><a
-                                                    th:href="@{|/product/list?scid=${subcategory.id}|}">[[${subcategory.name}]]</a>
+                                                    style="width: 20px">[[${subcategory.name}]]</a>
                                             </li>
                                         </ul>
                                     </li>

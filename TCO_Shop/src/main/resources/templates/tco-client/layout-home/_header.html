@@ -147,7 +147,7 @@
 									</li>
 								</ul>
 							</div>
-							<input onfocusout="offSearch()" onkeyup="showsearch()" id="searchP" class="form-control menusp" placeholder="Tìm kiếm sản phẩm" ng-model="searchProduct"
+							<input  onkeyup="showsearch()" id="searchP" class="form-control menusp" placeholder="Tìm kiếm sản phẩm" ng-model="searchProduct"
 								type="text">
 								<ul class="ec-search-cat-block2">
 									<li ng-repeat="product in products | filter: searchProduct | limitTo: 4">
@@ -192,7 +192,7 @@
 			<!-- Ec Header Logo Start -->
 			<div class="col">
 				<div class="header-logo">
-					<a href="index.html"><img src="assets/images/logo/logo-5.png"
+					<a th:href="@{/home}"><img src="assets/images/logo/logo-5.png"
 						alt="Site Logo" /><img class="dark-logo"
 						src="assets/images/logo/dark-logo-5.png" alt="Site Logo"
 						style="display: none;" /></a>
@@ -211,7 +211,7 @@
 								</li>
 							</ul>
 						</div>
-						<input onfocusout="offSearch2()" onkeyup="showsearch2()" id="searchP2" class="form-control menusp" placeholder="Tìm kiếm sản phẩm" ng-model="searchProduct"
+						<input  onkeyup="showsearch2()" id="searchP2" class="form-control menusp" placeholder="Tìm kiếm sản phẩm" ng-model="searchProduct"
 								type="text">
 								<ul class="ec-search-cat-block3">
 									<li ng-repeat="product in products | filter: searchProduct | limitTo: 4">

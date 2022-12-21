@@ -977,9 +977,7 @@ showsearch = () => {
         document.querySelector(".ec-search-cat-block2").style.display = "none";
     }
 }
-offSearch = () => {
-    document.querySelector(".ec-search-cat-block2").style.display = "none";
-}
+
 
 showsearch2 = () => {
     if (document.getElementById("searchP2").value.length != 0) {
@@ -988,7 +986,5 @@ showsearch2 = () => {
         document.querySelector(".ec-search-cat-block3").style.display = "none";
     }
 }
-offSearch2 = () => {
-    document.querySelector(".ec-search-cat-block3").style.display = "none";
-}
+
 

@@ -31,9 +31,7 @@ showsearch = () => {
         document.querySelector(".ec-search-cat-block2").style.display = "none";
     }
 }
-offSearch = () => {
-    document.querySelector(".ec-search-cat-block2").style.display = "none";
-}
+
 
 showsearch2 = () => {
    
@@ -43,9 +41,7 @@ showsearch2 = () => {
         document.querySelector(".ec-search-cat-block3").style.display = "none";
     }
 }
-offSearch2 = () => {
-    document.querySelector(".ec-search-cat-block3").style.display = "none";
-}
+
 function ecAccessCookie(e) {
     for (
         var c = e + "=", d = document.cookie.split(";"), a = 0;
