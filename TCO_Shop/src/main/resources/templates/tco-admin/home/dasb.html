@@ -170,7 +170,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                 <!-- Top Sell Table -->
                 <div class="card card-default Sold-card-table">
                     <div class="card-header justify-content-between">
-                        <h2>Sản phẩm bán chạy</h2>                       
+                        <h2>Sản phẩm phổ biến</h2>                       
                     </div>
                     <div class="card-body py-0 compact-units" data-simplebar style="height: 534px;">
                         <table class="table ">
@@ -228,7 +228,7 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                                     </td>
                                     <td class="d-none d-lg-table-cell">{{order.createDate | date:'dd/MM/yyyy'}}</td>
                                     <td>
-                                        <span ng-repeat="orderDetail in top5OrdersDetail" ng-if="orderDetail.order.id == order.id">{{orderDetail.price | currency}} <br></span>
+                                        <span ng-repeat="orderDetail in top5OrdersDetail" ng-if="orderDetail.order.id == order.id">{{orderDetail.price | currency:'':0}} VND<br></span>
                                     </td>
                                     <td>
                                     	<span ng-if="order.status == 'ChoXacNhan'"> Chờ xác nhận </span>
@@ -298,8 +298,8 @@ th:replace="~{tco-admin/layout-admin/index :: dynamic(~{::main})}">
                                 <p class="float-md-right sale"><span class="mr-2" ng-repeat="tp in topProduct" ng-if="tp.id == productBS.id">Đã bán: {{tp.sold}}</span></p>
                                 <p class="d-none d-md-block">{{productBS.description}}</p>
                                 <p class="mb-0 ec-price">
-                                    <span class="text-dark">{{productBS.price * ((100 - productBS.discount)/100) | currency}} VND</span>
-                                    <del>{{productBS.price | currency}} VND</del>
+                                    <span class="text-dark">{{productBS.price * ((100 - productBS.discount)/100) | currency:'':0}} VND</span>
+                                    <del>{{productBS.price | currency:'':0}} VND</del>
                                 </p>
                             </div>
                         </div>

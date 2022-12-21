@@ -33,6 +33,7 @@
                             <div class="card card-table-border-none card-default recent-orders" id="recent-orders">
                                 <div class="card-header justify-content-between">
                                     <h2>Đơn hàng trong năm</h2>
+                                    <a th:href="@{/exportPDF/orderSolder}">In PDF</a>
                                     <select ng-change="showReport()" ng-model="yearValue">
                                         <option ng-repeat="orderYear in allOrderYear" ng-value="orderYear">{{orderYear}}
                                         </option>

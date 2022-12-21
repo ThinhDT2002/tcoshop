@@ -59,7 +59,7 @@
 	
 				<p class="desc-content text-center">Trang này hiện đang không có sẵn hoặc địa chỉ url không hợp lệ! </p>
 	
-				<a class="link-404" th:href="@{/home}">Quay về trang chủ</a>
+				<a class="link-404" onclick="backToPreviousPage()">Quay về</a>
 			</div>
 		  </div>
 		</div>
@@ -91,7 +91,11 @@
 	<!-- Main Js -->
 	<script th:src="@{/assets/js/vendor/index.js}"></script>
 	<script th:src="@{/assets/js/main.js}"></script>
-
+	<script>
+		function backToPreviousPage() {
+			window.history.back();
+		}
+	</script>
 </body>
 
 <!-- Mirrored from loopinfosol.in/themeforest/ekka-html-v32/ekka-html/coming-soon.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 12 Jul 2022 11:30:14 GMT -->

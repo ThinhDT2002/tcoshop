@@ -989,7 +989,8 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 		}
 		const date = new Date();
 		let month = date.getMonth();
-		getOrderCountPerStatus(2022, month + 1, month + 1);
+		let year = date.getFullYear();
+		getOrderCountPerStatus(year, month + 1, month + 1);
 
 
 
@@ -1248,7 +1249,7 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 				}
 			})
 		}
-		getUserRegisterPerYear(2022);
+		getUserRegisterPerYear(year);
 		/*======== 15. ANALYTICS - SALES REPORT ========*/
 
 		function getSalesReport(year) {
@@ -1365,7 +1366,7 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 				return report;
 			})
 		}
-		var salesReport = getSalesReport(2022);
+		var salesReport = getSalesReport(year);
 
 
 
@@ -1505,7 +1506,7 @@ adminApp.controller("dashboard-ctrl", function($http, $scope) {
 				}
 			})
 		}
-		getTurnoverPerYear(2022);
+		getTurnoverPerYear(year);
 
 
 		/*======== 17. HORIZONTAL BAR CHART1 ========*/
