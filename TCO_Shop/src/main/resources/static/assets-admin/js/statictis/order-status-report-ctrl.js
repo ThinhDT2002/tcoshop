@@ -5,8 +5,11 @@ adminApp.controller("order-status-report-ctrl", function($http, $scope) {
 	})
 	$scope.orders = [];
 	$scope.ordersDetail = [];
+	$scope.statusOrder;
+	$scope.yearOrderStatus;
 	$scope.getOrderStatusDetailReport = function(year, status) {
-		
+		$scope.statusOrder = status;
+		$scope.yearOrderStatus = year;
 		$http({
 			url: "/api/report/orderStatusReportDetail",
 			method: "GET",

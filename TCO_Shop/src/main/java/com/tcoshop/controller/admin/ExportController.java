@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tcoshop.entity.Order;
+import com.tcoshop.entity.OrderStatusReport;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.service.ReportService;
 import com.tcoshop.util.FileExporter;
@@ -32,5 +33,14 @@ public class ExportController {
 		List<Order> orderReports = reportService.findByMonthAndYear(month, year);
 		fileExporter.exportOrderMonthToPDF(orderReports, resp, month, year);
 	}
-	
+	@GetMapping("/exportPDF/orderStatus/{year}")
+	public void exportOrderStatusToPDF(HttpServletResponse resp, @PathVariable("year") Integer year) throws IOException {
+		List<OrderStatusReport> orderStatusReports = reportService.getTableDataOrderStatusReport(year);
+		fileExporter.exportOrderStatusReportToPDF(orderStatusReports, resp, year);
+	}
+	@GetMapping("/exportPDF/orderStatusYear/{year}/{status}")
+	public void exportOrderStatusYearToPDF(HttpServletResponse resp,@PathVariable("year") Integer year, @PathVariable("status") String status ) throws IOException {
+		List<Order> orderStatusYearReports = reportService.findByYearAndStatus(year, status);
+		fileExporter.exportOrderStatusYearToPDF(orderStatusYearReports, resp, year, status);
+	}
 }
