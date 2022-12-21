@@ -21,6 +21,7 @@ import com.lowagie.text.pdf.PdfWriter;
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderDetail;
 import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
@@ -451,4 +452,121 @@ public class FileExporter {
 		
 	}
 
+	public void exportProductStockToPDF(List<Product> productStockReports, HttpServletResponse resp) throws IOException {
+		setResponHeader(resp, "application/pdf", ".pdf", "SaleReport_");
+		
+		Document document = new Document(PageSize.A4);
+		PdfWriter.getInstance(document, resp.getOutputStream());
+		document.open();
+		
+		Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+		font.setSize(13);
+		font.setColor(Color.BLACK);
+		Paragraph paragraph = new Paragraph("HANG TON KHO" , font);
+		paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+
+		document.add(paragraph);
+		
+		PdfPTable pdfPTable = new PdfPTable(3);
+		pdfPTable.setWidthPercentage(100f);
+		pdfPTable.setSpacingBefore(10);
+		writeProductStockHeader(pdfPTable);
+		writeProductStockData(pdfPTable, productStockReports);
+		document.add(pdfPTable);
+		document.close();
+	}
+	
+	public void writeProductStockData(PdfPTable pdfPTable, List<Product> productStockReports) {
+		for(Product productStockReport : productStockReports) {
+			PdfPCell cell = new PdfPCell();
+			cell.setPhrase(new Phrase(String.valueOf(productStockReport.getId())));
+			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			pdfPTable.addCell(cell);
+			cell.setPhrase(new Phrase(String.valueOf(productStockReport.getName())));
+			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			pdfPTable.addCell(cell);
+			cell.setPhrase(new Phrase(String.valueOf(productStockReport.getStock())));
+			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			pdfPTable.addCell(cell);
+			
+		}
+	}
+	
+	public void writeProductStockHeader(PdfPTable pdfPTable) {
+		PdfPCell cell = new PdfPCell();
+		cell.setBackgroundColor(Color.LIGHT_GRAY);
+		cell.setPadding(5);
+		
+		Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+		font.setColor(Color.white);
+		
+		cell.setPhrase(new Phrase("MA SAN PHAM", font));
+		cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+		pdfPTable.addCell(cell);
+		cell.setPhrase(new Phrase("TEN SAN PHAM", font));
+		cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+		pdfPTable.addCell(cell);
+		cell.setPhrase(new Phrase("SO LUONG", font));
+		cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+		pdfPTable.addCell(cell);
+	}
+	
+	public void exportProductNotSoldToPDF(List<Product> productNotSoldReports, HttpServletResponse resp,Integer month, Integer year) throws IOException {
+		setResponHeader(resp, "application/pdf", ".pdf", "SaleReport_");
+		
+		Document document = new Document(PageSize.A4);
+		PdfWriter.getInstance(document, resp.getOutputStream());
+		document.open();
+		
+		Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+		font.setSize(13);
+		font.setColor(Color.BLACK);
+		Paragraph paragraph = new Paragraph("HANG CHUA DUOC BAN TRONG " + month + " " + year, font);
+		paragraph.setAlignment(Paragraph.ALIGN_CENTER);
+
+		document.add(paragraph);
+		
+		PdfPTable pdfPTable = new PdfPTable(3);
+		pdfPTable.setWidthPercentage(100f);
+		pdfPTable.setSpacingBefore(10);
+		writeProductStockHeader(pdfPTable);
+		writeProductStockData(pdfPTable, productNotSoldReports);
+		document.add(pdfPTable);
+		document.close();
+	}
+	
+	public void writeProductNotSoldData(PdfPTable pdfPTable, List<Product> ProductNotSoldReports) {
+		for(Product productNotSoldReport : ProductNotSoldReports) {
+			PdfPCell cell = new PdfPCell();
+			cell.setPhrase(new Phrase(String.valueOf(productNotSoldReport.getId())));
+			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			pdfPTable.addCell(cell);
+			cell.setPhrase(new Phrase(String.valueOf(productNotSoldReport.getName())));
+			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			pdfPTable.addCell(cell);
+			cell.setPhrase(new Phrase(String.valueOf(productNotSoldReport.getStock())));
+			cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			pdfPTable.addCell(cell);
+		}
+	}
+	
+	public void writeProductNotSoldHeader(PdfPTable pdfPTable) {
+		PdfPCell cell = new PdfPCell();
+		cell.setBackgroundColor(Color.LIGHT_GRAY);
+		cell.setPadding(5);
+		
+		Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
+		font.setColor(Color.white);
+		
+		cell.setPhrase(new Phrase("MA SAN PHAM", font));
+		cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+		pdfPTable.addCell(cell);
+		cell.setPhrase(new Phrase("TEN SAN PHAM", font));
+		cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+		pdfPTable.addCell(cell);
+		cell.setPhrase(new Phrase("SO LUONG", font));
+		cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+		pdfPTable.addCell(cell);
+		
+	}
 }

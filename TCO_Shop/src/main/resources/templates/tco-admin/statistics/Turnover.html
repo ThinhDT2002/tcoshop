@@ -202,6 +202,7 @@
                                 </div>
                                 <div class="card-header justify-content-between">
                                     <h2>Hàng tồn kho</h2>
+                                    <a th:href="@{/exportPDF/productStock}">In PDF</a>
                                 </div>
                                 <div class="card-body pt-0 pb-5">
                                     <table class="table card-table table-responsive table-responsive-large"
@@ -285,6 +286,7 @@
                                 </div>
                                 <div class="card-header justify-content-between">
                                     <h2>Hàng chưa bán được trong tháng này</h2>
+                                     <a th:href="@{|/exportPDF/productNotSold/{{yearProductNotSold}}/{{monthProductNotSold}}|}">In PDF</a>
                                 </div>
                                 <div class="card-body pt-0 pb-5">
                                     <table class="table card-table table-responsive table-responsive-large"

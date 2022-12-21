@@ -31,7 +31,12 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 	var today = new Date();
 	var month = String(today.getMonth() + 1).padStart(2, '0');
 	var year = today.getFullYear();
+	$scope.yearProductNotSold;
+	$scope.monthProductNotSold;
+	
+	
 	$http({
+		
 		url: "/api/report/productNotSoldInMonth",
 		method: "GET",
 		params: {
@@ -39,6 +44,8 @@ adminApp.controller("turnover-report-ctrl", function($http, $scope) {
 			month: month
 		}
 	}).then(resp => {
+		$scope.yearProductNotSold = year;
+		$scope.monthProductNotSold = month;
 		$scope.productsNotSold = resp.data;
 	})
 	$scope.productNotSoldProperty = 'name';

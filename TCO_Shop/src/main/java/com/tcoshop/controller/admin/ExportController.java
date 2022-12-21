@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tcoshop.entity.Order;
 import com.tcoshop.entity.OrderStatusReport;
+import com.tcoshop.entity.Product;
 import com.tcoshop.entity.SaleReport;
 import com.tcoshop.entity.TurnoverDetailReport;
 import com.tcoshop.entity.TurnoverReport;
+import com.tcoshop.service.ProductService;
 import com.tcoshop.service.ReportService;
 import com.tcoshop.util.FileExporter;
 
@@ -24,6 +26,8 @@ public class ExportController {
 	FileExporter fileExporter;
 	@Autowired
 	ReportService reportService;
+	@Autowired
+	ProductService productService;
 	
 	@GetMapping("/exportPDF/orderSolder/{year}")
 	public void exportOrderSoldToPDF(HttpServletResponse resp, @PathVariable("year") Integer year) throws IOException {
@@ -57,5 +61,16 @@ public class ExportController {
 		List<TurnoverDetailReport> turnReports = reportService.getTurnoverDetailReport(year, month);
 		fileExporter.exportTurnoverMonthToPDF(turnReports, resp, month, year);
 	}
-
+	
+	@GetMapping("/exportPDF/productStock")
+	public void exportProductStock(HttpServletResponse resp) throws IOException {
+		List<Product> productStockReports = productService.findAll();
+		fileExporter.exportProductStockToPDF(productStockReports, resp);
+	}
+	
+	@GetMapping("/exportPDF/productNotSold/{year}/{month}")
+	public void exportProductNotSold(HttpServletResponse resp, @PathVariable("month") Integer month, @PathVariable("year") Integer year) throws IOException {
+		List<Product> productNotSold = reportService.findProductNotSoldInMonth(month, year);
+		fileExporter.exportProductNotSoldToPDF(productNotSold, resp, month, year);
+	}
 }
