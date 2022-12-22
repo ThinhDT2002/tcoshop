@@ -119,12 +119,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                         th:href="@{|/order/track/{{item.id}}|}">Xem</a></span></td>                                                        
                                             <td ng-if="item.status === 'ChoXacNhan' || item.status === 'ChuanBi'">
 	                                            <span class="tbl-btn" >
-	                                            	<button class="btn btn-lg btn-warning" ng-click="cancelOrder(item.id)">Hủy đơn</button>	                                            	
+	                                            	<button class="btn btn-lg btn-warning" ng-click="cancelOrder(item.id)">Hủy</button>	                                            	
 	                                            </span>
                                             </td>   
                                             <td ng-if="item.status !== 'ChoXacNhan' && item.status !== 'ChuanBi'">
                                             	<span class="tbl-btn">
-	                                            	<button class="btn btn-lg btn-primary" disabled>Hủy đơn</button>	                                            	
+	                                            	<button class="btn btn-lg btn-primary" disabled>Hủy</button>	                                            	
 	                                            </span>
                                             </td>                                                 
                                         </tr>
