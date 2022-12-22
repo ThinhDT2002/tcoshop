@@ -68,6 +68,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             <th scope="col">Hóa đơn</th>
                                             <th scope="col">Tên</th>
                                             <th scope="col">Ngày đặt</th>
+                                            <th scope="col">Địa chỉ</th>
+                                            <th scope="col">Số điện thoại</th>
                                             <th scope="col">Thanh toán trước</th>
                                             <th scope="col">Trạng thái</th>
                                             <th scope="col">Xem đơn</th>
@@ -84,6 +86,8 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                             	<span>[[${currentUser.fullname}]]</span>
                                             </td>
                                             <td><span>{{item.createDate | date:"dd/MM/yyyy"}} at {{item.orderTimeDetail}}</span></td>
+                                            <td><span>{{item.address}}</span></td>
+                                            <td><span>{{item.phoneNumber}}</span></td>
                                             <td ng-if="item.isPaid === 1">
                                             	<span>Chưa thanh toán</span>
                                             </td>
