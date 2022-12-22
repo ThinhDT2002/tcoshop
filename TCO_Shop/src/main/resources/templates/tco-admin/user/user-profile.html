@@ -39,31 +39,14 @@
 									<hr class="w-100">
 			
 									<div class="contact-info pt-4">
-										<h5 class="text-dark">Contact Information</h5>
-										<p class="text-dark font-weight-medium pt-24px mb-2">Email address</p>
+										<h5 class="text-dark">Thông tin tài khoản</h5>
+										<p class="text-dark font-weight-medium pt-24px mb-2">Địa chỉ Email</p>
 										<p>[[${user.email}]]</p>
-										<p class="text-dark font-weight-medium pt-24px mb-2">Username</p>
+										<p class="text-dark font-weight-medium pt-24px mb-2">Tài khoản</p>
 										<p>[[${user.username}]]</p>
-										<p class="text-dark font-weight-medium pt-24px mb-2">Password</p>
+										<p class="text-dark font-weight-medium pt-24px mb-2">Mật khẩu</p>
 										<p>[[${user.password}]]</p>
-										<p class="text-dark font-weight-medium pt-24px mb-2">Social Profile</p>
-										<p class="social-button">
-											<a href="#" class="mb-1 btn btn-outline btn-twitter rounded-circle">
-												<i class="mdi mdi-twitter"></i>
-											</a>
-			
-											<a href="#" class="mb-1 btn btn-outline btn-linkedin rounded-circle">
-												<i class="mdi mdi-linkedin"></i>
-											</a>
-			
-											<a href="https://www.facebook.com/tcoshopp" class="mb-1 btn btn-outline btn-facebook rounded-circle">
-												<i class="mdi mdi-facebook"></i>
-											</a>
-			
-											<a href="#" class="mb-1 btn btn-outline btn-skype rounded-circle">
-												<i class="mdi mdi-skype"></i>
-											</a>
-										</p>
+										
 									</div>
 								</div>
 							</div>
@@ -74,7 +57,7 @@
 										<li class="nav-item" role="presentation">
 											<button class="nav-link active" id="settings-tab" data-bs-toggle="tab"
 												data-bs-target="#settings" type="button" role="tab"
-												aria-controls="settings" aria-selected="false">Settings</button>
+												aria-controls="settings" aria-selected="false">Tùy chỉnh</button>
 										</li>
 									</ul>
 									<div class="tab-content px-3 px-xl-5" id="myTabContent">
@@ -119,19 +102,6 @@
 			
 														
 													</div>
-			
-													<div class="form-group mb-4">
-														<label for="userName">User name</label>
-														<input th:field = "${user.username}" type="text" class="form-control" id="userName"
-															value="User name" readonly>
-														
-													</div>
-			
-													<div class="form-group mb-4">
-														<label for="email">Email</label>
-														<input th:field = "${user.email}" type="email" class="form-control" id="email"
-															value="tco.example@gmail.com" readonly>
-													</div>
 													<div class="form-group mb-4">
 														<label for="phone">Số điện thoại</label><br>
 														<label class="error-mess" th:if = "${phoneError} != null">[[${phoneError}]]</label>
@@ -153,8 +123,7 @@
 			
 													<div class="d-flex justify-content-end mt-5">
 														<button type="submit"
-															class="btn btn-primary mb-2 btn-pill">Update
-															Profile</button>
+															class="btn btn-primary mb-2 btn-pill">Cập nhật</button>
 													</div>
 												</form>
 											</div>

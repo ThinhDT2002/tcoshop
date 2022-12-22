@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -16,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -115,10 +117,26 @@ public class UserController {
     }
     
     @RequestMapping("/user/update/{username}")
-    public String submitUser(Model model, Authentication authentication, RedirectAttributes redirectAttributes,
-    		@RequestParam("userAvatar") Optional<MultipartFile> multipartFile, @ModelAttribute("userEdit") User user) {
+    public String submitUser(@Valid Model model, Authentication authentication, RedirectAttributes redirectAttributes,
+    		@RequestParam("userAvatar") Optional<MultipartFile> multipartFile, @ModelAttribute("userEdit") User user, Errors errors) {
     	
-        
+    	boolean updateUserError = false;
+        if(errors.hasErrors()) {
+        	redirectAttributes.addFlashAttribute("updateUserMessage", "Cập nhật thông tin tài khoản thất bại!");
+        	return "redirect:/user/add";
+        }
+        if (user.getPhone() != null) {
+			if(user.getPhone().trim().length() != 0) {
+				if (!user.getPhone().matches("(84|0[3|5|7|8|9])+([0-9]{8})\\b")) {
+					updateUserError = true;
+					redirectAttributes.addFlashAttribute("phoneError", "Không đúng định dạng số điện thoại VN");
+				}
+			}
+		}
+        if (updateUserError == true) {
+			redirectAttributes.addFlashAttribute("updateUserMessage", "Cập nhật thông tin tài khoản thất bại!");
+			return "redirect:/user/add";
+		}
     	String username = authentication.getName();
     	String getUrl = "http://localhost:8080/api/user/" + username;
     	ResponseEntity<User> responseEntity = restTemplate.getForEntity(getUrl, User.class);
@@ -128,7 +146,7 @@ public class UserController {
     	setAvatar(user, multipartFile);
     	HttpEntity<User> httpEntity = new HttpEntity<User>(user);
     	restTemplate.put(putUrl, httpEntity);
-    	redirectAttributes.addFlashAttribute("message","Cập nhật tài khoản thành công!");
+    	redirectAttributes.addFlashAttribute("updateUserMessage","Cập nhật thông tin tài khoản thành công!");
     	redirectAttributes.addFlashAttribute("userEdit", user);
     	
     	return "redirect:/user/add";

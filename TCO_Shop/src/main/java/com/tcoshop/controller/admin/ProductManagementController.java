@@ -130,6 +130,17 @@ public class ProductManagementController {
             @RequestParam("img3") Optional<MultipartFile> imageFile3,
             @RequestParam("img4") Optional<MultipartFile> imageFile4) {        
         if (errors.hasErrors()) {
+        	Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
+                    Variation[].class);
+            List<ProductVariation> productVariations = new ArrayList<>();
+            for (int i = 0; i < variations.length; i++) {
+                ProductVariation productVariation = new ProductVariation();
+                productVariation.setName(variations[i].getName());
+                productVariation.setValue(" ");
+                productVariations.add(productVariation);
+            }
+            product.setProductVariations(productVariations);
+            product.setId(-999);
             model.addAttribute("errorMessage", "Thêm sản phẩm thất bại!");
             return "tco-admin/product/product-add";
         }
@@ -160,7 +171,7 @@ public class ProductManagementController {
             String apiProductVariationsUrl = "http://localhost:8080/api/productVariation/all";
             restTemplate.postForObject(apiProductVariationsUrl, productVariationsEntity, ProductVariation[].class);
         }
-        redirectAttributes.addFlashAttribute("message", "Thêm sản phẩm thành công!");
+        redirectAttributes.addFlashAttribute("errorMessage", "Thêm sản phẩm thành công!");
         redirectAttributes.addFlashAttribute("item", product);
         return "redirect:/tco-admin/product/" + product.getId();
     }
@@ -180,6 +191,18 @@ public class ProductManagementController {
         product.setImage3(productImages.getImage3());
         product.setImage4(productImages.getImage4());
         if (errors.hasErrors()) {
+        	Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
+                    Variation[].class);
+        	List<ProductVariation> productVariations = new ArrayList<>();
+        	for (int i = 0; i < variations.length; i++) {
+                ProductVariation productVariation = new ProductVariation();
+                productVariation.setName(variations[i].getName());
+                productVariation.setValue(" ");
+                productVariations.add(productVariation);
+            }
+
+            product.setProductVariations(productVariations);
+            
             model.addAttribute("errorMessage", "Cập nhật sản phẩm thất bại!");
             model.addAttribute("item", product);
             List<Subcategory> subcategories = subcategoryService.findByCategoryId(product.getCategory().getId());
@@ -216,7 +239,7 @@ public class ProductManagementController {
             String apiProductVariationsUrl = "http://localhost:8080/api/productVariation/all";
             restTemplate.postForObject(apiProductVariationsUrl, productVariationsEntity, ProductVariation[].class);
         }                          
-        redirectAttributes.addFlashAttribute("message", "Cập nhật sản phẩm thành công!");
+        redirectAttributes.addFlashAttribute("errorMessage", "Cập nhật sản phẩm thành công!");
         redirectAttributes.addFlashAttribute("item", product);
         return "redirect:/tco-admin/product/" + product.getId();
     }
@@ -226,8 +249,8 @@ public class ProductManagementController {
             @PathVariable("id") Integer productId) {
         String url = "http://localhost:8080/api/products/" + productId;
         restTemplate.delete(url);
-        redirectAttributes.addFlashAttribute("message", "Xóa sản phẩm thành công!");
-        return "redirect:/tco-admin/product/add";
+        redirectAttributes.addFlashAttribute("errorMessage", "Xóa sản phẩm thành công!");
+        return "redirect:/tco-admin/product/add"; 
     }
 
     @SuppressWarnings("null")

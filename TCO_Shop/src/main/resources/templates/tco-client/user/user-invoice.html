@@ -42,13 +42,12 @@
 								<div class="ec-vendor-block">
 									<div class="ec-vendor-block-items">
 										<ul>
-											<li><a href="user-profile.html">Hồ sơ người dùng</a></li>
-											<li><a href="user-history.html">Lịch sử</a></li>
-											<li><a href="wishlist.html">Danh sách yêu thích</a></li>
-											<li><a href="cart.html">Giỏ hàng</a></li>
-											<li><a href="checkout.html">Thanh toán</a></li>
-											<li><a href="track-order.html">Theo dõi Đơn hàng</a></li>
-											<li><a href="user-invoice.html">Hoá đơn</a></li>
+										<li><a th:href="@{/user/profile}">Thông tin người dùng</a></li>
+                                        <li><a th:href="@{/order/history}">Lịch sử đặt hàng</a></li>
+                                        <li><a th:href="@{/order/transaction}">Lịch sử thanh toán</a></li>
+                                        <li><a th:href="@{/product/favorites}">Danh sách sản phẩm yêu thích</a></li>
+                                        <li><a th:href="@{/cart}">Giỏ hàng</a></li>
+                                        <li><a th:href="@{/checkout}">Thanh toán</a></li>
 										</ul>
 									</div>
 								</div>

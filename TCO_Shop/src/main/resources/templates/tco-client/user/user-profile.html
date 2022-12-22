@@ -45,13 +45,12 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                 </div> -->
                                 <div class="ec-vendor-block-items">
                                     <ul>
-                                        <li><a href="user-profile.html">Thông tin người dùng</a></li>
-                                        <li><a href="user-history.html">Lịch sử</a></li>
-                                        <li><a href="wishlist.html">Danh sách</a></li>
-                                        <li><a href="cart.html">Giỏ hàng</a></li>
-                                        <li><a href="checkout.html">Thanh toán</a></li>
-                                        <li><a href="track-order.html">Theo dõi đơn hàng</a></li>
-                                        <li><a href="user-invoice.html">Hóa đơn</a></li>
+                                        <li><a th:href="@{/user/profile}">Thông tin người dùng</a></li>
+                                        <li><a th:href="@{/order/history}">Lịch sử đặt hàng</a></li>
+                                        <li><a th:href="@{/order/transaction}">Lịch sử thanh toán</a></li>
+                                        <li><a th:href="@{/product/favorites}">Danh sách sản phẩm yêu thích</a></li>
+                                        <li><a th:href="@{/cart}">Giỏ hàng</a></li>
+                                        <li><a th:href="@{/checkout}">Thanh toán</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -110,16 +109,7 @@ th:replace="~{tco-client/layout-client/index :: dynamic(~{::main})}">
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-12">
-                                                <div class="ec-vendor-detail-block ec-vendor-block-address">
-                                                    <h6>Địa chỉ giao hàng<a href="javasript:void(0)" data-link-action="editmodal" title="Edit Detail" data-bs-toggle="modal" data-bs-target="#edit_modal"><img th:src="@{/assets/images/icons/edit.svg}"
-                                                        class="svg_img pro_svg" alt="edit" /></a></h6>
-                                                    <ul>
-                                                        <li><strong>Văn phòng : </strong>123, 2150 Sycamore Street, dummy text of
-                                                            the, San Jose, California - 95131.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
