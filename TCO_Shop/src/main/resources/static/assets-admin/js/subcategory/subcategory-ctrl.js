@@ -50,14 +50,14 @@ adminApp.controller("subcategory-ctrl", function($scope, $http){
 	$scope.create = function(){
 		let sub  = angular.copy($scope.form);
 		let imageUpload = document.getElementById('imageUpload').value;
-		imageUpload = imageUpload.replace(/.*[\/\\]/, ''); //Thay thế các kí tự thừa trong ảnh
+		imageUpload = imageUpload.replace(/.*[\/\\]/, ''); //Thay thế các kí tự thừa trong ảnh 
 		if(imageUpload == ''){
 			imageUpload = 'default-subcategory.png';
 		}
 		sub['icon'] = imageUpload;
 		let subId = sub['id'];
-		let removeSpaceSubId = subId.replaceAll(" ", "");
-		let removeSpecialCharacterSubId = removeSpaceSubId.replace(/[^\w\s]/gi, '');
+		let removeSpaceSubId = subId.replaceAll(" ", ""); // Bắt lỗi nhập id nếu có khoảng trống sẽ bị xóa
+		let removeSpecialCharacterSubId = removeSpaceSubId.replace(/[^\w\s]/gi, ''); // Nếu có các kí tự đặc biệt sẽ bị xóa
 		sub['id'] = removeSpecialCharacterSubId;
 		var exist = false;
 		$scope.subs.forEach(function (subcategory) {
