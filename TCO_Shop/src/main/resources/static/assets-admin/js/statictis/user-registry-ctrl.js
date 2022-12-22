@@ -69,7 +69,7 @@ adminApp.controller("user-registry-ctrl", function($http, $scope) {
 	}
 
 	$scope.paginationUserShopping = function() {
-		$scope.pageSizeUserShopping = 0;
+		$scope.currentPageUserShopping = 0;
 	}
 	//User Shopping end
 

@@ -99,7 +99,7 @@ clientApp.controller("shopping-cart-ctrl", function($scope, $http, $rootScope) {
 			$scope.transaction = resp.data;
 		});
 	}
-
+	$scope.itemProperty = "-id";
 	$scope.cancelOrder = function(orderId) {
 		$http.put(`/api/orders/cancel/${orderId}`).then(resp => {
 			location.reload();
