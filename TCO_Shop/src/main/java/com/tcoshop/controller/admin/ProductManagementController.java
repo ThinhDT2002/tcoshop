@@ -61,6 +61,7 @@ public class ProductManagementController {
         return "tco-admin/product/product-list";
     }
 
+    @SuppressWarnings("null")
     @RequestMapping("/tco-admin/product/add")
     public String addProduct(Model model, @ModelAttribute("item") Product product) {
         product = new Product();
@@ -84,6 +85,7 @@ public class ProductManagementController {
         return "tco-admin/product/product-add";
     }
 
+    @SuppressWarnings("null")
     @RequestMapping("/tco-admin/product/{id}")
     public String detailAdmin(Model model, @PathVariable("id") Integer id) {
         Variation[] variations = restTemplate.getForObject("http://localhost:8080/api/variation/all",
@@ -119,6 +121,7 @@ public class ProductManagementController {
         return "tco-admin/product/product-detail";
     }
 
+    @SuppressWarnings("null")
     @RequestMapping(value = "/tco-admin/product/submit", method = RequestMethod.POST)
     public String submitProduct(RedirectAttributes redirectAttributes, Model model,
             @Validated @ModelAttribute("item") Product product, Errors errors,
@@ -162,6 +165,7 @@ public class ProductManagementController {
         return "redirect:/tco-admin/product/" + product.getId();
     }
 
+    @SuppressWarnings("null")
     @RequestMapping("/tco-admin/product/update/{id}")
     public String updateProduct(RedirectAttributes redirectAttributes, Model model,
             @Validated @ModelAttribute("item") Product product, Errors errors,
@@ -226,6 +230,7 @@ public class ProductManagementController {
         return "redirect:/tco-admin/product/add";
     }
 
+    @SuppressWarnings("null")
     private void setImage(Product product, Integer imageNumber, Optional<MultipartFile> multipartFile) {
         String fileName = "default-product.png";
         if (!multipartFile.get().isEmpty()) {
